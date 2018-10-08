@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<project name="mappings" default="test" basedir=".">
+	<property name="build.sysclasspath" value="last"/>
+
+	<target name="compile">
+		<javac srcdir="." classpath="." encoding="UTF-8" >
+		</javac>
+	</target>
+	<target name="test" depends="compile">
+		<java classpath="C:\Users\User\Projects\batch\mappings\src\gen\java" classname="biz.uniwear.batch.mappings.mappingsConsole" fork="true" failonerror="true">
+			<arg line="${cmdline}"/>
+		</java>
+	</target>
+	<target name="clean">
+		<delete>
+			<fileset dir=".">
+				<include name="**/*.class"/>
+				<include name="*.jar"/>
+			</fileset>
+		</delete>
+	</target>
+	<target name="manifest" depends="compile">
+		<mkdir dir="C:\Users\User\Projects\batch\mappings\src\gen\java/META-INF"/>
+		<manifest file="C:\Users\User\Projects\batch\mappings\src\gen\java/META-INF/MANIFEST.MF" mode="replace">
+			<attribute name="Created-By" value="MapForce 2018r2sp1"/>
+			<attribute name="Main-Class" value="biz.uniwear.batch.mappings.mappingsConsole"/>
+		</manifest>
+	</target>
+	<target name="jar" depends="manifest">
+		<jar destfile="mappings.jar" manifest="C:\Users\User\Projects\batch\mappings\src\gen\java/META-INF/MANIFEST.MF" basedir="." includes="**/*.xml **/*.class **/*.png **/*.wsdl **/MANIFEST.MF" excludes="**/*.java"/>
+	</target>
+</project>

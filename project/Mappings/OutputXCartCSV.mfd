@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Edited with Altova MapForce 2018r2sp1 -->
+<mapping xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="31">
+	<resources>
+		<datasources>
+			<datasource name="uniwear">
+				<properties JDBCDriver="org.mariadb.jdbc.Driver" JDBCDatabaseURL="jdbc:mariadb://127.0.0.1/uniwear" DBUser="root" DBPassword="root" DBDataSource="127.0.0.1" DBCatalog="uniwear" OLEDBOptions="DRIVER={MariaDB ODBC 3.0 Driver};UID=root;DATABASE=uniwear;OPTIONS=67108864;SERVER=127.0.0.1;TCPIP=1;"/>
+				<database_connection vendor="mariadb" import_kind="ODBC" version="10.3" ConnectionString="DSN=MariaDB;DRIVER={MariaDB ODBC 3.0 Driver};OPTIONS=67108864;TCPIP=1;SERVER=127.0.0.1;UID=root;PWD=root;DATABASE=uniwear" name="uniwear" path="uniwear">
+					<properties>
+						<property name="Database Kind"/>
+						<property name="Import Kind"/>
+						<property name="Root Object" value="uniwear"/>
+						<property name="FileDsn"/>
+						<property name="Dsn" value="MariaDB"/>
+						<property name="Driver" value="{MariaDB ODBC 3.0 Driver}"/>
+						<property name="Trusted_Connection"/>
+						<property name="App"/>
+						<property name="Server" value="127.0.0.1"/>
+						<property name="Database" value="uniwear"/>
+						<property name="Regional"/>
+						<property name="Languages"/>
+						<property name="Wsid"/>
+						<property name="Uid" value="root"/>
+						<property name="Pwd" value="m5MCmG-TzceT0"/>
+						<property name="Port"/>
+						<property name="Option"/>
+						<property name="Stmt"/>
+						<property name="Socket"/>
+						<property name="Desc"/>
+					</properties>
+					<LocalViewStorage/>
+					<LocalRelationsStorage/>
+					<RecordSetStructureStorage/>
+				</database_connection>
+			</datasource>
+		</datasources>
+	</resources>
+	<component name="defaultmap" uid="1" editable="1">
+		<properties SelectedLanguage="java"/>
+		<structure>
+			<children>
+				<component name="structure" library="db" uid="2" kind="15">
+					<properties/>
+					<view rbx="190" rby="489"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace/>
+									<namespace uid="http://www.altova.com/mapforce"/>
+								</namespaces>
+							</header>
+							<entry name="document" ns="1" expanded="1">
+								<entry name="products" type="table" outkey="5" expanded="1">
+									<entry name="sku" outkey="6"/>
+									<entry name="price" outkey="7"/>
+									<entry name="title" outkey="8"/>
+								</entry>
+								<entry name="supplierinventory" type="table" expanded="1"/>
+							</entry>
+						</root>
+						<database ref="uniwear">
+							<data>
+								<selections>
+									<selection>
+										<PathElement Name="uniwear" Kind="DataSource"/>
+										<PathElement Name="uniwear" Kind="Database"/>
+										<PathElement Name="products" Kind="Table"/>
+									</selection>
+									<selection>
+										<PathElement Name="uniwear" Kind="DataSource"/>
+										<PathElement Name="uniwear" Kind="Database"/>
+										<PathElement Name="supplierinventory" Kind="Table"/>
+									</selection>
+								</selections>
+							</data>
+						</database>
+					</data>
+				</component>
+				<component name="Xcart" library="text" uid="3" kind="16">
+					<properties XSLTDefaultOutput="1"/>
+					<view ltx="596" rbx="784" rby="200"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+									<namespace uid="http://www.altova.com/mapforce"/>
+								</namespaces>
+							</header>
+							<entry name="FileInstance" ns="1" expanded="1">
+								<entry name="document" ns="1" expanded="1">
+									<entry name="Rows" inpkey="1" expanded="1">
+										<entry name="sku" inpkey="9"/>
+										<entry name="name" inpkey="10"/>
+										<entry name="price" inpkey="11"/>
+									</entry>
+								</entry>
+							</entry>
+						</root>
+						<text type="csv" inputinstance="schema\Xcart.csv" outputinstance="_Product.csv" encoding="1000" byteorder="1" byteordermark="0">
+							<settings separator="," quote="&quot;" firstrownames="true" removeempty="true">
+								<names root="Xcart" block="Rows">
+									<field0 name="sku" type="string"/>
+									<field1 name="name" type="string"/>
+									<field2 name="price" type="decimal"/>
+								</names>
+							</settings>
+						</text>
+					</data>
+				</component>
+			</children>
+		</structure>
+		<connections>
+			<edge from="5" to="1"/>
+			<edge from="6" to="9"/>
+			<edge from="8" to="10"/>
+			<edge from="7" to="11"/>
+		</connections>
+	</component>
+</mapping>

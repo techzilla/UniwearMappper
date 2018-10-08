@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Edited with Altova MapForce 2018r2sp1 -->
+<mapping xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="31">
+	<resources>
+		<datasources>
+			<datasource name="uniwear">
+				<properties JDBCDriver="org.mariadb.jdbc.Driver" JDBCDatabaseURL="jdbc:mariadb://127.0.0.1/uniwear" DBUser="root" DBPassword="root" DBDataSource="127.0.0.1" DBCatalog="uniwear" OLEDBOptions="DRIVER={MariaDB ODBC 3.0 Driver};UID=root;DATABASE=uniwear;OPTIONS=67108864;SERVER=127.0.0.1;TCPIP=1;"/>
+				<database_connection vendor="mariadb" import_kind="ODBC" version="10.3" ConnectionString="DSN=MariaDB;DRIVER={MariaDB ODBC 3.0 Driver};OPTIONS=67108864;TCPIP=1;SERVER=127.0.0.1;UID=root;PWD=root;DATABASE=uniwear" name="uniwear" path="uniwear">
+					<properties>
+						<property name="Database Kind"/>
+						<property name="Import Kind"/>
+						<property name="Root Object" value="uniwear"/>
+						<property name="FileDsn"/>
+						<property name="Dsn" value="MariaDB"/>
+						<property name="Driver" value="{MariaDB ODBC 3.0 Driver}"/>
+						<property name="Trusted_Connection"/>
+						<property name="App"/>
+						<property name="Server" value="127.0.0.1"/>
+						<property name="Database" value="uniwear"/>
+						<property name="Regional"/>
+						<property name="Languages"/>
+						<property name="Wsid"/>
+						<property name="Uid" value="root"/>
+						<property name="Pwd" value="m5MCmG-TzceT0"/>
+						<property name="Port"/>
+						<property name="Option"/>
+						<property name="Stmt"/>
+						<property name="Socket"/>
+						<property name="Desc"/>
+					</properties>
+					<LocalViewStorage/>
+					<LocalRelationsStorage/>
+					<RecordSetStructureStorage/>
+				</database_connection>
+			</datasource>
+		</datasources>
+	</resources>
+	<component name="defaultmap" uid="1" editable="1">
+		<properties JavaBasePackage="biz.uniwear.batch.mappings" SelectedLanguage="java" LineEnd="lf"/>
+		<structure>
+			<children>
+				<component name="lowercase" library="lang" uid="47" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="15"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="16"/>
+					</targets>
+					<view ltx="265" lty="58" rbx="320" rby="86"/>
+				</component>
+				<component name="structure" library="db" uid="51" kind="15">
+					<properties XSLTDefaultOutput="1"/>
+					<view ltx="819" lty="-88" rbx="987" rby="378"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+									<namespace uid="http://www.altova.com/mapforce"/>
+								</namespaces>
+							</header>
+							<entry name="document" ns="1" expanded="1">
+								<entry name="products" type="table" inpkey="38" expanded="1">
+									<entry name="sku" inpkey="39"/>
+									<entry name="gtin" inpkey="40"/>
+									<entry name="type" inpkey="87"/>
+									<entry name="color" inpkey="62"/>
+									<entry name="color_type" inpkey="84"/>
+									<entry name="size" inpkey="85"/>
+									<entry name="gender" inpkey="56"/>
+									<entry name="price" inpkey="63"/>
+									<entry name="map" inpkey="64"/>
+									<entry name="weight" inpkey="88"/>
+									<entry name="brand" inpkey="89"/>
+									<entry name="collection" inpkey="90"/>
+									<entry name="title" inpkey="65"/>
+									<entry name="description" inpkey="66"/>
+									<entry name="image" inpkey="60"/>
+								</entry>
+								<entry name="supplierinventory" type="table" inpkey="41" expanded="1">
+									<entry name="gtin" inpkey="42"/>
+									<entry name="supplier" inpkey="43"/>
+									<entry name="price" inpkey="67"/>
+									<entry name="stock" inpkey="68"/>
+								</entry>
+							</entry>
+						</root>
+						<database ref="uniwear">
+							<data>
+								<selections>
+									<selection>
+										<PathElement Name="uniwear" Kind="DataSource"/>
+										<PathElement Name="uniwear" Kind="Database"/>
+										<PathElement Name="products" Kind="Table"/>
+									</selection>
+									<selection>
+										<PathElement Name="uniwear" Kind="DataSource"/>
+										<PathElement Name="uniwear" Kind="Database"/>
+										<PathElement Name="supplierinventory" Kind="Table"/>
+									</selection>
+								</selections>
+							</data>
+						</database>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="50" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="36"/>
+					</targets>
+					<view ltx="740" lty="326" rbx="779" rby="339"/>
+					<data>
+						<constant value="SPI" datatype="string"/>
+					</data>
+				</component>
+				<component name="gtin14" library="user" uid="8" kind="19" visible="0">
+					<view ltx="510" lty="56" rbx="637" rby="72"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="itemNumber" inpkey="3" componentid="9"/>
+						</root>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="result" outkey="4" componentid="6"/>
+						</root>
+					</data>
+				</component>
+				<component name="value-map" library="core" uid="45" kind="23">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="17"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="18"/>
+					</targets>
+					<view ltx="362" lty="58" rbx="420" rby="86"/>
+					<data>
+						<valuemap enableDefaultValue="1">
+							<valuemapTable>
+								<entry from="adc" to="ADC"/>
+								<entry from="anywear" to="ANY"/>
+								<entry from="asics" to="ASI"/>
+								<entry from="boojee" to="BOO"/>
+								<entry from="careisma" to="CAR"/>
+								<entry from="celeste stien" to="CEL"/>
+								<entry from="cherokee" to="CHE"/>
+								<entry from="cherokee workwear" to="CHW"/>
+								<entry from="code happy" to="COD"/>
+								<entry from="dickies" to="DIC"/>
+								<entry from="dickies chef" to="DCH"/>
+								<entry from="elle" to="ELL"/>
+								<entry from="fila usa" to="FIL"/>
+								<entry from="heartsoul" to="HRT"/>
+								<entry from="infinity footwear" to="INF"/>
+								<entry from="k-swiss" to="KSW"/>
+								<entry from="littmann" to="LTT"/>
+								<entry from="MDF" to="MDF"/>
+								<entry from="med-man" to="MAN"/>
+								<entry from="reebok" to="RBK"/>
+								<entry from="runway" to="RUN"/>
+								<entry from="sapphire" to="SPH"/>
+								<entry from="scrub hq" to="SHQ"/>
+								<entry from="scrubstar" to="SST"/>
+								<entry from="sloggers" to="SLG"/>
+								<entry from="studio" to="STU"/>
+								<entry from="swiftkick" to="SWK"/>
+								<entry from="therafirm" to="THF"/>
+								<entry from="tooniforms" to="TOO"/>
+							</valuemapTable>
+							<input name="input" type="string"/>
+							<result name="result" type="string" defaultValue="___"/>
+						</valuemap>
+					</data>
+				</component>
+				<component name="trim" library="user" uid="57" kind="19" visible="0">
+					<view ltx="326" lty="-141" rbx="422" rby="-125"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="string" inpkey="47" componentid="46"/>
+						</root>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="result" outkey="48" componentid="45"/>
+						</root>
+					</data>
+				</component>
+				<component name="trim" library="user" uid="54" kind="19" visible="0">
+					<view ltx="325" lty="-106" rbx="421" rby="-90"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="string" inpkey="49" componentid="46"/>
+						</root>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="result" outkey="50" componentid="45"/>
+						</root>
+					</data>
+				</component>
+				<component name="sku" library="user" uid="56" kind="19" visible="0">
+					<view ltx="461" lty="-63" rbx="584" rby="-2"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="brandPrefix" inpkey="51" componentid="14"/>
+							<entry name="styleCode" inpkey="52" componentid="15"/>
+							<entry name="colorCode" inpkey="53" componentid="16"/>
+							<entry name="sizeCode" inpkey="54" componentid="17"/>
+						</root>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="result" outkey="55" componentid="12"/>
+						</root>
+					</data>
+				</component>
+				<component name="gender" library="user" uid="61" kind="19" visible="0">
+					<view ltx="414" lty="190" rbx="510" rby="206"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="string" inpkey="58" componentid="54"/>
+						</root>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="result" outkey="59" componentid="53"/>
+						</root>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="77" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="69"/>
+					</targets>
+					<view ltx="348" lty="360" rbx="377" rby="373"/>
+					<data>
+						<constant datatype="string"/>
+					</data>
+				</component>
+				<component name="replace" library="lang" uid="75" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="71"/>
+						<datapoint pos="1" key="72"/>
+						<datapoint pos="2" key="73"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="74"/>
+					</targets>
+					<view ltx="414" lty="311" rbx="481" rby="363"/>
+				</component>
+				<component name="number" library="core" uid="79" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="75"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="76"/>
+					</targets>
+					<view ltx="536" lty="340" rbx="585" rby="368"/>
+				</component>
+				<component name="price" library="user" uid="73" kind="19" visible="0">
+					<view ltx="414" lty="120" rbx="517" rby="151"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="decimal" inpkey="77" componentid="63"/>
+							<entry name="map" inpkey="78" componentid="67"/>
+						</root>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="result" outkey="79" componentid="61"/>
+						</root>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="76" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="70"/>
+					</targets>
+					<view ltx="348" lty="340" rbx="382" rby="353"/>
+					<data>
+						<constant value="+" datatype="string"/>
+					</data>
+				</component>
+				<component name="InventorySPI" library="text" uid="2" kind="16">
+					<properties/>
+					<view ltx="4" lty="-88" rbx="212" rby="412"/>
+					<data>
+						<root scrollposition="10">
+							<header>
+								<namespaces>
+									<namespace/>
+									<namespace uid="http://www.altova.com/mapforce"/>
+								</namespaces>
+							</header>
+							<entry name="FileInstance" ns="1" outkey="44" expanded="1">
+								<entry name="document" ns="1" expanded="1">
+									<entry name="Rows" outkey="29" expanded="1">
+										<entry name="Style" outkey="27"/>
+										<entry name="Color" outkey="11"/>
+										<entry name="Color Description" outkey="46"/>
+										<entry name="Size" outkey="12"/>
+										<entry name="UPC" outkey="1"/>
+										<entry name="Price " outkey="37"/>
+										<entry name="Short Description" outkey="80"/>
+										<entry name="Full Description" outkey="81"/>
+										<entry name="Garment Type" outkey="91"/>
+										<entry name="Color Type" outkey="86"/>
+										<entry name="Availability" outkey="82"/>
+										<entry name="Collection" outkey="92"/>
+										<entry name="Brand" outkey="14"/>
+										<entry name="MAP Price" outkey="83"/>
+										<entry name="Product Shot" outkey="61"/>
+										<entry name="Gender" outkey="57"/>
+										<entry name="Unit Weight" outkey="93"/>
+									</entry>
+								</entry>
+							</entry>
+						</root>
+						<text type="csv" inputinstance="schema\InventorySPI.csv" encoding="1000" byteorder="1" byteordermark="0">
+							<settings separator="," quote="&quot;" firstrownames="true" removeempty="true">
+								<names root="InventorySPI" block="Rows">
+									<field0 name="Style" type="string"/>
+									<field1 name="Color" type="string"/>
+									<field2 name="Color Description" type="string"/>
+									<field3 name="Id" type="integer"/>
+									<field4 name="Size" type="string"/>
+									<field5 name="UPC" type="integer"/>
+									<field6 name="Price " type="decimal"/>
+									<field7 name="Short Description" type="string"/>
+									<field8 name="Full Description" type="string"/>
+									<field9 name="Fabric Content" type="string"/>
+									<field10 name="First Season" type="string"/>
+									<field11 name="Garment Type" type="string"/>
+									<field12 name="Color Type" type="string"/>
+									<field13 name="Status" type="string"/>
+									<field14 name="Makable" type="string"/>
+									<field15 name="Availability" type="string"/>
+									<field16 name="Date Available" type="string"/>
+									<field17 name="Coordinating Colors" type="string"/>
+									<field18 name="Collection" type="string"/>
+									<field19 name="Brand" type="string"/>
+									<field20 name="MAP Price" type="decimal"/>
+									<field21 name="Meta Data" type="string"/>
+									<field22 name="Product Shot" type="string"/>
+									<field23 name="Product Back" type="string"/>
+									<field24 name="Color Swatch" type="string"/>
+									<field25 name="Gender" type="string"/>
+									<field26 name="Fit" type="string"/>
+									<field27 name="Promo Price" type="string"/>
+									<field28 name="Promo Dates" type="string"/>
+									<field29 name="Product Callouts" type="string"/>
+									<field30 name="Wash Instructions " type="string"/>
+									<field31 name="Unit Weight" type="decimal"/>
+								</names>
+							</settings>
+						</text>
+					</data>
+				</component>
+			</children>
+		</structure>
+		<connections>
+			<edge from="1" to="3"/>
+			<edge from="14" to="15"/>
+			<edge from="16" to="17"/>
+			<edge from="29" to="38"/>
+			<edge from="55" to="39"/>
+			<edge from="4" to="40"/>
+			<edge from="44" to="41"/>
+			<edge from="4" to="42"/>
+			<edge from="36" to="43"/>
+			<edge from="11" to="47"/>
+			<edge from="12" to="49"/>
+			<edge from="18" to="51"/>
+			<edge from="27" to="52"/>
+			<edge from="48" to="53"/>
+			<edge from="50" to="54"/>
+			<edge from="59" to="56"/>
+			<edge from="57" to="58"/>
+			<edge from="61" to="60"/>
+			<edge from="46" to="62"/>
+			<edge from="79" to="63"/>
+			<edge from="83" to="64"/>
+			<edge from="80" to="65"/>
+			<edge from="81" to="66"/>
+			<edge from="37" to="67"/>
+			<edge from="76" to="68"/>
+			<edge from="82" to="71"/>
+			<edge from="70" to="72"/>
+			<edge from="69" to="73"/>
+			<edge from="74" to="75"/>
+			<edge from="37" to="77"/>
+			<edge from="83" to="78"/>
+			<edge from="86" to="84"/>
+			<edge from="12" to="85"/>
+			<edge from="91" to="87"/>
+			<edge from="93" to="88"/>
+			<edge from="14" to="89"/>
+			<edge from="92" to="90"/>
+		</connections>
+	</component>
+</mapping>

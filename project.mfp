@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  MapForce Project File  -->
+<Project Expanded="Yes" Type="Root" language="java" OutputDir="src\gen\java" Title="mappings" JavaPackageName="biz.uniwear.batch.mappings" OutputName="mappings" Version="6">
+	<Folder FolderName="Mappings" Expanded="Yes" Type="VirtualFolder">
+		<File Type="Mapping" FilePath="project\Mappings\InputSPI.mfd"/>
+		<File Type="Mapping" FilePath="project\Mappings\OutputXCartCSV.mfd"/>
+	</Folder>
+</Project>
