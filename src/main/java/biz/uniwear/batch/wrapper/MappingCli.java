@@ -1,44 +1,49 @@
 package biz.uniwear.batch.wrapper;
 
-import biz.uniwear.batch.wrapper.MappingConfig;
-
-import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
-import picocli.CommandLine.ParameterException;
 import picocli.CommandLine.Parameters;
 
 
-@Command(description = "Executes Uuniwear Mapping Classes.", name = "Uniwear MappingCli", mixinStandardHelpOptions = true, version = "MappingCli 1.0")
+@Command(description = "Executes Uniwear Mapping Classes.", name = "Uniwear MappingCli", mixinStandardHelpOptions = true, version = "MappingCli 1.0")
 class MappingCli implements Callable<Void> {
 
+    private static final Logger logger = LogManager.getLogger();
+
+
     @Parameters(index = "0", paramLabel = "Mapping", description = "Maping Class")
-    String mappingClassName;
+    private String mappingClassName;
 
     @Option(names = {"-in"}, description = "Input File")
-    private List<String> inargs;
+    private List<String> inargs = new ArrayList<String>();
 
     @Option(names = {"-out"}, description = "Output File")
-    private List<String> outargs;
+    private List<String> outargs = new ArrayList<String>();
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args){
         CommandLine.call(new MappingCli(), args);
     }
 
     @Override
-    public Void call() throws Exception {
+    public Void call(){
 
         MappingConfig mappingConfig = new MappingConfig.MappingConfigBuilder()
                 .mapping(mappingClassName)
                 .inargs(inargs)
                 .outargs(outargs)
                 .build();
+        logger.debug("Configuration Created");
         MappingWrapper mappingWrapper = new MappingWrapper();
         mappingWrapper.main(mappingConfig);
+
+        System.exit(0);
         return null;
     }
 }

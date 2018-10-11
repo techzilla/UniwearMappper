@@ -1,0 +1,27 @@
+<Configuration>
+    <Properties>
+        <Property name="log_pattern">%d{yyyy-MM-dd HH:mm:ss.SSS} %5p [%t] %c.%M(%F:%L) %m%n</Property>
+    </Properties>
+
+    <Appenders>
+        <Console name="console_out" target="SYSTEM_OUT">
+            <PatternLayout pattern="${log_pattern}"/>
+            <ThresholdFilter level="ERROR" onMatch="DENY" onMismatch="ACCEPT"/>
+        </Console>
+        <Console name="console_err" target="SYSTEM_ERR">
+            <ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="${log_pattern}"/>
+        </Console>
+    </Appenders>
+
+
+    <Loggers>
+        <!--
+         <AsyncLogger name="org.example.class" level="WARN"/>
+         -->
+        <Root level="${sys:logLevel:-INFO}">
+            <AppenderRef ref="console_out"/>
+            <AppenderRef ref="console_err"/>
+        </Root>
+    </Loggers>
+</Configuration>

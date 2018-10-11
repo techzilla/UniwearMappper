@@ -1,157 +1,192 @@
 package biz.uniwear.batch.wrapper;
 
-import biz.uniwear.batch.wrapper.MappingConfig;
+import com.altova.io.Input;
+import com.altova.io.Output;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import java.io.IOException;
+
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.sql.Connection;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
-public class MappingWrapper {
+
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+class MappingWrapper {
+
+    private static final Logger logger = LogManager.getLogger();
+
+    void main(MappingConfig mappingConfig) {
+        logger.traceEntry();
+
+        String mappingClassName = mappingConfig.getMapping();
+        List<String> inargs = normalizePaths(mappingConfig.getInargs());
+        List<String> outargs = normalizePaths(mappingConfig.getOutargs());
+
+        List<Input> inStreams = getInputStreams(inargs);
+        logger.debug("Collected {} inputStreams", inStreams.stream().count());
+
+        List<Output> outStreams = getOutputStreams(outargs);
+        logger.debug("Collected {} outputStreams", outStreams.stream().count());
 
 
-    public void main(MappingConfig mappingConfig) {
-        String mappingClass = mappingConfig.getMapping();
-        List inargs = mappingConfig.getInargs();
-        List outargs = mappingConfig.getInargs();
+        Connection connection = getConnection();
 
-        // try {
-        //     Class<?> aClass = Class.forName(mappingClass);
-
-        // } catch (ClassNotFoundException e) {
-        //     try {
-        //         System.out.println(substring(0, fileFullPath.lastIndexOf('.'))mappingClass);
-        //         Class<?> aClass = Class.forName(mappingClass);
-
-        //     } catch (ClassNotFoundException ex) {
-        //         ex.printStackTrace();
-        //     }
-        // }
+        List<Connection> connections = new ArrayList();
+        connections.add(connection);
+        logger.debug("Collected {} connections", connections.stream().count());
 
 
-        ((List) inargs).forEach(System.out::println);
-        ((List) outargs).forEach(System.out::println);
 
-        return;
+        List<Object> objArgs = Stream.of(inStreams, connections, outStreams)
+                .flatMap(Collection::stream)
+                .collect(Collectors.toList());
+        Object[] objParams = objArgs.toArray(new Object[objArgs.size()]);
+        logger.debug("Collected {} parameters: {}", objArgs.stream().count(), Arrays.toString(objParams));
+
+        MappingClass mappingClass = new MappingClass();
+        mappingClass.run(mappingClassName, objParams);
+
+
+        logger.traceExit();
+    }
+
+    private Connection getConnection() {
+        logger.traceEntry();
+
+        Connection connection = null;
+
+        try {
+            Class.forName("org.mariadb.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            logger.error("Cannot find: org.mariadb.jdbc.Driver");
+        }
+
+        try {
+            connection = com.altova.db.Dbs.newConnection("jdbc:mariadb://127.0.0.1/uniwear", "root", "root");
+        } catch (Exception e) {
+            logger.catching(e);
+        }
+
+        logger.traceExit(connection);
+        return connection;
+    }
+
+    private List<String> normalizePaths(List<String> IOStrings) {
+        logger.traceEntry();
+
+        List<String> ioStrings = IOStrings.stream()
+                .map(n -> Paths.get(n).toAbsolutePath().normalize().toString())
+                .collect(Collectors.toList());
+
+        logger.traceExit(ioStrings);
+        return ioStrings;
+
 
     }
+
+    private List<Input> getInputStreams(List<String> InputStings) {
+        logger.traceEntry();
+
+        List<Input> inputStreams = InputStings.stream()
+                .map(this::getInputStream)
+                .collect(Collectors.toList());
+        logger.traceExit(inputStreams);
+        return inputStreams;
+
+
+    }
+
+    private Input getInputStream(String inputString) {
+        logger.traceEntry();
+
+        Path path = Paths.get(inputString);
+        if (!Files.isReadable(path)) {
+            if (!Files.exists(path) && !Files.notExists(path)) {
+                logger.error("File {} not readable: Check permissions", path.toString());
+                System.exit(1);
+            } else {
+                logger.error("File {} not found: Correct path", path.toString());
+                System.exit(1);
+            }
+        }
+        Input inputStream = null;
+
+        try {
+            inputStream = com.altova.io.StreamInput.createInput(path.toString());
+        } catch (Exception e) {
+            logger.catching(e);
+        }
+
+        logger.traceExit(inputStream);
+        return inputStream;
+    }
+
+
+    private List<Output> getOutputStreams(List<String> OutputStings) {
+        logger.traceEntry();
+
+        List<Output> outputStreams = OutputStings.stream()
+                .map(this::getOutputStream)
+                .collect(Collectors.toList());
+
+        logger.traceExit(outputStreams);
+        return outputStreams;
+
+
+    }
+
+    private Output getOutputStream(String outputSting) {
+        logger.traceEntry();
+
+        Path path = Paths.get(outputSting);
+
+
+        if (!Files.isWritable(path)) {
+            if (!Files.exists(path) && !Files.notExists(path)) {
+                logger.error("File {} not writable: Check permissions", path.toString());
+                System.exit(1);
+            } else {
+                try {
+                    Files.createDirectories(path.getParent());
+                } catch (IOException e) {
+                    logger.error("Directory {} not creatable: Check permissions", path.getParent().toString());
+                    System.exit(1);
+                }
+            }
+        } else {
+            try {
+                Files.deleteIfExists(path);
+            } catch (IOException e) {
+                logger.catching(e);
+                System.exit(1);
+            }
+        }
+
+        Output outputStream = null;
+
+        try {
+            Files.createFile(path);
+            outputStream = new com.altova.io.FileOutput(path.toString());
+
+        } catch (Exception e) {
+            logger.catching(e);
+        }
+
+
+        logger.traceExit(outputStream);
+        return outputStream;
+    }
+
 }
 
-// 		try { // Mapping
-// 			TraceTargetConsole ttc = new TraceTargetConsole();
-
-
-// 			MappingMapTouniwear MappingMapTouniwearObject = new MappingBuilder().getMapper()
-// 			//java.sql.DriverManager.setLogWriter(new java.io.PrintWriter(java.lang.System.err));
-
-
-// 			Class.forName("org.mariadb.jdbc.Driver");
-
-// 			MappingMapTouniwearObject.registerTraceTarget(ttc);
-
-
-// 			// run mapping
-// 			//
-// 			// you have different options to provide mapping input and output:
-// 			//
-// 			// files using file names (available for XML, text, and Excel):
-// 			//   com.altova.io.FileInput(String filename)
-// 			//   com.altova.io.FileOutput(String filename)
-// 			//
-// 			// streams (available for XML, text, and Excel):
-// 			//   com.altova.io.StreamInput(java.io.InputStream stream)
-// 			//   com.altova.io.StreamOutput(java.io.OutputStream stream)
-// 			//
-// 			// strings (available for XML and text):
-// 			//   com.altova.io.StringInput(String xmlcontent)
-// 			//   com.altova.io.StringOutput()	(call getContent() after run() to get StringBuffer with content)
-// 			//
-// 			// Java IO reader/writer (available for XML and text):
-// 			//   com.altova.io.ReaderInput(java.io.Reader reader)
-// 			//   com.altova.io.WriterOutput(java.io.Writer writer)
-// 			//
-// 			// DOM documents (for XML only):
-// 			//   com.altova.io.DocumentInput(org.w3c.dom.Document document)
-// 			//   com.altova.io.DocumentOutput(org.w3c.dom.Document document)
-// 			// 
-// 			// By default, run will close all inputs and outputs. If you do not want this,
-// 			// call the following function:
-// 			// MappingMapTouniwearObject.setCloseObjectsAfterRun(false);
-
-// 			{
-// 				com.altova.io.Input InventorySPI2Source = com.altova.io.StreamInput.createInput("schema/InventorySPI.csv");
-
-// 				MappingMapTouniwearObject.run(
-// 						InventorySPI2Source,
-// 						com.altova.db.Dbs.newConnection(
-// 							"jdbc:mariadb://127.0.0.1/uniwear",
-// 							"root",
-// 							"root"));
-
-
-// 			}
-
-
-// 			System.err.println("Finished");
-// 		} 
-// 		catch (com.altova.UserException ue) 
-// 		{
-// 			System.err.print("USER EXCEPTION:");
-// 			System.err.println( ue.getMessage() );
-// 			System.exit(1);
-// 		}
-// 		catch (com.altova.AltovaException e)
-// 		{
-// 			System.err.print("ERROR: ");
-// 			System.err.println( e.getMessage() );
-// 			if (e.getInnerException() != null)
-// 			{
-// 				System.err.print("Inner exception: ");
-// 				System.err.println(e.getInnerException().getMessage());
-// 				if (e.getInnerException().getCause() != null)
-// 				{
-// 					System.err.print("Cause: ");
-// 					System.err.println(e.getInnerException().getCause().getMessage());
-// 				}
-// 			}
-// 			System.err.println("\nStack Trace: ");
-// 			e.printStackTrace();
-// 			System.exit(1);
-// 		}
-
-// 		catch (Exception e) {
-// 			System.err.print("ERROR: ");
-// 			System.err.println( e.getMessage() );
-// 			System.err.println("\nStack Trace: ");
-// 			e.printStackTrace();
-// 			System.exit(1);
-// 		}
-// }
-// }
-
-
-// class TraceTargetConsole implements com.altova.TraceTarget {
-// 	public void writeTrace(String info) {
-// 		System.err.println(info);
-// 	}
-// }
-
-
-// //Class.forName("org.mariadb.jdbc.Driver");
-
-
-    // /**
-    //  * Get Class by name via Class.forName(String).
-    //  * @param name Class name.
-    //  * @return Class|null
-    //  */
-    // private static Class<?> getClassByName(String name) {
-    //     try {
-    //         // Retrieve class by name.
-    //         return Class.forName(name);
-    //     } catch (ClassNotFoundException exception) {
-    //         // Output exception ClassNotFoundExceptions.
-    //         Logging.log(exception);
-    //     } catch (Exception exception) {
-    //         // Output unexpected Exceptions.
-    //         Logging.log(exception, false);
-    //     }
-    //     return null;
-    // }
