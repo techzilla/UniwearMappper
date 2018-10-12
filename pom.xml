@@ -6,158 +6,17 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>biz.uniwear.batch</groupId>
-    <artifactId>cli</artifactId>
+    <artifactId>pom</artifactId>
     <version>1.0</version>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
 
-    <name>Batch Wrapper Cli</name>
+    <name>Uniwear Batch POM</name>
 
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>${project.build.sourceEncoding}</project.reporting.outputEncoding>
-        <java.version>10</java.version>
-        <maven.compiler.source>${java.version}</maven.compiler.source>
-        <maven.compiler.target>${java.version}</maven.compiler.target>
-        <rpmBuildDirectory>${project.build.directory}/rpm</rpmBuildDirectory>
-    </properties>
+    <modules>
+        <module>parent</module>
+        <module>cli</module>
+        <module>rpm</module>
+    </modules>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.2</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>info.picocli</groupId>
-            <artifactId>picocli</artifactId>
-            <version>3.6.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.mariadb.jdbc</groupId>
-            <artifactId>mariadb-java-client</artifactId>
-            <version>2.3.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-api</artifactId>
-            <version>2.11.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-            <version>2.11.1</version>
-        </dependency>
-    </dependencies>
-
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>build-helper-maven-plugin</artifactId>
-                <version>3.0.0</version>
-                <executions>
-                    <execution>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>add-source</goal>
-                        </goals>
-                        <configuration>
-                            <sources>
-                                <source>src/gen/java</source>
-                            </sources>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.7.0</version>
-                <configuration>
-                    <release>${java.version}</release>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-shade-plugin</artifactId>
-                <version>3.2.0</version>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>shade</goal>
-                        </goals>
-                        <configuration>
-                            <transformers>
-                                <transformer
-                                        implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>biz.uniwear.batch.wrapper.MappingCli</mainClass>
-                                </transformer>
-                            </transformers>
-                            <outputFile>${rpmBuildDirectory}/lib/${project.artifactId}.jar</outputFile>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-            <groupId>uk.co.codezen</groupId>
-            <artifactId>redlinerpm-maven-plugin</artifactId>
-            <version>2.4</version>
-            <extensions>true</extensions>
-                <executions>
-                    <execution>
-                        <id>generate-rpm</id>
-                        <goals>
-                            <goal>package</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <defaultUser>batch</defaultUser>
-                    <defaultGroup>batch</defaultGroup>
-                    <defaultDestination>/opt/batch</defaultDestination>
-                    <buildPath>${rpmBuildDirectory}</buildPath>
-
-
-
-
-
-                    <!--<performCheckingForExtraFiles>false</performCheckingForExtraFiles>-->
-                <packages>
-                    <package>
-                        <name>batch</name>
-                        <version>${project.version}</version>
-                        <release>1</release>
-                        <group>Applications/System</group>
-                        <description>Uniwear Batch RPM.</description>
-                        <architecture>x86_64</architecture>
-                        <preInstallScriptFile>src/main/rpm/scriptlets/preinstall.sh</preInstallScriptFile>
-                        <postInstallScriptFile>src/main/rpm/scriptlets/postinstall.sh</postInstallScriptFile>
-                        <!--<dependencies>-->
-                            <!--<dependency>-->
-                                <!--<name>/usr/sbin/useradd</name>-->
-                            <!--</dependency>-->
-                            <!--<dependency>-->
-                                <!--<name>/usr/sbin/groupadd</name>-->
-                            <!--</dependency>-->
-                        <!--</dependencies>-->
-
-                        <rules>
-                            <rule>
-                                <includes>
-                                    <include>**/*.jar</include>
-                                </includes>
-                            </rule>
-                        </rules>
-                    </package>
-                </packages>
-            </configuration>
-        </plugin>
-
-        </plugins>
-    </build>
 
 </project>

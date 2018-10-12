@@ -1,3 +1,3 @@
-# Uniwear Batch POM
+# Uniwear Batch CLI
 
 Uniwear Batch Aggregation POM
