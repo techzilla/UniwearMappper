@@ -2,23 +2,18 @@ package biz.uniwear.batch.wrapper;
 
 import com.altova.io.Input;
 import com.altova.io.Output;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
-
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.sql.Connection;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
-
-
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -45,7 +40,6 @@ class MappingWrapper {
         List<Connection> connections = new ArrayList();
         connections.add(connection);
         logger.debug("Collected {} connections", connections.stream().count());
-
 
 
         List<Object> objArgs = Stream.of(inStreams, connections, outStreams)

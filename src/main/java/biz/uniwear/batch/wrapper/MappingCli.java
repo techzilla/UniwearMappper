@@ -1,15 +1,15 @@
 package biz.uniwear.batch.wrapper;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.Callable;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.Callable;
 
 
 @Command(description = "Executes Uniwear Mapping Classes.", name = "Uniwear MappingCli", mixinStandardHelpOptions = true, version = "MappingCli 1.0")
@@ -27,12 +27,12 @@ class MappingCli implements Callable<Void> {
     @Option(names = {"-out"}, description = "Output File")
     private List<String> outargs = new ArrayList<String>();
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         CommandLine.call(new MappingCli(), args);
     }
 
     @Override
-    public Void call(){
+    public Void call() {
 
         MappingConfig mappingConfig = new MappingConfig.MappingConfigBuilder()
                 .mapping(mappingClassName)
