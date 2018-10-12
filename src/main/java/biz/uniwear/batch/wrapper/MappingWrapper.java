@@ -22,6 +22,7 @@ class MappingWrapper {
     private static final Logger logger = LogManager.getLogger();
 
     void main(MappingConfig mappingConfig) {
+
         logger.traceEntry();
 
         String mappingClassName = mappingConfig.getMapping();
@@ -29,24 +30,24 @@ class MappingWrapper {
         List<String> outargs = normalizePaths(mappingConfig.getOutargs());
 
         List<Input> inStreams = getInputStreams(inargs);
-        logger.debug("Collected {} inputStreams", inStreams.stream().count());
+        logger.debug("Collected {} inputStreams", inStreams.size());
 
         List<Output> outStreams = getOutputStreams(outargs);
-        logger.debug("Collected {} outputStreams", outStreams.stream().count());
+        logger.debug("Collected {} outputStreams", outStreams.size());
 
 
         Connection connection = getConnection();
 
-        List<Connection> connections = new ArrayList();
+        List<Connection> connections = new ArrayList<>();
         connections.add(connection);
-        logger.debug("Collected {} connections", connections.stream().count());
+        logger.debug("Collected {} connections", connections.size());
 
 
         List<Object> objArgs = Stream.of(inStreams, connections, outStreams)
                 .flatMap(Collection::stream)
                 .collect(Collectors.toList());
-        Object[] objParams = objArgs.toArray(new Object[objArgs.size()]);
-        logger.debug("Collected {} parameters: {}", objArgs.stream().count(), Arrays.toString(objParams));
+        Object[] objParams = objArgs.toArray(new Object[0]);
+        logger.debug("Collected {} parameters: {}", objArgs.size(), Arrays.toString(objParams));
 
         MappingClass mappingClass = new MappingClass();
         mappingClass.run(mappingClassName, objParams);

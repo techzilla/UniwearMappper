@@ -18,6 +18,7 @@
         <java.version>10</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
+        <rpmBuildDirectory>${project.build.directory}/rpm</rpmBuildDirectory>
     </properties>
 
     <dependencies>
@@ -96,10 +97,66 @@
                                     <mainClass>biz.uniwear.batch.wrapper.MappingCli</mainClass>
                                 </transformer>
                             </transformers>
+                            <outputFile>${rpmBuildDirectory}/lib/${project.artifactId}.jar</outputFile>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+            <groupId>uk.co.codezen</groupId>
+            <artifactId>redlinerpm-maven-plugin</artifactId>
+            <version>2.4</version>
+            <extensions>true</extensions>
+                <executions>
+                    <execution>
+                        <id>generate-rpm</id>
+                        <goals>
+                            <goal>package</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <defaultUser>batch</defaultUser>
+                    <defaultGroup>batch</defaultGroup>
+                    <defaultDestination>/opt/batch</defaultDestination>
+                    <buildPath>${rpmBuildDirectory}</buildPath>
+
+
+
+
+
+                    <!--<performCheckingForExtraFiles>false</performCheckingForExtraFiles>-->
+                <packages>
+                    <package>
+                        <name>batch</name>
+                        <version>${project.version}</version>
+                        <release>1</release>
+                        <group>Applications/System</group>
+                        <description>Uniwear Batch RPM.</description>
+                        <architecture>x86_64</architecture>
+                        <preInstallScriptFile>src/main/rpm/scriptlets/preinstall.sh</preInstallScriptFile>
+                        <postInstallScriptFile>src/main/rpm/scriptlets/postinstall.sh</postInstallScriptFile>
+                        <!--<dependencies>-->
+                            <!--<dependency>-->
+                                <!--<name>/usr/sbin/useradd</name>-->
+                            <!--</dependency>-->
+                            <!--<dependency>-->
+                                <!--<name>/usr/sbin/groupadd</name>-->
+                            <!--</dependency>-->
+                        <!--</dependencies>-->
+
+                        <rules>
+                            <rule>
+                                <includes>
+                                    <include>**/*.jar</include>
+                                </includes>
+                            </rule>
+                        </rules>
+                    </package>
+                </packages>
+            </configuration>
+        </plugin>
+
         </plugins>
     </build>
 
