@@ -6,8 +6,6 @@ import org.apache.logging.log4j.Logger;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.lang.reflect.Type;
-import java.util.Arrays;
 
 class MappingClass {
 
@@ -17,7 +15,7 @@ class MappingClass {
         logger.traceEntry();
         String mappingFullClass = "biz.uniwear.batch.mappings." + mappingClassName;
 
-        Class c = null;
+        Class<?> c = null;
         Object t = null;
 
 
@@ -34,65 +32,55 @@ class MappingClass {
         try {
             t = c.getDeclaredConstructor().newInstance();
         } catch (InstantiationException e) {
-            logger.error("Cannot create {} Object", mappingFullClass);
+            logger.error("Cannot instantiate: {}", mappingFullClass);
             System.exit(1);
         } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
             logger.catching(e);
         }
+        logger.debug("Instantiated object: {}", t);
 
 
-        Method[] allMethods = c.getDeclaredMethods();
-        for (Method m : allMethods) {
-            String mname = m.getName();
-            if (!mname.startsWith("run")) {
+        callMethod(t,"run", args);
+        logger.traceExit();
+
+    }
+
+    private static void callMethod(Object receiver, String mName, Object[] params) {
+        logger.traceEntry();
+
+        if (receiver == null || mName == null) {
+            return;
+        }
+        Class<?> cls = receiver.getClass();
+        Method[] methods = cls.getMethods();
+        Method m = null;
+        mloop: for (Method method : methods) {
+            if (!mName.equals(method.getName())) {
+                continue;
+            }
+            Class<?>[] pTypes = method.getParameterTypes();
+            if (params == null && pTypes == null) {
+                m = method;
+                break;
+            } else if (params == null || pTypes == null
+                    || pTypes.length != params.length) {
                 continue;
             }
 
-            Method method = c.getDeclaredMethod("run", parameterTypes);
-
-            logger.debug("Passing parameters: {}", Arrays.toString(args));
-
-//            Type[] pType = m.getGenericParameterTypes();
-//            m.setAccessible(true);
-
-            try {
-                switch (args.length) {
-                    case 1:
-                        logger.debug("Invoking {}: {}", mname, Arrays.toString(args));
-                        m.invoke(t, args[0]);
-                        break;
-                    case 2:
-                        logger.debug("Invoking {}: {}", mname, Arrays.toString(args));
-                        m.invoke(t, args[0], args[1]);
-                        break;
-                    case 3:
-                        logger.debug("Invoking {}: {}", mname, Arrays.toString(args));
-                        m.invoke(t, args[0], args[1], args[2]);
-                        break;
-                    case 4:
-                        logger.debug("Invoking {}: {}", mname, Arrays.toString(args));
-                        m.invoke(t, args[0], args[1], args[2], args[3]);
-                        break;
-                    case 5:
-                        logger.debug("Invoking {}: {}", mname, Arrays.toString(args));
-                        m.invoke(t, args[0], args[1], args[2], args[3], args[4]);
-                        break;
-                    default:
-                        logger.error("Invoking {} with incorrect parameters: {}", mname, Arrays.toString(args));
-                        break;
+            for (int i = 0; i < params.length; ++i) {
+                if (!pTypes[i].isAssignableFrom(params[i].getClass())) {
+                    continue mloop;
                 }
-            } catch (IllegalAccessException e) {
-                logger.error("Invoking {} failed: {}", mname, e.getMessage());
-                System.exit(1);
-
-            } catch (InvocationTargetException e) {
-                logger.error("Invoking {} failed: {}", mname, e.getCause().getMessage());
-                System.exit(1);
             }
-
-
-            logger.traceExit();
+            m = method;
         }
-
+        if (m != null) {
+            try {
+                m.invoke(receiver, params);
+            } catch (Exception t) {
+                logger.catching(t);
+            }
+        }
+        logger.traceExit();
     }
 }
