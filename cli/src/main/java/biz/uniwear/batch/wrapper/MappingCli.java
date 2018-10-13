@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.concurrent.Callable;
 
 
-@Command(description = "Executes Uniwear Mapping Classes.", name = "Uniwear MappingCli", mixinStandardHelpOptions = true, version = "MappingCli 1.0")
+@Command(description = "Executes Uniwear Mapping Classes.", name = "Uniwear Batch Cli", mixinStandardHelpOptions = true, version = "MappingCli 1.0")
 class MappingCli implements Callable<Void> {
 
     private static final Logger logger = LogManager.getLogger();

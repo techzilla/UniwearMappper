@@ -8,12 +8,12 @@
         <groupId>biz.uniwear.batch</groupId>
         <artifactId>parent</artifactId>
         <version>1.0</version>
-    <relativePath>../parent</relativePath>
+        <relativePath>../parent</relativePath>
     </parent>
 
     <artifactId>cli</artifactId>
 
-    <name>Uniwear Batch Cli</name>
+    <name>Uniwear Batch CLI</name>
 
     <dependencies>
         <dependency>
@@ -47,6 +47,9 @@
 
     <build>
         <plugins>
+        <!-- Mapforce pre-generated source
+        NOTE: Build.xml is not used for compilation
+         -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>build-helper-maven-plugin</artifactId>
@@ -63,6 +66,19 @@
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+            <!-- Required for running without shell wrapper -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <mainClass>biz.uniwear.batch.wrapper.MappingCli</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
             </plugin>
         </plugins>
     </build>

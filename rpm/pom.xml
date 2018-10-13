@@ -12,57 +12,74 @@
     </parent>
 
     <artifactId>batch</artifactId>
-    <packaging>pom</packaging>
+    <packaging>rpm</packaging>
 
-    <name>Uniwear Batch Cli RPM</name>
+    <name>Uniwear Batch CLI RPM</name>
 
+    <properties>
+        <rpmBuildDirectory>${project.build.directory}/rpm</rpmBuildDirectory>
+        <rpmSourceDirectory>${project.basedir}/src/main/rpm</rpmSourceDirectory>
+        <rpmResourceDirectory>${project.basedir}/src/main/resources</rpmResourceDirectory>
+    </properties>
 
     <dependencies>
         <dependency>
-            <groupId>${project.version}</groupId>
+            <groupId>${project.groupId}</groupId>
             <artifactId>cli</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>
 
-    <!-- <rpmBuildDirectory>${project.build.directory}/rpm</rpmBuildDirectory> -->
 
     <build>
 
-        <!-- <plugin>
+        <plugins>
+        <!-- Creating runtime lib directory from dependancies -->
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-shade-plugin</artifactId>
-                <version>3.2.0</version>
+                <artifactId>maven-dependency-plugin</artifactId>
                 <executions>
                     <execution>
-                        <phase>package</phase>
+                        <phase>prepare-package</phase>
                         <goals>
-                            <goal>shade</goal>
+                            <goal>copy-dependencies</goal>
                         </goals>
                         <configuration>
-                            <transformers>
-                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>biz.uniwear.batch.wrapper.MappingCli</mainClass>
-                                </transformer>
-                            </transformers>
-                            <outputFile>${rpmBuildDirectory}/lib/${project.artifactId}.jar</outputFile>
+                            <outputDirectory>${rpmBuildDirectory}/lib</outputDirectory>
+                            <includeScope>runtime</includeScope>
                         </configuration>
                     </execution>
                 </executions>
-            </plugin> 
-           <plugin>
-            <groupId>uk.co.codezen</groupId>
-            <artifactId>redlinerpm-maven-plugin</artifactId>
-            <version>2.4</version>
-            <extensions>true</extensions>
+            </plugin>
+            <!-- Copying all directories from resources -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
                 <executions>
                     <execution>
-                        <id>generate-rpm</id>
+                        <id>copy-resources</id>
+                        <phase>validate</phase>
                         <goals>
-                            <goal>package</goal>
+                            <goal>copy-resources</goal>
                         </goals>
+                        <configuration>
+                            <outputDirectory>${rpmBuildDirectory}</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${rpmResourceDirectory}</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                            </resources>
+                        </configuration>
                     </execution>
                 </executions>
+            </plugin>
+
+            <!-- Creating RPM -->
+            <plugin>
+                <groupId>uk.co.codezen</groupId>
+                <artifactId>redlinerpm-maven-plugin</artifactId>
+                <extensions>true</extensions>
                 <configuration>
                     <defaultUser>batch</defaultUser>
                     <defaultGroup>batch</defaultGroup>
@@ -70,35 +87,47 @@
                     <buildPath>${rpmBuildDirectory}</buildPath>
 
                     <performCheckingForExtraFiles>false</performCheckingForExtraFiles>
-                <packages>
-                    <package>
-                        <name>batch</name>
-                        <version>${project.version}</version>
-                        <release>1</release>
-                        <group>Applications/System</group>
-                        <description>Uniwear Batch RPM.</description>
-                        <architecture>x86_64</architecture>
-                        <preInstallScriptFile>src/main/rpm/scriptlets/preinstall.sh</preInstallScriptFile>
-                        <postInstallScriptFile>src/main/rpm/scriptlets/postinstall.sh</postInstallScriptFile>
-                        <dependencies>
-                            <dependency>
-                                <name>/usr/sbin/groupadd</name>
-                            </dependency>
-                        </dependencies>
+                    <packages>
+                        <package>
+                            <name>batch</name>
+                            <version>${project.version}</version>
+                            <release>1</release>
+                            <group>Applications/System</group>
+                            <description>Uniwear Batch RPM.</description>
+                            <architecture>x86_64</architecture>
+                            <preInstallScriptFile>${rpmSourceDirectory}/scriptlets/preinstall.sh</preInstallScriptFile>
+                            <postUninstallScriptFile>${rpmSourceDirectory}/scriptlets/postuninstall.sh</postUninstallScriptFile>
 
-                        <rules>
-                            <rule>
-                                <includes>
-                                    <include>**/*.jar</include>
-                                </includes>
-                            </rule>
-                        </rules>
-                    </package>
-                </packages>
-            </configuration>
-        </plugin>
+                            <dependencies>
+                                <dependency>
+                                    <name>/usr/sbin/groupadd</name>
+                                </dependency>
+                                <dependency>
+                                    <name>/usr/sbin/useradd</name>
+                                </dependency>
+                            </dependencies>
 
-        </plugins> -->
+                            <rules>
+                                <rule>
+                                    <includes>
+                                        <include>**/*.jar</include>
+                                    </includes>
+                                    <fileMode>0644</fileMode>
+                                </rule>
+                                <rule>
+                                    <includes>
+                                        <include>**/*.sh</include>
+                                    </includes>
+                                    <fileMode>0755</fileMode>
+                                </rule>
+                            </rules>
+
+                        </package>
+                    </packages>
+                </configuration>
+            </plugin>
+
+        </plugins>
 
     </build>
 
