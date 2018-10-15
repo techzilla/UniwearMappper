@@ -22,10 +22,13 @@ class MappingCli implements Callable<Void> {
     private String mappingClassName;
 
     @Option(names = {"-in"}, description = "Input File")
-    private List<String> inargs = new ArrayList<String>();
+    private List<String> inargs = new ArrayList<>();
+
+    @Option(names = {"-db"}, description = "DB Connection Profile")
+    private List<String> dbargs = new ArrayList<>();
 
     @Option(names = {"-out"}, description = "Output File")
-    private List<String> outargs = new ArrayList<String>();
+    private List<String> outargs = new ArrayList<>();
 
     public static void main(String[] args) {
         CommandLine.call(new MappingCli(), args);
@@ -33,19 +36,26 @@ class MappingCli implements Callable<Void> {
 
     @Override
     public Void call() {
+        logger.traceEntry();
 
-        MappingParam mappingParam = new MappingParam.MappingParamBuilder()
-                .mapping(mappingClassName)
-                .inargs(inargs)
-                .outargs(outargs)
+
+        MappingParams mappingParams = new MappingParams.MappingParamsBuilder()
+                .Inputs(MappingParam.CreateInputs(inargs))
+                .Connections(MappingParam.CreateConnections(dbargs))
+                .Outputs(MappingParam.CreateOutputs(outargs))
                 .build();
 
 
-        logger.debug("Configuration Created");
-        MappingWrapper mappingWrapper = new MappingWrapper();
-        mappingWrapper.main(mappingParam);
 
+
+        logger.debug("Configuration Created");
+        MappingClass mappingClass = new MappingClass();
+        mappingClass.run(mappingClassName, mappingParams.getInvokeParams());
+
+        logger.traceExit();
         System.exit(0);
         return null;
     }
+
+
 }

@@ -6,7 +6,8 @@
     <Appenders>
         <RollingFile
                 name="rolling_file"
-                fileName="${sys:logDir:-./logs}/application.log">
+                fileName="${sys:logDir:-./logs}/application.log"
+                filePattern="${sys:logDir:-./logs}/application.%d{yyyyMMdd}.log.gz">
         <PatternLayout pattern="${log_pattern}"/>
             <Policies>
                 <TimeBasedTriggeringPolicy interval="1"/>

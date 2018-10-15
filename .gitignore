@@ -1,13 +1,15 @@
 .h2.server.properties
 *.db
-
-
 # Created by https://www.gitignore.io/api/java,linux,maven,windows,eclipse,intellij,visualstudiocode
 
 ### Eclipse ###
 
 .metadata
 bin/
+
+## Project Exception
+!**/resources/bin
+
 tmp/
 *.tmp
 *.bak
