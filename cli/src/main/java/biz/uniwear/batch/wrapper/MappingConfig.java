@@ -1,18 +1,4 @@
-package biz.uniwear.batch.wrapper;
-
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
-
-import java.util.List;
-
-@Setter
-@Getter
-@Builder
-@ToString
-public class MappingConfig {
-    private String mapping;
-    private List<String> inargs;
-    private List<String> outargs;
-}
+//package biz.uniwear.batch.wrapper;
+//
+//public class MappingConfig {
+//}

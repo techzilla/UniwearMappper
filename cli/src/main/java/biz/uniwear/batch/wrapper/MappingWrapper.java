@@ -21,13 +21,13 @@ class MappingWrapper {
 
     private static final Logger logger = LogManager.getLogger();
 
-    void main(MappingConfig mappingConfig) {
+    void main(MappingParam mappingParam) {
 
         logger.traceEntry();
 
-        String mappingClassName = mappingConfig.getMapping();
-        List<String> inargs = normalizePaths(mappingConfig.getInargs());
-        List<String> outargs = normalizePaths(mappingConfig.getOutargs());
+        String mappingClassName = mappingParam.getMapping();
+        List<String> inargs = normalizePaths(mappingParam.getInargs());
+        List<String> outargs = normalizePaths(mappingParam.getOutargs());
 
         List<Input> inStreams = getInputStreams(inargs);
         logger.debug("Collected {} inputStreams", inStreams.size());

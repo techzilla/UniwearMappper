@@ -34,14 +34,16 @@ class MappingCli implements Callable<Void> {
     @Override
     public Void call() {
 
-        MappingConfig mappingConfig = new MappingConfig.MappingConfigBuilder()
+        MappingParam mappingParam = new MappingParam.MappingParamBuilder()
                 .mapping(mappingClassName)
                 .inargs(inargs)
                 .outargs(outargs)
                 .build();
+
+
         logger.debug("Configuration Created");
         MappingWrapper mappingWrapper = new MappingWrapper();
-        mappingWrapper.main(mappingConfig);
+        mappingWrapper.main(mappingParam);
 
         System.exit(0);
         return null;

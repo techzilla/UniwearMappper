@@ -4,10 +4,15 @@
     </Properties>
 
     <Appenders>
-        <Console name="console_out" target="SYSTEM_OUT">
-            <PatternLayout pattern="${log_pattern}"/>
-            <ThresholdFilter level="ERROR" onMatch="DENY" onMismatch="ACCEPT"/>
-        </Console>
+        <RollingFile
+                name="rolling_file"
+                fileName="${sys:logDir:-./logs}/application.log">
+        <PatternLayout pattern="${log_pattern}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1"/>
+            </Policies>
+            <DefaultRolloverStrategy max="7" />
+        </RollingFile>
         <Console name="console_err" target="SYSTEM_ERR">
             <ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
             <PatternLayout pattern="${log_pattern}"/>
@@ -19,8 +24,8 @@
         <!--
          <AsyncLogger name="org.example.class" level="WARN"/>
          -->
-        <Root level="${sys:logLevel:-DEBUG}">
-            <AppenderRef ref="console_out"/>
+        <Root level="${sys:logLevel:-INFO}">
+            <AppenderRef ref="rolling_file"/>
             <AppenderRef ref="console_err"/>
         </Root>
     </Loggers>

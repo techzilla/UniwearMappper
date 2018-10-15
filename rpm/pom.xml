@@ -81,7 +81,7 @@
                 <artifactId>redlinerpm-maven-plugin</artifactId>
                 <extensions>true</extensions>
                 <configuration>
-                    <defaultUser>batch</defaultUser>
+                    <defaultOwner>batch</defaultOwner>
                     <defaultGroup>batch</defaultGroup>
                     <defaultDestination>/opt/batch</defaultDestination>
                     <buildPath>${rpmBuildDirectory}</buildPath>
@@ -112,6 +112,13 @@
                                     <includes>
                                         <include>**/*.jar</include>
                                     </includes>
+                                    <includes>
+                                        <include>**/*.xml</include>
+                                    </includes>
+                                    <includes>
+                                        <include>**/*.conf</include>
+                                    </includes>
+
                                     <fileMode>0644</fileMode>
                                 </rule>
                                 <rule>
