@@ -162,13 +162,13 @@ public class Statement
 					java.math.BigInteger v = (java.math.BigInteger)values.get(i);
 					
 					if (parameters.get(i).type == java.sql.Types.TINYINT && prepared.getMetaData().isSigned(i+1))
-						prepared.setObject(i+1, new Long(v.longValue()), java.sql.Types.SMALLINT);
+						prepared.setObject(i+1, Long.valueOf(v.longValue()), java.sql.Types.SMALLINT);
 					else
 					{
 						if (parameters.get(i).scaleOrLength < 0)
-							prepared.setObject(i+1, new Long(v.longValue()), parameters.get(i).type);
+							prepared.setObject(i+1, Long.valueOf(v.longValue()), parameters.get(i).type);
 						else
-							prepared.setObject(i+1, new Long(v.longValue()), parameters.get(i).type, parameters.get(i).scaleOrLength);					
+							prepared.setObject(i+1, Long.valueOf(v.longValue()), parameters.get(i).type, parameters.get(i).scaleOrLength);					
 					}
 				}
 				else

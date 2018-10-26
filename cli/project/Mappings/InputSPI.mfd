@@ -1,33 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Edited with Altova MapForce 2018r2sp1 -->
+<!-- Edited with Altova MapForce 2019 -->
 <mapping xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="31">
 	<resources>
 		<datasources>
-			<datasource name="uniwear">
-				<properties JDBCDriver="org.mariadb.jdbc.Driver" JDBCDatabaseURL="jdbc:mariadb://127.0.0.1/uniwear" DBUser="root" DBPassword="root" DBDataSource="127.0.0.1" DBCatalog="uniwear" OLEDBOptions="DRIVER={MariaDB ODBC 3.0 Driver};UID=root;DATABASE=uniwear;OPTIONS=67108864;SERVER=127.0.0.1;TCPIP=1;"/>
-				<database_connection vendor="mariadb" import_kind="ODBC" version="10.3" ConnectionString="DSN=MariaDB;DRIVER={MariaDB ODBC 3.0 Driver};OPTIONS=67108864;TCPIP=1;SERVER=127.0.0.1;UID=root;PWD=root;DATABASE=uniwear" name="uniwear" path="uniwear">
-					<properties>
-						<property name="Database Kind"/>
-						<property name="Import Kind"/>
-						<property name="Root Object" value="uniwear"/>
-						<property name="FileDsn"/>
-						<property name="Dsn" value="MariaDB"/>
-						<property name="Driver" value="{MariaDB ODBC 3.0 Driver}"/>
-						<property name="Trusted_Connection"/>
-						<property name="App"/>
-						<property name="Server" value="127.0.0.1"/>
-						<property name="Database" value="uniwear"/>
-						<property name="Regional"/>
-						<property name="Languages"/>
-						<property name="Wsid"/>
-						<property name="Uid" value="root"/>
-						<property name="Pwd" value="m5MCmG-TzceT0"/>
-						<property name="Port"/>
-						<property name="Option"/>
-						<property name="Stmt"/>
-						<property name="Socket"/>
-						<property name="Desc"/>
-					</properties>
+			<datasource name="batch">
+				<properties JDBCDriver="sun.jdbc.odbc.JdbcOdbcDriver" JDBCDatabaseURL="jdbc:odbc:MariaDB" DBUser="batch" DBPassword="batch" DBDataSource="127.0.0.1" DBCatalog="batch" OLEDBOptions="DSN=MariaDB;"/>
+				<database_connection is_global_resource="Yes" global_resource_alias="batch" vendor="mariadb" import_kind="ODBC" name="batch" path="batch">
 					<LocalViewStorage/>
 					<LocalRelationsStorage/>
 					<RecordSetStructureStorage/>
@@ -47,75 +25,20 @@
 					<targets>
 						<datapoint pos="0" key="16"/>
 					</targets>
-					<view ltx="265" lty="58" rbx="320" rby="86"/>
-				</component>
-				<component name="structure" library="db" uid="51" kind="15">
-					<properties XSLTDefaultOutput="1"/>
-					<view ltx="819" lty="-88" rbx="987" rby="378"/>
-					<data>
-						<root>
-							<header>
-								<namespaces>
-									<namespace/>
-									<namespace uid="http://www.altova.com/mapforce"/>
-								</namespaces>
-							</header>
-							<entry name="document" ns="1" expanded="1">
-								<entry name="products" type="table" inpkey="38" expanded="1">
-									<entry name="sku" inpkey="39"/>
-									<entry name="gtin" inpkey="40"/>
-									<entry name="type" inpkey="87"/>
-									<entry name="color" inpkey="62"/>
-									<entry name="color_type" inpkey="84"/>
-									<entry name="size" inpkey="85"/>
-									<entry name="gender" inpkey="56"/>
-									<entry name="price" inpkey="63"/>
-									<entry name="map" inpkey="64"/>
-									<entry name="weight" inpkey="88"/>
-									<entry name="brand" inpkey="89"/>
-									<entry name="collection" inpkey="90"/>
-									<entry name="title" inpkey="65"/>
-									<entry name="description" inpkey="66"/>
-									<entry name="image" inpkey="60"/>
-								</entry>
-								<entry name="supplierinventory" type="table" inpkey="41" expanded="1">
-									<entry name="gtin" inpkey="42"/>
-									<entry name="supplier" inpkey="43"/>
-									<entry name="price" inpkey="67"/>
-									<entry name="stock" inpkey="68"/>
-								</entry>
-							</entry>
-						</root>
-						<database ref="uniwear">
-							<data>
-								<selections>
-									<selection>
-										<PathElement Name="uniwear" Kind="DataSource"/>
-										<PathElement Name="uniwear" Kind="Database"/>
-										<PathElement Name="products" Kind="Table"/>
-									</selection>
-									<selection>
-										<PathElement Name="uniwear" Kind="DataSource"/>
-										<PathElement Name="uniwear" Kind="Database"/>
-										<PathElement Name="supplierinventory" Kind="Table"/>
-									</selection>
-								</selections>
-							</data>
-						</database>
-					</data>
+					<view ltx="265" lty="58" rbx="343" rby="96"/>
 				</component>
 				<component name="constant" library="core" uid="50" kind="2">
 					<properties/>
 					<targets>
 						<datapoint pos="0" key="36"/>
 					</targets>
-					<view ltx="740" lty="326" rbx="779" rby="339"/>
+					<view ltx="740" lty="326" rbx="795" rby="343"/>
 					<data>
 						<constant value="SPI" datatype="string"/>
 					</data>
 				</component>
 				<component name="gtin14" library="user" uid="8" kind="19" visible="0">
-					<view ltx="510" lty="56" rbx="637" rby="72"/>
+					<view ltx="510" lty="56" rbx="649" rby="73"/>
 					<data>
 						<root>
 							<header>
@@ -143,7 +66,7 @@
 					<targets>
 						<datapoint pos="0" key="18"/>
 					</targets>
-					<view ltx="362" lty="58" rbx="420" rby="86"/>
+					<view ltx="362" lty="58" rbx="442" rby="96"/>
 					<data>
 						<valuemap enableDefaultValue="1">
 							<valuemapTable>
@@ -183,7 +106,7 @@
 					</data>
 				</component>
 				<component name="trim" library="user" uid="57" kind="19" visible="0">
-					<view ltx="326" lty="-141" rbx="422" rby="-125"/>
+					<view ltx="326" lty="-141" rbx="429" rby="-124"/>
 					<data>
 						<root>
 							<header>
@@ -204,7 +127,7 @@
 					</data>
 				</component>
 				<component name="trim" library="user" uid="54" kind="19" visible="0">
-					<view ltx="325" lty="-106" rbx="421" rby="-90"/>
+					<view ltx="325" lty="-106" rbx="428" rby="-89"/>
 					<data>
 						<root>
 							<header>
@@ -225,7 +148,7 @@
 					</data>
 				</component>
 				<component name="sku" library="user" uid="56" kind="19" visible="0">
-					<view ltx="461" lty="-63" rbx="584" rby="-2"/>
+					<view ltx="461" lty="-63" rbx="595" rby="5"/>
 					<data>
 						<root>
 							<header>
@@ -249,7 +172,7 @@
 					</data>
 				</component>
 				<component name="gender" library="user" uid="61" kind="19" visible="0">
-					<view ltx="414" lty="190" rbx="510" rby="206"/>
+					<view ltx="414" lty="190" rbx="517" rby="207"/>
 					<data>
 						<root>
 							<header>
@@ -274,7 +197,7 @@
 					<targets>
 						<datapoint pos="0" key="69"/>
 					</targets>
-					<view ltx="348" lty="360" rbx="377" rby="373"/>
+					<view ltx="348" lty="360" rbx="388" rby="377"/>
 					<data>
 						<constant datatype="string"/>
 					</data>
@@ -289,7 +212,7 @@
 					<targets>
 						<datapoint pos="0" key="74"/>
 					</targets>
-					<view ltx="414" lty="311" rbx="481" rby="363"/>
+					<view ltx="414" lty="311" rbx="511" rby="381"/>
 				</component>
 				<component name="number" library="core" uid="79" kind="5">
 					<properties/>
@@ -299,10 +222,10 @@
 					<targets>
 						<datapoint pos="0" key="76"/>
 					</targets>
-					<view ltx="536" lty="340" rbx="585" rby="368"/>
+					<view ltx="536" lty="340" rbx="603" rby="378"/>
 				</component>
 				<component name="price" library="user" uid="73" kind="19" visible="0">
-					<view ltx="414" lty="120" rbx="517" rby="151"/>
+					<view ltx="414" lty="120" rbx="527" rby="154"/>
 					<data>
 						<root>
 							<header>
@@ -328,7 +251,7 @@
 					<targets>
 						<datapoint pos="0" key="70"/>
 					</targets>
-					<view ltx="348" lty="340" rbx="382" rby="353"/>
+					<view ltx="348" lty="340" rbx="396" rby="357"/>
 					<data>
 						<constant value="+" datatype="string"/>
 					</data>
@@ -406,6 +329,61 @@
 								</names>
 							</settings>
 						</text>
+					</data>
+				</component>
+				<component name="structure" library="db" uid="51" kind="15">
+					<properties XSLTDefaultOutput="1"/>
+					<view ltx="819" lty="-88" rbx="987" rby="378"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+									<namespace uid="http://www.altova.com/mapforce"/>
+								</namespaces>
+							</header>
+							<entry name="document" ns="1" expanded="1">
+								<entry name="products" type="table" inpkey="38" expanded="1">
+									<entry name="sku" inpkey="39"/>
+									<entry name="gtin" inpkey="40"/>
+									<entry name="type" inpkey="87"/>
+									<entry name="color" inpkey="62"/>
+									<entry name="color_type" inpkey="84"/>
+									<entry name="size" inpkey="85"/>
+									<entry name="gender" inpkey="56"/>
+									<entry name="price" inpkey="63"/>
+									<entry name="map" inpkey="64"/>
+									<entry name="weight" inpkey="88"/>
+									<entry name="brand" inpkey="89"/>
+									<entry name="collection" inpkey="90"/>
+									<entry name="title" inpkey="65"/>
+									<entry name="description" inpkey="66"/>
+									<entry name="image" inpkey="60"/>
+								</entry>
+								<entry name="supplierinventory" type="table" inpkey="41" expanded="1">
+									<entry name="gtin" inpkey="42"/>
+									<entry name="supplier" inpkey="43"/>
+									<entry name="price" inpkey="67"/>
+									<entry name="stock" inpkey="68"/>
+								</entry>
+							</entry>
+						</root>
+						<database ref="batch">
+							<data>
+								<selections>
+									<selection>
+										<PathElement Name="batch" Kind="DataSource"/>
+										<PathElement Name="batch" Kind="Database"/>
+										<PathElement Name="products" Kind="Table"/>
+									</selection>
+									<selection>
+										<PathElement Name="batch" Kind="DataSource"/>
+										<PathElement Name="batch" Kind="Database"/>
+										<PathElement Name="supplierinventory" Kind="Table"/>
+									</selection>
+								</selections>
+							</data>
+						</database>
 					</data>
 				</component>
 			</children>

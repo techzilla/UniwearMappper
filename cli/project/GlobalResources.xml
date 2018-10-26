@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalResources Version="2">
+	<Resources>
+		<Resource Alias="batch">
+			<Configurations>
+				<Configuration ContentKind="DataSource" Configuration="Default">
+					<DatabaseContextInfo vendor="mariadb" databaseMajorVersion="10" contextType="odbc" connection="Database=batch;Driver={MariaDB ODBC 3.0 Driver};Dsn=MariaDB;PWD=XMsMGE-NS5cd0;Server=127.0.0.1;Uid=batch" catalog="batch"/>
+					<MapForceExecutionProperties User="batch" Password="XMsMGE-NS5cd0" Options="DSN=MariaDB;" JDBCDriver="sun.jdbc.odbc.JdbcOdbcDriver" JDBCDatabaseURL="jdbc:odbc:MariaDB" DataSource="127.0.0.1" Catalog="batch"/>
+				</Configuration>
+			</Configurations>
+		</Resource>
+	</Resources>
+</GlobalResources>
