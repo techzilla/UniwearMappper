@@ -3,14 +3,47 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>parent</artifactId>
         <groupId>biz.uniwear.batch</groupId>
+        <artifactId>parent</artifactId>
         <version>1.0</version>
-        <relativePath>../parent/pom.xml</relativePath>
+        <relativePath>../parent</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>mappings</artifactId>
 
+
+    <dependencies>
+        <dependency>
+            <groupId>org.mariadb.jdbc</groupId>
+            <artifactId>mariadb-java-client</artifactId>
+            <version>2.3.0</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- Mapforce pre-generated source
+            NOTE: Build.xml is not used for compilation
+             -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>src/gen/java</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
