@@ -1,0 +1,4767 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "2.2",
+        "title": "Magento Community"
+    },
+    "host": "www.uniformdiscount.net",
+    "basePath": "/rest/default",
+    "schemes": [
+        "https"
+    ],
+    "tags": [
+        {
+            "name": "catalogBasePriceStorageV1",
+            "description": "Base prices storage."
+        },
+        {
+            "name": "catalogCategoryLinkManagementV1",
+            "description": ""
+        },
+        {
+            "name": "catalogCategoryLinkRepositoryV1",
+            "description": ""
+        },
+        {
+            "name": "catalogCategoryListV1",
+            "description": ""
+        },
+        {
+            "name": "catalogCategoryManagementV1",
+            "description": ""
+        },
+        {
+            "name": "catalogCategoryRepositoryV1",
+            "description": ""
+        },
+        {
+            "name": "catalogCostStorageV1",
+            "description": "Product cost storage."
+        },
+        {
+            "name": "catalogProductAttributeMediaGalleryManagementV1",
+            "description": ""
+        },
+        {
+            "name": "catalogProductCustomOptionRepositoryV1",
+            "description": ""
+        },
+        {
+            "name": "catalogProductCustomOptionTypeListV1",
+            "description": ""
+        },
+        {
+            "name": "catalogProductLinkManagementV1",
+            "description": ""
+        },
+        {
+            "name": "catalogProductLinkRepositoryV1",
+            "description": "Interface Product links handling interface"
+        },
+        {
+            "name": "catalogProductLinkTypeListV1",
+            "description": ""
+        },
+        {
+            "name": "catalogProductRenderListV1",
+            "description": "Interface which provides product renders information for products"
+        },
+        {
+            "name": "catalogProductRepositoryV1",
+            "description": ""
+        },
+        {
+            "name": "catalogProductTierPriceManagementV1",
+            "description": ""
+        },
+        {
+            "name": "catalogProductTypeListV1",
+            "description": ""
+        },
+        {
+            "name": "catalogProductWebsiteLinkRepositoryV1",
+            "description": "Interface ProductWebsiteLinkRepositoryInterface"
+        },
+        {
+            "name": "catalogSpecialPriceStorageV1",
+            "description": "Special price storage presents efficient price API and is used to retrieve, update or delete special prices."
+        },
+        {
+            "name": "catalogTierPriceStorageV1",
+            "description": "Tier prices storage."
+        }
+    ],
+    "paths": {
+        "/V1/products/base-prices-information": {
+            "post": {
+                "tags": [
+                    "catalogBasePriceStorageV1"
+                ],
+                "description": "Return product prices. In case of at least one of skus is not found exception will be thrown.",
+                "operationId": "catalogBasePriceStorageV1GetPost",
+                "parameters": [
+                    {
+                        "name": "catalogBasePriceStorageV1GetPostBody",
+                        "in": "body",
+                        "schema": {
+                            "required": [
+                                "skus"
+                            ],
+                            "properties": {
+                                "skus": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 Success.",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/catalog-data-base-price-interface"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "401 Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    }
+                }
+            }
+        },
+        "/V1/products/base-prices": {
+            "post": {
+                "tags": [
+                    "catalogBasePriceStorageV1"
+                ],
+                "description": "Add or update product prices. Input item should correspond \\Magento\\Catalog\\Api\\Data\\CostInterface. If any items will have invalid price, store id or sku, they will be marked as failed and excluded from update list and \\Magento\\Catalog\\Api\\Data\\PriceUpdateResultInterface[] with problem description will be returned. If there were no failed items during update empty array will be returned. If error occurred during the update exception will be thrown.",
+                "operationId": "catalogBasePriceStorageV1UpdatePost",
+                "parameters": [
+                    {
+                        "name": "catalogBasePriceStorageV1UpdatePostBody",
+                        "in": "body",
+                        "schema": {
+                            "required": [
+                                "prices"
+                            ],
+                            "properties": {
+                                "prices": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/catalog-data-base-price-interface"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 Success.",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/catalog-data-price-update-result-interface"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "401 Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "400": {
+                        "description": "400 Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    }
+                }
+            }
+        },
+        "/V1/categories/{categoryId}/products": {
+            "get": {
+                "tags": [
+                    "catalogCategoryLinkManagementV1"
+                ],
+                "description": "Get products assigned to category",
+                "operationId": "catalogCategoryLinkManagementV1GetAssignedProductsGet",
+                "parameters": [
+                    {
+                        "name": "categoryId",
+                        "in": "path",
+                        "type": "integer",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 Success.",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/catalog-data-category-product-link-interface"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "401 Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "catalogCategoryLinkRepositoryV1"
+                ],
+                "description": "Assign a product to the required category",
+                "operationId": "catalogCategoryLinkRepositoryV1SavePost",
+                "parameters": [
+                    {
+                        "name": "categoryId",
+                        "in": "path",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "catalogCategoryLinkRepositoryV1SavePostBody",
+                        "in": "body",
+                        "schema": {
+                            "required": [
+                                "productLink"
+                            ],
+                            "properties": {
+                                "productLink": {
+                                    "$ref": "#/definitions/catalog-data-category-product-link-interface"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 Success.",
+                        "schema": {
+                            "type": "boolean",
+                            "description": "will returned True if assigned"
+                        }
+                    },
+                    "401": {
+                        "description": "401 Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "400": {
+                        "description": "400 Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "catalogCategoryLinkRepositoryV1"
+                ],
+                "description": "Assign a product to the required category",
+                "operationId": "catalogCategoryLinkRepositoryV1SavePut",
+                "parameters": [
+                    {
+                        "name": "categoryId",
+                        "in": "path",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "catalogCategoryLinkRepositoryV1SavePutBody",
+                        "in": "body",
+                        "schema": {
+                            "required": [
+                                "productLink"
+                            ],
+                            "properties": {
+                                "productLink": {
+                                    "$ref": "#/definitions/catalog-data-category-product-link-interface"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 Success.",
+                        "schema": {
+                            "type": "boolean",
+                            "description": "will returned True if assigned"
+                        }
+                    },
+                    "401": {
+                        "description": "401 Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "400": {
+                        "description": "400 Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    }
+                }
+            }
+        },
+        "/V1/categories/{categoryId}/products/{sku}": {
+            "delete": {
+                "tags": [
+                    "catalogCategoryLinkRepositoryV1"
+                ],
+                "description": "Remove the product assignment from the category by category id and sku",
+                "operationId": "catalogCategoryLinkRepositoryV1DeleteByIdsDelete",
+                "parameters": [
+                    {
+                        "name": "categoryId",
+                        "in": "path",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "sku",
+                        "in": "path",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 Success.",
+                        "schema": {
+                            "type": "boolean",
+                            "description": "will returned True if products successfully deleted"
+                        }
+                    },
+                    "401": {
+                        "description": "401 Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "400": {
+                        "description": "400 Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    }
+                }
+            }
+        },
+        "/V1/categories/list": {
+            "get": {
+                "tags": [
+                    "catalogCategoryListV1"
+                ],
+                "description": "Get category list",
+                "operationId": "catalogCategoryListV1GetListGet",
+                "parameters": [
+                    {
+                        "name": "searchCriteria[filterGroups][0][filters][0][field]",
+                        "in": "query",
+                        "type": "string",
+                        "description": "Field"
+                    },
+                    {
+                        "name": "searchCriteria[filterGroups][0][filters][0][value]",
+                        "in": "query",
+                        "type": "string",
+                        "description": "Value"
+                    },
+                    {
+                        "name": "searchCriteria[filterGroups][0][filters][0][conditionType]",
+                        "in": "query",
+                        "type": "string",
+                        "description": "Condition type"
+                    },
+                    {
+                        "name": "searchCriteria[sortOrders][0][field]",
+                        "in": "query",
+                        "type": "string",
+                        "description": "Sorting field."
+                    },
+                    {
+                        "name": "searchCriteria[sortOrders][0][direction]",
+                        "in": "query",
+                        "type": "string",
+                        "description": "Sorting direction."
+                    },
+                    {
+                        "name": "searchCriteria[pageSize]",
+                        "in": "query",
+                        "type": "integer",
+                        "description": "Page size."
+                    },
+                    {
+                        "name": "searchCriteria[currentPage]",
+                        "in": "query",
+                        "type": "integer",
+                        "description": "Current page."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 Success.",
+                        "schema": {
+                            "$ref": "#/definitions/catalog-data-category-search-results-interface"
+                        }
+                    },
+                    "401": {
+                        "description": "401 Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    }
+                }
+            }
+        },
+        "/V1/categories": {
+            "get": {
+                "tags": [
+                    "catalogCategoryManagementV1"
+                ],
+                "description": "Retrieve list of categories",
+                "operationId": "catalogCategoryManagementV1GetTreeGet",
+                "parameters": [
+                    {
+                        "name": "rootCategoryId",
+                        "in": "query",
+                        "type": "integer",
+                        "required": false
+                    },
+                    {
+                        "name": "depth",
+                        "in": "query",
+                        "type": "integer",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 Success.",
+                        "schema": {
+                            "$ref": "#/definitions/catalog-data-category-tree-interface"
+                        }
+                    },
+                    "401": {
+                        "description": "401 Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "400": {
+                        "description": "400 Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "catalogCategoryRepositoryV1"
+                ],
+                "description": "Create category service",
+                "operationId": "catalogCategoryRepositoryV1SavePost",
+                "parameters": [
+                    {
+                        "name": "catalogCategoryRepositoryV1SavePostBody",
+                        "in": "body",
+                        "schema": {
+                            "required": [
+                                "category"
+                            ],
+                            "properties": {
+                                "category": {
+                                    "$ref": "#/definitions/catalog-data-category-interface"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 Success.",
+                        "schema": {
+                            "$ref": "#/definitions/catalog-data-category-interface"
+                        }
+                    },
+                    "401": {
+                        "description": "401 Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "400": {
+                        "description": "400 Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    }
+                }
+            }
+        },
+        "/V1/categories/{categoryId}/move": {
+            "put": {
+                "tags": [
+                    "catalogCategoryManagementV1"
+                ],
+                "description": "Move category",
+                "operationId": "catalogCategoryManagementV1MovePut",
+                "parameters": [
+                    {
+                        "name": "categoryId",
+                        "in": "path",
+                        "type": "integer",
+                        "required": true
+                    },
+                    {
+                        "name": "catalogCategoryManagementV1MovePutBody",
+                        "in": "body",
+                        "schema": {
+                            "required": [
+                                "parentId"
+                            ],
+                            "properties": {
+                                "parentId": {
+                                    "type": "integer"
+                                },
+                                "afterId": {
+                                    "type": "integer"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 Success.",
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    },
+                    "401": {
+                        "description": "401 Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server error",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "400": {
+                        "description": "400 Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    }
+                }
+            }
+        },
+        "/V1/categories/{categoryId}": {
+            "delete": {
+                "tags": [
+                    "catalogCategoryRepositoryV1"
+                ],
+                "description": "Delete category by identifier",
+                "operationId": "catalogCategoryRepositoryV1DeleteByIdentifierDelete",
+                "parameters": [
+                    {
+                        "name": "categoryId",
+                        "in": "path",
+                        "type": "integer",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 Success.",
+                        "schema": {
+                            "type": "boolean",
+                            "description": "Will returned True if deleted"
+                        }
+                    },
+                    "401": {
+                        "description": "401 Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "400": {
+                        "description": "400 Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    }
+                }
+            },
+            "get": {
+                "tags": [
+                    "catalogCategoryRepositoryV1"
+                ],
+                "description": "Get info about category by category id",
+                "operationId": "catalogCategoryRepositoryV1GetGet",
+                "parameters": [
+                    {
+                        "name": "categoryId",
+                        "in": "path",
+                        "type": "integer",
+                        "required": true
+                    },
+                    {
+                        "name": "storeId",
+                        "in": "query",
+                        "type": "integer",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 Success.",
+                        "schema": {
+                            "$ref": "#/definitions/catalog-data-category-interface"
+                        }
+                    },
+                    "401": {
+                        "description": "401 Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "400": {
+                        "description": "400 Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    }
+                }
+            }
+        },
+        "/V1/categories/{id}": {
+            "put": {
+                "tags": [
+                    "catalogCategoryRepositoryV1"
+                ],
+                "description": "Create category service",
+                "operationId": "catalogCategoryRepositoryV1SavePut",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "catalogCategoryRepositoryV1SavePutBody",
+                        "in": "body",
+                        "schema": {
+                            "required": [
+                                "category"
+                            ],
+                            "properties": {
+                                "category": {
+                                    "$ref": "#/definitions/catalog-data-category-interface"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 Success.",
+                        "schema": {
+                            "$ref": "#/definitions/catalog-data-category-interface"
+                        }
+                    },
+                    "401": {
+                        "description": "401 Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "400": {
+                        "description": "400 Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    }
+                }
+            }
+        },
+        "/V1/products/cost-information": {
+            "post": {
+                "tags": [
+                    "catalogCostStorageV1"
+                ],
+                "description": "Return product prices. In case of at least one of skus is not found exception will be thrown.",
+                "operationId": "catalogCostStorageV1GetPost",
+                "parameters": [
+                    {
+                        "name": "catalogCostStorageV1GetPostBody",
+                        "in": "body",
+                        "schema": {
+                            "required": [
+                                "skus"
+                            ],
+                            "properties": {
+                                "skus": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 Success.",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/catalog-data-cost-interface"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "401 Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "400": {
+                        "description": "400 Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    }
+                }
+            }
+        },
+        "/V1/products/cost": {
+            "post": {
+                "tags": [
+                    "catalogCostStorageV1"
+                ],
+                "description": "Add or update product cost. Input item should correspond to \\Magento\\Catalog\\Api\\Data\\CostInterface. If any items will have invalid cost, store id or sku, they will be marked as failed and excluded from update list and \\Magento\\Catalog\\Api\\Data\\PriceUpdateResultInterface[] with problem description will be returned. If there were no failed items during update empty array will be returned. If error occurred during the update exception will be thrown.",
+                "operationId": "catalogCostStorageV1UpdatePost",
+                "parameters": [
+                    {
+                        "name": "catalogCostStorageV1UpdatePostBody",
+                        "in": "body",
+                        "schema": {
+                            "required": [
+                                "prices"
+                            ],
+                            "properties": {
+                                "prices": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/catalog-data-cost-interface"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 Success.",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/catalog-data-price-update-result-interface"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "401 Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    }
+                }
+            }
+        },
+        "/V1/products/cost-delete": {
+            "post": {
+                "tags": [
+                    "catalogCostStorageV1"
+                ],
+                "description": "Delete product cost. In case of at least one of skus is not found exception will be thrown. If error occurred during the delete exception will be thrown.",
+                "operationId": "catalogCostStorageV1DeletePost",
+                "parameters": [
+                    {
+                        "name": "catalogCostStorageV1DeletePostBody",
+                        "in": "body",
+                        "schema": {
+                            "required": [
+                                "skus"
+                            ],
+                            "properties": {
+                                "skus": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 Success.",
+                        "schema": {
+                            "type": "boolean",
+                            "description": "Will return True if deleted."
+                        }
+                    },
+                    "401": {
+                        "description": "401 Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "400": {
+                        "description": "400 Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    }
+                }
+            }
+        },
+        "/V1/products/{sku}/media/{entryId}": {
+            "put": {
+                "tags": [
+                    "catalogProductAttributeMediaGalleryManagementV1"
+                ],
+                "description": "Update gallery entry",
+                "operationId": "catalogProductAttributeMediaGalleryManagementV1UpdatePut",
+                "parameters": [
+                    {
+                        "name": "sku",
+                        "in": "path",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "entryId",
+                        "in": "path",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "catalogProductAttributeMediaGalleryManagementV1UpdatePutBody",
+                        "in": "body",
+                        "schema": {
+                            "required": [
+                                "entry"
+                            ],
+                            "properties": {
+                                "entry": {
+                                    "$ref": "#/definitions/catalog-data-product-attribute-media-gallery-entry-interface"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 Success.",
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    },
+                    "401": {
+                        "description": "401 Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "400": {
+                        "description": "400 Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "catalogProductAttributeMediaGalleryManagementV1"
+                ],
+                "description": "Remove gallery entry",
+                "operationId": "catalogProductAttributeMediaGalleryManagementV1RemoveDelete",
+                "parameters": [
+                    {
+                        "name": "sku",
+                        "in": "path",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "entryId",
+                        "in": "path",
+                        "type": "integer",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 Success.",
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    },
+                    "401": {
+                        "description": "401 Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "400": {
+                        "description": "400 Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    }
+                }
+            }
+        },
+        "/V1/products/{sku}/media": {
+            "post": {
+                "tags": [
+                    "catalogProductAttributeMediaGalleryManagementV1"
+                ],
+                "description": "Create new gallery entry",
+                "operationId": "catalogProductAttributeMediaGalleryManagementV1CreatePost",
+                "parameters": [
+                    {
+                        "name": "sku",
+                        "in": "path",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "catalogProductAttributeMediaGalleryManagementV1CreatePostBody",
+                        "in": "body",
+                        "schema": {
+                            "required": [
+                                "entry"
+                            ],
+                            "properties": {
+                                "entry": {
+                                    "$ref": "#/definitions/catalog-data-product-attribute-media-gallery-entry-interface"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 Success.",
+                        "schema": {
+                            "type": "integer",
+                            "description": "gallery entry ID"
+                        }
+                    },
+                    "401": {
+                        "description": "401 Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "400": {
+                        "description": "400 Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    }
+                }
+            },
+            "get": {
+                "tags": [
+                    "catalogProductAttributeMediaGalleryManagementV1"
+                ],
+                "description": "Retrieve the list of gallery entries associated with given product",
+                "operationId": "catalogProductAttributeMediaGalleryManagementV1GetListGet",
+                "parameters": [
+                    {
+                        "name": "sku",
+                        "in": "path",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 Success.",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/catalog-data-product-attribute-media-gallery-entry-interface"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "401 Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    }
+                }
+            }
+        },
+        "/V1/products/{sku}/options": {
+            "get": {
+                "tags": [
+                    "catalogProductCustomOptionRepositoryV1"
+                ],
+                "description": "Get the list of custom options for a specific product",
+                "operationId": "catalogProductCustomOptionRepositoryV1GetListGet",
+                "parameters": [
+                    {
+                        "name": "sku",
+                        "in": "path",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 Success.",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/catalog-data-product-custom-option-interface"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "401 Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    }
+                }
+            }
+        },
+        "/V1/products/{sku}/options/{optionId}": {
+            "get": {
+                "tags": [
+                    "catalogProductCustomOptionRepositoryV1"
+                ],
+                "description": "Get custom option for a specific product",
+                "operationId": "catalogProductCustomOptionRepositoryV1GetGet",
+                "parameters": [
+                    {
+                        "name": "sku",
+                        "in": "path",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "optionId",
+                        "in": "path",
+                        "type": "integer",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 Success.",
+                        "schema": {
+                            "$ref": "#/definitions/catalog-data-product-custom-option-interface"
+                        }
+                    },
+                    "401": {
+                        "description": "401 Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "catalogProductCustomOptionRepositoryV1"
+                ],
+                "description": "",
+                "operationId": "catalogProductCustomOptionRepositoryV1DeleteByIdentifierDelete",
+                "parameters": [
+                    {
+                        "name": "sku",
+                        "in": "path",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "optionId",
+                        "in": "path",
+                        "type": "integer",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 Success.",
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    },
+                    "401": {
+                        "description": "401 Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    }
+                }
+            }
+        },
+        "/V1/products/options": {
+            "post": {
+                "tags": [
+                    "catalogProductCustomOptionRepositoryV1"
+                ],
+                "description": "Save Custom Option",
+                "operationId": "catalogProductCustomOptionRepositoryV1SavePost",
+                "parameters": [
+                    {
+                        "name": "catalogProductCustomOptionRepositoryV1SavePostBody",
+                        "in": "body",
+                        "schema": {
+                            "required": [
+                                "option"
+                            ],
+                            "properties": {
+                                "option": {
+                                    "$ref": "#/definitions/catalog-data-product-custom-option-interface"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 Success.",
+                        "schema": {
+                            "$ref": "#/definitions/catalog-data-product-custom-option-interface"
+                        }
+                    },
+                    "401": {
+                        "description": "401 Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    }
+                }
+            }
+        },
+        "/V1/products/options/{optionId}": {
+            "put": {
+                "tags": [
+                    "catalogProductCustomOptionRepositoryV1"
+                ],
+                "description": "Save Custom Option",
+                "operationId": "catalogProductCustomOptionRepositoryV1SavePut",
+                "parameters": [
+                    {
+                        "name": "optionId",
+                        "in": "path",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "catalogProductCustomOptionRepositoryV1SavePutBody",
+                        "in": "body",
+                        "schema": {
+                            "required": [
+                                "option"
+                            ],
+                            "properties": {
+                                "option": {
+                                    "$ref": "#/definitions/catalog-data-product-custom-option-interface"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 Success.",
+                        "schema": {
+                            "$ref": "#/definitions/catalog-data-product-custom-option-interface"
+                        }
+                    },
+                    "401": {
+                        "description": "401 Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    }
+                }
+            }
+        },
+        "/V1/products/options/types": {
+            "get": {
+                "tags": [
+                    "catalogProductCustomOptionTypeListV1"
+                ],
+                "description": "Get custom option types",
+                "operationId": "catalogProductCustomOptionTypeListV1GetItemsGet",
+                "responses": {
+                    "200": {
+                        "description": "200 Success.",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/catalog-data-product-custom-option-type-interface"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "401 Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    }
+                }
+            }
+        },
+        "/V1/products/{sku}/links/{type}": {
+            "get": {
+                "tags": [
+                    "catalogProductLinkManagementV1"
+                ],
+                "description": "Provide the list of links for a specific product",
+                "operationId": "catalogProductLinkManagementV1GetLinkedItemsByTypeGet",
+                "parameters": [
+                    {
+                        "name": "sku",
+                        "in": "path",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "type",
+                        "in": "path",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 Success.",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/catalog-data-product-link-interface"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "401 Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    }
+                }
+            }
+        },
+        "/V1/products/{sku}/links": {
+            "post": {
+                "tags": [
+                    "catalogProductLinkManagementV1"
+                ],
+                "description": "Assign a product link to another product",
+                "operationId": "catalogProductLinkManagementV1SetProductLinksPost",
+                "parameters": [
+                    {
+                        "name": "sku",
+                        "in": "path",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "catalogProductLinkManagementV1SetProductLinksPostBody",
+                        "in": "body",
+                        "schema": {
+                            "required": [
+                                "items"
+                            ],
+                            "properties": {
+                                "items": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/catalog-data-product-link-interface"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 Success.",
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    },
+                    "401": {
+                        "description": "401 Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "400": {
+                        "description": "400 Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "catalogProductLinkRepositoryV1"
+                ],
+                "description": "Save product link",
+                "operationId": "catalogProductLinkRepositoryV1SavePut",
+                "parameters": [
+                    {
+                        "name": "sku",
+                        "in": "path",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "catalogProductLinkRepositoryV1SavePutBody",
+                        "in": "body",
+                        "schema": {
+                            "required": [
+                                "entity"
+                            ],
+                            "properties": {
+                                "entity": {
+                                    "$ref": "#/definitions/catalog-data-product-link-interface"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 Success.",
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    },
+                    "401": {
+                        "description": "401 Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "400": {
+                        "description": "400 Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    }
+                }
+            }
+        },
+        "/V1/products/{sku}/links/{type}/{linkedProductSku}": {
+            "delete": {
+                "tags": [
+                    "catalogProductLinkRepositoryV1"
+                ],
+                "description": "",
+                "operationId": "catalogProductLinkRepositoryV1DeleteByIdDelete",
+                "parameters": [
+                    {
+                        "name": "sku",
+                        "in": "path",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "type",
+                        "in": "path",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "linkedProductSku",
+                        "in": "path",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 Success.",
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    },
+                    "401": {
+                        "description": "401 Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "400": {
+                        "description": "400 Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    }
+                }
+            }
+        },
+        "/V1/products/links/types": {
+            "get": {
+                "tags": [
+                    "catalogProductLinkTypeListV1"
+                ],
+                "description": "Retrieve information about available product link types",
+                "operationId": "catalogProductLinkTypeListV1GetItemsGet",
+                "responses": {
+                    "200": {
+                        "description": "200 Success.",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/catalog-data-product-link-type-interface"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "401 Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    }
+                }
+            }
+        },
+        "/V1/products/links/{type}/attributes": {
+            "get": {
+                "tags": [
+                    "catalogProductLinkTypeListV1"
+                ],
+                "description": "Provide a list of the product link type attributes",
+                "operationId": "catalogProductLinkTypeListV1GetItemAttributesGet",
+                "parameters": [
+                    {
+                        "name": "type",
+                        "in": "path",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 Success.",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/catalog-data-product-link-attribute-interface"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "401 Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    }
+                }
+            }
+        },
+        "/V1/products-render-info": {
+            "get": {
+                "tags": [
+                    "catalogProductRenderListV1"
+                ],
+                "description": "Collect and retrieve the list of product render info This info contains raw prices and formated prices, product name, stock status, store_id, etc",
+                "operationId": "catalogProductRenderListV1GetListGet",
+                "parameters": [
+                    {
+                        "name": "searchCriteria[filterGroups][0][filters][0][field]",
+                        "in": "query",
+                        "type": "string",
+                        "description": "Field"
+                    },
+                    {
+                        "name": "searchCriteria[filterGroups][0][filters][0][value]",
+                        "in": "query",
+                        "type": "string",
+                        "description": "Value"
+                    },
+                    {
+                        "name": "searchCriteria[filterGroups][0][filters][0][conditionType]",
+                        "in": "query",
+                        "type": "string",
+                        "description": "Condition type"
+                    },
+                    {
+                        "name": "searchCriteria[sortOrders][0][field]",
+                        "in": "query",
+                        "type": "string",
+                        "description": "Sorting field."
+                    },
+                    {
+                        "name": "searchCriteria[sortOrders][0][direction]",
+                        "in": "query",
+                        "type": "string",
+                        "description": "Sorting direction."
+                    },
+                    {
+                        "name": "searchCriteria[pageSize]",
+                        "in": "query",
+                        "type": "integer",
+                        "description": "Page size."
+                    },
+                    {
+                        "name": "searchCriteria[currentPage]",
+                        "in": "query",
+                        "type": "integer",
+                        "description": "Current page."
+                    },
+                    {
+                        "name": "storeId",
+                        "in": "query",
+                        "type": "integer",
+                        "required": true
+                    },
+                    {
+                        "name": "currencyCode",
+                        "in": "query",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 Success.",
+                        "schema": {
+                            "$ref": "#/definitions/catalog-data-product-render-search-results-interface"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    }
+                }
+            }
+        },
+        "/V1/products": {
+            "post": {
+                "tags": [
+                    "catalogProductRepositoryV1"
+                ],
+                "description": "Create product",
+                "operationId": "catalogProductRepositoryV1SavePost",
+                "parameters": [
+                    {
+                        "name": "catalogProductRepositoryV1SavePostBody",
+                        "in": "body",
+                        "schema": {
+                            "required": [
+                                "product"
+                            ],
+                            "properties": {
+                                "product": {
+                                    "$ref": "#/definitions/catalog-data-product-interface"
+                                },
+                                "saveOptions": {
+                                    "type": "boolean"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 Success.",
+                        "schema": {
+                            "$ref": "#/definitions/catalog-data-product-interface"
+                        }
+                    },
+                    "401": {
+                        "description": "401 Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "400": {
+                        "description": "400 Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    }
+                }
+            },
+            "get": {
+                "tags": [
+                    "catalogProductRepositoryV1"
+                ],
+                "description": "Get product list",
+                "operationId": "catalogProductRepositoryV1GetListGet",
+                "parameters": [
+                    {
+                        "name": "searchCriteria[filterGroups][0][filters][0][field]",
+                        "in": "query",
+                        "type": "string",
+                        "description": "Field"
+                    },
+                    {
+                        "name": "searchCriteria[filterGroups][0][filters][0][value]",
+                        "in": "query",
+                        "type": "string",
+                        "description": "Value"
+                    },
+                    {
+                        "name": "searchCriteria[filterGroups][0][filters][0][conditionType]",
+                        "in": "query",
+                        "type": "string",
+                        "description": "Condition type"
+                    },
+                    {
+                        "name": "searchCriteria[sortOrders][0][field]",
+                        "in": "query",
+                        "type": "string",
+                        "description": "Sorting field."
+                    },
+                    {
+                        "name": "searchCriteria[sortOrders][0][direction]",
+                        "in": "query",
+                        "type": "string",
+                        "description": "Sorting direction."
+                    },
+                    {
+                        "name": "searchCriteria[pageSize]",
+                        "in": "query",
+                        "type": "integer",
+                        "description": "Page size."
+                    },
+                    {
+                        "name": "searchCriteria[currentPage]",
+                        "in": "query",
+                        "type": "integer",
+                        "description": "Current page."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 Success.",
+                        "schema": {
+                            "$ref": "#/definitions/catalog-data-product-search-results-interface"
+                        }
+                    },
+                    "401": {
+                        "description": "401 Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    }
+                }
+            }
+        },
+        "/V1/products/{sku}": {
+            "put": {
+                "tags": [
+                    "catalogProductRepositoryV1"
+                ],
+                "description": "Create product",
+                "operationId": "catalogProductRepositoryV1SavePut",
+                "parameters": [
+                    {
+                        "name": "sku",
+                        "in": "path",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "catalogProductRepositoryV1SavePutBody",
+                        "in": "body",
+                        "schema": {
+                            "required": [
+                                "product"
+                            ],
+                            "properties": {
+                                "product": {
+                                    "$ref": "#/definitions/catalog-data-product-interface"
+                                },
+                                "saveOptions": {
+                                    "type": "boolean"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 Success.",
+                        "schema": {
+                            "$ref": "#/definitions/catalog-data-product-interface"
+                        }
+                    },
+                    "401": {
+                        "description": "401 Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "400": {
+                        "description": "400 Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "catalogProductRepositoryV1"
+                ],
+                "description": "",
+                "operationId": "catalogProductRepositoryV1DeleteByIdDelete",
+                "parameters": [
+                    {
+                        "name": "sku",
+                        "in": "path",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 Success.",
+                        "schema": {
+                            "type": "boolean",
+                            "description": "Will returned True if deleted"
+                        }
+                    },
+                    "401": {
+                        "description": "401 Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "400": {
+                        "description": "400 Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    }
+                }
+            },
+            "get": {
+                "tags": [
+                    "catalogProductRepositoryV1"
+                ],
+                "description": "Get info about product by product SKU",
+                "operationId": "catalogProductRepositoryV1GetGet",
+                "parameters": [
+                    {
+                        "name": "sku",
+                        "in": "path",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "editMode",
+                        "in": "query",
+                        "type": "boolean",
+                        "required": false
+                    },
+                    {
+                        "name": "storeId",
+                        "in": "query",
+                        "type": "integer",
+                        "required": false
+                    },
+                    {
+                        "name": "forceReload",
+                        "in": "query",
+                        "type": "boolean",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 Success.",
+                        "schema": {
+                            "$ref": "#/definitions/catalog-data-product-interface"
+                        }
+                    },
+                    "401": {
+                        "description": "401 Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "400": {
+                        "description": "400 Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    }
+                }
+            }
+        },
+        "/V1/products/{sku}/group-prices/{customerGroupId}/tiers": {
+            "get": {
+                "tags": [
+                    "catalogProductTierPriceManagementV1"
+                ],
+                "description": "Get tier price of product",
+                "operationId": "catalogProductTierPriceManagementV1GetListGet",
+                "parameters": [
+                    {
+                        "name": "sku",
+                        "in": "path",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "customerGroupId",
+                        "in": "path",
+                        "type": "string",
+                        "required": true,
+                        "description": "'all' can be used to specify 'ALL GROUPS'"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 Success.",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/catalog-data-product-tier-price-interface"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "401 Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "400": {
+                        "description": "400 Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    }
+                }
+            }
+        },
+        "/V1/products/{sku}/group-prices/{customerGroupId}/tiers/{qty}/price/{price}": {
+            "post": {
+                "tags": [
+                    "catalogProductTierPriceManagementV1"
+                ],
+                "description": "Create tier price for product",
+                "operationId": "catalogProductTierPriceManagementV1AddPost",
+                "parameters": [
+                    {
+                        "name": "sku",
+                        "in": "path",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "customerGroupId",
+                        "in": "path",
+                        "type": "string",
+                        "required": true,
+                        "description": "'all' can be used to specify 'ALL GROUPS'"
+                    },
+                    {
+                        "name": "price",
+                        "in": "path",
+                        "type": "number",
+                        "required": true
+                    },
+                    {
+                        "name": "qty",
+                        "in": "path",
+                        "type": "number",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 Success.",
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    },
+                    "401": {
+                        "description": "401 Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "400": {
+                        "description": "400 Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    }
+                }
+            }
+        },
+        "/V1/products/{sku}/group-prices/{customerGroupId}/tiers/{qty}": {
+            "delete": {
+                "tags": [
+                    "catalogProductTierPriceManagementV1"
+                ],
+                "description": "Remove tier price from product",
+                "operationId": "catalogProductTierPriceManagementV1RemoveDelete",
+                "parameters": [
+                    {
+                        "name": "sku",
+                        "in": "path",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "customerGroupId",
+                        "in": "path",
+                        "type": "string",
+                        "required": true,
+                        "description": "'all' can be used to specify 'ALL GROUPS'"
+                    },
+                    {
+                        "name": "qty",
+                        "in": "path",
+                        "type": "number",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 Success.",
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    },
+                    "401": {
+                        "description": "401 Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "400": {
+                        "description": "400 Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    }
+                }
+            }
+        },
+        "/V1/products/types": {
+            "get": {
+                "tags": [
+                    "catalogProductTypeListV1"
+                ],
+                "description": "Retrieve available product types",
+                "operationId": "catalogProductTypeListV1GetProductTypesGet",
+                "responses": {
+                    "200": {
+                        "description": "200 Success.",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/catalog-data-product-type-interface"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "401 Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    }
+                }
+            }
+        },
+        "/V1/products/{sku}/websites": {
+            "post": {
+                "tags": [
+                    "catalogProductWebsiteLinkRepositoryV1"
+                ],
+                "description": "Assign a product to the website",
+                "operationId": "catalogProductWebsiteLinkRepositoryV1SavePost",
+                "parameters": [
+                    {
+                        "name": "sku",
+                        "in": "path",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "catalogProductWebsiteLinkRepositoryV1SavePostBody",
+                        "in": "body",
+                        "schema": {
+                            "required": [
+                                "productWebsiteLink"
+                            ],
+                            "properties": {
+                                "productWebsiteLink": {
+                                    "$ref": "#/definitions/catalog-data-product-website-link-interface"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 Success.",
+                        "schema": {
+                            "type": "boolean",
+                            "description": "will returned True if website successfully assigned to product"
+                        }
+                    },
+                    "401": {
+                        "description": "401 Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "400": {
+                        "description": "400 Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "catalogProductWebsiteLinkRepositoryV1"
+                ],
+                "description": "Assign a product to the website",
+                "operationId": "catalogProductWebsiteLinkRepositoryV1SavePut",
+                "parameters": [
+                    {
+                        "name": "sku",
+                        "in": "path",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "catalogProductWebsiteLinkRepositoryV1SavePutBody",
+                        "in": "body",
+                        "schema": {
+                            "required": [
+                                "productWebsiteLink"
+                            ],
+                            "properties": {
+                                "productWebsiteLink": {
+                                    "$ref": "#/definitions/catalog-data-product-website-link-interface"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 Success.",
+                        "schema": {
+                            "type": "boolean",
+                            "description": "will returned True if website successfully assigned to product"
+                        }
+                    },
+                    "401": {
+                        "description": "401 Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "400": {
+                        "description": "400 Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    }
+                }
+            }
+        },
+        "/V1/products/{sku}/websites/{websiteId}": {
+            "delete": {
+                "tags": [
+                    "catalogProductWebsiteLinkRepositoryV1"
+                ],
+                "description": "Remove the website assignment from the product by product sku",
+                "operationId": "catalogProductWebsiteLinkRepositoryV1DeleteByIdDelete",
+                "parameters": [
+                    {
+                        "name": "sku",
+                        "in": "path",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "websiteId",
+                        "in": "path",
+                        "type": "integer",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 Success.",
+                        "schema": {
+                            "type": "boolean",
+                            "description": "will returned True if website successfully unassigned from product"
+                        }
+                    },
+                    "401": {
+                        "description": "401 Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "400": {
+                        "description": "400 Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    }
+                }
+            }
+        },
+        "/V1/products/special-price-information": {
+            "post": {
+                "tags": [
+                    "catalogSpecialPriceStorageV1"
+                ],
+                "description": "Return product's special price. In case of at least one of skus is not found exception will be thrown.",
+                "operationId": "catalogSpecialPriceStorageV1GetPost",
+                "parameters": [
+                    {
+                        "name": "catalogSpecialPriceStorageV1GetPostBody",
+                        "in": "body",
+                        "schema": {
+                            "required": [
+                                "skus"
+                            ],
+                            "properties": {
+                                "skus": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 Success.",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/catalog-data-special-price-interface"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "401 Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "400": {
+                        "description": "400 Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    }
+                }
+            }
+        },
+        "/V1/products/special-price": {
+            "post": {
+                "tags": [
+                    "catalogSpecialPriceStorageV1"
+                ],
+                "description": "Add or update product's special price. If any items will have invalid price, store id, sku or dates, they will be marked as failed and excluded from update list and \\Magento\\Catalog\\Api\\Data\\PriceUpdateResultInterface[] with problem description will be returned. If there were no failed items during update empty array will be returned. If error occurred during the update exception will be thrown.",
+                "operationId": "catalogSpecialPriceStorageV1UpdatePost",
+                "parameters": [
+                    {
+                        "name": "catalogSpecialPriceStorageV1UpdatePostBody",
+                        "in": "body",
+                        "schema": {
+                            "required": [
+                                "prices"
+                            ],
+                            "properties": {
+                                "prices": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/catalog-data-special-price-interface"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 Success.",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/catalog-data-price-update-result-interface"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "401 Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "400": {
+                        "description": "400 Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    }
+                }
+            }
+        },
+        "/V1/products/special-price-delete": {
+            "post": {
+                "tags": [
+                    "catalogSpecialPriceStorageV1"
+                ],
+                "description": "Delete product's special price. If any items will have invalid price, store id, sku or dates, they will be marked as failed and excluded from delete list and \\Magento\\Catalog\\Api\\Data\\PriceUpdateResultInterface[] with problem description will be returned. If there were no failed items during update empty array will be returned. If error occurred during the delete exception will be thrown.",
+                "operationId": "catalogSpecialPriceStorageV1DeletePost",
+                "parameters": [
+                    {
+                        "name": "catalogSpecialPriceStorageV1DeletePostBody",
+                        "in": "body",
+                        "schema": {
+                            "required": [
+                                "prices"
+                            ],
+                            "properties": {
+                                "prices": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/catalog-data-special-price-interface"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 Success.",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/catalog-data-price-update-result-interface"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "401 Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "400": {
+                        "description": "400 Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    }
+                }
+            }
+        },
+        "/V1/products/tier-prices-information": {
+            "post": {
+                "tags": [
+                    "catalogTierPriceStorageV1"
+                ],
+                "description": "Return product prices. In case of at least one of skus is not found exception will be thrown.",
+                "operationId": "catalogTierPriceStorageV1GetPost",
+                "parameters": [
+                    {
+                        "name": "catalogTierPriceStorageV1GetPostBody",
+                        "in": "body",
+                        "schema": {
+                            "required": [
+                                "skus"
+                            ],
+                            "properties": {
+                                "skus": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 Success.",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/catalog-data-tier-price-interface"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "401 Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "400": {
+                        "description": "400 Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    }
+                }
+            }
+        },
+        "/V1/products/tier-prices": {
+            "post": {
+                "tags": [
+                    "catalogTierPriceStorageV1"
+                ],
+                "description": "Add or update product prices. If any items will have invalid price, price type, website id, sku, customer group or quantity, they will be marked as failed and excluded from update list and \\Magento\\Catalog\\Api\\Data\\PriceUpdateResultInterface[] with problem description will be returned. If there were no failed items during update empty array will be returned. If error occurred during the update exception will be thrown.",
+                "operationId": "catalogTierPriceStorageV1UpdatePost",
+                "parameters": [
+                    {
+                        "name": "catalogTierPriceStorageV1UpdatePostBody",
+                        "in": "body",
+                        "schema": {
+                            "required": [
+                                "prices"
+                            ],
+                            "properties": {
+                                "prices": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/catalog-data-tier-price-interface"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 Success.",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/catalog-data-price-update-result-interface"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "401 Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "catalogTierPriceStorageV1"
+                ],
+                "description": "Remove existing tier prices and replace them with the new ones. If any items will have invalid price, price type, website id, sku, customer group or quantity, they will be marked as failed and excluded from replace list and \\Magento\\Catalog\\Api\\Data\\PriceUpdateResultInterface[] with problem description will be returned. If there were no failed items during update empty array will be returned. If error occurred during the update exception will be thrown.",
+                "operationId": "catalogTierPriceStorageV1ReplacePut",
+                "parameters": [
+                    {
+                        "name": "catalogTierPriceStorageV1ReplacePutBody",
+                        "in": "body",
+                        "schema": {
+                            "required": [
+                                "prices"
+                            ],
+                            "properties": {
+                                "prices": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/catalog-data-tier-price-interface"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 Success.",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/catalog-data-price-update-result-interface"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "401 Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    }
+                }
+            }
+        },
+        "/V1/products/tier-prices-delete": {
+            "post": {
+                "tags": [
+                    "catalogTierPriceStorageV1"
+                ],
+                "description": "Delete product tier prices. If any items will have invalid price, price type, website id, sku, customer group or quantity, they will be marked as failed and excluded from delete list and \\Magento\\Catalog\\Api\\Data\\PriceUpdateResultInterface[] with problem description will be returned. If there were no failed items during update empty array will be returned. If error occurred during the update exception will be thrown.",
+                "operationId": "catalogTierPriceStorageV1DeletePost",
+                "parameters": [
+                    {
+                        "name": "catalogTierPriceStorageV1DeletePostBody",
+                        "in": "body",
+                        "schema": {
+                            "required": [
+                                "prices"
+                            ],
+                            "properties": {
+                                "prices": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/catalog-data-tier-price-interface"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 Success.",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/catalog-data-price-update-result-interface"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "401 Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/error-response"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "error-response": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "type": "string",
+                    "description": "Error message"
+                },
+                "errors": {
+                    "$ref": "#/definitions/error-errors"
+                },
+                "code": {
+                    "type": "integer",
+                    "description": "Error code"
+                },
+                "parameters": {
+                    "$ref": "#/definitions/error-parameters"
+                },
+                "trace": {
+                    "type": "string",
+                    "description": "Stack trace"
+                }
+            },
+            "required": [
+                "message"
+            ]
+        },
+        "error-errors": {
+            "type": "array",
+            "description": "Errors list",
+            "items": {
+                "$ref": "#/definitions/error-errors-item"
+            }
+        },
+        "error-errors-item": {
+            "type": "object",
+            "description": "Error details",
+            "properties": {
+                "message": {
+                    "type": "string",
+                    "description": "Error message"
+                },
+                "parameters": {
+                    "$ref": "#/definitions/error-parameters"
+                }
+            }
+        },
+        "error-parameters": {
+            "type": "array",
+            "description": "Error parameters list",
+            "items": {
+                "$ref": "#/definitions/error-parameters-item"
+            }
+        },
+        "error-parameters-item": {
+            "type": "object",
+            "description": "Error parameters item",
+            "properties": {
+                "resources": {
+                    "type": "string",
+                    "description": "ACL resource"
+                },
+                "fieldName": {
+                    "type": "string",
+                    "description": "Missing or invalid field name"
+                },
+                "fieldValue": {
+                    "type": "string",
+                    "description": "Incorrect field value"
+                }
+            }
+        },
+        "catalog-data-base-price-interface": {
+            "type": "object",
+            "description": "Price interface.",
+            "properties": {
+                "price": {
+                    "type": "number",
+                    "description": "Price."
+                },
+                "store_id": {
+                    "type": "integer",
+                    "description": "Store id."
+                },
+                "sku": {
+                    "type": "string",
+                    "description": "SKU."
+                },
+                "extension_attributes": {
+                    "$ref": "#/definitions/catalog-data-base-price-extension-interface"
+                }
+            },
+            "required": [
+                "price",
+                "store_id",
+                "sku"
+            ]
+        },
+        "catalog-data-base-price-extension-interface": {
+            "type": "object",
+            "description": "ExtensionInterface class for @see \\Magento\\Catalog\\Api\\Data\\BasePriceInterface"
+        },
+        "catalog-data-price-update-result-interface": {
+            "type": "object",
+            "description": "Interface returned in case of incorrect price passed to efficient price API.",
+            "properties": {
+                "message": {
+                    "type": "string",
+                    "description": "Error message, that contains description of error occurred during price update."
+                },
+                "parameters": {
+                    "type": "array",
+                    "description": "Parameters, that could be displayed in error message placeholders.",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "extension_attributes": {
+                    "$ref": "#/definitions/catalog-data-price-update-result-extension-interface"
+                }
+            },
+            "required": [
+                "message",
+                "parameters"
+            ]
+        },
+        "catalog-data-price-update-result-extension-interface": {
+            "type": "object",
+            "description": "ExtensionInterface class for @see \\Magento\\Catalog\\Api\\Data\\PriceUpdateResultInterface"
+        },
+        "catalog-data-category-product-link-interface": {
+            "type": "object",
+            "description": "",
+            "properties": {
+                "sku": {
+                    "type": "string"
+                },
+                "position": {
+                    "type": "integer"
+                },
+                "category_id": {
+                    "type": "string",
+                    "description": "Category id"
+                },
+                "extension_attributes": {
+                    "$ref": "#/definitions/catalog-data-category-product-link-extension-interface"
+                }
+            },
+            "required": [
+                "category_id"
+            ]
+        },
+        "catalog-data-category-product-link-extension-interface": {
+            "type": "object",
+            "description": "ExtensionInterface class for @see \\Magento\\Catalog\\Api\\Data\\CategoryProductLinkInterface"
+        },
+        "catalog-data-category-search-results-interface": {
+            "type": "object",
+            "description": "",
+            "properties": {
+                "items": {
+                    "type": "array",
+                    "description": "Categories",
+                    "items": {
+                        "$ref": "#/definitions/catalog-data-category-interface"
+                    }
+                },
+                "search_criteria": {
+                    "$ref": "#/definitions/framework-search-criteria-interface"
+                },
+                "total_count": {
+                    "type": "integer",
+                    "description": "Total count."
+                }
+            },
+            "required": [
+                "items",
+                "search_criteria",
+                "total_count"
+            ]
+        },
+        "catalog-data-category-interface": {
+            "type": "object",
+            "description": "",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "parent_id": {
+                    "type": "integer",
+                    "description": "Parent category ID"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Category name"
+                },
+                "is_active": {
+                    "type": "boolean",
+                    "description": "Whether category is active"
+                },
+                "position": {
+                    "type": "integer",
+                    "description": "Category position"
+                },
+                "level": {
+                    "type": "integer",
+                    "description": "Category level"
+                },
+                "children": {
+                    "type": "string"
+                },
+                "created_at": {
+                    "type": "string"
+                },
+                "updated_at": {
+                    "type": "string"
+                },
+                "path": {
+                    "type": "string"
+                },
+                "available_sort_by": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "include_in_menu": {
+                    "type": "boolean"
+                },
+                "extension_attributes": {
+                    "$ref": "#/definitions/catalog-data-category-extension-interface"
+                },
+                "custom_attributes": {
+                    "type": "array",
+                    "description": "Custom attributes values.",
+                    "items": {
+                        "$ref": "#/definitions/framework-attribute-interface"
+                    }
+                }
+            },
+            "required": [
+                "name"
+            ]
+        },
+        "catalog-data-category-extension-interface": {
+            "type": "object",
+            "description": "ExtensionInterface class for @see \\Magento\\Catalog\\Api\\Data\\CategoryInterface"
+        },
+        "framework-attribute-interface": {
+            "type": "object",
+            "description": "Interface for custom attribute value.",
+            "properties": {
+                "attribute_code": {
+                    "type": "string",
+                    "description": "Attribute code"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "Attribute value"
+                }
+            },
+            "required": [
+                "attribute_code",
+                "value"
+            ]
+        },
+        "framework-search-criteria-interface": {
+            "type": "object",
+            "description": "Search criteria interface.",
+            "properties": {
+                "filter_groups": {
+                    "type": "array",
+                    "description": "A list of filter groups.",
+                    "items": {
+                        "$ref": "#/definitions/framework-search-filter-group"
+                    }
+                },
+                "sort_orders": {
+                    "type": "array",
+                    "description": "Sort order.",
+                    "items": {
+                        "$ref": "#/definitions/framework-sort-order"
+                    }
+                },
+                "page_size": {
+                    "type": "integer",
+                    "description": "Page size."
+                },
+                "current_page": {
+                    "type": "integer",
+                    "description": "Current page."
+                }
+            },
+            "required": [
+                "filter_groups"
+            ]
+        },
+        "framework-search-filter-group": {
+            "type": "object",
+            "description": "Groups two or more filters together using a logical OR",
+            "properties": {
+                "filters": {
+                    "type": "array",
+                    "description": "A list of filters in this group",
+                    "items": {
+                        "$ref": "#/definitions/framework-filter"
+                    }
+                }
+            }
+        },
+        "framework-filter": {
+            "type": "object",
+            "description": "Filter which can be used by any methods from service layer.",
+            "properties": {
+                "field": {
+                    "type": "string",
+                    "description": "Field"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "Value"
+                },
+                "condition_type": {
+                    "type": "string",
+                    "description": "Condition type"
+                }
+            },
+            "required": [
+                "field",
+                "value"
+            ]
+        },
+        "framework-sort-order": {
+            "type": "object",
+            "description": "Data object for sort order.",
+            "properties": {
+                "field": {
+                    "type": "string",
+                    "description": "Sorting field."
+                },
+                "direction": {
+                    "type": "string",
+                    "description": "Sorting direction."
+                }
+            },
+            "required": [
+                "field",
+                "direction"
+            ]
+        },
+        "catalog-data-category-tree-interface": {
+            "type": "object",
+            "description": "",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "parent_id": {
+                    "type": "integer",
+                    "description": "Parent category ID"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Category name"
+                },
+                "is_active": {
+                    "type": "boolean",
+                    "description": "Whether category is active"
+                },
+                "position": {
+                    "type": "integer",
+                    "description": "Category position"
+                },
+                "level": {
+                    "type": "integer",
+                    "description": "Category level"
+                },
+                "product_count": {
+                    "type": "integer",
+                    "description": "Product count"
+                },
+                "children_data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/catalog-data-category-tree-interface"
+                    }
+                }
+            },
+            "required": [
+                "parent_id",
+                "name",
+                "is_active",
+                "position",
+                "level",
+                "product_count",
+                "children_data"
+            ]
+        },
+        "catalog-data-cost-interface": {
+            "type": "object",
+            "description": "Cost interface.",
+            "properties": {
+                "cost": {
+                    "type": "number",
+                    "description": "Cost value."
+                },
+                "store_id": {
+                    "type": "integer",
+                    "description": "Store id."
+                },
+                "sku": {
+                    "type": "string",
+                    "description": "SKU."
+                },
+                "extension_attributes": {
+                    "$ref": "#/definitions/catalog-data-cost-extension-interface"
+                }
+            },
+            "required": [
+                "cost",
+                "store_id",
+                "sku"
+            ]
+        },
+        "catalog-data-cost-extension-interface": {
+            "type": "object",
+            "description": "ExtensionInterface class for @see \\Magento\\Catalog\\Api\\Data\\CostInterface"
+        },
+        "catalog-data-product-attribute-media-gallery-entry-interface": {
+            "type": "object",
+            "description": "",
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "description": "Gallery entry ID"
+                },
+                "media_type": {
+                    "type": "string",
+                    "description": "Media type"
+                },
+                "label": {
+                    "type": "string",
+                    "description": "Gallery entry alternative text"
+                },
+                "position": {
+                    "type": "integer",
+                    "description": "Gallery entry position (sort order)"
+                },
+                "disabled": {
+                    "type": "boolean",
+                    "description": "If gallery entry is hidden from product page"
+                },
+                "types": {
+                    "type": "array",
+                    "description": "Gallery entry image types (thumbnail, image, small_image etc)",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "file": {
+                    "type": "string",
+                    "description": "File path"
+                },
+                "content": {
+                    "$ref": "#/definitions/framework-data-image-content-interface"
+                },
+                "extension_attributes": {
+                    "$ref": "#/definitions/catalog-data-product-attribute-media-gallery-entry-extension-interface"
+                }
+            },
+            "required": [
+                "media_type",
+                "label",
+                "position",
+                "disabled",
+                "types"
+            ]
+        },
+        "framework-data-image-content-interface": {
+            "type": "object",
+            "description": "Image Content data interface",
+            "properties": {
+                "base64_encoded_data": {
+                    "type": "string",
+                    "description": "Media data (base64 encoded content)"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "MIME type"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Image name"
+                }
+            },
+            "required": [
+                "base64_encoded_data",
+                "type",
+                "name"
+            ]
+        },
+        "catalog-data-product-attribute-media-gallery-entry-extension-interface": {
+            "type": "object",
+            "description": "ExtensionInterface class for @see \\Magento\\Catalog\\Api\\Data\\ProductAttributeMediaGalleryEntryInterface",
+            "properties": {
+                "video_content": {
+                    "$ref": "#/definitions/framework-data-video-content-interface"
+                }
+            }
+        },
+        "framework-data-video-content-interface": {
+            "type": "object",
+            "description": "Video Content data interface",
+            "properties": {
+                "media_type": {
+                    "type": "string",
+                    "description": "MIME type"
+                },
+                "video_provider": {
+                    "type": "string",
+                    "description": "Provider"
+                },
+                "video_url": {
+                    "type": "string",
+                    "description": "Video URL"
+                },
+                "video_title": {
+                    "type": "string",
+                    "description": "Title"
+                },
+                "video_description": {
+                    "type": "string",
+                    "description": "Video Description"
+                },
+                "video_metadata": {
+                    "type": "string",
+                    "description": "Metadata"
+                }
+            },
+            "required": [
+                "media_type",
+                "video_provider",
+                "video_url",
+                "video_title",
+                "video_description",
+                "video_metadata"
+            ]
+        },
+        "catalog-data-product-custom-option-interface": {
+            "type": "object",
+            "description": "",
+            "properties": {
+                "product_sku": {
+                    "type": "string",
+                    "description": "Product SKU"
+                },
+                "option_id": {
+                    "type": "integer",
+                    "description": "Option id"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "Option title"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Option type"
+                },
+                "sort_order": {
+                    "type": "integer",
+                    "description": "Sort order"
+                },
+                "is_require": {
+                    "type": "boolean",
+                    "description": "Is require"
+                },
+                "price": {
+                    "type": "number",
+                    "description": "Price"
+                },
+                "price_type": {
+                    "type": "string",
+                    "description": "Price type"
+                },
+                "sku": {
+                    "type": "string",
+                    "description": "Sku"
+                },
+                "file_extension": {
+                    "type": "string"
+                },
+                "max_characters": {
+                    "type": "integer"
+                },
+                "image_size_x": {
+                    "type": "integer"
+                },
+                "image_size_y": {
+                    "type": "integer"
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/catalog-data-product-custom-option-values-interface"
+                    }
+                },
+                "extension_attributes": {
+                    "$ref": "#/definitions/catalog-data-product-custom-option-extension-interface"
+                }
+            },
+            "required": [
+                "product_sku",
+                "title",
+                "type",
+                "sort_order",
+                "is_require"
+            ]
+        },
+        "catalog-data-product-custom-option-values-interface": {
+            "type": "object",
+            "description": "",
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Option title"
+                },
+                "sort_order": {
+                    "type": "integer",
+                    "description": "Sort order"
+                },
+                "price": {
+                    "type": "number",
+                    "description": "Price"
+                },
+                "price_type": {
+                    "type": "string",
+                    "description": "Price type"
+                },
+                "sku": {
+                    "type": "string",
+                    "description": "Sku"
+                },
+                "option_type_id": {
+                    "type": "integer",
+                    "description": "Option type id"
+                }
+            },
+            "required": [
+                "title",
+                "sort_order",
+                "price",
+                "price_type"
+            ]
+        },
+        "catalog-data-product-custom-option-extension-interface": {
+            "type": "object",
+            "description": "ExtensionInterface class for @see \\Magento\\Catalog\\Api\\Data\\ProductCustomOptionInterface"
+        },
+        "catalog-data-product-custom-option-type-interface": {
+            "type": "object",
+            "description": "",
+            "properties": {
+                "label": {
+                    "type": "string",
+                    "description": "Option type label"
+                },
+                "code": {
+                    "type": "string",
+                    "description": "Option type code"
+                },
+                "group": {
+                    "type": "string",
+                    "description": "Option type group"
+                },
+                "extension_attributes": {
+                    "$ref": "#/definitions/catalog-data-product-custom-option-type-extension-interface"
+                }
+            },
+            "required": [
+                "label",
+                "code",
+                "group"
+            ]
+        },
+        "catalog-data-product-custom-option-type-extension-interface": {
+            "type": "object",
+            "description": "ExtensionInterface class for @see \\Magento\\Catalog\\Api\\Data\\ProductCustomOptionTypeInterface"
+        },
+        "catalog-data-product-link-interface": {
+            "type": "object",
+            "description": "",
+            "properties": {
+                "sku": {
+                    "type": "string",
+                    "description": "SKU"
+                },
+                "link_type": {
+                    "type": "string",
+                    "description": "Link type"
+                },
+                "linked_product_sku": {
+                    "type": "string",
+                    "description": "Linked product sku"
+                },
+                "linked_product_type": {
+                    "type": "string",
+                    "description": "Linked product type (simple, virtual, etc)"
+                },
+                "position": {
+                    "type": "integer",
+                    "description": "Linked item position"
+                },
+                "extension_attributes": {
+                    "$ref": "#/definitions/catalog-data-product-link-extension-interface"
+                }
+            },
+            "required": [
+                "sku",
+                "link_type",
+                "linked_product_sku",
+                "linked_product_type",
+                "position"
+            ]
+        },
+        "catalog-data-product-link-extension-interface": {
+            "type": "object",
+            "description": "ExtensionInterface class for @see \\Magento\\Catalog\\Api\\Data\\ProductLinkInterface",
+            "properties": {
+                "qty": {
+                    "type": "number"
+                }
+            }
+        },
+        "catalog-data-product-link-type-interface": {
+            "type": "object",
+            "description": "",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "description": "Link type code"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Link type name"
+                },
+                "extension_attributes": {
+                    "$ref": "#/definitions/catalog-data-product-link-type-extension-interface"
+                }
+            },
+            "required": [
+                "code",
+                "name"
+            ]
+        },
+        "catalog-data-product-link-type-extension-interface": {
+            "type": "object",
+            "description": "ExtensionInterface class for @see \\Magento\\Catalog\\Api\\Data\\ProductLinkTypeInterface"
+        },
+        "catalog-data-product-link-attribute-interface": {
+            "type": "object",
+            "description": "",
+            "properties": {
+                "code": {
+                    "type": "string",
+                    "description": "Attribute code"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Attribute type"
+                },
+                "extension_attributes": {
+                    "$ref": "#/definitions/catalog-data-product-link-attribute-extension-interface"
+                }
+            },
+            "required": [
+                "code",
+                "type"
+            ]
+        },
+        "catalog-data-product-link-attribute-extension-interface": {
+            "type": "object",
+            "description": "ExtensionInterface class for @see \\Magento\\Catalog\\Api\\Data\\ProductLinkAttributeInterface"
+        },
+        "catalog-data-product-render-search-results-interface": {
+            "type": "object",
+            "description": "Dto that holds render information about products",
+            "properties": {
+                "items": {
+                    "type": "array",
+                    "description": "List of products rendered information",
+                    "items": {
+                        "$ref": "#/definitions/catalog-data-product-render-interface"
+                    }
+                }
+            },
+            "required": [
+                "items"
+            ]
+        },
+        "catalog-data-product-render-interface": {
+            "type": "object",
+            "description": "Represents Data Object which holds enough information to render product This information is put into part as Add To Cart or Add to Compare Data or Price Data",
+            "properties": {
+                "add_to_cart_button": {
+                    "$ref": "#/definitions/catalog-data-product-render-button-interface"
+                },
+                "add_to_compare_button": {
+                    "$ref": "#/definitions/catalog-data-product-render-button-interface"
+                },
+                "price_info": {
+                    "$ref": "#/definitions/catalog-data-product-render-price-info-interface"
+                },
+                "images": {
+                    "type": "array",
+                    "description": "Enough information, that needed to render image on front",
+                    "items": {
+                        "$ref": "#/definitions/catalog-data-product-render-image-interface"
+                    }
+                },
+                "url": {
+                    "type": "string",
+                    "description": "Product url"
+                },
+                "id": {
+                    "type": "integer",
+                    "description": "Product identifier"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Product name"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Product type. Such as bundle, grouped, simple, etc..."
+                },
+                "is_salable": {
+                    "type": "string",
+                    "description": "Information about product saleability (In Stock)"
+                },
+                "store_id": {
+                    "type": "integer",
+                    "description": "Information about current store id or requested store id"
+                },
+                "currency_code": {
+                    "type": "string",
+                    "description": "Current or desired currency code to product"
+                },
+                "extension_attributes": {
+                    "$ref": "#/definitions/catalog-data-product-render-extension-interface"
+                }
+            },
+            "required": [
+                "add_to_cart_button",
+                "add_to_compare_button",
+                "price_info",
+                "images",
+                "url",
+                "id",
+                "name",
+                "type",
+                "is_salable",
+                "store_id",
+                "currency_code",
+                "extension_attributes"
+            ]
+        },
+        "catalog-data-product-render-button-interface": {
+            "type": "object",
+            "description": "Button interface. This interface represents all manner of product buttons: add to cart, add to compare, etc... The buttons describes by this interface should have interaction with backend",
+            "properties": {
+                "post_data": {
+                    "type": "string",
+                    "description": "Post data"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "Url, needed to add product to cart"
+                },
+                "required_options": {
+                    "type": "boolean",
+                    "description": "Flag whether a product has options or not"
+                },
+                "extension_attributes": {
+                    "$ref": "#/definitions/catalog-data-product-render-button-extension-interface"
+                }
+            },
+            "required": [
+                "post_data",
+                "url",
+                "required_options"
+            ]
+        },
+        "catalog-data-product-render-button-extension-interface": {
+            "type": "object",
+            "description": "ExtensionInterface class for @see \\Magento\\Catalog\\Api\\Data\\ProductRender\\ButtonInterface"
+        },
+        "catalog-data-product-render-price-info-interface": {
+            "type": "object",
+            "description": "Price interface.",
+            "properties": {
+                "final_price": {
+                    "type": "number",
+                    "description": "Final price"
+                },
+                "max_price": {
+                    "type": "number",
+                    "description": "Max price of a product"
+                },
+                "max_regular_price": {
+                    "type": "number",
+                    "description": "Max regular price"
+                },
+                "minimal_regular_price": {
+                    "type": "number",
+                    "description": "Minimal regular price"
+                },
+                "special_price": {
+                    "type": "number",
+                    "description": "Special price"
+                },
+                "minimal_price": {
+                    "type": "number"
+                },
+                "regular_price": {
+                    "type": "number",
+                    "description": "Regular price"
+                },
+                "formatted_prices": {
+                    "$ref": "#/definitions/catalog-data-product-render-formatted-price-info-interface"
+                },
+                "extension_attributes": {
+                    "$ref": "#/definitions/catalog-data-product-render-price-info-extension-interface"
+                }
+            },
+            "required": [
+                "final_price",
+                "max_price",
+                "max_regular_price",
+                "minimal_regular_price",
+                "special_price",
+                "minimal_price",
+                "regular_price",
+                "formatted_prices"
+            ]
+        },
+        "catalog-data-product-render-formatted-price-info-interface": {
+            "type": "object",
+            "description": "Formatted Price interface. Aggregate formatted html with price representations. E.g.: <span class=\"price\">$9.00</span> Consider currency, rounding and html",
+            "properties": {
+                "final_price": {
+                    "type": "string",
+                    "description": "Html with final price"
+                },
+                "max_price": {
+                    "type": "string",
+                    "description": "Max price of a product"
+                },
+                "minimal_price": {
+                    "type": "string",
+                    "description": "The minimal price of the product or variation"
+                },
+                "max_regular_price": {
+                    "type": "string",
+                    "description": "Max regular price"
+                },
+                "minimal_regular_price": {
+                    "type": "string",
+                    "description": "Minimal regular price"
+                },
+                "special_price": {
+                    "type": "string",
+                    "description": "Special price"
+                },
+                "regular_price": {
+                    "type": "string",
+                    "description": "Price - is price of product without discounts and special price with taxes and fixed product tax"
+                },
+                "extension_attributes": {
+                    "$ref": "#/definitions/catalog-data-product-render-formatted-price-info-extension-interface"
+                }
+            },
+            "required": [
+                "final_price",
+                "max_price",
+                "minimal_price",
+                "max_regular_price",
+                "minimal_regular_price",
+                "special_price",
+                "regular_price"
+            ]
+        },
+        "catalog-data-product-render-formatted-price-info-extension-interface": {
+            "type": "object",
+            "description": "ExtensionInterface class for @see \\Magento\\Catalog\\Api\\Data\\ProductRender\\FormattedPriceInfoInterface"
+        },
+        "catalog-data-product-render-price-info-extension-interface": {
+            "type": "object",
+            "description": "ExtensionInterface class for @see \\Magento\\Catalog\\Api\\Data\\ProductRender\\PriceInfoInterface",
+            "properties": {
+                "msrp": {
+                    "$ref": "#/definitions/msrp-data-product-render-msrp-price-info-interface"
+                },
+                "tax_adjustments": {
+                    "$ref": "#/definitions/catalog-data-product-render-price-info-interface"
+                },
+                "weee_attributes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/weee-data-product-render-weee-adjustment-attribute-interface"
+                    }
+                },
+                "weee_adjustment": {
+                    "type": "string"
+                }
+            }
+        },
+        "msrp-data-product-render-msrp-price-info-interface": {
+            "type": "object",
+            "description": "Price interface.",
+            "properties": {
+                "msrp_price": {
+                    "type": "string"
+                },
+                "is_applicable": {
+                    "type": "string"
+                },
+                "is_shown_price_on_gesture": {
+                    "type": "string"
+                },
+                "msrp_message": {
+                    "type": "string"
+                },
+                "explanation_message": {
+                    "type": "string"
+                },
+                "extension_attributes": {
+                    "$ref": "#/definitions/msrp-data-product-render-msrp-price-info-extension-interface"
+                }
+            },
+            "required": [
+                "msrp_price",
+                "is_applicable",
+                "is_shown_price_on_gesture",
+                "msrp_message",
+                "explanation_message"
+            ]
+        },
+        "msrp-data-product-render-msrp-price-info-extension-interface": {
+            "type": "object",
+            "description": "ExtensionInterface class for @see \\Magento\\Msrp\\Api\\Data\\ProductRender\\MsrpPriceInfoInterface"
+        },
+        "weee-data-product-render-weee-adjustment-attribute-interface": {
+            "type": "object",
+            "description": "List of all weee attributes, their amounts, etc.., that product has",
+            "properties": {
+                "amount": {
+                    "type": "string",
+                    "description": "Weee attribute amount"
+                },
+                "tax_amount": {
+                    "type": "string",
+                    "description": "Tax which is calculated to fixed product tax attribute"
+                },
+                "tax_amount_incl_tax": {
+                    "type": "string",
+                    "description": "Tax amount of weee attribute"
+                },
+                "amount_excl_tax": {
+                    "type": "string",
+                    "description": "Product amount exclude tax"
+                },
+                "attribute_code": {
+                    "type": "string",
+                    "description": "Weee attribute code"
+                },
+                "extension_attributes": {
+                    "$ref": "#/definitions/weee-data-product-render-weee-adjustment-attribute-extension-interface"
+                }
+            },
+            "required": [
+                "amount",
+                "tax_amount",
+                "tax_amount_incl_tax",
+                "amount_excl_tax",
+                "attribute_code",
+                "extension_attributes"
+            ]
+        },
+        "weee-data-product-render-weee-adjustment-attribute-extension-interface": {
+            "type": "object",
+            "description": "ExtensionInterface class for @see \\Magento\\Weee\\Api\\Data\\ProductRender\\WeeeAdjustmentAttributeInterface"
+        },
+        "catalog-data-product-render-image-interface": {
+            "type": "object",
+            "description": "Product Render image interface. Represents physical characteristics of image, that can be used in product listing or product view",
+            "properties": {
+                "url": {
+                    "type": "string",
+                    "description": "Image url"
+                },
+                "code": {
+                    "type": "string",
+                    "description": "Image code"
+                },
+                "height": {
+                    "type": "number",
+                    "description": "Image height"
+                },
+                "width": {
+                    "type": "number",
+                    "description": "Image width in px"
+                },
+                "label": {
+                    "type": "string",
+                    "description": "Image label"
+                },
+                "resized_width": {
+                    "type": "number",
+                    "description": "Resize width"
+                },
+                "resized_height": {
+                    "type": "number",
+                    "description": "Resize height"
+                },
+                "extension_attributes": {
+                    "$ref": "#/definitions/catalog-data-product-render-image-extension-interface"
+                }
+            },
+            "required": [
+                "url",
+                "code",
+                "height",
+                "width",
+                "label",
+                "resized_width",
+                "resized_height"
+            ]
+        },
+        "catalog-data-product-render-image-extension-interface": {
+            "type": "object",
+            "description": "ExtensionInterface class for @see \\Magento\\Catalog\\Api\\Data\\ProductRender\\ImageInterface"
+        },
+        "catalog-data-product-render-extension-interface": {
+            "type": "object",
+            "description": "ExtensionInterface class for @see \\Magento\\Catalog\\Api\\Data\\ProductRenderInterface",
+            "properties": {
+                "review_html": {
+                    "type": "string"
+                },
+                "wishlist_button": {
+                    "$ref": "#/definitions/catalog-data-product-render-button-interface"
+                }
+            }
+        },
+        "catalog-data-product-interface": {
+            "type": "object",
+            "description": "",
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "description": "Id"
+                },
+                "sku": {
+                    "type": "string",
+                    "description": "Sku"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name"
+                },
+                "attribute_set_id": {
+                    "type": "integer",
+                    "description": "Attribute set id"
+                },
+                "price": {
+                    "type": "number",
+                    "description": "Price"
+                },
+                "status": {
+                    "type": "integer",
+                    "description": "Status"
+                },
+                "visibility": {
+                    "type": "integer",
+                    "description": "Visibility"
+                },
+                "type_id": {
+                    "type": "string",
+                    "description": "Type id"
+                },
+                "created_at": {
+                    "type": "string",
+                    "description": "Created date"
+                },
+                "updated_at": {
+                    "type": "string",
+                    "description": "Updated date"
+                },
+                "weight": {
+                    "type": "number",
+                    "description": "Weight"
+                },
+                "extension_attributes": {
+                    "$ref": "#/definitions/catalog-data-product-extension-interface"
+                },
+                "product_links": {
+                    "type": "array",
+                    "description": "Product links info",
+                    "items": {
+                        "$ref": "#/definitions/catalog-data-product-link-interface"
+                    }
+                },
+                "options": {
+                    "type": "array",
+                    "description": "List of product options",
+                    "items": {
+                        "$ref": "#/definitions/catalog-data-product-custom-option-interface"
+                    }
+                },
+                "media_gallery_entries": {
+                    "type": "array",
+                    "description": "Media gallery entries",
+                    "items": {
+                        "$ref": "#/definitions/catalog-data-product-attribute-media-gallery-entry-interface"
+                    }
+                },
+                "tier_prices": {
+                    "type": "array",
+                    "description": "List of product tier prices",
+                    "items": {
+                        "$ref": "#/definitions/catalog-data-product-tier-price-interface"
+                    }
+                },
+                "custom_attributes": {
+                    "type": "array",
+                    "description": "Custom attributes values.",
+                    "items": {
+                        "$ref": "#/definitions/framework-attribute-interface"
+                    }
+                }
+            },
+            "required": [
+                "sku"
+            ]
+        },
+        "catalog-data-product-extension-interface": {
+            "type": "object",
+            "description": "ExtensionInterface class for @see \\Magento\\Catalog\\Api\\Data\\ProductInterface",
+            "properties": {
+                "website_ids": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "category_links": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/catalog-data-category-link-interface"
+                    }
+                },
+                "bundle_product_options": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/bundle-data-option-interface"
+                    }
+                },
+                "stock_item": {
+                    "$ref": "#/definitions/catalog-inventory-data-stock-item-interface"
+                },
+                "configurable_product_options": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/configurable-product-data-option-interface"
+                    }
+                },
+                "configurable_product_links": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "downloadable_product_links": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/downloadable-data-link-interface"
+                    }
+                },
+                "downloadable_product_samples": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/downloadable-data-sample-interface"
+                    }
+                }
+            }
+        },
+        "catalog-data-category-link-interface": {
+            "type": "object",
+            "description": "",
+            "properties": {
+                "position": {
+                    "type": "integer"
+                },
+                "category_id": {
+                    "type": "string",
+                    "description": "Category id"
+                },
+                "extension_attributes": {
+                    "$ref": "#/definitions/catalog-data-category-link-extension-interface"
+                }
+            },
+            "required": [
+                "category_id"
+            ]
+        },
+        "catalog-data-category-link-extension-interface": {
+            "type": "object",
+            "description": "ExtensionInterface class for @see \\Magento\\Catalog\\Api\\Data\\CategoryLinkInterface"
+        },
+        "bundle-data-option-interface": {
+            "type": "object",
+            "description": "Interface OptionInterface",
+            "properties": {
+                "option_id": {
+                    "type": "integer",
+                    "description": "Option id"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "Option title"
+                },
+                "required": {
+                    "type": "boolean",
+                    "description": "Is required option"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Input type"
+                },
+                "position": {
+                    "type": "integer",
+                    "description": "Option position"
+                },
+                "sku": {
+                    "type": "string",
+                    "description": "Product sku"
+                },
+                "product_links": {
+                    "type": "array",
+                    "description": "Product links",
+                    "items": {
+                        "$ref": "#/definitions/bundle-data-link-interface"
+                    }
+                },
+                "extension_attributes": {
+                    "$ref": "#/definitions/bundle-data-option-extension-interface"
+                }
+            }
+        },
+        "bundle-data-link-interface": {
+            "type": "object",
+            "description": "Interface LinkInterface",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "The identifier"
+                },
+                "sku": {
+                    "type": "string",
+                    "description": "Linked product sku"
+                },
+                "option_id": {
+                    "type": "integer",
+                    "description": "Option id"
+                },
+                "qty": {
+                    "type": "number",
+                    "description": "Qty"
+                },
+                "position": {
+                    "type": "integer",
+                    "description": "Position"
+                },
+                "is_default": {
+                    "type": "boolean",
+                    "description": "Is default"
+                },
+                "price": {
+                    "type": "number",
+                    "description": "Price"
+                },
+                "price_type": {
+                    "type": "integer",
+                    "description": "Price type"
+                },
+                "can_change_quantity": {
+                    "type": "integer",
+                    "description": "Whether quantity could be changed"
+                },
+                "extension_attributes": {
+                    "$ref": "#/definitions/bundle-data-link-extension-interface"
+                }
+            },
+            "required": [
+                "is_default",
+                "price",
+                "price_type"
+            ]
+        },
+        "bundle-data-link-extension-interface": {
+            "type": "object",
+            "description": "ExtensionInterface class for @see \\Magento\\Bundle\\Api\\Data\\LinkInterface"
+        },
+        "bundle-data-option-extension-interface": {
+            "type": "object",
+            "description": "ExtensionInterface class for @see \\Magento\\Bundle\\Api\\Data\\OptionInterface"
+        },
+        "catalog-inventory-data-stock-item-interface": {
+            "type": "object",
+            "description": "Interface StockItem",
+            "properties": {
+                "item_id": {
+                    "type": "integer"
+                },
+                "product_id": {
+                    "type": "integer"
+                },
+                "stock_id": {
+                    "type": "integer",
+                    "description": "Stock identifier"
+                },
+                "qty": {
+                    "type": "number"
+                },
+                "is_in_stock": {
+                    "type": "boolean",
+                    "description": "Stock Availability"
+                },
+                "is_qty_decimal": {
+                    "type": "boolean"
+                },
+                "show_default_notification_message": {
+                    "type": "boolean"
+                },
+                "use_config_min_qty": {
+                    "type": "boolean"
+                },
+                "min_qty": {
+                    "type": "number",
+                    "description": "Minimal quantity available for item status in stock"
+                },
+                "use_config_min_sale_qty": {
+                    "type": "integer"
+                },
+                "min_sale_qty": {
+                    "type": "number",
+                    "description": "Minimum Qty Allowed in Shopping Cart or NULL when there is no limitation"
+                },
+                "use_config_max_sale_qty": {
+                    "type": "boolean"
+                },
+                "max_sale_qty": {
+                    "type": "number",
+                    "description": "Maximum Qty Allowed in Shopping Cart data wrapper"
+                },
+                "use_config_backorders": {
+                    "type": "boolean"
+                },
+                "backorders": {
+                    "type": "integer",
+                    "description": "Backorders status"
+                },
+                "use_config_notify_stock_qty": {
+                    "type": "boolean"
+                },
+                "notify_stock_qty": {
+                    "type": "number",
+                    "description": "Notify for Quantity Below data wrapper"
+                },
+                "use_config_qty_increments": {
+                    "type": "boolean"
+                },
+                "qty_increments": {
+                    "type": "number",
+                    "description": "Quantity Increments data wrapper"
+                },
+                "use_config_enable_qty_inc": {
+                    "type": "boolean"
+                },
+                "enable_qty_increments": {
+                    "type": "boolean",
+                    "description": "Whether Quantity Increments is enabled"
+                },
+                "use_config_manage_stock": {
+                    "type": "boolean"
+                },
+                "manage_stock": {
+                    "type": "boolean",
+                    "description": "Can Manage Stock"
+                },
+                "low_stock_date": {
+                    "type": "string"
+                },
+                "is_decimal_divided": {
+                    "type": "boolean"
+                },
+                "stock_status_changed_auto": {
+                    "type": "integer"
+                },
+                "extension_attributes": {
+                    "$ref": "#/definitions/catalog-inventory-data-stock-item-extension-interface"
+                }
+            },
+            "required": [
+                "qty",
+                "is_in_stock",
+                "is_qty_decimal",
+                "show_default_notification_message",
+                "use_config_min_qty",
+                "min_qty",
+                "use_config_min_sale_qty",
+                "min_sale_qty",
+                "use_config_max_sale_qty",
+                "max_sale_qty",
+                "use_config_backorders",
+                "backorders",
+                "use_config_notify_stock_qty",
+                "notify_stock_qty",
+                "use_config_qty_increments",
+                "qty_increments",
+                "use_config_enable_qty_inc",
+                "enable_qty_increments",
+                "use_config_manage_stock",
+                "manage_stock",
+                "low_stock_date",
+                "is_decimal_divided",
+                "stock_status_changed_auto"
+            ]
+        },
+        "catalog-inventory-data-stock-item-extension-interface": {
+            "type": "object",
+            "description": "ExtensionInterface class for @see \\Magento\\CatalogInventory\\Api\\Data\\StockItemInterface"
+        },
+        "configurable-product-data-option-interface": {
+            "type": "object",
+            "description": "Interface OptionInterface",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "attribute_id": {
+                    "type": "string"
+                },
+                "label": {
+                    "type": "string"
+                },
+                "position": {
+                    "type": "integer"
+                },
+                "is_use_default": {
+                    "type": "boolean"
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/configurable-product-data-option-value-interface"
+                    }
+                },
+                "extension_attributes": {
+                    "$ref": "#/definitions/configurable-product-data-option-extension-interface"
+                },
+                "product_id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "configurable-product-data-option-value-interface": {
+            "type": "object",
+            "description": "Interface OptionValueInterface",
+            "properties": {
+                "value_index": {
+                    "type": "integer"
+                },
+                "extension_attributes": {
+                    "$ref": "#/definitions/configurable-product-data-option-value-extension-interface"
+                }
+            },
+            "required": [
+                "value_index"
+            ]
+        },
+        "configurable-product-data-option-value-extension-interface": {
+            "type": "object",
+            "description": "ExtensionInterface class for @see \\Magento\\ConfigurableProduct\\Api\\Data\\OptionValueInterface"
+        },
+        "configurable-product-data-option-extension-interface": {
+            "type": "object",
+            "description": "ExtensionInterface class for @see \\Magento\\ConfigurableProduct\\Api\\Data\\OptionInterface"
+        },
+        "downloadable-data-link-interface": {
+            "type": "object",
+            "description": "",
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "description": "Sample(or link) id"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "sort_order": {
+                    "type": "integer"
+                },
+                "is_shareable": {
+                    "type": "integer",
+                    "description": "Shareable status"
+                },
+                "price": {
+                    "type": "number",
+                    "description": "Price"
+                },
+                "number_of_downloads": {
+                    "type": "integer",
+                    "description": "Of downloads per user"
+                },
+                "link_type": {
+                    "type": "string"
+                },
+                "link_file": {
+                    "type": "string",
+                    "description": "relative file path"
+                },
+                "link_file_content": {
+                    "$ref": "#/definitions/downloadable-data-file-content-interface"
+                },
+                "link_url": {
+                    "type": "string",
+                    "description": "Link url or null when type is 'file'"
+                },
+                "sample_type": {
+                    "type": "string"
+                },
+                "sample_file": {
+                    "type": "string",
+                    "description": "relative file path"
+                },
+                "sample_file_content": {
+                    "$ref": "#/definitions/downloadable-data-file-content-interface"
+                },
+                "sample_url": {
+                    "type": "string",
+                    "description": "file URL"
+                },
+                "extension_attributes": {
+                    "$ref": "#/definitions/downloadable-data-link-extension-interface"
+                }
+            },
+            "required": [
+                "sort_order",
+                "is_shareable",
+                "price",
+                "link_type",
+                "sample_type"
+            ]
+        },
+        "downloadable-data-file-content-interface": {
+            "type": "object",
+            "description": "",
+            "properties": {
+                "file_data": {
+                    "type": "string",
+                    "description": "Data (base64 encoded content)"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "File name"
+                },
+                "extension_attributes": {
+                    "$ref": "#/definitions/downloadable-data-file-content-extension-interface"
+                }
+            },
+            "required": [
+                "file_data",
+                "name"
+            ]
+        },
+        "downloadable-data-file-content-extension-interface": {
+            "type": "object",
+            "description": "ExtensionInterface class for @see \\Magento\\Downloadable\\Api\\Data\\File\\ContentInterface"
+        },
+        "downloadable-data-link-extension-interface": {
+            "type": "object",
+            "description": "ExtensionInterface class for @see \\Magento\\Downloadable\\Api\\Data\\LinkInterface"
+        },
+        "downloadable-data-sample-interface": {
+            "type": "object",
+            "description": "",
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "description": "Sample(or link) id"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "Title"
+                },
+                "sort_order": {
+                    "type": "integer",
+                    "description": "Order index for sample"
+                },
+                "sample_type": {
+                    "type": "string"
+                },
+                "sample_file": {
+                    "type": "string",
+                    "description": "relative file path"
+                },
+                "sample_file_content": {
+                    "$ref": "#/definitions/downloadable-data-file-content-interface"
+                },
+                "sample_url": {
+                    "type": "string",
+                    "description": "file URL"
+                },
+                "extension_attributes": {
+                    "$ref": "#/definitions/downloadable-data-sample-extension-interface"
+                }
+            },
+            "required": [
+                "title",
+                "sort_order",
+                "sample_type"
+            ]
+        },
+        "downloadable-data-sample-extension-interface": {
+            "type": "object",
+            "description": "ExtensionInterface class for @see \\Magento\\Downloadable\\Api\\Data\\SampleInterface"
+        },
+        "catalog-data-product-tier-price-interface": {
+            "type": "object",
+            "description": "",
+            "properties": {
+                "customer_group_id": {
+                    "type": "integer",
+                    "description": "Customer group id"
+                },
+                "qty": {
+                    "type": "number",
+                    "description": "Tier qty"
+                },
+                "value": {
+                    "type": "number",
+                    "description": "Price value"
+                },
+                "extension_attributes": {
+                    "$ref": "#/definitions/catalog-data-product-tier-price-extension-interface"
+                }
+            },
+            "required": [
+                "customer_group_id",
+                "qty",
+                "value"
+            ]
+        },
+        "catalog-data-product-tier-price-extension-interface": {
+            "type": "object",
+            "description": "ExtensionInterface class for @see \\Magento\\Catalog\\Api\\Data\\ProductTierPriceInterface",
+            "properties": {
+                "percentage_value": {
+                    "type": "number"
+                },
+                "website_id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "catalog-data-product-search-results-interface": {
+            "type": "object",
+            "description": "",
+            "properties": {
+                "items": {
+                    "type": "array",
+                    "description": "Attributes list.",
+                    "items": {
+                        "$ref": "#/definitions/catalog-data-product-interface"
+                    }
+                },
+                "search_criteria": {
+                    "$ref": "#/definitions/framework-search-criteria-interface"
+                },
+                "total_count": {
+                    "type": "integer",
+                    "description": "Total count."
+                }
+            },
+            "required": [
+                "items",
+                "search_criteria",
+                "total_count"
+            ]
+        },
+        "catalog-data-product-type-interface": {
+            "type": "object",
+            "description": "Product type details",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Product type code"
+                },
+                "label": {
+                    "type": "string",
+                    "description": "Product type label"
+                },
+                "extension_attributes": {
+                    "$ref": "#/definitions/catalog-data-product-type-extension-interface"
+                }
+            },
+            "required": [
+                "name",
+                "label"
+            ]
+        },
+        "catalog-data-product-type-extension-interface": {
+            "type": "object",
+            "description": "ExtensionInterface class for @see \\Magento\\Catalog\\Api\\Data\\ProductTypeInterface"
+        },
+        "catalog-data-product-website-link-interface": {
+            "type": "object",
+            "description": "",
+            "properties": {
+                "sku": {
+                    "type": "string"
+                },
+                "website_id": {
+                    "type": "integer",
+                    "description": "Website ids"
+                }
+            },
+            "required": [
+                "sku",
+                "website_id"
+            ]
+        },
+        "catalog-data-special-price-interface": {
+            "type": "object",
+            "description": "Product Special Price Interface is used to encapsulate data that can be processed by efficient price API.",
+            "properties": {
+                "price": {
+                    "type": "number",
+                    "description": "Product special price value."
+                },
+                "store_id": {
+                    "type": "integer",
+                    "description": "ID of store, that contains special price value."
+                },
+                "sku": {
+                    "type": "string",
+                    "description": "SKU of product, that contains special price value."
+                },
+                "price_from": {
+                    "type": "string",
+                    "description": "Start date for special price in Y-m-d H:i:s format."
+                },
+                "price_to": {
+                    "type": "string",
+                    "description": "End date for special price in Y-m-d H:i:s format."
+                },
+                "extension_attributes": {
+                    "$ref": "#/definitions/catalog-data-special-price-extension-interface"
+                }
+            },
+            "required": [
+                "price",
+                "store_id",
+                "sku",
+                "price_from",
+                "price_to"
+            ]
+        },
+        "catalog-data-special-price-extension-interface": {
+            "type": "object",
+            "description": "ExtensionInterface class for @see \\Magento\\Catalog\\Api\\Data\\SpecialPriceInterface"
+        },
+        "catalog-data-tier-price-interface": {
+            "type": "object",
+            "description": "Tier price interface.",
+            "properties": {
+                "price": {
+                    "type": "number",
+                    "description": "Tier price."
+                },
+                "price_type": {
+                    "type": "string",
+                    "description": "Tier price type."
+                },
+                "website_id": {
+                    "type": "integer",
+                    "description": "Website id."
+                },
+                "sku": {
+                    "type": "string",
+                    "description": "SKU."
+                },
+                "customer_group": {
+                    "type": "string",
+                    "description": "Customer group."
+                },
+                "quantity": {
+                    "type": "number",
+                    "description": "Quantity."
+                },
+                "extension_attributes": {
+                    "$ref": "#/definitions/catalog-data-tier-price-extension-interface"
+                }
+            },
+            "required": [
+                "price",
+                "price_type",
+                "website_id",
+                "sku",
+                "customer_group",
+                "quantity"
+            ]
+        },
+        "catalog-data-tier-price-extension-interface": {
+            "type": "object",
+            "description": "ExtensionInterface class for @see \\Magento\\Catalog\\Api\\Data\\TierPriceInterface"
+        }
+    }
+}
