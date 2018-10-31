@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 DIR="$(dirname "$0")"
-PROPERTIES="$DIR/../config/application.properties"
+PROPERTIES="$DIR/../config/application.conf"
 if [ ! -r "$PROPERTIES" ]; then
 	echo "Cannot read $PROPERTIES"
 	exit 1
