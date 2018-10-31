@@ -12,7 +12,7 @@
 
     <artifactId>mappings</artifactId>
 
-
+<!--
     <dependencies>
         <dependency>
             <groupId>org.mariadb.jdbc</groupId>
@@ -20,6 +20,7 @@
             <version>2.3.0</version>
         </dependency>
     </dependencies>
+-->
 
     <build>
         <plugins>
@@ -39,11 +40,11 @@
                             <sources>
                                 <source>src/gen/java</source>
                             </sources>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
+        </configuration>
+        </execution>
+        </executions>
+        </plugin>
         </plugins>
-    </build>
+        </build>
 
-</project>
+        </project>

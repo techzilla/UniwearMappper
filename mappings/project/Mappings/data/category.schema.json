@@ -1,0 +1,31 @@
+{
+  "definitions": {
+    "category": {
+      "$id": "#/definitions/category",
+      "type": "string",
+      "title": "Category Name",
+      "default": "",
+      "pattern": "^(.*)$"
+    },
+    "children": {
+      "$id": "#/definitions/children",
+      "type": "array",
+      "title": "Children Categories",
+      "items": {
+        "category": { "$ref": "#/definitions/category" },
+        "children": { "$ref": "#/definitions/children" }
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/category.schema.json",
+  "type": "object",
+  "title": "Category Schema",
+  "required": [
+    "category"
+  ],
+  "properties": {
+    "category": { "$ref": "#/definitions/category" },
+    "children": { "$ref": "#/definitions/children" }
+  }
+}
