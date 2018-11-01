@@ -129,7 +129,7 @@ public class MappingMapTobatch extends com.altova.TraceProvider
 				var2_NewRecord = com.altova.db.Dbs.newRecord();
 				var3_filter_elements_nodename = new com.altova.functions.Core.SequenceCache(com.altova.functions.Core.filterElements("Rows", closure.var1_InventorySPI_Instance));
 				com.altova.db.Dbs.addChildren(var2_NewRecord, "products|0", (new seq2_map(var3_filter_elements_nodename)));
-				com.altova.db.Dbs.addChildren(var2_NewRecord, "supplierinventory|0", com.altova.functions.Core.box((com.altova.db.Record)com.altova.functions.Core.first((new seq19_NewRecord(var3_filter_elements_nodename)))));
+				com.altova.db.Dbs.addChildren(var2_NewRecord, "supplierinventory|0", (new seq18_map(var3_filter_elements_nodename)));
 				current = var2_NewRecord;
 				pos++;
 				return true;
@@ -202,24 +202,24 @@ public class MappingMapTobatch extends com.altova.TraceProvider
 				state = 2;				
 				if (!var2_filter_elements_nodename.moveNext()) {state = 3; return false; }
 				var3_NewRecord = com.altova.db.Dbs.newRecord();
-				var4_filter_elements_nodename = new com.altova.functions.Core.SequenceCache(com.altova.functions.Core.filterElements("Size", ((com.altova.mapforce.IMFNode)(var2_filter_elements_nodename.current()))));
-				var5_filter_elements_nodename = new com.altova.functions.Core.SequenceCache(com.altova.functions.Core.filterElements("MAP Price", ((com.altova.mapforce.IMFNode)(var2_filter_elements_nodename.current()))));
-				var6_filter_elements_nodename = new com.altova.functions.Core.SequenceCache(com.altova.functions.Core.filterElements("Brand", ((com.altova.mapforce.IMFNode)(var2_filter_elements_nodename.current()))));
-				com.altova.db.Dbs.writeField(var3_NewRecord, "sku", (new seq3_join(var6_filter_elements_nodename, var4_filter_elements_nodename, ((com.altova.mapforce.IMFNode)(var2_filter_elements_nodename.current())))));
+				var4_filter_elements_nodename = new com.altova.functions.Core.SequenceCache(com.altova.functions.Core.filterElements("Brand", ((com.altova.mapforce.IMFNode)(var2_filter_elements_nodename.current()))));
+				var5_filter_elements_nodename = new com.altova.functions.Core.SequenceCache(com.altova.functions.Core.filterElements("Size", ((com.altova.mapforce.IMFNode)(var2_filter_elements_nodename.current()))));
+				var6_filter_elements_nodename = new com.altova.functions.Core.SequenceCache(com.altova.functions.Core.filterElements("MAP Price", ((com.altova.mapforce.IMFNode)(var2_filter_elements_nodename.current()))));
+				com.altova.db.Dbs.writeField(var3_NewRecord, "sku", (new seq3_join(var4_filter_elements_nodename, var5_filter_elements_nodename, ((com.altova.mapforce.IMFNode)(var2_filter_elements_nodename.current())))));
 				com.altova.db.Dbs.writeField(var3_NewRecord, "gtin", (new seq4_map(((com.altova.mapforce.IMFNode)(var2_filter_elements_nodename.current())))));
 				com.altova.db.Dbs.writeField(var3_NewRecord, "type", (new seq5_map(((com.altova.mapforce.IMFNode)(var2_filter_elements_nodename.current())))));
 				com.altova.db.Dbs.writeField(var3_NewRecord, "color", (new seq6_map(((com.altova.mapforce.IMFNode)(var2_filter_elements_nodename.current())))));
 				com.altova.db.Dbs.writeField(var3_NewRecord, "color_type", (new seq7_map(((com.altova.mapforce.IMFNode)(var2_filter_elements_nodename.current())))));
-				com.altova.db.Dbs.writeField(var3_NewRecord, "size", (new seq8_map(var4_filter_elements_nodename)));
+				com.altova.db.Dbs.writeField(var3_NewRecord, "size", (new seq8_map(var5_filter_elements_nodename)));
 				com.altova.db.Dbs.writeField(var3_NewRecord, "gender", (new seq9_map(((com.altova.mapforce.IMFNode)(var2_filter_elements_nodename.current())))));
-				com.altova.db.Dbs.writeField(var3_NewRecord, "price", (new seq10_join(var5_filter_elements_nodename, ((com.altova.mapforce.IMFNode)(var2_filter_elements_nodename.current())))));
-				com.altova.db.Dbs.writeField(var3_NewRecord, "map", (new seq12_map(var5_filter_elements_nodename)));
-				com.altova.db.Dbs.writeField(var3_NewRecord, "weight", (new seq13_map(((com.altova.mapforce.IMFNode)(var2_filter_elements_nodename.current())))));
-				com.altova.db.Dbs.writeField(var3_NewRecord, "brand", (new seq14_map(var6_filter_elements_nodename)));
-				com.altova.db.Dbs.writeField(var3_NewRecord, "collection", (new seq15_map(((com.altova.mapforce.IMFNode)(var2_filter_elements_nodename.current())))));
-				com.altova.db.Dbs.writeField(var3_NewRecord, "title", (new seq16_map(((com.altova.mapforce.IMFNode)(var2_filter_elements_nodename.current())))));
-				com.altova.db.Dbs.writeField(var3_NewRecord, "description", (new seq17_map(((com.altova.mapforce.IMFNode)(var2_filter_elements_nodename.current())))));
-				com.altova.db.Dbs.writeField(var3_NewRecord, "image", (new seq18_map(((com.altova.mapforce.IMFNode)(var2_filter_elements_nodename.current())))));
+				com.altova.db.Dbs.writeField(var3_NewRecord, "price", (new seq10_join(var6_filter_elements_nodename, ((com.altova.mapforce.IMFNode)(var2_filter_elements_nodename.current())))));
+				com.altova.db.Dbs.writeField(var3_NewRecord, "map", (new seq11_map(var6_filter_elements_nodename)));
+				com.altova.db.Dbs.writeField(var3_NewRecord, "weight", (new seq12_map(((com.altova.mapforce.IMFNode)(var2_filter_elements_nodename.current())))));
+				com.altova.db.Dbs.writeField(var3_NewRecord, "brand", (new seq13_map(var4_filter_elements_nodename)));
+				com.altova.db.Dbs.writeField(var3_NewRecord, "collection", (new seq14_map(((com.altova.mapforce.IMFNode)(var2_filter_elements_nodename.current())))));
+				com.altova.db.Dbs.writeField(var3_NewRecord, "title", (new seq15_map(((com.altova.mapforce.IMFNode)(var2_filter_elements_nodename.current())))));
+				com.altova.db.Dbs.writeField(var3_NewRecord, "description", (new seq16_map(((com.altova.mapforce.IMFNode)(var2_filter_elements_nodename.current())))));
+				com.altova.db.Dbs.writeField(var3_NewRecord, "image", (new seq17_map(((com.altova.mapforce.IMFNode)(var2_filter_elements_nodename.current())))));
 				current = var3_NewRecord;
 				pos++;
 				return true;
@@ -341,7 +341,7 @@ public class MappingMapTobatch extends com.altova.TraceProvider
 			private boolean moveNext_8() throws Exception {
 				state = 8;				
 				if (!var7_filter_elements_nodename.moveNext()) {state = 9; return false; }
-				current = com.altova.functions.Core.concat(com.altova.functions.Core.concat(com.altova.functions.Core.concat(com.altova.functions.Core.concat(com.altova.functions.Core.concat(com.altova.functions.Core.concat(biz.uniwear.batch.mappings.vmf.vmf1_inputtoresult.eval(com.altova.functions.Lang.lowercase(com.altova.CoreTypes.nodeToString(((com.altova.mapforce.IMFNode)(var4_filter_elements_nodename.current()))))), "-"), com.altova.CoreTypes.nodeToString(((com.altova.mapforce.IMFNode)(var5_filter.current())))), "-"), com.altova.functions.Lang.rightTrim(com.altova.functions.Lang.leftTrim(com.altova.CoreTypes.nodeToString(((com.altova.mapforce.IMFNode)(var6_filter.current())))))), "-"), com.altova.functions.Lang.rightTrim(com.altova.functions.Lang.leftTrim(com.altova.CoreTypes.nodeToString(((com.altova.mapforce.IMFNode)(var7_filter_elements_nodename.current()))))));
+				current = com.altova.functions.Core.concat(com.altova.functions.Core.concat(com.altova.functions.Core.concat(com.altova.functions.Core.concat(com.altova.functions.Core.concat(com.altova.functions.Core.concat(biz.uniwear.batch.mappings.vmf.vmf1_inputtoresult.eval(com.altova.functions.Lang.lowercase(com.altova.CoreTypes.nodeToString(((com.altova.mapforce.IMFNode)(var4_filter_elements_nodename.current()))))), "-"), com.altova.CoreTypes.nodeToString(((com.altova.mapforce.IMFNode)(var5_filter.current())))), "-"), com.altova.CoreTypes.nodeToString(((com.altova.mapforce.IMFNode)(var6_filter.current())))), "-"), com.altova.functions.Core.translate(com.altova.CoreTypes.nodeToString(((com.altova.mapforce.IMFNode)(var7_filter_elements_nodename.current()))), ".", "_"));
 				pos++;
 				return true;
 			}
@@ -417,7 +417,7 @@ public class MappingMapTobatch extends com.altova.TraceProvider
 			private boolean moveNext_2() throws Exception {
 				state = 2;				
 				if (!var2_filter_elements_nodename.moveNext()) {state = 3; return false; }
-				current = com.altova.functions.Core.translate(com.altova.functions.Core.FormatNumber(com.altova.CoreTypes.integerToDecimal(com.altova.CoreTypes.parseInteger(com.altova.CoreTypes.nodeToString(((com.altova.mapforce.IMFNode)(var2_filter_elements_nodename.current()))))), "##############"), ".,", com.altova.functions.Core.concat(biz.uniwear.batch.mappings.core.firstCharacter.eval(".", "."), biz.uniwear.batch.mappings.core.firstCharacter.eval(",", ",")));
+				current = com.altova.functions.Core.translate(com.altova.functions.Core.FormatNumber(com.altova.functions.Core.round(com.altova.CoreTypes.parseDecimal(com.altova.CoreTypes.nodeToString(((com.altova.mapforce.IMFNode)(var2_filter_elements_nodename.current()))))), "##############"), ".,", com.altova.functions.Core.concat(biz.uniwear.batch.mappings.core.firstCharacter.eval(".", "."), biz.uniwear.batch.mappings.core.firstCharacter.eval(",", ",")));
 				pos++;
 				return true;
 			}
@@ -828,6 +828,7 @@ public class MappingMapTobatch extends com.altova.TraceProvider
 			IEnumerator var3_filter_elements_nodename;
 			IEnumerator var4_filter_elements_nodename;
 			java.math.BigDecimal var5_cast;
+			java.math.BigDecimal var6_multiply;
 			public Enumerator(seq10_join closure) 
 			{
 				this.closure = closure;
@@ -848,6 +849,7 @@ public class MappingMapTobatch extends com.altova.TraceProvider
 					case 3:	if (moveNext_3()) return true; break;
 					case 4:	if (moveNext_4()) return true; break;
 					case 5:	if (moveNext_5()) return true; break;
+					case 6:	if (moveNext_6()) return true; break;
  					}
 				}
 				return false;
@@ -855,7 +857,7 @@ public class MappingMapTobatch extends com.altova.TraceProvider
 
 			private boolean moveNext_1() throws Exception {
 				state = 2;				
-				var3_filter_elements_nodename = (com.altova.functions.Core.filterElements("Price ", closure.var2_cur)).enumerator();
+				var3_filter_elements_nodename = (com.altova.functions.Core.filterElements("Price", closure.var2_cur)).enumerator();
 				return false;
 			}
 			private boolean moveNext_2() throws Exception {
@@ -873,7 +875,9 @@ public class MappingMapTobatch extends com.altova.TraceProvider
 				state = 4;				
 				if (!var4_filter_elements_nodename.moveNext()) {state = 5; return false; }
 				var5_cast = com.altova.CoreTypes.parseDecimal(com.altova.CoreTypes.nodeToString(((com.altova.mapforce.IMFNode)(var4_filter_elements_nodename.current()))));
-				current = com.altova.CoreTypes.parseDecimal((java.lang.String)com.altova.functions.Core.first((new seq11_if_greater(var5_cast, ((com.altova.mapforce.IMFNode)(var3_filter_elements_nodename.current()))))));
+				var6_multiply = com.altova.functions.Core.multiply(com.altova.CoreTypes.parseDecimal(com.altova.CoreTypes.nodeToString(((com.altova.mapforce.IMFNode)(var3_filter_elements_nodename.current())))), new java.math.BigDecimal("0.50"));
+				if (!(com.altova.functions.Core.greater(var6_multiply, var5_cast))) {state = 6; return false; }
+				current = var6_multiply;
 				pos++;
 				return true;
 			}
@@ -881,6 +885,12 @@ public class MappingMapTobatch extends com.altova.TraceProvider
 				state = 2;				
 				if( var4_filter_elements_nodename != null ) { var4_filter_elements_nodename.close(); var4_filter_elements_nodename = null; }
 				return false;
+			}
+			private boolean moveNext_6() throws Exception {
+				state = 4;				
+				current = var5_cast;
+				pos++;
+				return true;
 			}
 
 			
@@ -898,79 +908,11 @@ public class MappingMapTobatch extends com.altova.TraceProvider
 		}
 				
 	}
-	static class seq11_if_greater implements IEnumerable
-	{
-		java.math.BigDecimal var1_cast;
-		com.altova.mapforce.IMFNode var2_cur;
-	
-		public seq11_if_greater(java.math.BigDecimal var1_cast, com.altova.mapforce.IMFNode var2_cur)
-		{
-			this.var1_cast = var1_cast;
-			this.var2_cur = var2_cur;
-		}
-
-		public IEnumerator enumerator() {return new Enumerator(this);}
-		
-		public static class Enumerator implements IEnumerator
-		{
-			int pos = 0;
-			int state = 1;
-			Object current;
-			seq11_if_greater closure;
-			public Enumerator(seq11_if_greater closure) 
-			{
-				this.closure = closure;
-			}
-			
-			public Object current() {return current;}
-			
-			public int position() {return pos;}
-			
-			public boolean moveNext() throws Exception
-			{
-				while (state != 0)
-				{
-					switch (state) 
-					{
-					case 1:	if (moveNext_1()) return true; break;
-					case 2:	if (moveNext_2()) return true; break;
- 					}
-				}
-				return false;
-			}
-
-			private boolean moveNext_1() throws Exception {
-				state = 0;				
-				if (!(com.altova.functions.Core.greater(com.altova.functions.Core.multiply(com.altova.CoreTypes.parseDecimal(com.altova.CoreTypes.nodeToString(closure.var2_cur)), new java.math.BigDecimal("0.50")), closure.var1_cast))) {state = 2; return false; }
-				current = com.altova.CoreTypes.booleanToString(com.altova.CoreTypes.parseBoolean("true"));
-				pos++;
-				return true;
-			}
-			private boolean moveNext_2() throws Exception {
-				state = 0;				
-				current = com.altova.CoreTypes.decimalToString(closure.var1_cast);
-				pos++;
-				return true;
-			}
-
-			
-			public void close()
-			{
-				try
-				{
-				}
-				catch (Exception e)
-				{
-				}
-			}
-		}
-				
-	}
-	static class seq12_map implements IEnumerable
+	static class seq11_map implements IEnumerable
 	{
 		com.altova.mapforce.IEnumerable var1_filter_elements_nodename;
 	
-		public seq12_map(com.altova.mapforce.IEnumerable var1_filter_elements_nodename)
+		public seq11_map(com.altova.mapforce.IEnumerable var1_filter_elements_nodename)
 		{
 			this.var1_filter_elements_nodename = var1_filter_elements_nodename;
 		}
@@ -982,9 +924,9 @@ public class MappingMapTobatch extends com.altova.TraceProvider
 			int pos = 0;
 			int state = 1;
 			Object current;
-			seq12_map closure;
+			seq11_map closure;
 			IEnumerator var2_filter_elements_nodename;
-			public Enumerator(seq12_map closure) 
+			public Enumerator(seq11_map closure) 
 			{
 				this.closure = closure;
 			}
@@ -1039,11 +981,11 @@ public class MappingMapTobatch extends com.altova.TraceProvider
 		}
 				
 	}
-	static class seq13_map implements IEnumerable
+	static class seq12_map implements IEnumerable
 	{
 		com.altova.mapforce.IMFNode var1_cur;
 	
-		public seq13_map(com.altova.mapforce.IMFNode var1_cur)
+		public seq12_map(com.altova.mapforce.IMFNode var1_cur)
 		{
 			this.var1_cur = var1_cur;
 		}
@@ -1055,9 +997,9 @@ public class MappingMapTobatch extends com.altova.TraceProvider
 			int pos = 0;
 			int state = 1;
 			Object current;
-			seq13_map closure;
+			seq12_map closure;
 			IEnumerator var2_filter_elements_nodename;
-			public Enumerator(seq13_map closure) 
+			public Enumerator(seq12_map closure) 
 			{
 				this.closure = closure;
 			}
@@ -1112,13 +1054,86 @@ public class MappingMapTobatch extends com.altova.TraceProvider
 		}
 				
 	}
-	static class seq14_map implements IEnumerable
+	static class seq13_map implements IEnumerable
 	{
 		com.altova.mapforce.IEnumerable var1_filter_elements_nodename;
 	
-		public seq14_map(com.altova.mapforce.IEnumerable var1_filter_elements_nodename)
+		public seq13_map(com.altova.mapforce.IEnumerable var1_filter_elements_nodename)
 		{
 			this.var1_filter_elements_nodename = var1_filter_elements_nodename;
+		}
+
+		public IEnumerator enumerator() {return new Enumerator(this);}
+		
+		public static class Enumerator implements IEnumerator
+		{
+			int pos = 0;
+			int state = 1;
+			Object current;
+			seq13_map closure;
+			IEnumerator var2_filter_elements_nodename;
+			public Enumerator(seq13_map closure) 
+			{
+				this.closure = closure;
+			}
+			
+			public Object current() {return current;}
+			
+			public int position() {return pos;}
+			
+			public boolean moveNext() throws Exception
+			{
+				while (state != 0)
+				{
+					switch (state) 
+					{
+					case 1:	if (moveNext_1()) return true; break;
+					case 2:	if (moveNext_2()) return true; break;
+					case 3:	if (moveNext_3()) return true; break;
+ 					}
+				}
+				return false;
+			}
+
+			private boolean moveNext_1() throws Exception {
+				state = 2;				
+				var2_filter_elements_nodename = (closure.var1_filter_elements_nodename).enumerator();
+				return false;
+			}
+			private boolean moveNext_2() throws Exception {
+				state = 2;				
+				if (!var2_filter_elements_nodename.moveNext()) {state = 3; return false; }
+				current = com.altova.CoreTypes.nodeToString(((com.altova.mapforce.IMFNode)(var2_filter_elements_nodename.current())));
+				pos++;
+				return true;
+			}
+			private boolean moveNext_3() throws Exception {
+				state = 0;				
+				if( var2_filter_elements_nodename != null ) { var2_filter_elements_nodename.close(); var2_filter_elements_nodename = null; }
+				return false;
+			}
+
+			
+			public void close()
+			{
+				try
+				{
+				if( var2_filter_elements_nodename != null ) { var2_filter_elements_nodename.close(); var2_filter_elements_nodename = null; }
+				}
+				catch (Exception e)
+				{
+				}
+			}
+		}
+				
+	}
+	static class seq14_map implements IEnumerable
+	{
+		com.altova.mapforce.IMFNode var1_cur;
+	
+		public seq14_map(com.altova.mapforce.IMFNode var1_cur)
+		{
+			this.var1_cur = var1_cur;
 		}
 
 		public IEnumerator enumerator() {return new Enumerator(this);}
@@ -1155,7 +1170,7 @@ public class MappingMapTobatch extends com.altova.TraceProvider
 
 			private boolean moveNext_1() throws Exception {
 				state = 2;				
-				var2_filter_elements_nodename = (closure.var1_filter_elements_nodename).enumerator();
+				var2_filter_elements_nodename = (com.altova.functions.Core.filterElements("Collection", closure.var1_cur)).enumerator();
 				return false;
 			}
 			private boolean moveNext_2() throws Exception {
@@ -1228,7 +1243,7 @@ public class MappingMapTobatch extends com.altova.TraceProvider
 
 			private boolean moveNext_1() throws Exception {
 				state = 2;				
-				var2_filter_elements_nodename = (com.altova.functions.Core.filterElements("Collection", closure.var1_cur)).enumerator();
+				var2_filter_elements_nodename = (com.altova.functions.Core.filterElements("Short Description", closure.var1_cur)).enumerator();
 				return false;
 			}
 			private boolean moveNext_2() throws Exception {
@@ -1301,7 +1316,7 @@ public class MappingMapTobatch extends com.altova.TraceProvider
 
 			private boolean moveNext_1() throws Exception {
 				state = 2;				
-				var2_filter_elements_nodename = (com.altova.functions.Core.filterElements("Short Description", closure.var1_cur)).enumerator();
+				var2_filter_elements_nodename = (com.altova.functions.Core.filterElements("Full Description", closure.var1_cur)).enumerator();
 				return false;
 			}
 			private boolean moveNext_2() throws Exception {
@@ -1374,7 +1389,7 @@ public class MappingMapTobatch extends com.altova.TraceProvider
 
 			private boolean moveNext_1() throws Exception {
 				state = 2;				
-				var2_filter_elements_nodename = (com.altova.functions.Core.filterElements("Full Description", closure.var1_cur)).enumerator();
+				var2_filter_elements_nodename = (com.altova.functions.Core.filterElements("Product Shot", closure.var1_cur)).enumerator();
 				return false;
 			}
 			private boolean moveNext_2() throws Exception {
@@ -1406,11 +1421,11 @@ public class MappingMapTobatch extends com.altova.TraceProvider
 	}
 	static class seq18_map implements IEnumerable
 	{
-		com.altova.mapforce.IMFNode var1_cur;
+		com.altova.mapforce.IEnumerable var1_filter_elements_nodename;
 	
-		public seq18_map(com.altova.mapforce.IMFNode var1_cur)
+		public seq18_map(com.altova.mapforce.IEnumerable var1_filter_elements_nodename)
 		{
-			this.var1_cur = var1_cur;
+			this.var1_filter_elements_nodename = var1_filter_elements_nodename;
 		}
 
 		public IEnumerator enumerator() {return new Enumerator(this);}
@@ -1422,6 +1437,7 @@ public class MappingMapTobatch extends com.altova.TraceProvider
 			Object current;
 			seq18_map closure;
 			IEnumerator var2_filter_elements_nodename;
+			com.altova.db.Record var3_NewRecord;
 			public Enumerator(seq18_map closure) 
 			{
 				this.closure = closure;
@@ -1447,13 +1463,18 @@ public class MappingMapTobatch extends com.altova.TraceProvider
 
 			private boolean moveNext_1() throws Exception {
 				state = 2;				
-				var2_filter_elements_nodename = (com.altova.functions.Core.filterElements("Product Shot", closure.var1_cur)).enumerator();
+				var2_filter_elements_nodename = (closure.var1_filter_elements_nodename).enumerator();
 				return false;
 			}
 			private boolean moveNext_2() throws Exception {
 				state = 2;				
 				if (!var2_filter_elements_nodename.moveNext()) {state = 3; return false; }
-				current = com.altova.CoreTypes.nodeToString(((com.altova.mapforce.IMFNode)(var2_filter_elements_nodename.current())));
+				var3_NewRecord = com.altova.db.Dbs.newRecord();
+				com.altova.db.Dbs.writeField(var3_NewRecord, "gtin", (new seq19_map(((com.altova.mapforce.IMFNode)(var2_filter_elements_nodename.current())))));
+				com.altova.db.Dbs.writeField(var3_NewRecord, "supplier", com.altova.functions.Core.box("SPI"));
+				com.altova.db.Dbs.writeField(var3_NewRecord, "price", (new seq20_map(((com.altova.mapforce.IMFNode)(var2_filter_elements_nodename.current())))));
+				com.altova.db.Dbs.writeField(var3_NewRecord, "stock", (new seq21_map(((com.altova.mapforce.IMFNode)(var2_filter_elements_nodename.current())))));
+				current = var3_NewRecord;
 				pos++;
 				return true;
 			}
@@ -1477,13 +1498,13 @@ public class MappingMapTobatch extends com.altova.TraceProvider
 		}
 				
 	}
-	static class seq19_NewRecord implements IEnumerable
+	static class seq19_map implements IEnumerable
 	{
-		com.altova.mapforce.IEnumerable var1_filter_elements_nodename;
+		com.altova.mapforce.IMFNode var1_cur;
 	
-		public seq19_NewRecord(com.altova.mapforce.IEnumerable var1_filter_elements_nodename)
+		public seq19_map(com.altova.mapforce.IMFNode var1_cur)
 		{
-			this.var1_filter_elements_nodename = var1_filter_elements_nodename;
+			this.var1_cur = var1_cur;
 		}
 
 		public IEnumerator enumerator() {return new Enumerator(this);}
@@ -1493,9 +1514,9 @@ public class MappingMapTobatch extends com.altova.TraceProvider
 			int pos = 0;
 			int state = 1;
 			Object current;
-			seq19_NewRecord closure;
-			com.altova.db.Record var2_NewRecord;
-			public Enumerator(seq19_NewRecord closure) 
+			seq19_map closure;
+			IEnumerator var2_filter_elements_nodename;
+			public Enumerator(seq19_map closure) 
 			{
 				this.closure = closure;
 			}
@@ -1511,21 +1532,29 @@ public class MappingMapTobatch extends com.altova.TraceProvider
 					switch (state) 
 					{
 					case 1:	if (moveNext_1()) return true; break;
+					case 2:	if (moveNext_2()) return true; break;
+					case 3:	if (moveNext_3()) return true; break;
  					}
 				}
 				return false;
 			}
 
 			private boolean moveNext_1() throws Exception {
-				state = 0;				
-				var2_NewRecord = com.altova.db.Dbs.newRecord();
-				com.altova.db.Dbs.writeField(var2_NewRecord, "gtin", (new seq20_map(closure.var1_filter_elements_nodename)));
-				com.altova.db.Dbs.writeField(var2_NewRecord, "supplier", com.altova.functions.Core.box("SPI"));
-				com.altova.db.Dbs.writeField(var2_NewRecord, "price", (new seq22_map(closure.var1_filter_elements_nodename)));
-				com.altova.db.Dbs.writeField(var2_NewRecord, "stock", (new seq24_map(closure.var1_filter_elements_nodename)));
-				current = var2_NewRecord;
+				state = 2;				
+				var2_filter_elements_nodename = (com.altova.functions.Core.filterElements("UPC", closure.var1_cur)).enumerator();
+				return false;
+			}
+			private boolean moveNext_2() throws Exception {
+				state = 2;				
+				if (!var2_filter_elements_nodename.moveNext()) {state = 3; return false; }
+				current = com.altova.functions.Core.translate(com.altova.functions.Core.FormatNumber(com.altova.functions.Core.round(com.altova.CoreTypes.parseDecimal(com.altova.CoreTypes.nodeToString(((com.altova.mapforce.IMFNode)(var2_filter_elements_nodename.current()))))), "##############"), ".,", com.altova.functions.Core.concat(biz.uniwear.batch.mappings.core.firstCharacter.eval(".", "."), biz.uniwear.batch.mappings.core.firstCharacter.eval(",", ",")));
 				pos++;
 				return true;
+			}
+			private boolean moveNext_3() throws Exception {
+				state = 0;				
+				if( var2_filter_elements_nodename != null ) { var2_filter_elements_nodename.close(); var2_filter_elements_nodename = null; }
+				return false;
 			}
 
 			
@@ -1533,6 +1562,7 @@ public class MappingMapTobatch extends com.altova.TraceProvider
 			{
 				try
 				{
+				if( var2_filter_elements_nodename != null ) { var2_filter_elements_nodename.close(); var2_filter_elements_nodename = null; }
 				}
 				catch (Exception e)
 				{
@@ -1543,11 +1573,11 @@ public class MappingMapTobatch extends com.altova.TraceProvider
 	}
 	static class seq20_map implements IEnumerable
 	{
-		com.altova.mapforce.IEnumerable var1_filter_elements_nodename;
+		com.altova.mapforce.IMFNode var1_cur;
 	
-		public seq20_map(com.altova.mapforce.IEnumerable var1_filter_elements_nodename)
+		public seq20_map(com.altova.mapforce.IMFNode var1_cur)
 		{
-			this.var1_filter_elements_nodename = var1_filter_elements_nodename;
+			this.var1_cur = var1_cur;
 		}
 
 		public IEnumerator enumerator() {return new Enumerator(this);}
@@ -1558,7 +1588,7 @@ public class MappingMapTobatch extends com.altova.TraceProvider
 			int state = 1;
 			Object current;
 			seq20_map closure;
-			IEnumerator var2_join;
+			IEnumerator var2_filter_elements_nodename;
 			public Enumerator(seq20_map closure) 
 			{
 				this.closure = closure;
@@ -1584,106 +1614,19 @@ public class MappingMapTobatch extends com.altova.TraceProvider
 
 			private boolean moveNext_1() throws Exception {
 				state = 2;				
-				var2_join = ((new seq21_join(closure.var1_filter_elements_nodename))).enumerator();
+				var2_filter_elements_nodename = (com.altova.functions.Core.filterElements("Price", closure.var1_cur)).enumerator();
 				return false;
 			}
 			private boolean moveNext_2() throws Exception {
 				state = 2;				
-				if (!var2_join.moveNext()) {state = 3; return false; }
-				current = var2_join.current();
-				pos++;
-				return true;
-			}
-			private boolean moveNext_3() throws Exception {
-				state = 0;				
-				if( var2_join != null ) { var2_join.close(); var2_join = null; }
-				return false;
-			}
-
-			
-			public void close()
-			{
-				try
-				{
-				if( var2_join != null ) { var2_join.close(); var2_join = null; }
-				}
-				catch (Exception e)
-				{
-				}
-			}
-		}
-				
-	}
-	static class seq21_join implements IEnumerable
-	{
-		com.altova.mapforce.IEnumerable var1_filter_elements_nodename;
-	
-		public seq21_join(com.altova.mapforce.IEnumerable var1_filter_elements_nodename)
-		{
-			this.var1_filter_elements_nodename = var1_filter_elements_nodename;
-		}
-
-		public IEnumerator enumerator() {return new Enumerator(this);}
-		
-		public static class Enumerator implements IEnumerator
-		{
-			int pos = 0;
-			int state = 1;
-			Object current;
-			seq21_join closure;
-			IEnumerator var2_filter_elements_nodename;
-			IEnumerator var3_filter_elements_nodename;
-			public Enumerator(seq21_join closure) 
-			{
-				this.closure = closure;
-			}
-			
-			public Object current() {return current;}
-			
-			public int position() {return pos;}
-			
-			public boolean moveNext() throws Exception
-			{
-				while (state != 0)
-				{
-					switch (state) 
-					{
-					case 1:	if (moveNext_1()) return true; break;
-					case 2:	if (moveNext_2()) return true; break;
-					case 3:	if (moveNext_3()) return true; break;
-					case 4:	if (moveNext_4()) return true; break;
-					case 5:	if (moveNext_5()) return true; break;
- 					}
-				}
-				return false;
-			}
-
-			private boolean moveNext_1() throws Exception {
-				state = 2;				
-				var2_filter_elements_nodename = (closure.var1_filter_elements_nodename).enumerator();
-				return false;
-			}
-			private boolean moveNext_2() throws Exception {
-				state = 4;				
 				if (!var2_filter_elements_nodename.moveNext()) {state = 3; return false; }
-				var3_filter_elements_nodename = (com.altova.functions.Core.filterElements("UPC", ((com.altova.mapforce.IMFNode)(var2_filter_elements_nodename.current())))).enumerator();
-				return false;
+				current = com.altova.CoreTypes.parseDecimal(com.altova.CoreTypes.nodeToString(((com.altova.mapforce.IMFNode)(var2_filter_elements_nodename.current()))));
+				pos++;
+				return true;
 			}
 			private boolean moveNext_3() throws Exception {
 				state = 0;				
 				if( var2_filter_elements_nodename != null ) { var2_filter_elements_nodename.close(); var2_filter_elements_nodename = null; }
-				return false;
-			}
-			private boolean moveNext_4() throws Exception {
-				state = 4;				
-				if (!var3_filter_elements_nodename.moveNext()) {state = 5; return false; }
-				current = com.altova.functions.Core.translate(com.altova.functions.Core.FormatNumber(com.altova.CoreTypes.integerToDecimal(com.altova.CoreTypes.parseInteger(com.altova.CoreTypes.nodeToString(((com.altova.mapforce.IMFNode)(var3_filter_elements_nodename.current()))))), "##############"), ".,", com.altova.functions.Core.concat(biz.uniwear.batch.mappings.core.firstCharacter.eval(".", "."), biz.uniwear.batch.mappings.core.firstCharacter.eval(",", ",")));
-				pos++;
-				return true;
-			}
-			private boolean moveNext_5() throws Exception {
-				state = 2;				
-				if( var3_filter_elements_nodename != null ) { var3_filter_elements_nodename.close(); var3_filter_elements_nodename = null; }
 				return false;
 			}
 
@@ -1692,7 +1635,6 @@ public class MappingMapTobatch extends com.altova.TraceProvider
 			{
 				try
 				{
-				if( var3_filter_elements_nodename != null ) { var3_filter_elements_nodename.close(); var3_filter_elements_nodename = null; }
 				if( var2_filter_elements_nodename != null ) { var2_filter_elements_nodename.close(); var2_filter_elements_nodename = null; }
 				}
 				catch (Exception e)
@@ -1702,13 +1644,13 @@ public class MappingMapTobatch extends com.altova.TraceProvider
 		}
 				
 	}
-	static class seq22_map implements IEnumerable
+	static class seq21_map implements IEnumerable
 	{
-		com.altova.mapforce.IEnumerable var1_filter_elements_nodename;
+		com.altova.mapforce.IMFNode var1_cur;
 	
-		public seq22_map(com.altova.mapforce.IEnumerable var1_filter_elements_nodename)
+		public seq21_map(com.altova.mapforce.IMFNode var1_cur)
 		{
-			this.var1_filter_elements_nodename = var1_filter_elements_nodename;
+			this.var1_cur = var1_cur;
 		}
 
 		public IEnumerator enumerator() {return new Enumerator(this);}
@@ -1718,83 +1660,9 @@ public class MappingMapTobatch extends com.altova.TraceProvider
 			int pos = 0;
 			int state = 1;
 			Object current;
-			seq22_map closure;
-			IEnumerator var2_join;
-			public Enumerator(seq22_map closure) 
-			{
-				this.closure = closure;
-			}
-			
-			public Object current() {return current;}
-			
-			public int position() {return pos;}
-			
-			public boolean moveNext() throws Exception
-			{
-				while (state != 0)
-				{
-					switch (state) 
-					{
-					case 1:	if (moveNext_1()) return true; break;
-					case 2:	if (moveNext_2()) return true; break;
-					case 3:	if (moveNext_3()) return true; break;
- 					}
-				}
-				return false;
-			}
-
-			private boolean moveNext_1() throws Exception {
-				state = 2;				
-				var2_join = ((new seq23_join(closure.var1_filter_elements_nodename))).enumerator();
-				return false;
-			}
-			private boolean moveNext_2() throws Exception {
-				state = 2;				
-				if (!var2_join.moveNext()) {state = 3; return false; }
-				current = var2_join.current();
-				pos++;
-				return true;
-			}
-			private boolean moveNext_3() throws Exception {
-				state = 0;				
-				if( var2_join != null ) { var2_join.close(); var2_join = null; }
-				return false;
-			}
-
-			
-			public void close()
-			{
-				try
-				{
-				if( var2_join != null ) { var2_join.close(); var2_join = null; }
-				}
-				catch (Exception e)
-				{
-				}
-			}
-		}
-				
-	}
-	static class seq23_join implements IEnumerable
-	{
-		com.altova.mapforce.IEnumerable var1_filter_elements_nodename;
-	
-		public seq23_join(com.altova.mapforce.IEnumerable var1_filter_elements_nodename)
-		{
-			this.var1_filter_elements_nodename = var1_filter_elements_nodename;
-		}
-
-		public IEnumerator enumerator() {return new Enumerator(this);}
-		
-		public static class Enumerator implements IEnumerator
-		{
-			int pos = 0;
-			int state = 1;
-			Object current;
-			seq23_join closure;
+			seq21_map closure;
 			IEnumerator var2_filter_elements_nodename;
-			IEnumerator var3_filter_elements_nodename;
-			public Enumerator(seq23_join closure) 
+			public Enumerator(seq21_map closure) 
 			{
 				this.closure = closure;
 			}
@@ -1812,8 +1680,6 @@ public class MappingMapTobatch extends com.altova.TraceProvider
 					case 1:	if (moveNext_1()) return true; break;
 					case 2:	if (moveNext_2()) return true; break;
 					case 3:	if (moveNext_3()) return true; break;
-					case 4:	if (moveNext_4()) return true; break;
-					case 5:	if (moveNext_5()) return true; break;
  					}
 				}
 				return false;
@@ -1821,30 +1687,19 @@ public class MappingMapTobatch extends com.altova.TraceProvider
 
 			private boolean moveNext_1() throws Exception {
 				state = 2;				
-				var2_filter_elements_nodename = (closure.var1_filter_elements_nodename).enumerator();
+				var2_filter_elements_nodename = (com.altova.functions.Core.filterElements("Availability", closure.var1_cur)).enumerator();
 				return false;
 			}
 			private boolean moveNext_2() throws Exception {
-				state = 4;				
+				state = 2;				
 				if (!var2_filter_elements_nodename.moveNext()) {state = 3; return false; }
-				var3_filter_elements_nodename = (com.altova.functions.Core.filterElements("Price ", ((com.altova.mapforce.IMFNode)(var2_filter_elements_nodename.current())))).enumerator();
-				return false;
+				current = com.altova.CoreTypes.longToInt(com.altova.CoreTypes.integerToLong(com.altova.CoreTypes.decimalToInteger(com.altova.CoreTypes.parseDecimal(com.altova.functions.Core.translate(com.altova.CoreTypes.nodeToString(((com.altova.mapforce.IMFNode)(var2_filter_elements_nodename.current()))), "+", "")))));
+				pos++;
+				return true;
 			}
 			private boolean moveNext_3() throws Exception {
 				state = 0;				
 				if( var2_filter_elements_nodename != null ) { var2_filter_elements_nodename.close(); var2_filter_elements_nodename = null; }
-				return false;
-			}
-			private boolean moveNext_4() throws Exception {
-				state = 4;				
-				if (!var3_filter_elements_nodename.moveNext()) {state = 5; return false; }
-				current = com.altova.CoreTypes.parseDecimal(com.altova.CoreTypes.nodeToString(((com.altova.mapforce.IMFNode)(var3_filter_elements_nodename.current()))));
-				pos++;
-				return true;
-			}
-			private boolean moveNext_5() throws Exception {
-				state = 2;				
-				if( var3_filter_elements_nodename != null ) { var3_filter_elements_nodename.close(); var3_filter_elements_nodename = null; }
 				return false;
 			}
 
@@ -1853,168 +1708,6 @@ public class MappingMapTobatch extends com.altova.TraceProvider
 			{
 				try
 				{
-				if( var3_filter_elements_nodename != null ) { var3_filter_elements_nodename.close(); var3_filter_elements_nodename = null; }
-				if( var2_filter_elements_nodename != null ) { var2_filter_elements_nodename.close(); var2_filter_elements_nodename = null; }
-				}
-				catch (Exception e)
-				{
-				}
-			}
-		}
-				
-	}
-	static class seq24_map implements IEnumerable
-	{
-		com.altova.mapforce.IEnumerable var1_filter_elements_nodename;
-	
-		public seq24_map(com.altova.mapforce.IEnumerable var1_filter_elements_nodename)
-		{
-			this.var1_filter_elements_nodename = var1_filter_elements_nodename;
-		}
-
-		public IEnumerator enumerator() {return new Enumerator(this);}
-		
-		public static class Enumerator implements IEnumerator
-		{
-			int pos = 0;
-			int state = 1;
-			Object current;
-			seq24_map closure;
-			IEnumerator var2_join;
-			public Enumerator(seq24_map closure) 
-			{
-				this.closure = closure;
-			}
-			
-			public Object current() {return current;}
-			
-			public int position() {return pos;}
-			
-			public boolean moveNext() throws Exception
-			{
-				while (state != 0)
-				{
-					switch (state) 
-					{
-					case 1:	if (moveNext_1()) return true; break;
-					case 2:	if (moveNext_2()) return true; break;
-					case 3:	if (moveNext_3()) return true; break;
- 					}
-				}
-				return false;
-			}
-
-			private boolean moveNext_1() throws Exception {
-				state = 2;				
-				var2_join = ((new seq25_join(closure.var1_filter_elements_nodename))).enumerator();
-				return false;
-			}
-			private boolean moveNext_2() throws Exception {
-				state = 2;				
-				if (!var2_join.moveNext()) {state = 3; return false; }
-				current = var2_join.current();
-				pos++;
-				return true;
-			}
-			private boolean moveNext_3() throws Exception {
-				state = 0;				
-				if( var2_join != null ) { var2_join.close(); var2_join = null; }
-				return false;
-			}
-
-			
-			public void close()
-			{
-				try
-				{
-				if( var2_join != null ) { var2_join.close(); var2_join = null; }
-				}
-				catch (Exception e)
-				{
-				}
-			}
-		}
-				
-	}
-	static class seq25_join implements IEnumerable
-	{
-		com.altova.mapforce.IEnumerable var1_filter_elements_nodename;
-	
-		public seq25_join(com.altova.mapforce.IEnumerable var1_filter_elements_nodename)
-		{
-			this.var1_filter_elements_nodename = var1_filter_elements_nodename;
-		}
-
-		public IEnumerator enumerator() {return new Enumerator(this);}
-		
-		public static class Enumerator implements IEnumerator
-		{
-			int pos = 0;
-			int state = 1;
-			Object current;
-			seq25_join closure;
-			IEnumerator var2_filter_elements_nodename;
-			IEnumerator var3_filter_elements_nodename;
-			public Enumerator(seq25_join closure) 
-			{
-				this.closure = closure;
-			}
-			
-			public Object current() {return current;}
-			
-			public int position() {return pos;}
-			
-			public boolean moveNext() throws Exception
-			{
-				while (state != 0)
-				{
-					switch (state) 
-					{
-					case 1:	if (moveNext_1()) return true; break;
-					case 2:	if (moveNext_2()) return true; break;
-					case 3:	if (moveNext_3()) return true; break;
-					case 4:	if (moveNext_4()) return true; break;
-					case 5:	if (moveNext_5()) return true; break;
- 					}
-				}
-				return false;
-			}
-
-			private boolean moveNext_1() throws Exception {
-				state = 2;				
-				var2_filter_elements_nodename = (closure.var1_filter_elements_nodename).enumerator();
-				return false;
-			}
-			private boolean moveNext_2() throws Exception {
-				state = 4;				
-				if (!var2_filter_elements_nodename.moveNext()) {state = 3; return false; }
-				var3_filter_elements_nodename = (com.altova.functions.Core.filterElements("Availability", ((com.altova.mapforce.IMFNode)(var2_filter_elements_nodename.current())))).enumerator();
-				return false;
-			}
-			private boolean moveNext_3() throws Exception {
-				state = 0;				
-				if( var2_filter_elements_nodename != null ) { var2_filter_elements_nodename.close(); var2_filter_elements_nodename = null; }
-				return false;
-			}
-			private boolean moveNext_4() throws Exception {
-				state = 4;				
-				if (!var3_filter_elements_nodename.moveNext()) {state = 5; return false; }
-				current = com.altova.CoreTypes.longToInt(com.altova.CoreTypes.integerToLong(com.altova.CoreTypes.decimalToInteger(com.altova.CoreTypes.parseDecimal(com.altova.functions.Lang.replace(com.altova.CoreTypes.nodeToString(((com.altova.mapforce.IMFNode)(var3_filter_elements_nodename.current()))), "+", "")))));
-				pos++;
-				return true;
-			}
-			private boolean moveNext_5() throws Exception {
-				state = 2;				
-				if( var3_filter_elements_nodename != null ) { var3_filter_elements_nodename.close(); var3_filter_elements_nodename = null; }
-				return false;
-			}
-
-			
-			public void close()
-			{
-				try
-				{
-				if( var3_filter_elements_nodename != null ) { var3_filter_elements_nodename.close(); var3_filter_elements_nodename = null; }
 				if( var2_filter_elements_nodename != null ) { var2_filter_elements_nodename.close(); var2_filter_elements_nodename = null; }
 				}
 				catch (Exception e)
@@ -2180,6 +1873,8 @@ public class MappingMapTobatch extends com.altova.TraceProvider
 			main closure;
 			com.altova.db.Statement var2_NewStatement;
 			com.altova.db.Statement var3_NewStatement;
+			com.altova.db.Statement var4_NewStatement;
+			com.altova.db.Statement var5_NewStatement;
 			public Enumerator(main closure) 
 			{
 				this.closure = closure;
@@ -2221,12 +1916,36 @@ public class MappingMapTobatch extends com.altova.TraceProvider
 				com.altova.db.Dbs.addParameter(var2_NewStatement, java.sql.Types.CHAR,-1);
 				com.altova.db.Dbs.addParameter(var2_NewStatement, java.sql.Types.CHAR,-1);
 				com.altova.db.Dbs.prepareStatement(var2_NewStatement);
-				var3_NewStatement = com.altova.db.Dbs.newStatement(closure.var1_catalog, 2, "INSERT INTO `supplierinventory` (`gtin`, `supplier`, `price`, `stock`) VALUES (?, ?, ?, ?)");
+				var3_NewStatement = com.altova.db.Dbs.newStatement(closure.var1_catalog, 2, "UPDATE `products` SET `sku` = ?, `type` = ?, `color` = ?, `color_type` = ?, `size` = ?, `gender` = ?, `price` = ?, `map` = ?, `weight` = ?, `brand` = ?, `collection` = ?, `title` = ?, `description` = "
+ + "?, `image` = ? WHERE (`products`.`gtin` = ?)");
+				com.altova.db.Dbs.addParameter(var3_NewStatement, java.sql.Types.CHAR,-1);
+				com.altova.db.Dbs.addParameter(var3_NewStatement, java.sql.Types.CHAR,-1);
+				com.altova.db.Dbs.addParameter(var3_NewStatement, java.sql.Types.CHAR,-1);
+				com.altova.db.Dbs.addParameter(var3_NewStatement, java.sql.Types.CHAR,-1);
 				com.altova.db.Dbs.addParameter(var3_NewStatement, java.sql.Types.CHAR,-1);
 				com.altova.db.Dbs.addParameter(var3_NewStatement, java.sql.Types.CHAR,-1);
 				com.altova.db.Dbs.addParameter(var3_NewStatement, java.sql.Types.DECIMAL,-1);
-				com.altova.db.Dbs.addParameter(var3_NewStatement, java.sql.Types.INTEGER,-1);
+				com.altova.db.Dbs.addParameter(var3_NewStatement, java.sql.Types.DECIMAL,-1);
+				com.altova.db.Dbs.addParameter(var3_NewStatement, java.sql.Types.DECIMAL,-1);
+				com.altova.db.Dbs.addParameter(var3_NewStatement, java.sql.Types.CHAR,-1);
+				com.altova.db.Dbs.addParameter(var3_NewStatement, java.sql.Types.CHAR,-1);
+				com.altova.db.Dbs.addParameter(var3_NewStatement, java.sql.Types.CHAR,-1);
+				com.altova.db.Dbs.addParameter(var3_NewStatement, java.sql.Types.CHAR,-1);
+				com.altova.db.Dbs.addParameter(var3_NewStatement, java.sql.Types.CHAR,-1);
+				com.altova.db.Dbs.addParameter(var3_NewStatement, java.sql.Types.CHAR,-1);
 				com.altova.db.Dbs.prepareStatement(var3_NewStatement);
+				var4_NewStatement = com.altova.db.Dbs.newStatement(closure.var1_catalog, 3, "INSERT INTO `supplierinventory` (`gtin`, `supplier`, `price`, `stock`) VALUES (?, ?, ?, ?)");
+				com.altova.db.Dbs.addParameter(var4_NewStatement, java.sql.Types.CHAR,-1);
+				com.altova.db.Dbs.addParameter(var4_NewStatement, java.sql.Types.CHAR,-1);
+				com.altova.db.Dbs.addParameter(var4_NewStatement, java.sql.Types.DECIMAL,-1);
+				com.altova.db.Dbs.addParameter(var4_NewStatement, java.sql.Types.INTEGER,-1);
+				com.altova.db.Dbs.prepareStatement(var4_NewStatement);
+				var5_NewStatement = com.altova.db.Dbs.newStatement(closure.var1_catalog, 4, "UPDATE `supplierinventory` SET `supplier` = ?, `price` = ?, `stock` = ? WHERE (`supplierinventory`.`gtin` = ?)");
+				com.altova.db.Dbs.addParameter(var5_NewStatement, java.sql.Types.CHAR,-1);
+				com.altova.db.Dbs.addParameter(var5_NewStatement, java.sql.Types.DECIMAL,-1);
+				com.altova.db.Dbs.addParameter(var5_NewStatement, java.sql.Types.INTEGER,-1);
+				com.altova.db.Dbs.addParameter(var5_NewStatement, java.sql.Types.CHAR,-1);
+				com.altova.db.Dbs.prepareStatement(var5_NewStatement);
 				current = com.altova.CoreTypes.parseBoolean("true");
 				pos++;
 				return true;
@@ -2324,6 +2043,280 @@ public class MappingMapTobatch extends com.altova.TraceProvider
 					{
 					case 1:	if (moveNext_1()) return true; break;
 					case 2:	if (moveNext_2()) return true; break;
+					case 5:	if (moveNext_5()) return true; break;
+					case 6:	if (moveNext_6()) return true; break;
+					case 7:	if (moveNext_7()) return true; break;
+					case 8:	if (moveNext_8()) return true; break;
+					case 9:	if (moveNext_9()) return true; break;
+					case 10:	if (moveNext_10()) return true; break;
+					case 11:	if (moveNext_11()) return true; break;
+					case 12:	if (moveNext_12()) return true; break;
+					case 13:	if (moveNext_13()) return true; break;
+					case 14:	if (moveNext_14()) return true; break;
+					case 15:	if (moveNext_15()) return true; break;
+					case 16:	if (moveNext_16()) return true; break;
+					case 17:	if (moveNext_17()) return true; break;
+					case 18:	if (moveNext_18()) return true; break;
+					case 19:	if (moveNext_19()) return true; break;
+					case 20:	if (moveNext_20()) return true; break;
+					case 21:	if (moveNext_21()) return true; break;
+					case 22:	if (moveNext_22()) return true; break;
+					case 23:	if (moveNext_23()) return true; break;
+					case 24:	if (moveNext_24()) return true; break;
+					case 25:	if (moveNext_25()) return true; break;
+					case 26:	if (moveNext_26()) return true; break;
+					case 27:	if (moveNext_27()) return true; break;
+					case 28:	if (moveNext_28()) return true; break;
+					case 29:	if (moveNext_29()) return true; break;
+					case 30:	if (moveNext_30()) return true; break;
+					case 31:	if (moveNext_31()) return true; break;
+					case 32:	if (moveNext_32()) return true; break;
+					case 33:	if (moveNext_33()) return true; break;
+					case 34:	if (moveNext_34()) return true; break;
+ 					}
+				}
+				return false;
+			}
+
+			private boolean moveNext_1() throws Exception {
+				state = 0;				
+				if (!((Boolean)com.altova.functions.Core.first((new seq1_NewQuery(closure.var2_record, closure.var1_catalog))))) {state = 2; return false; }
+				current = com.altova.CoreTypes.parseBoolean("true");
+				pos++;
+				return true;
+			}
+			private boolean moveNext_2() throws Exception {
+				state = 6;				
+				var3_NewQuery = com.altova.db.Dbs.newQuery(closure.var1_catalog, 1);
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "sku")))) {state = 5; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "sku")));
+				return false;
+			}
+			private boolean moveNext_5() throws Exception {
+				state = 6;				
+				com.altova.db.Dbs.bindParameter_empty(var3_NewQuery);
+				return false;
+			}
+			private boolean moveNext_6() throws Exception {
+				state = 8;				
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "gtin")))) {state = 7; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "gtin")));
+				return false;
+			}
+			private boolean moveNext_7() throws Exception {
+				state = 8;				
+				com.altova.db.Dbs.bindParameter_empty(var3_NewQuery);
+				return false;
+			}
+			private boolean moveNext_8() throws Exception {
+				state = 10;				
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "type")))) {state = 9; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "type")));
+				return false;
+			}
+			private boolean moveNext_9() throws Exception {
+				state = 10;				
+				com.altova.db.Dbs.bindParameter_empty(var3_NewQuery);
+				return false;
+			}
+			private boolean moveNext_10() throws Exception {
+				state = 12;				
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "color")))) {state = 11; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "color")));
+				return false;
+			}
+			private boolean moveNext_11() throws Exception {
+				state = 12;				
+				com.altova.db.Dbs.bindParameter_empty(var3_NewQuery);
+				return false;
+			}
+			private boolean moveNext_12() throws Exception {
+				state = 14;				
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "color_type")))) {state = 13; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "color_type")));
+				return false;
+			}
+			private boolean moveNext_13() throws Exception {
+				state = 14;				
+				com.altova.db.Dbs.bindParameter_empty(var3_NewQuery);
+				return false;
+			}
+			private boolean moveNext_14() throws Exception {
+				state = 16;				
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "size")))) {state = 15; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "size")));
+				return false;
+			}
+			private boolean moveNext_15() throws Exception {
+				state = 16;				
+				com.altova.db.Dbs.bindParameter_empty(var3_NewQuery);
+				return false;
+			}
+			private boolean moveNext_16() throws Exception {
+				state = 18;				
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "gender")))) {state = 17; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "gender")));
+				return false;
+			}
+			private boolean moveNext_17() throws Exception {
+				state = 18;				
+				com.altova.db.Dbs.bindParameter_empty(var3_NewQuery);
+				return false;
+			}
+			private boolean moveNext_18() throws Exception {
+				state = 20;				
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "price")))) {state = 19; return false; }
+				com.altova.db.Dbs.bindParameter_BigDecimal(var3_NewQuery, (java.math.BigDecimal)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "price")));
+				return false;
+			}
+			private boolean moveNext_19() throws Exception {
+				state = 20;				
+				com.altova.db.Dbs.bindParameter_empty(var3_NewQuery);
+				return false;
+			}
+			private boolean moveNext_20() throws Exception {
+				state = 22;				
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "map")))) {state = 21; return false; }
+				com.altova.db.Dbs.bindParameter_BigDecimal(var3_NewQuery, (java.math.BigDecimal)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "map")));
+				return false;
+			}
+			private boolean moveNext_21() throws Exception {
+				state = 22;				
+				com.altova.db.Dbs.bindParameter_empty(var3_NewQuery);
+				return false;
+			}
+			private boolean moveNext_22() throws Exception {
+				state = 24;				
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "weight")))) {state = 23; return false; }
+				com.altova.db.Dbs.bindParameter_BigDecimal(var3_NewQuery, (java.math.BigDecimal)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "weight")));
+				return false;
+			}
+			private boolean moveNext_23() throws Exception {
+				state = 24;				
+				com.altova.db.Dbs.bindParameter_empty(var3_NewQuery);
+				return false;
+			}
+			private boolean moveNext_24() throws Exception {
+				state = 26;				
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "brand")))) {state = 25; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "brand")));
+				return false;
+			}
+			private boolean moveNext_25() throws Exception {
+				state = 26;				
+				com.altova.db.Dbs.bindParameter_empty(var3_NewQuery);
+				return false;
+			}
+			private boolean moveNext_26() throws Exception {
+				state = 28;				
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "collection")))) {state = 27; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "collection")));
+				return false;
+			}
+			private boolean moveNext_27() throws Exception {
+				state = 28;				
+				com.altova.db.Dbs.bindParameter_empty(var3_NewQuery);
+				return false;
+			}
+			private boolean moveNext_28() throws Exception {
+				state = 30;				
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "title")))) {state = 29; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "title")));
+				return false;
+			}
+			private boolean moveNext_29() throws Exception {
+				state = 30;				
+				com.altova.db.Dbs.bindParameter_empty(var3_NewQuery);
+				return false;
+			}
+			private boolean moveNext_30() throws Exception {
+				state = 32;				
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "description")))) {state = 31; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "description")));
+				return false;
+			}
+			private boolean moveNext_31() throws Exception {
+				state = 32;				
+				com.altova.db.Dbs.bindParameter_empty(var3_NewQuery);
+				return false;
+			}
+			private boolean moveNext_32() throws Exception {
+				state = 34;				
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "image")))) {state = 33; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "image")));
+				return false;
+			}
+			private boolean moveNext_33() throws Exception {
+				state = 34;				
+				com.altova.db.Dbs.bindParameter_empty(var3_NewQuery);
+				return false;
+			}
+			private boolean moveNext_34() throws Exception {
+				state = 0;				
+				current = com.altova.functions.Core.notEqual(com.altova.CoreTypes.integerToDecimal(com.altova.CoreTypes.longToInteger(com.altova.CoreTypes.intToLong(com.altova.db.Dbs.executeNonReader(var3_NewQuery)))), com.altova.CoreTypes.integerToDecimal(com.altova.CoreTypes.longToInteger(com.altova.CoreTypes.intToLong(0))));
+				pos++;
+				return true;
+			}
+
+			
+			public void close()
+			{
+				try
+				{
+				}
+				catch (Exception e)
+				{
+				}
+			}
+		}
+				
+	}
+		
+	static class main_lambda implements com.altova.mapforce.SequenceFactory
+	{
+		com.altova.db.Catalog p1;
+
+		public main_lambda(com.altova.db.Catalog _p1){ p1=_p1; }
+		
+		public Object invoke(Object o) { return new main((com.altova.db.Catalog)p1, (com.altova.db.Record) o); }	
+	}
+	static class seq1_NewQuery implements IEnumerable
+	{
+		com.altova.db.Record var1_record;
+		com.altova.db.Catalog var2_catalog;
+	
+		public seq1_NewQuery(com.altova.db.Record var1_record, com.altova.db.Catalog var2_catalog)
+		{
+			this.var1_record = var1_record;
+			this.var2_catalog = var2_catalog;
+		}
+
+		public IEnumerator enumerator() {return new Enumerator(this);}
+		
+		public static class Enumerator implements IEnumerator
+		{
+			int pos = 0;
+			int state = 1;
+			Object current;
+			seq1_NewQuery closure;
+			com.altova.db.Statement var3_NewQuery;
+			public Enumerator(seq1_NewQuery closure) 
+			{
+				this.closure = closure;
+			}
+			
+			public Object current() {return current;}
+			
+			public int position() {return pos;}
+			
+			public boolean moveNext() throws Exception
+			{
+				while (state != 0)
+				{
+					switch (state) 
+					{
+					case 1:	if (moveNext_1()) return true; break;
+					case 2:	if (moveNext_2()) return true; break;
 					case 3:	if (moveNext_3()) return true; break;
 					case 4:	if (moveNext_4()) return true; break;
 					case 5:	if (moveNext_5()) return true; break;
@@ -2360,9 +2353,9 @@ public class MappingMapTobatch extends com.altova.TraceProvider
 
 			private boolean moveNext_1() throws Exception {
 				state = 3;				
-				var3_NewQuery = com.altova.db.Dbs.newQuery(closure.var1_catalog, 1);
-				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "sku")))) {state = 2; return false; }
-				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "sku")));
+				var3_NewQuery = com.altova.db.Dbs.newQuery(closure.var2_catalog, 2);
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var1_record, "sku")))) {state = 2; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var1_record, "sku")));
 				return false;
 			}
 			private boolean moveNext_2() throws Exception {
@@ -2372,8 +2365,8 @@ public class MappingMapTobatch extends com.altova.TraceProvider
 			}
 			private boolean moveNext_3() throws Exception {
 				state = 5;				
-				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "gtin")))) {state = 4; return false; }
-				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "gtin")));
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var1_record, "type")))) {state = 4; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var1_record, "type")));
 				return false;
 			}
 			private boolean moveNext_4() throws Exception {
@@ -2383,8 +2376,8 @@ public class MappingMapTobatch extends com.altova.TraceProvider
 			}
 			private boolean moveNext_5() throws Exception {
 				state = 7;				
-				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "type")))) {state = 6; return false; }
-				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "type")));
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var1_record, "color")))) {state = 6; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var1_record, "color")));
 				return false;
 			}
 			private boolean moveNext_6() throws Exception {
@@ -2394,8 +2387,8 @@ public class MappingMapTobatch extends com.altova.TraceProvider
 			}
 			private boolean moveNext_7() throws Exception {
 				state = 9;				
-				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "color")))) {state = 8; return false; }
-				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "color")));
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var1_record, "color_type")))) {state = 8; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var1_record, "color_type")));
 				return false;
 			}
 			private boolean moveNext_8() throws Exception {
@@ -2405,8 +2398,8 @@ public class MappingMapTobatch extends com.altova.TraceProvider
 			}
 			private boolean moveNext_9() throws Exception {
 				state = 11;				
-				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "color_type")))) {state = 10; return false; }
-				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "color_type")));
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var1_record, "size")))) {state = 10; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var1_record, "size")));
 				return false;
 			}
 			private boolean moveNext_10() throws Exception {
@@ -2416,8 +2409,8 @@ public class MappingMapTobatch extends com.altova.TraceProvider
 			}
 			private boolean moveNext_11() throws Exception {
 				state = 13;				
-				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "size")))) {state = 12; return false; }
-				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "size")));
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var1_record, "gender")))) {state = 12; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var1_record, "gender")));
 				return false;
 			}
 			private boolean moveNext_12() throws Exception {
@@ -2427,8 +2420,8 @@ public class MappingMapTobatch extends com.altova.TraceProvider
 			}
 			private boolean moveNext_13() throws Exception {
 				state = 15;				
-				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "gender")))) {state = 14; return false; }
-				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "gender")));
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var1_record, "price")))) {state = 14; return false; }
+				com.altova.db.Dbs.bindParameter_BigDecimal(var3_NewQuery, (java.math.BigDecimal)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var1_record, "price")));
 				return false;
 			}
 			private boolean moveNext_14() throws Exception {
@@ -2438,8 +2431,8 @@ public class MappingMapTobatch extends com.altova.TraceProvider
 			}
 			private boolean moveNext_15() throws Exception {
 				state = 17;				
-				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "price")))) {state = 16; return false; }
-				com.altova.db.Dbs.bindParameter_BigDecimal(var3_NewQuery, (java.math.BigDecimal)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "price")));
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var1_record, "map")))) {state = 16; return false; }
+				com.altova.db.Dbs.bindParameter_BigDecimal(var3_NewQuery, (java.math.BigDecimal)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var1_record, "map")));
 				return false;
 			}
 			private boolean moveNext_16() throws Exception {
@@ -2449,8 +2442,8 @@ public class MappingMapTobatch extends com.altova.TraceProvider
 			}
 			private boolean moveNext_17() throws Exception {
 				state = 19;				
-				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "map")))) {state = 18; return false; }
-				com.altova.db.Dbs.bindParameter_BigDecimal(var3_NewQuery, (java.math.BigDecimal)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "map")));
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var1_record, "weight")))) {state = 18; return false; }
+				com.altova.db.Dbs.bindParameter_BigDecimal(var3_NewQuery, (java.math.BigDecimal)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var1_record, "weight")));
 				return false;
 			}
 			private boolean moveNext_18() throws Exception {
@@ -2460,8 +2453,8 @@ public class MappingMapTobatch extends com.altova.TraceProvider
 			}
 			private boolean moveNext_19() throws Exception {
 				state = 21;				
-				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "weight")))) {state = 20; return false; }
-				com.altova.db.Dbs.bindParameter_BigDecimal(var3_NewQuery, (java.math.BigDecimal)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "weight")));
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var1_record, "brand")))) {state = 20; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var1_record, "brand")));
 				return false;
 			}
 			private boolean moveNext_20() throws Exception {
@@ -2471,8 +2464,8 @@ public class MappingMapTobatch extends com.altova.TraceProvider
 			}
 			private boolean moveNext_21() throws Exception {
 				state = 23;				
-				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "brand")))) {state = 22; return false; }
-				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "brand")));
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var1_record, "collection")))) {state = 22; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var1_record, "collection")));
 				return false;
 			}
 			private boolean moveNext_22() throws Exception {
@@ -2482,8 +2475,8 @@ public class MappingMapTobatch extends com.altova.TraceProvider
 			}
 			private boolean moveNext_23() throws Exception {
 				state = 25;				
-				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "collection")))) {state = 24; return false; }
-				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "collection")));
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var1_record, "title")))) {state = 24; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var1_record, "title")));
 				return false;
 			}
 			private boolean moveNext_24() throws Exception {
@@ -2493,8 +2486,8 @@ public class MappingMapTobatch extends com.altova.TraceProvider
 			}
 			private boolean moveNext_25() throws Exception {
 				state = 27;				
-				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "title")))) {state = 26; return false; }
-				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "title")));
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var1_record, "description")))) {state = 26; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var1_record, "description")));
 				return false;
 			}
 			private boolean moveNext_26() throws Exception {
@@ -2504,8 +2497,8 @@ public class MappingMapTobatch extends com.altova.TraceProvider
 			}
 			private boolean moveNext_27() throws Exception {
 				state = 29;				
-				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "description")))) {state = 28; return false; }
-				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "description")));
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var1_record, "image")))) {state = 28; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var1_record, "image")));
 				return false;
 			}
 			private boolean moveNext_28() throws Exception {
@@ -2515,8 +2508,8 @@ public class MappingMapTobatch extends com.altova.TraceProvider
 			}
 			private boolean moveNext_29() throws Exception {
 				state = 31;				
-				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "image")))) {state = 30; return false; }
-				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "image")));
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var1_record, "gtin")))) {state = 30; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var1_record, "gtin")));
 				return false;
 			}
 			private boolean moveNext_30() throws Exception {
@@ -2543,15 +2536,6 @@ public class MappingMapTobatch extends com.altova.TraceProvider
 			}
 		}
 				
-	}
-		
-	static class main_lambda implements com.altova.mapforce.SequenceFactory
-	{
-		com.altova.db.Catalog p1;
-
-		public main_lambda(com.altova.db.Catalog _p1){ p1=_p1; }
-		
-		public Object invoke(Object o) { return new main((com.altova.db.Catalog)p1, (com.altova.db.Record) o); }	
 	}
 				
 			}
@@ -2612,64 +2596,72 @@ public class MappingMapTobatch extends com.altova.TraceProvider
 					{
 					case 1:	if (moveNext_1()) return true; break;
 					case 2:	if (moveNext_2()) return true; break;
-					case 3:	if (moveNext_3()) return true; break;
-					case 4:	if (moveNext_4()) return true; break;
 					case 5:	if (moveNext_5()) return true; break;
 					case 6:	if (moveNext_6()) return true; break;
 					case 7:	if (moveNext_7()) return true; break;
 					case 8:	if (moveNext_8()) return true; break;
 					case 9:	if (moveNext_9()) return true; break;
+					case 10:	if (moveNext_10()) return true; break;
+					case 11:	if (moveNext_11()) return true; break;
+					case 12:	if (moveNext_12()) return true; break;
  					}
 				}
 				return false;
 			}
 
 			private boolean moveNext_1() throws Exception {
-				state = 3;				
-				var3_NewQuery = com.altova.db.Dbs.newQuery(closure.var1_catalog, 2);
-				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "gtin")))) {state = 2; return false; }
+				state = 0;				
+				if (!((Boolean)com.altova.functions.Core.first((new seq1_NewQuery(closure.var1_catalog, closure.var2_record))))) {state = 2; return false; }
+				current = com.altova.CoreTypes.parseBoolean("true");
+				pos++;
+				return true;
+			}
+			private boolean moveNext_2() throws Exception {
+				state = 6;				
+				var3_NewQuery = com.altova.db.Dbs.newQuery(closure.var1_catalog, 3);
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "gtin")))) {state = 5; return false; }
 				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "gtin")));
 				return false;
 			}
-			private boolean moveNext_2() throws Exception {
-				state = 3;				
-				com.altova.db.Dbs.bindParameter_empty(var3_NewQuery);
-				return false;
-			}
-			private boolean moveNext_3() throws Exception {
-				state = 5;				
-				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "supplier")))) {state = 4; return false; }
-				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "supplier")));
-				return false;
-			}
-			private boolean moveNext_4() throws Exception {
-				state = 5;				
-				com.altova.db.Dbs.bindParameter_empty(var3_NewQuery);
-				return false;
-			}
 			private boolean moveNext_5() throws Exception {
-				state = 7;				
-				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "price")))) {state = 6; return false; }
-				com.altova.db.Dbs.bindParameter_BigDecimal(var3_NewQuery, (java.math.BigDecimal)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "price")));
+				state = 6;				
+				com.altova.db.Dbs.bindParameter_empty(var3_NewQuery);
 				return false;
 			}
 			private boolean moveNext_6() throws Exception {
-				state = 7;				
-				com.altova.db.Dbs.bindParameter_empty(var3_NewQuery);
+				state = 8;				
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "supplier")))) {state = 7; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "supplier")));
 				return false;
 			}
 			private boolean moveNext_7() throws Exception {
-				state = 9;				
-				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "stock")))) {state = 8; return false; }
-				com.altova.db.Dbs.bindParameter_int(var3_NewQuery, (Integer)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "stock")));
-				return false;
-			}
-			private boolean moveNext_8() throws Exception {
-				state = 9;				
+				state = 8;				
 				com.altova.db.Dbs.bindParameter_empty(var3_NewQuery);
 				return false;
 			}
+			private boolean moveNext_8() throws Exception {
+				state = 10;				
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "price")))) {state = 9; return false; }
+				com.altova.db.Dbs.bindParameter_BigDecimal(var3_NewQuery, (java.math.BigDecimal)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "price")));
+				return false;
+			}
 			private boolean moveNext_9() throws Exception {
+				state = 10;				
+				com.altova.db.Dbs.bindParameter_empty(var3_NewQuery);
+				return false;
+			}
+			private boolean moveNext_10() throws Exception {
+				state = 12;				
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "stock")))) {state = 11; return false; }
+				com.altova.db.Dbs.bindParameter_int(var3_NewQuery, (Integer)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "stock")));
+				return false;
+			}
+			private boolean moveNext_11() throws Exception {
+				state = 12;				
+				com.altova.db.Dbs.bindParameter_empty(var3_NewQuery);
+				return false;
+			}
+			private boolean moveNext_12() throws Exception {
 				state = 0;				
 				current = com.altova.functions.Core.notEqual(com.altova.CoreTypes.integerToDecimal(com.altova.CoreTypes.longToInteger(com.altova.CoreTypes.intToLong(com.altova.db.Dbs.executeNonReader(var3_NewQuery)))), com.altova.CoreTypes.integerToDecimal(com.altova.CoreTypes.longToInteger(com.altova.CoreTypes.intToLong(0))));
 				pos++;
@@ -2697,6 +2689,120 @@ public class MappingMapTobatch extends com.altova.TraceProvider
 		public main_lambda(com.altova.db.Catalog _p1){ p1=_p1; }
 		
 		public Object invoke(Object o) { return new main((com.altova.db.Catalog)p1, (com.altova.db.Record) o); }	
+	}
+	static class seq1_NewQuery implements IEnumerable
+	{
+		com.altova.db.Catalog var1_catalog;
+		com.altova.db.Record var2_record;
+	
+		public seq1_NewQuery(com.altova.db.Catalog var1_catalog, com.altova.db.Record var2_record)
+		{
+			this.var1_catalog = var1_catalog;
+			this.var2_record = var2_record;
+		}
+
+		public IEnumerator enumerator() {return new Enumerator(this);}
+		
+		public static class Enumerator implements IEnumerator
+		{
+			int pos = 0;
+			int state = 1;
+			Object current;
+			seq1_NewQuery closure;
+			com.altova.db.Statement var3_NewQuery;
+			public Enumerator(seq1_NewQuery closure) 
+			{
+				this.closure = closure;
+			}
+			
+			public Object current() {return current;}
+			
+			public int position() {return pos;}
+			
+			public boolean moveNext() throws Exception
+			{
+				while (state != 0)
+				{
+					switch (state) 
+					{
+					case 1:	if (moveNext_1()) return true; break;
+					case 2:	if (moveNext_2()) return true; break;
+					case 3:	if (moveNext_3()) return true; break;
+					case 4:	if (moveNext_4()) return true; break;
+					case 5:	if (moveNext_5()) return true; break;
+					case 6:	if (moveNext_6()) return true; break;
+					case 7:	if (moveNext_7()) return true; break;
+					case 8:	if (moveNext_8()) return true; break;
+					case 9:	if (moveNext_9()) return true; break;
+ 					}
+				}
+				return false;
+			}
+
+			private boolean moveNext_1() throws Exception {
+				state = 3;				
+				var3_NewQuery = com.altova.db.Dbs.newQuery(closure.var1_catalog, 4);
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "supplier")))) {state = 2; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "supplier")));
+				return false;
+			}
+			private boolean moveNext_2() throws Exception {
+				state = 3;				
+				com.altova.db.Dbs.bindParameter_empty(var3_NewQuery);
+				return false;
+			}
+			private boolean moveNext_3() throws Exception {
+				state = 5;				
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "price")))) {state = 4; return false; }
+				com.altova.db.Dbs.bindParameter_BigDecimal(var3_NewQuery, (java.math.BigDecimal)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "price")));
+				return false;
+			}
+			private boolean moveNext_4() throws Exception {
+				state = 5;				
+				com.altova.db.Dbs.bindParameter_empty(var3_NewQuery);
+				return false;
+			}
+			private boolean moveNext_5() throws Exception {
+				state = 7;				
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "stock")))) {state = 6; return false; }
+				com.altova.db.Dbs.bindParameter_int(var3_NewQuery, (Integer)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "stock")));
+				return false;
+			}
+			private boolean moveNext_6() throws Exception {
+				state = 7;				
+				com.altova.db.Dbs.bindParameter_empty(var3_NewQuery);
+				return false;
+			}
+			private boolean moveNext_7() throws Exception {
+				state = 9;				
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "gtin")))) {state = 8; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "gtin")));
+				return false;
+			}
+			private boolean moveNext_8() throws Exception {
+				state = 9;				
+				com.altova.db.Dbs.bindParameter_empty(var3_NewQuery);
+				return false;
+			}
+			private boolean moveNext_9() throws Exception {
+				state = 0;				
+				current = com.altova.functions.Core.notEqual(com.altova.CoreTypes.integerToDecimal(com.altova.CoreTypes.longToInteger(com.altova.CoreTypes.intToLong(com.altova.db.Dbs.executeNonReader(var3_NewQuery)))), com.altova.CoreTypes.integerToDecimal(com.altova.CoreTypes.longToInteger(com.altova.CoreTypes.intToLong(0))));
+				pos++;
+				return true;
+			}
+
+			
+			public void close()
+			{
+				try
+				{
+				}
+				catch (Exception e)
+				{
+				}
+			}
+		}
+				
 	}
 				
 			}

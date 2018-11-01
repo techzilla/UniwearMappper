@@ -137,7 +137,7 @@ public class InventorySPI_TypeInfo
 		public static final int _Id = 4 ;
 		public static final int _Size = 5 ;
 		public static final int _UPC = 6 ;
-		public static final int _Price_ = 7 ;
+		public static final int _Price = 7 ;
 		public static final int _Short_Description = 8 ;
 		public static final int _Full_Description = 9 ;
 		public static final int _Fabric_Content = 10 ;
@@ -161,7 +161,7 @@ public class InventorySPI_TypeInfo
 		public static final int _Promo_Price = 28 ;
 		public static final int _Promo_Dates = 29 ;
 		public static final int _Product_Callouts = 30 ;
-		public static final int _Wash_Instructions_ = 31 ;
+		public static final int _Wash_Instructions = 31 ;
 		public static final int _Unit_Weight = 32 ;
 		public static final int end = 33 ;
 	};
@@ -255,8 +255,8 @@ public class InventorySPI_TypeInfo
 			members[3] = new MemberInfo (binder, "", "Color Description", _altova_ti_altova_RowsType, _altova_ti_altova_stringType, 0, 0, 1);
 			members[4] = new MemberInfo (binder, "", "Id", _altova_ti_altova_RowsType, _altova_ti_altova_integerType, 0, 0, 1);
 			members[5] = new MemberInfo (binder, "", "Size", _altova_ti_altova_RowsType, _altova_ti_altova_stringType, 0, 0, 1);
-			members[6] = new MemberInfo (binder, "", "UPC", _altova_ti_altova_RowsType, _altova_ti_altova_integerType, 0, 0, 1);
-			members[7] = new MemberInfo (binder, "", "Price ", _altova_ti_altova_RowsType, _altova_ti_altova_decimalType, 0, 0, 1);
+			members[6] = new MemberInfo (binder, "", "UPC", _altova_ti_altova_RowsType, _altova_ti_altova_decimalType, 0, 0, 1);
+			members[7] = new MemberInfo (binder, "", "Price", _altova_ti_altova_RowsType, _altova_ti_altova_decimalType, 0, 0, 1);
 			members[8] = new MemberInfo (binder, "", "Short Description", _altova_ti_altova_RowsType, _altova_ti_altova_stringType, 0, 0, 1);
 			members[9] = new MemberInfo (binder, "", "Full Description", _altova_ti_altova_RowsType, _altova_ti_altova_stringType, 0, 0, 1);
 			members[10] = new MemberInfo (binder, "", "Fabric Content", _altova_ti_altova_RowsType, _altova_ti_altova_stringType, 0, 0, 1);
@@ -280,7 +280,7 @@ public class InventorySPI_TypeInfo
 			members[28] = new MemberInfo (binder, "", "Promo Price", _altova_ti_altova_RowsType, _altova_ti_altova_stringType, 0, 0, 1);
 			members[29] = new MemberInfo (binder, "", "Promo Dates", _altova_ti_altova_RowsType, _altova_ti_altova_stringType, 0, 0, 1);
 			members[30] = new MemberInfo (binder, "", "Product Callouts", _altova_ti_altova_RowsType, _altova_ti_altova_stringType, 0, 0, 1);
-			members[31] = new MemberInfo (binder, "", "Wash Instructions ", _altova_ti_altova_RowsType, _altova_ti_altova_stringType, 0, 0, 1);
+			members[31] = new MemberInfo (binder, "", "Wash Instructions", _altova_ti_altova_RowsType, _altova_ti_altova_stringType, 0, 0, 1);
 			members[32] = new MemberInfo (binder, "", "Unit Weight", _altova_ti_altova_RowsType, _altova_ti_altova_decimalType, 0, 0, 1);
 
 			members[33] = new MemberInfo (binder, "", "", _altova_ti_altova_stringType, _altova_ti_altova_string2, 0|MemberInfo.IS_ATTRIBUTE, 1, 1);

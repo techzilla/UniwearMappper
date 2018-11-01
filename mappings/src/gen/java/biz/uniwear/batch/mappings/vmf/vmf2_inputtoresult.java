@@ -47,7 +47,7 @@ public class vmf2_inputtoresult extends com.altova.TraceProvider
 		if (o != null)
 			return new MFSingletonSequence(o);
 		else
-			return new MFSingletonSequence(com.altova.CoreTypes.box("unisex"));
+			return new MFSingletonSequence(com.altova.CoreTypes.box(""));
 
 	}
 	
@@ -62,6 +62,8 @@ public class vmf2_inputtoresult extends com.altova.TraceProvider
 		hash.put(com.altova.CoreTypes.box("womens"), com.altova.CoreTypes.box("female"));
 		hash.put(com.altova.CoreTypes.box("women\'s"), com.altova.CoreTypes.box("female"));
 		hash.put(com.altova.CoreTypes.box("women"), com.altova.CoreTypes.box("female"));
+		hash.put(com.altova.CoreTypes.box("unisex"), com.altova.CoreTypes.box("unisex"));
+		hash.put(com.altova.CoreTypes.box("uni-sex"), com.altova.CoreTypes.box("unisex"));
 	}
 
 	public static java.lang.String eval(java.lang.String var1_input) throws java.lang.Exception

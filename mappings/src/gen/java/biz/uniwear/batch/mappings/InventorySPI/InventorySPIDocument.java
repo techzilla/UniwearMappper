@@ -43,7 +43,7 @@ public class InventorySPIDocument extends Table
 		header.add(new ColumnSpecification("Id"));
 		header.add(new ColumnSpecification("Size"));
 		header.add(new ColumnSpecification("UPC"));
-		header.add(new ColumnSpecification("Price "));
+		header.add(new ColumnSpecification("Price"));
 		header.add(new ColumnSpecification("Short Description"));
 		header.add(new ColumnSpecification("Full Description"));
 		header.add(new ColumnSpecification("Fabric Content"));
@@ -67,7 +67,7 @@ public class InventorySPIDocument extends Table
 		header.add(new ColumnSpecification("Promo Price"));
 		header.add(new ColumnSpecification("Promo Dates"));
 		header.add(new ColumnSpecification("Product Callouts"));
-		header.add(new ColumnSpecification("Wash Instructions "));
+		header.add(new ColumnSpecification("Wash Instructions"));
 		header.add(new ColumnSpecification("Unit Weight"));
 	}
 	public InventorySPIDocument(com.altova.typeinfo.TypeInfo tableType,int lineend) {
