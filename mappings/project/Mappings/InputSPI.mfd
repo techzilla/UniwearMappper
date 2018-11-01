@@ -25,14 +25,14 @@
 					<targets>
 						<datapoint pos="0" key="16"/>
 					</targets>
-					<view ltx="265" lty="58" rbx="373" rby="114"/>
+					<view ltx="265" lty="58" rbx="343" rby="96"/>
 				</component>
 				<component name="constant" library="core" uid="50" kind="2">
 					<properties/>
 					<targets>
 						<datapoint pos="0" key="36"/>
 					</targets>
-					<view ltx="740" lty="326" rbx="819" rby="351"/>
+					<view ltx="740" lty="326" rbx="795" rby="343"/>
 					<data>
 						<constant value="SPI" datatype="string"/>
 					</data>
@@ -45,7 +45,7 @@
 					<targets>
 						<datapoint pos="0" key="18"/>
 					</targets>
-					<view ltx="362" lty="58" rbx="475" rby="114"/>
+					<view ltx="362" lty="58" rbx="442" rby="96"/>
 					<data>
 						<valuemap enableDefaultValue="1">
 							<valuemapTable>
@@ -85,7 +85,7 @@
 					</data>
 				</component>
 				<component name="gender" library="user" uid="61" kind="19" visible="0">
-					<view ltx="414" lty="190" rbx="512" rby="207"/>
+					<view ltx="414" lty="190" rbx="517" rby="207"/>
 					<data>
 						<root scrollposition="1">
 							<header>
@@ -106,7 +106,7 @@
 					</data>
 				</component>
 				<component name="price" library="user" uid="73" kind="19" visible="0">
-					<view ltx="414" lty="120" rbx="523" rby="153"/>
+					<view ltx="414" lty="120" rbx="527" rby="154"/>
 					<data>
 						<root scrollposition="1">
 							<header>
@@ -128,7 +128,7 @@
 					</data>
 				</component>
 				<component name="gtin14" library="user" uid="8" kind="19" visible="0">
-					<view ltx="512" lty="58" rbx="646" rby="75"/>
+					<view ltx="512" lty="58" rbx="651" rby="75"/>
 					<data>
 						<root scrollposition="1">
 							<header>
@@ -156,14 +156,14 @@
 					<targets>
 						<datapoint pos="0" key="95"/>
 					</targets>
-					<view ltx="252" lty="7" rbx="348" rby="63"/>
+					<view ltx="252" lty="7" rbx="324" rby="45"/>
 				</component>
 				<component name="constant" library="core" uid="87" kind="2">
 					<properties/>
 					<targets>
 						<datapoint pos="0" key="98"/>
 					</targets>
-					<view ltx="459" lty="384" rbx="527" rby="409"/>
+					<view ltx="459" lty="384" rbx="507" rby="401"/>
 					<data>
 						<constant value="+" datatype="string"/>
 					</data>
@@ -173,7 +173,7 @@
 					<targets>
 						<datapoint pos="0" key="97"/>
 					</targets>
-					<view ltx="459" lty="400" rbx="516" rby="425"/>
+					<view ltx="459" lty="400" rbx="499" rby="417"/>
 					<data>
 						<constant datatype="string"/>
 					</data>
@@ -186,7 +186,7 @@
 					<targets>
 						<datapoint pos="0" key="100"/>
 					</targets>
-					<view ltx="540" lty="347" rbx="634" rby="403"/>
+					<view ltx="540" lty="347" rbx="607" rby="385"/>
 				</component>
 				<component name="translate" library="core" uid="85" kind="5">
 					<properties/>
@@ -198,14 +198,14 @@
 					<targets>
 						<datapoint pos="0" key="104"/>
 					</targets>
-					<view ltx="459" lty="315" rbx="567" rby="419"/>
+					<view ltx="459" lty="315" rbx="540" rby="385"/>
 				</component>
 				<component name="constant" library="core" uid="91" kind="2">
 					<properties/>
 					<targets>
 						<datapoint pos="0" key="107"/>
 					</targets>
-					<view ltx="346" lty="-19" rbx="406" rby="6"/>
+					<view ltx="346" lty="-19" rbx="389" rby="-2"/>
 					<data>
 						<constant value="." datatype="string"/>
 					</data>
@@ -215,82 +215,13 @@
 					<targets>
 						<datapoint pos="0" key="105"/>
 					</targets>
-					<view ltx="346" lty="-3" rbx="410" rby="22"/>
+					<view ltx="346" lty="-3" rbx="391" rby="14"/>
 					<data>
 						<constant value="_" datatype="string"/>
 					</data>
 				</component>
-				<component name="db" library="db" uid="51" kind="15">
-					<properties XSLTDefaultOutput="1"/>
-					<view ltx="819" lty="-88" rbx="987" rby="378"/>
-					<data>
-						<root scrollposition="1">
-							<header>
-								<namespaces>
-									<namespace/>
-									<namespace uid="http://www.altova.com/mapforce"/>
-								</namespaces>
-							</header>
-							<entry name="document" ns="1" expanded="1">
-								<entry name="products" type="table" inpkey="38" expanded="1">
-									<tableactions>
-										<action operation="update" proceedchildren="1">
-											<field name="gtin" function="equal"/>
-										</action>
-										<action proceedchildren="1">
-											<field name="sku" function="equal"/>
-										</action>
-									</tableactions>
-									<entry name="sku" inpkey="39"/>
-									<entry name="gtin" inpkey="40"/>
-									<entry name="type" inpkey="87"/>
-									<entry name="color" inpkey="62"/>
-									<entry name="color_type" inpkey="84"/>
-									<entry name="size" inpkey="85"/>
-									<entry name="gender" inpkey="56"/>
-									<entry name="price" inpkey="63"/>
-									<entry name="map" inpkey="64"/>
-									<entry name="weight" inpkey="88"/>
-									<entry name="brand" inpkey="89"/>
-									<entry name="collection" inpkey="90"/>
-									<entry name="title" inpkey="65"/>
-									<entry name="description" inpkey="66"/>
-									<entry name="image" inpkey="60"/>
-								</entry>
-								<entry name="supplierinventory" type="table" inpkey="41" expanded="1">
-									<tableactions>
-										<action operation="update" proceedchildren="1">
-											<field name="gtin" function="equal"/>
-										</action>
-										<action proceedchildren="1"/>
-									</tableactions>
-									<entry name="gtin" inpkey="42"/>
-									<entry name="supplier" inpkey="43"/>
-									<entry name="price" inpkey="67"/>
-									<entry name="stock" inpkey="68"/>
-								</entry>
-							</entry>
-						</root>
-						<database ref="batch">
-							<data>
-								<selections>
-									<selection>
-										<PathElement Name="batch" Kind="DataSource"/>
-										<PathElement Name="batch" Kind="Database"/>
-										<PathElement Name="products" Kind="Table"/>
-									</selection>
-									<selection>
-										<PathElement Name="batch" Kind="DataSource"/>
-										<PathElement Name="batch" Kind="Database"/>
-										<PathElement Name="supplierinventory" Kind="Table"/>
-									</selection>
-								</selections>
-							</data>
-						</database>
-					</data>
-				</component>
 				<component name="sku" library="user" uid="56" kind="19" visible="0">
-					<view ltx="461" lty="-63" rbx="589" rby="4"/>
+					<view ltx="461" lty="-63" rbx="595" rby="5"/>
 					<data>
 						<root scrollposition="1">
 							<header>
@@ -398,7 +329,107 @@
 					<targets>
 						<datapoint pos="0" key="109"/>
 					</targets>
-					<view ltx="346" lty="-88" rbx="454" rby="16"/>
+					<view ltx="346" lty="-88" rbx="427" rby="-18"/>
+				</component>
+				<component name="db" library="db" uid="51" kind="15">
+					<properties XSLTDefaultOutput="1"/>
+					<view ltx="819" lty="-88" rbx="987" rby="378"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace/>
+									<namespace uid="http://www.altova.com/mapforce"/>
+								</namespaces>
+							</header>
+							<entry name="document" ns="1" expanded="1">
+								<entry name="products" type="table" inpkey="38" expanded="1" dbbefore="sql" dbsqlbefore="CREATE TABLE IF NOT EXISTS products(
+  id int NOT NULL AUTO_INCREMENT,
+  sku varchar(64) NULL,
+  gtin varchar(14) NULL,
+  type varchar(256) NULL,
+  color varchar(64) NULL,
+  color_base varchar(64) NULL,
+  color_type varchar(64) NULL,
+  size varchar(64) NULL,
+  gender varchar(64) NULL,
+  fit varchar(64) NULL,
+  price decimal(6, 2) NULL,
+  map decimal(6, 2) NULL,
+  weight decimal(6, 2) NULL,
+  manufacturer varchar(256) NULL,
+  brand varchar(256) NULL,
+  collection varchar(256) NULL,
+  callouts varchar(256) NULL,
+  title text NULL,
+  description text NULL,
+  image text NULL,
+  PRIMARY KEY (id)
+) ENGINE=Aria;
+">
+									<tableactions>
+										<action operation="update" proceedchildren="1">
+											<field name="gtin" function="equal"/>
+										</action>
+										<action proceedchildren="1">
+											<field name="sku" function="equal"/>
+										</action>
+									</tableactions>
+									<entry name="sku" inpkey="39"/>
+									<entry name="gtin" inpkey="40"/>
+									<entry name="type" inpkey="87"/>
+									<entry name="color" inpkey="62"/>
+									<entry name="color_type" inpkey="84"/>
+									<entry name="size" inpkey="85"/>
+									<entry name="gender" inpkey="56"/>
+									<entry name="price" inpkey="63"/>
+									<entry name="map" inpkey="64"/>
+									<entry name="weight" inpkey="88"/>
+									<entry name="brand" inpkey="89"/>
+									<entry name="collection" inpkey="90"/>
+									<entry name="title" inpkey="65"/>
+									<entry name="description" inpkey="66"/>
+									<entry name="image" inpkey="60"/>
+								</entry>
+								<entry name="supplierinventory" type="table" inpkey="41" expanded="1" dbbefore="sql" dbsqlbefore="CREATE TABLE IF NOT EXISTS supplierinventory(
+  id int NOT NULL AUTO_INCREMENT,
+  gtin varchar(14) NULL,
+  supplier varchar(256) NULL,
+  price decimal(6, 2) NULL,
+  stock int NULL,
+  PRIMARY KEY (id)
+) ENGINE=Aria;
+">
+									<tableactions>
+										<action operation="update" proceedchildren="1">
+											<field name="gtin" function="equal"/>
+										</action>
+										<action proceedchildren="1"/>
+									</tableactions>
+									<entry name="gtin" inpkey="42"/>
+									<entry name="supplier" inpkey="43"/>
+									<entry name="price" inpkey="67"/>
+									<entry name="stock" inpkey="68"/>
+								</entry>
+							</entry>
+						</root>
+						<database ref="batch">
+							<data>
+								<selections>
+									<selection>
+										<PathElement Name="batch" Kind="DataSource"/>
+										<PathElement Name="batch" Kind="Database"/>
+										<PathElement Name="products" Kind="Table"/>
+									</selection>
+									<selection>
+										<PathElement Name="batch" Kind="DataSource"/>
+										<PathElement Name="batch" Kind="Database"/>
+										<PathElement Name="supplierinventory" Kind="Table"/>
+									</selection>
+								</selections>
+							</data>
+						</database>
+					</data>
 				</component>
 			</children>
 		</structure>
