@@ -26,14 +26,14 @@ public class mappingsConsole {
 			TraceTargetConsole ttc = new TraceTargetConsole();
 
 
-			MappingMapTobatch MappingMapTobatchObject = new MappingMapTobatch();
+			MappingMapToBatch MappingMapToBatchObject = new MappingMapToBatch();
 
 			//java.sql.DriverManager.setLogWriter(new java.io.PrintWriter(java.lang.System.err));
 
 
 			Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
 
-			MappingMapTobatchObject.registerTraceTarget(ttc);
+			MappingMapToBatchObject.registerTraceTarget(ttc);
 	
 
 			// run mapping
@@ -62,12 +62,12 @@ public class mappingsConsole {
 			// 
 			// By default, run will close all inputs and outputs. If you do not want this,
 			// call the following function:
-			// MappingMapTobatchObject.setCloseObjectsAfterRun(false);
+			// MappingMapToBatchObject.setCloseObjectsAfterRun(false);
 
 			{
 				com.altova.io.Input InventorySPI2Source = com.altova.io.StreamInput.createInput("schema/InventorySPI.csv");
 
-				MappingMapTobatchObject.run(
+				MappingMapToBatchObject.run(
 						InventorySPI2Source,
 						com.altova.db.Dbs.newConnection(
 							"jdbc:odbc:MariaDB",

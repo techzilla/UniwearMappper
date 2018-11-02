@@ -43,17 +43,17 @@ public class mappingsFrame extends JFrame implements com.altova.TraceTarget {
 	JLabel jInventorySPI2Label0 = new JLabel();
 	JTextField jInventorySPI2TextField0 = new JTextField();
 
-	JLabel jbatchLabel1 = new JLabel();
-	JTextField jbatchTextField1 = new JTextField();
+	JLabel jBatchLabel1 = new JLabel();
+	JTextField jBatchTextField1 = new JTextField();
 
-	JLabel jbatch2Label2 = new JLabel();
-	JTextField jbatch2TextField2 = new JTextField();
+	JLabel jBatch2Label2 = new JLabel();
+	JTextField jBatch2TextField2 = new JTextField();
 
 	JLabel jstdoutLabel3 = new JLabel();
 	JTextField jstdoutTextField3 = new JTextField();
 
-	JLabel jbatch3Label4 = new JLabel();
-	JTextField jbatch3TextField4 = new JTextField();
+	JLabel jBatch3Label4 = new JLabel();
+	JTextField jBatch3TextField4 = new JTextField();
 
 	JLabel jXcart2Label5 = new JLabel();
 	JTextField jXcart2TextField5 = new JTextField();
@@ -136,32 +136,32 @@ public class mappingsFrame extends JFrame implements com.altova.TraceTarget {
 		jInventorySPI2TextField0.setEditable(false);
 		jPanelStructures.add(jInventorySPI2TextField0, null);
 
-		jbatchLabel1.setText("JDBC-URL of batch database:");
-		jbatchLabel1.setBounds(new Rectangle(15, 60, 438, 23));
-		jPanelStructures.add(jbatchLabel1, null);
+		jBatchLabel1.setText("JDBC-URL of Batch database:");
+		jBatchLabel1.setBounds(new Rectangle(15, 60, 438, 23));
+		jPanelStructures.add(jBatchLabel1, null);
 
-		jbatchTextField1.setText("jdbc:odbc:MariaDB");
-		jbatchTextField1.setBounds(new Rectangle(15, 85, 438, 23));
-		jbatchTextField1.setEditable(false);
-		jPanelStructures.add(jbatchTextField1, null);
+		jBatchTextField1.setText("jdbc:odbc:MariaDB");
+		jBatchTextField1.setBounds(new Rectangle(15, 85, 438, 23));
+		jBatchTextField1.setEditable(false);
+		jPanelStructures.add(jBatchTextField1, null);
 
-		jbatch2Label2.setText("Source JDBC-URL of batch2 database:");
-		jbatch2Label2.setBounds(new Rectangle(15, 110, 438, 23));
-		jPanelStructures.add(jbatch2Label2, null);
+		jBatch2Label2.setText("Source JDBC-URL of Batch2 database:");
+		jBatch2Label2.setBounds(new Rectangle(15, 110, 438, 23));
+		jPanelStructures.add(jBatch2Label2, null);
 
-		jbatch2TextField2.setText("jdbc:odbc:MariaDB");
-		jbatch2TextField2.setBounds(new Rectangle(15, 135, 438, 23));
-		jbatch2TextField2.setEditable(false);
-		jPanelStructures.add(jbatch2TextField2, null);
+		jBatch2TextField2.setText("jdbc:odbc:MariaDB");
+		jBatch2TextField2.setBounds(new Rectangle(15, 135, 438, 23));
+		jBatch2TextField2.setEditable(false);
+		jPanelStructures.add(jBatch2TextField2, null);
 
-		jbatch3Label4.setText("Source JDBC-URL of batch3 database:");
-		jbatch3Label4.setBounds(new Rectangle(15, 210, 438, 23));
-		jPanelStructures.add(jbatch3Label4, null);
+		jBatch3Label4.setText("Source JDBC-URL of Batch3 database:");
+		jBatch3Label4.setBounds(new Rectangle(15, 210, 438, 23));
+		jPanelStructures.add(jBatch3Label4, null);
 
-		jbatch3TextField4.setText("jdbc:odbc:MariaDB");
-		jbatch3TextField4.setBounds(new Rectangle(15, 235, 438, 23));
-		jbatch3TextField4.setEditable(false);
-		jPanelStructures.add(jbatch3TextField4, null);
+		jBatch3TextField4.setText("jdbc:odbc:MariaDB");
+		jBatch3TextField4.setBounds(new Rectangle(15, 235, 438, 23));
+		jBatch3TextField4.setEditable(false);
+		jPanelStructures.add(jBatch3TextField4, null);
 
 		jXcart2Label5.setText("Instance of Xcart file:");
 		jXcart2Label5.setBounds(new Rectangle(15, 260, 438, 23));
@@ -195,14 +195,14 @@ public class mappingsFrame extends JFrame implements com.altova.TraceTarget {
 
 			try {
 
-			MappingMapTobatch MappingMapTobatchObject = new MappingMapTobatch();
+			MappingMapToBatch MappingMapToBatchObject = new MappingMapToBatch();
 
 			//java.sql.DriverManager.setLogWriter(new java.io.PrintWriter(java.lang.System.err));
 
 
 			Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
 
-			MappingMapTobatchObject.registerTraceTarget(ttc);
+			MappingMapToBatchObject.registerTraceTarget(ttc);
 	
 
 			// run mapping
@@ -231,12 +231,12 @@ public class mappingsFrame extends JFrame implements com.altova.TraceTarget {
 			// 
 			// By default, run will close all inputs and outputs. If you do not want this,
 			// call the following function:
-			// MappingMapTobatchObject.setCloseObjectsAfterRun(false);
+			// MappingMapToBatchObject.setCloseObjectsAfterRun(false);
 
 			{
 				com.altova.io.Input InventorySPI2Source = com.altova.io.StreamInput.createInput("schema/InventorySPI.csv");
 
-				MappingMapTobatchObject.run(
+				MappingMapToBatchObject.run(
 						InventorySPI2Source,
 						com.altova.db.Dbs.newConnection(
 							"jdbc:odbc:MariaDB",

@@ -3,9 +3,9 @@
 <mapping xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="31">
 	<resources>
 		<datasources>
-			<datasource name="batch">
+			<datasource name="SPIToBatch">
 				<properties JDBCDriver="sun.jdbc.odbc.JdbcOdbcDriver" JDBCDatabaseURL="jdbc:odbc:MariaDB" DBUser="batch" DBPassword="batch" DBDataSource="127.0.0.1" DBCatalog="batch" OLEDBOptions="DSN=MariaDB;"/>
-				<database_connection is_global_resource="Yes" global_resource_alias="batch" vendor="mariadb" import_kind="ODBC" name="batch" path="batch">
+				<database_connection is_global_resource="Yes" global_resource_alias="Batch" vendor="mariadb" import_kind="ODBC" name="Batch" path="Batch">
 					<LocalViewStorage/>
 					<LocalRelationsStorage/>
 					<RecordSetStructureStorage/>
@@ -14,7 +14,7 @@
 		</datasources>
 	</resources>
 	<component name="defaultmap" uid="1" editable="1">
-		<properties JavaBasePackage="biz.uniwear.batch.mappings" SelectedLanguage="builtin" LineEnd="lf"/>
+		<properties JavaBasePackage="biz.uniwear.batch.mappings" SelectedLanguage="java" LineEnd="lf"/>
 		<structure>
 			<children>
 				<component name="lowercase" library="lang" uid="47" kind="5">
@@ -413,16 +413,16 @@
 								</entry>
 							</entry>
 						</root>
-						<database ref="batch">
+						<database ref="SPIToBatch">
 							<data>
 								<selections>
 									<selection>
-										<PathElement Name="batch" Kind="DataSource"/>
+										<PathElement Name="Batch" Kind="DataSource"/>
 										<PathElement Name="batch" Kind="Database"/>
 										<PathElement Name="products" Kind="Table"/>
 									</selection>
 									<selection>
-										<PathElement Name="batch" Kind="DataSource"/>
+										<PathElement Name="Batch" Kind="DataSource"/>
 										<PathElement Name="batch" Kind="Database"/>
 										<PathElement Name="supplierinventory" Kind="Table"/>
 									</selection>

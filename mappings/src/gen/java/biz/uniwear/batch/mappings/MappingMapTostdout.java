@@ -28,11 +28,11 @@ public class MappingMapTostdout extends com.altova.TraceProvider
 	
 	static class main implements IEnumerable
 	{
-		com.altova.db.Catalog var1_batch__batch__Instance;
+		com.altova.db.Catalog var1_Batch__batch__Instance;
 	
-		public main(com.altova.db.Catalog var1_batch__batch__Instance)
+		public main(com.altova.db.Catalog var1_Batch__batch__Instance)
 		{
-			this.var1_batch__batch__Instance = var1_batch__batch__Instance;
+			this.var1_Batch__batch__Instance = var1_Batch__batch__Instance;
 		}
 
 		public IEnumerator enumerator() {return new Enumerator(this);}
@@ -70,9 +70,9 @@ public class MappingMapTostdout extends com.altova.TraceProvider
 
 			private boolean moveNext_1() throws Exception {
 				state = 3;				
-				var3_NewStatement = com.altova.db.Dbs.newStatement(closure.var1_batch__batch__Instance, 1, "SELECT `gtin` FROM `products`");
+				var3_NewStatement = com.altova.db.Dbs.newStatement(closure.var1_Batch__batch__Instance, 1, "SELECT `gtin` FROM `products`");
 				com.altova.db.Dbs.prepareStatement(var3_NewStatement);
-				var2_item_at = (com.altova.functions.Core.itemAt((new seq1_join(closure.var1_batch__batch__Instance)), new java.math.BigInteger("1"))).enumerator();
+				var2_item_at = (com.altova.functions.Core.itemAt((new seq1_join(closure.var1_Batch__batch__Instance)), new java.math.BigInteger("1"))).enumerator();
 				return false;
 			}
 			private boolean moveNext_3() throws Exception {
@@ -104,11 +104,11 @@ public class MappingMapTostdout extends com.altova.TraceProvider
 	}
 	static class seq1_join implements IEnumerable
 	{
-		com.altova.db.Catalog var1_batch__batch__Instance;
+		com.altova.db.Catalog var1_Batch__batch__Instance;
 	
-		public seq1_join(com.altova.db.Catalog var1_batch__batch__Instance)
+		public seq1_join(com.altova.db.Catalog var1_Batch__batch__Instance)
 		{
-			this.var1_batch__batch__Instance = var1_batch__batch__Instance;
+			this.var1_Batch__batch__Instance = var1_Batch__batch__Instance;
 		}
 
 		public IEnumerator enumerator() {return new Enumerator(this);}
@@ -148,7 +148,7 @@ public class MappingMapTostdout extends com.altova.TraceProvider
 
 			private boolean moveNext_1() throws Exception {
 				state = 2;				
-				var2_ReadRecordSet = (com.altova.db.Dbs.readRecordSet((com.altova.db.ResultSetWrapper)com.altova.functions.Core.first((new seq2_NewQuery(closure.var1_batch__batch__Instance))), (new seq3_NewRecord_lambda()))).enumerator();
+				var2_ReadRecordSet = (com.altova.db.Dbs.readRecordSet((com.altova.db.ResultSetWrapper)com.altova.functions.Core.first((new seq2_NewQuery(closure.var1_Batch__batch__Instance))), (new seq3_NewRecord_lambda()))).enumerator();
 				return false;
 			}
 			private boolean moveNext_2() throws Exception {
@@ -192,11 +192,11 @@ public class MappingMapTostdout extends com.altova.TraceProvider
 	}
 	static class seq2_NewQuery implements IEnumerable
 	{
-		com.altova.db.Catalog var1_batch__batch__Instance;
+		com.altova.db.Catalog var1_Batch__batch__Instance;
 	
-		public seq2_NewQuery(com.altova.db.Catalog var1_batch__batch__Instance)
+		public seq2_NewQuery(com.altova.db.Catalog var1_Batch__batch__Instance)
 		{
-			this.var1_batch__batch__Instance = var1_batch__batch__Instance;
+			this.var1_Batch__batch__Instance = var1_Batch__batch__Instance;
 		}
 
 		public IEnumerator enumerator() {return new Enumerator(this);}
@@ -231,7 +231,7 @@ public class MappingMapTostdout extends com.altova.TraceProvider
 
 			private boolean moveNext_1() throws Exception {
 				state = 0;				
-				var2_NewQuery = com.altova.db.Dbs.newQuery(closure.var1_batch__batch__Instance, 1);
+				var2_NewQuery = com.altova.db.Dbs.newQuery(closure.var1_Batch__batch__Instance, 1);
 				current = com.altova.db.Dbs.executeQuery(var2_NewQuery);
 				pos++;
 				return true;
@@ -322,11 +322,11 @@ public class MappingMapTostdout extends com.altova.TraceProvider
 	}
 	static class Outer implements IEnumerable
 	{
-		com.altova.db.Catalog var1_batch__batch__Instance;
+		com.altova.db.Catalog var1_Batch__batch__Instance;
 	
-		public Outer(com.altova.db.Catalog var1_batch__batch__Instance)
+		public Outer(com.altova.db.Catalog var1_Batch__batch__Instance)
 		{
-			this.var1_batch__batch__Instance = var1_batch__batch__Instance;
+			this.var1_Batch__batch__Instance = var1_Batch__batch__Instance;
 		}
 
 		public IEnumerator enumerator() {return new Enumerator(this);}
@@ -363,7 +363,7 @@ public class MappingMapTostdout extends com.altova.TraceProvider
 
 			private boolean moveNext_1() throws Exception {
 				state = 2;				
-				var2_item_at = ((new main(closure.var1_batch__batch__Instance))).enumerator();
+				var2_item_at = ((new main(closure.var1_Batch__batch__Instance))).enumerator();
 				return false;
 			}
 			private boolean moveNext_2() throws Exception {
@@ -397,29 +397,29 @@ public class MappingMapTostdout extends com.altova.TraceProvider
 
 
 	// instances
-	protected java.sql.Connection varbatch2Instance;
+	protected java.sql.Connection varBatch2Instance;
 
 
 	// main entry point
 
-	public String run(java.sql.Connection batch2SourceConnection) throws Exception {
+	public String run(java.sql.Connection Batch2SourceConnection) throws Exception {
 		// Open the source(s)
-		writeTrace("Connecting to batch2 database...\n");
+		writeTrace("Connecting to Batch2 database...\n");
 			
-		varbatch2Instance = batch2SourceConnection;
+		varBatch2Instance = Batch2SourceConnection;
 		
 
 		// Create the target
 
 		// Execute mapping
 
-		main mapping = new main(new com.altova.db.Catalog(varbatch2Instance, 60));
+		main mapping = new main(new com.altova.db.Catalog(varBatch2Instance, 60));
 
 		String varstdoutTargetParameter = com.altova.functions.Core.last(mapping).toString();
 			
 		// Close the target
 		// Close the source
-		com.altova.db.Dbs.closeConnection(varbatch2Instance);
+		com.altova.db.Dbs.closeConnection(varBatch2Instance);
 
 		
 		if (runDoesCloseAll)

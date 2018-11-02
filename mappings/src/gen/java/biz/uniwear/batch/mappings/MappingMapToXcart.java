@@ -28,11 +28,11 @@ public class MappingMapToXcart extends com.altova.TraceProvider
 	
 	static class main implements IEnumerable
 	{
-		com.altova.db.Catalog var1_batch__batch__Instance;
+		com.altova.db.Catalog var1_Batch__batch__Instance;
 	
-		public main(com.altova.db.Catalog var1_batch__batch__Instance)
+		public main(com.altova.db.Catalog var1_Batch__batch__Instance)
 		{
-			this.var1_batch__batch__Instance = var1_batch__batch__Instance;
+			this.var1_Batch__batch__Instance = var1_Batch__batch__Instance;
 		}
 
 		public IEnumerator enumerator() {return new Enumerator(this);}
@@ -70,9 +70,9 @@ public class MappingMapToXcart extends com.altova.TraceProvider
 
 			private boolean moveNext_1() throws Exception {
 				state = 3;				
-				var3_NewStatement = com.altova.db.Dbs.newStatement(closure.var1_batch__batch__Instance, 1, "SELECT `sku`, `title`, CONVERT(`price`, CHAR(67)) AS `price` FROM `products`");
+				var3_NewStatement = com.altova.db.Dbs.newStatement(closure.var1_Batch__batch__Instance, 1, "SELECT `sku`, `title`, CONVERT(`price`, CHAR(67)) AS `price` FROM `products`");
 				com.altova.db.Dbs.prepareStatement(var3_NewStatement);
-				var2_ReadRecordSet = (com.altova.db.Dbs.readRecordSet((com.altova.db.ResultSetWrapper)com.altova.functions.Core.first((new seq1_NewQuery(closure.var1_batch__batch__Instance))), (new seq2_NewRecord_lambda()))).enumerator();
+				var2_ReadRecordSet = (com.altova.db.Dbs.readRecordSet((com.altova.db.ResultSetWrapper)com.altova.functions.Core.first((new seq1_NewQuery(closure.var1_Batch__batch__Instance))), (new seq2_NewRecord_lambda()))).enumerator();
 				return false;
 			}
 			private boolean moveNext_3() throws Exception {
@@ -104,11 +104,11 @@ public class MappingMapToXcart extends com.altova.TraceProvider
 	}
 	static class seq1_NewQuery implements IEnumerable
 	{
-		com.altova.db.Catalog var1_batch__batch__Instance;
+		com.altova.db.Catalog var1_Batch__batch__Instance;
 	
-		public seq1_NewQuery(com.altova.db.Catalog var1_batch__batch__Instance)
+		public seq1_NewQuery(com.altova.db.Catalog var1_Batch__batch__Instance)
 		{
-			this.var1_batch__batch__Instance = var1_batch__batch__Instance;
+			this.var1_Batch__batch__Instance = var1_Batch__batch__Instance;
 		}
 
 		public IEnumerator enumerator() {return new Enumerator(this);}
@@ -143,7 +143,7 @@ public class MappingMapToXcart extends com.altova.TraceProvider
 
 			private boolean moveNext_1() throws Exception {
 				state = 0;				
-				var2_NewQuery = com.altova.db.Dbs.newQuery(closure.var1_batch__batch__Instance, 1);
+				var2_NewQuery = com.altova.db.Dbs.newQuery(closure.var1_Batch__batch__Instance, 1);
 				current = com.altova.db.Dbs.executeQuery(var2_NewQuery);
 				pos++;
 				return true;
@@ -343,11 +343,11 @@ public class MappingMapToXcart extends com.altova.TraceProvider
 	}
 	static class Outer implements IEnumerable
 	{
-		com.altova.db.Catalog var1_batch__batch__Instance;
+		com.altova.db.Catalog var1_Batch__batch__Instance;
 	
-		public Outer(com.altova.db.Catalog var1_batch__batch__Instance)
+		public Outer(com.altova.db.Catalog var1_Batch__batch__Instance)
 		{
-			this.var1_batch__batch__Instance = var1_batch__batch__Instance;
+			this.var1_Batch__batch__Instance = var1_Batch__batch__Instance;
 		}
 
 		public IEnumerator enumerator() {return new Enumerator(this);}
@@ -384,7 +384,7 @@ public class MappingMapToXcart extends com.altova.TraceProvider
 
 			private boolean moveNext_1() throws Exception {
 				state = 2;				
-				var2_map = ((new main(closure.var1_batch__batch__Instance))).enumerator();
+				var2_map = ((new main(closure.var1_Batch__batch__Instance))).enumerator();
 				return false;
 			}
 			private boolean moveNext_2() throws Exception {
@@ -418,16 +418,16 @@ public class MappingMapToXcart extends com.altova.TraceProvider
 
 
 	// instances
-	protected java.sql.Connection varbatch3Instance;
+	protected java.sql.Connection varBatch3Instance;
 
-	public void run(java.sql.Connection batch3SourceConnection, String Xcart2TargetFilename) throws Exception {
+	public void run(java.sql.Connection Batch3SourceConnection, String Xcart2TargetFilename) throws Exception {
 		// open source streams
 		// open target stream
 		com.altova.io.FileOutput Xcart2Target = new com.altova.io.FileOutput(Xcart2TargetFilename);
 
 		// run
 	
-		run(batch3SourceConnection, Xcart2Target);
+		run(Batch3SourceConnection, Xcart2Target);
 
 		// close source streams
 		// close target stream
@@ -438,11 +438,11 @@ public class MappingMapToXcart extends com.altova.TraceProvider
 
 	// main entry point
 
-	public void run(java.sql.Connection batch3SourceConnection, com.altova.io.Output Xcart2Target) throws Exception {
+	public void run(java.sql.Connection Batch3SourceConnection, com.altova.io.Output Xcart2Target) throws Exception {
 		// Open the source(s)
-		writeTrace("Connecting to batch3 database...\n");
+		writeTrace("Connecting to Batch3 database...\n");
 			
-		varbatch3Instance = batch3SourceConnection;
+		varBatch3Instance = Batch3SourceConnection;
 		
 
 		// Create the target
@@ -455,14 +455,14 @@ public class MappingMapToXcart extends com.altova.TraceProvider
 
 		// Execute mapping
 
-		main mapping = new main(new com.altova.db.Catalog(varbatch3Instance, 60));
+		main mapping = new main(new com.altova.db.Catalog(varBatch3Instance, 60));
 
 		com.altova.text.MFTextWriter.write(mapping, Xcart2TargetObject);
 		// Close the target
 		Xcart2TargetDoc.setEncoding( "UTF-8", false, false );
 		Xcart2TargetDoc.save(Xcart2Target);
 		// Close the source
-		com.altova.db.Dbs.closeConnection(varbatch3Instance);
+		com.altova.db.Dbs.closeConnection(varBatch3Instance);
 
 		
 		if (runDoesCloseAll)
