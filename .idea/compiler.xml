@@ -6,7 +6,6 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="apiclientudcart" />
         <module name="batch" />
         <module name="cli" />
         <module name="mappings" />
@@ -15,6 +14,8 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="apiclient" target="10" />
+      <module name="apiclientudcart" target="10" />
+      <module name="mappingsfunc" target="10" />
     </bytecodeTargetLevel>
   </component>
 </project>

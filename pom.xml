@@ -14,8 +14,7 @@
 
     <modules>
         <module>parent</module>
-<!--    <module>apiclientudcart</module>
-        <module>mappingsfunc</module> -->
+        <!--    <module>mappingsfunc</module> -->
         <module>mappings</module>
         <module>cli</module>
         <module>rpm</module>
