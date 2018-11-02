@@ -55,12 +55,12 @@ mysqlExecFile() {
 		"database=${db_name}" \
 		>"${conf}"
 
-	if result=$(HOME="/sys" mysql --defaults-file="${conf}" < "${file}"); then
+	if result=$(HOME="/sys" mysql --defaults-extra-file="${conf}" < "${file}"); then
+        echo "$result"
 		retvar=0
 	else
 		retvar=$?
 	fi
-    echo "$result"
 
 	rm "${conf}"
 
