@@ -3,7 +3,7 @@
 <mapping xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="22">
 	<resources/>
 	<component name="defaultmap" uid="1" editable="1" blackbox="0">
-		<properties SelectedLanguage="java"/>
+		<properties AppName="Load" JavaBasePackage="biz.uniwear.batch.mappings" SelectedLanguage="java"/>
 		<structure>
 			<children/>
 		</structure>

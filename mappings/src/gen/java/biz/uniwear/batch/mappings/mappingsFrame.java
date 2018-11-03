@@ -151,7 +151,7 @@ public class mappingsFrame extends JFrame implements com.altova.TraceTarget {
 		jProductsMagento22Label3.setText("Instance of ProductsMagento2 file:");
 		jProductsMagento22Label3.setBounds(new Rectangle(15, 160, 438, 23));
 		jPanelStructures.add(jProductsMagento22Label3, null);
-		jProductsMagento22TextField3.setText("ProductsMagento2.csv");
+		jProductsMagento22TextField3.setText("tmp/ProductsMagento2.csv");
 		jProductsMagento22TextField3.setBounds(new Rectangle(15, 185, 438, 23));
 		jProductsMagento22TextField3.setEditable(false);
 		jPanelStructures.add(jProductsMagento22TextField3, null);
@@ -180,14 +180,14 @@ public class mappingsFrame extends JFrame implements com.altova.TraceTarget {
 
 			try {
 
-			MappingMapToBatch MappingMapToBatchObject = new MappingMapToBatch();
+			SPIMapToBatch SPIMapToBatchObject = new SPIMapToBatch();
 
 			//java.sql.DriverManager.setLogWriter(new java.io.PrintWriter(java.lang.System.err));
 
 
 			Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
 
-			MappingMapToBatchObject.registerTraceTarget(ttc);
+			SPIMapToBatchObject.registerTraceTarget(ttc);
 	
 
 			// run mapping
@@ -216,12 +216,12 @@ public class mappingsFrame extends JFrame implements com.altova.TraceTarget {
 			// 
 			// By default, run will close all inputs and outputs. If you do not want this,
 			// call the following function:
-			// MappingMapToBatchObject.setCloseObjectsAfterRun(false);
+			// SPIMapToBatchObject.setCloseObjectsAfterRun(false);
 
 			{
 				com.altova.io.Input InventorySPI2Source = com.altova.io.StreamInput.createInput("schema/InventorySPI.csv");
 
-				MappingMapToBatchObject.run(
+				SPIMapToBatchObject.run(
 						InventorySPI2Source,
 						com.altova.db.Dbs.newConnection(
 							"jdbc:odbc:MariaDB",
@@ -240,14 +240,14 @@ public class mappingsFrame extends JFrame implements com.altova.TraceTarget {
 
 			try {
 
-			MappingMapToProductsMagento2 MappingMapToProductsMagento2Object = new MappingMapToProductsMagento2();
+			BatchMapToProductsMagento2 BatchMapToProductsMagento2Object = new BatchMapToProductsMagento2();
 
 			//java.sql.DriverManager.setLogWriter(new java.io.PrintWriter(java.lang.System.err));
 
 
 			Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
 
-			MappingMapToProductsMagento2Object.registerTraceTarget(ttc);
+			BatchMapToProductsMagento2Object.registerTraceTarget(ttc);
 	
 
 			// run mapping
@@ -276,12 +276,12 @@ public class mappingsFrame extends JFrame implements com.altova.TraceTarget {
 			// 
 			// By default, run will close all inputs and outputs. If you do not want this,
 			// call the following function:
-			// MappingMapToProductsMagento2Object.setCloseObjectsAfterRun(false);
+			// BatchMapToProductsMagento2Object.setCloseObjectsAfterRun(false);
 
 			{
-				com.altova.io.Output ProductsMagento22Target = new com.altova.io.FileOutput("ProductsMagento2.csv");
+				com.altova.io.Output ProductsMagento22Target = new com.altova.io.FileOutput("tmp/ProductsMagento2.csv");
 
-				MappingMapToProductsMagento2Object.run(
+				BatchMapToProductsMagento2Object.run(
 						com.altova.db.Dbs.newConnection(
 							"jdbc:odbc:MariaDB",
 							"batch",

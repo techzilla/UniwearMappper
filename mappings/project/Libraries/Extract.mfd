@@ -3,7 +3,7 @@
 <mapping xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="22">
 	<resources/>
 	<component name="defaultmap" uid="1" editable="1" blackbox="0">
-		<properties SelectedLanguage="java"/>
+		<properties AppName="Extract" JavaBasePackage="biz.uniwear.batch.mappings" SelectedLanguage="java"/>
 		<structure>
 			<children/>
 		</structure>
@@ -20,7 +20,7 @@
 					<targets>
 						<datapoint pos="0" key="23"/>
 					</targets>
-					<view ltx="206" lty="47" rbx="250" rby="64"/>
+					<view ltx="206" lty="47" rbx="257" rby="68"/>
 					<data>
 						<constant value="-" datatype="string"/>
 					</data>
@@ -30,7 +30,7 @@
 					<targets>
 						<datapoint pos="0" key="24"/>
 					</targets>
-					<view ltx="206" lty="251" rbx="250" rby="268"/>
+					<view ltx="206" lty="251" rbx="257" rby="272"/>
 					<data>
 						<constant value="-" datatype="string"/>
 					</data>
@@ -45,18 +45,7 @@
 					<targets>
 						<datapoint pos="0" key="33"/>
 					</targets>
-					<view ltx="250" lty="214" rbx="350" rby="287"/>
-				</component>
-				<component name="result" library="core" uid="12" kind="7">
-					<properties/>
-					<sources>
-						<datapoint pos="0" key="21"/>
-					</sources>
-					<view ltx="598" lty="-27" rbx="655" rby="11"/>
-					<data>
-						<output datatype="string"/>
-						<parameter usageKind="output" name="result"/>
-					</data>
+					<view ltx="250" lty="214" rbx="360" rby="302"/>
 				</component>
 				<component name="if-else" library="core" uid="38" kind="4">
 					<properties/>
@@ -68,7 +57,7 @@
 					<targets>
 						<datapoint pos="0" key="26"/>
 					</targets>
-					<view ltx="250" lty="84" rbx="350" rby="157"/>
+					<view ltx="250" lty="84" rbx="360" rby="172"/>
 				</component>
 				<component name="if-else" library="core" uid="41" kind="4">
 					<properties/>
@@ -80,7 +69,7 @@
 					<targets>
 						<datapoint pos="0" key="34"/>
 					</targets>
-					<view ltx="250" lty="286" rbx="350" rby="359"/>
+					<view ltx="250" lty="286" rbx="360" rby="374"/>
 				</component>
 				<component name="colorCode" library="core" uid="16" kind="6">
 					<properties/>
@@ -90,7 +79,7 @@
 					<targets>
 						<datapoint pos="0" key="4"/>
 					</targets>
-					<view ltx="-14" lty="47" rbx="92" rby="85"/>
+					<view ltx="-14" lty="47" rbx="103" rby="92"/>
 					<data>
 						<input datatype="string"/>
 						<parameter usageKind="input" name="colorCode" optional="1"/>
@@ -104,7 +93,7 @@
 					<targets>
 						<datapoint pos="0" key="19"/>
 					</targets>
-					<view ltx="-14" lty="84" rbx="85" rby="122"/>
+					<view ltx="-14" lty="84" rbx="95" rby="129"/>
 					<data>
 						<input datatype="string"/>
 						<parameter usageKind="input" name="sizeCode" optional="1"/>
@@ -118,7 +107,7 @@
 					<targets>
 						<datapoint pos="0" key="35"/>
 					</targets>
-					<view ltx="125" lty="230" rbx="206" rby="268"/>
+					<view ltx="125" lty="230" rbx="214" rby="275"/>
 				</component>
 				<component name="is-not-null" library="db" uid="36" kind="5">
 					<properties/>
@@ -128,7 +117,7 @@
 					<targets>
 						<datapoint pos="0" key="17"/>
 					</targets>
-					<view ltx="125" lty="26" rbx="206" rby="64"/>
+					<view ltx="125" lty="26" rbx="214" rby="71"/>
 				</component>
 				<component name="if-else" library="core" uid="35" kind="4">
 					<properties/>
@@ -140,7 +129,17 @@
 					<targets>
 						<datapoint pos="0" key="27"/>
 					</targets>
-					<view ltx="250" lty="10" rbx="350" rby="83"/>
+					<view ltx="250" lty="10" rbx="360" rby="98"/>
+				</component>
+				<component name="constant" library="core" uid="20" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="1"/>
+					</targets>
+					<view ltx="466" lty="10" rbx="517" rby="31"/>
+					<data>
+						<constant value="-" datatype="string"/>
+					</data>
 				</component>
 				<component name="BrandPrefix" library="core" uid="14" kind="6">
 					<properties/>
@@ -150,24 +149,21 @@
 					<targets>
 						<datapoint pos="0" key="7"/>
 					</targets>
-					<view ltx="-14" lty="-27" rbx="98" rby="11"/>
+					<view ltx="-14" lty="-27" rbx="108" rby="18"/>
 					<data>
 						<input datatype="string"/>
 						<parameter usageKind="input" name="BrandPrefix"/>
 					</data>
 				</component>
-				<component name="styleCode" library="core" uid="15" kind="6">
+				<component name="result" library="core" uid="12" kind="7">
 					<properties/>
 					<sources>
-						<datapoint/>
+						<datapoint pos="0" key="21"/>
 					</sources>
-					<targets>
-						<datapoint pos="0" key="8"/>
-					</targets>
-					<view ltx="-14" lty="10" rbx="89" rby="48"/>
+					<view ltx="598" lty="-27" rbx="662" rby="18"/>
 					<data>
-						<input datatype="string"/>
-						<parameter usageKind="input" name="styleCode"/>
+						<output datatype="string"/>
+						<parameter usageKind="output" name="result"/>
 					</data>
 				</component>
 				<component name="concat" library="core" uid="26" kind="5" growable="1" growablebasename="value">
@@ -184,16 +180,20 @@
 					<targets>
 						<datapoint pos="0" key="20"/>
 					</targets>
-					<view ltx="510" lty="-27" rbx="598" rby="114"/>
+					<view ltx="510" lty="-27" rbx="606" rby="145"/>
 				</component>
-				<component name="constant" library="core" uid="20" kind="2">
+				<component name="styleCode" library="core" uid="15" kind="6">
 					<properties/>
+					<sources>
+						<datapoint/>
+					</sources>
 					<targets>
-						<datapoint pos="0" key="1"/>
+						<datapoint pos="0" key="8"/>
 					</targets>
-					<view ltx="466" lty="10" rbx="510" rby="27"/>
+					<view ltx="-14" lty="10" rbx="99" rby="55"/>
 					<data>
-						<constant value="-" datatype="string"/>
+						<input datatype="string"/>
+						<parameter usageKind="input" name="styleCode"/>
 					</data>
 				</component>
 			</children>
