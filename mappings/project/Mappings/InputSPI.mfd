@@ -17,16 +17,6 @@
 		<properties JavaBasePackage="biz.uniwear.batch.mappings" SelectedLanguage="java" LineEnd="lf"/>
 		<structure>
 			<children>
-				<component name="lowercase" library="lang" uid="47" kind="5">
-					<properties/>
-					<sources>
-						<datapoint pos="0" key="15"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="16"/>
-					</targets>
-					<view ltx="265" lty="58" rbx="343" rby="96"/>
-				</component>
 				<component name="constant" library="core" uid="50" kind="2">
 					<properties/>
 					<targets>
@@ -35,53 +25,6 @@
 					<view ltx="740" lty="326" rbx="795" rby="343"/>
 					<data>
 						<constant value="SPI" datatype="string"/>
-					</data>
-				</component>
-				<component name="value-map" library="core" uid="45" kind="23">
-					<properties/>
-					<sources>
-						<datapoint pos="0" key="17"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="18"/>
-					</targets>
-					<view ltx="362" lty="58" rbx="442" rby="96"/>
-					<data>
-						<valuemap enableDefaultValue="1">
-							<valuemapTable>
-								<entry from="adc" to="ADC"/>
-								<entry from="anywear" to="ANY"/>
-								<entry from="asics" to="ASI"/>
-								<entry from="boojee" to="BOO"/>
-								<entry from="careisma" to="CAR"/>
-								<entry from="celeste stien" to="CEL"/>
-								<entry from="cherokee" to="CHE"/>
-								<entry from="cherokee workwear" to="CHW"/>
-								<entry from="code happy" to="COD"/>
-								<entry from="dickies" to="DIC"/>
-								<entry from="dickies chef" to="DCH"/>
-								<entry from="elle" to="ELL"/>
-								<entry from="fila usa" to="FIL"/>
-								<entry from="heartsoul" to="HRT"/>
-								<entry from="infinity footwear" to="INF"/>
-								<entry from="k-swiss" to="KSW"/>
-								<entry from="littmann" to="LTT"/>
-								<entry from="MDF" to="MDF"/>
-								<entry from="med-man" to="MAN"/>
-								<entry from="reebok" to="RBK"/>
-								<entry from="runway" to="RUN"/>
-								<entry from="sapphire" to="SPH"/>
-								<entry from="scrub hq" to="SHQ"/>
-								<entry from="scrubstar" to="SST"/>
-								<entry from="sloggers" to="SLG"/>
-								<entry from="studio" to="STU"/>
-								<entry from="swiftkick" to="SWK"/>
-								<entry from="therafirm" to="THF"/>
-								<entry from="tooniforms" to="TOO"/>
-							</valuemapTable>
-							<input name="input" type="string"/>
-							<result name="result" type="string" defaultValue="___"/>
-						</valuemap>
 					</data>
 				</component>
 				<component name="gender" library="user" uid="61" kind="19" visible="0">
@@ -220,116 +163,15 @@
 						<constant value="_" datatype="string"/>
 					</data>
 				</component>
-				<component name="sku" library="user" uid="56" kind="19" visible="0">
-					<view ltx="461" lty="-63" rbx="595" rby="5"/>
-					<data>
-						<root scrollposition="1">
-							<header>
-								<namespaces>
-									<namespace/>
-								</namespaces>
-							</header>
-							<entry name="brandPrefix" inpkey="51" componentid="14"/>
-							<entry name="styleCode" inpkey="52" componentid="15"/>
-							<entry name="colorCode" inpkey="53" componentid="16"/>
-							<entry name="sizeCode" inpkey="54" componentid="17"/>
-						</root>
-						<root scrollposition="1">
-							<header>
-								<namespaces>
-									<namespace/>
-								</namespaces>
-							</header>
-							<entry name="result" outkey="55" componentid="12"/>
-						</root>
-					</data>
-				</component>
-				<component name="InventorySPI" library="text" uid="2" kind="16">
-					<properties/>
-					<view ltx="4" lty="-88" rbx="212" rby="412"/>
-					<data>
-						<root scrollposition="1">
-							<header>
-								<namespaces>
-									<namespace/>
-									<namespace uid="http://www.altova.com/mapforce"/>
-								</namespaces>
-							</header>
-							<entry name="FileInstance" ns="1" expanded="1">
-								<entry name="document" ns="1" expanded="1">
-									<entry name="Rows" outkey="29" expanded="1">
-										<entry name="Style" outkey="27"/>
-										<entry name="Color" outkey="11"/>
-										<entry name="Color Description" outkey="46"/>
-										<entry name="Size" outkey="12"/>
-										<entry name="UPC" outkey="1"/>
-										<entry name="Price" outkey="96"/>
-										<entry name="Short Description" outkey="80"/>
-										<entry name="Full Description" outkey="81"/>
-										<entry name="Garment Type" outkey="91"/>
-										<entry name="Color Type" outkey="86"/>
-										<entry name="Availability" outkey="82"/>
-										<entry name="Collection" outkey="92"/>
-										<entry name="Brand" outkey="14"/>
-										<entry name="MAP Price" outkey="83"/>
-										<entry name="Product Shot" outkey="61"/>
-										<entry name="Gender" outkey="57"/>
-										<entry name="Unit Weight" outkey="93"/>
-									</entry>
-								</entry>
-							</entry>
-						</root>
-						<text type="csv" inputinstance="schema\InventorySPI.csv" encoding="1000" byteorder="1" byteordermark="0">
-							<settings separator="," quote="&quot;" firstrownames="true" removeempty="true">
-								<names root="InventorySPI" block="Rows">
-									<field0 name="Style" type="string"/>
-									<field1 name="Color" type="string"/>
-									<field2 name="Color Description" type="string"/>
-									<field3 name="Id" type="integer"/>
-									<field4 name="Size" type="string"/>
-									<field5 name="UPC" type="decimal"/>
-									<field6 name="Price" type="decimal"/>
-									<field7 name="Short Description" type="string"/>
-									<field8 name="Full Description" type="string"/>
-									<field9 name="Fabric Content" type="string"/>
-									<field10 name="First Season" type="string"/>
-									<field11 name="Garment Type" type="string"/>
-									<field12 name="Color Type" type="string"/>
-									<field13 name="Status" type="string"/>
-									<field14 name="Makable" type="string"/>
-									<field15 name="Availability" type="string"/>
-									<field16 name="Date Available" type="string"/>
-									<field17 name="Coordinating Colors" type="string"/>
-									<field18 name="Collection" type="string"/>
-									<field19 name="Brand" type="string"/>
-									<field20 name="MAP Price" type="decimal"/>
-									<field21 name="Meta Data" type="string"/>
-									<field22 name="Product Shot" type="string"/>
-									<field23 name="Product Back" type="string"/>
-									<field24 name="Color Swatch" type="string"/>
-									<field25 name="Gender" type="string"/>
-									<field26 name="Fit" type="string"/>
-									<field27 name="Promo Price" type="string"/>
-									<field28 name="Promo Dates" type="string"/>
-									<field29 name="Product Callouts" type="string"/>
-									<field30 name="Wash Instructions" type="string"/>
-									<field31 name="Unit Weight" type="decimal"/>
-								</names>
-							</settings>
-						</text>
-					</data>
-				</component>
-				<component name="translate" library="core" uid="90" kind="5">
+				<component name="lowercase" library="lang" uid="47" kind="5">
 					<properties/>
 					<sources>
-						<datapoint pos="0" key="110"/>
-						<datapoint pos="1" key="108"/>
-						<datapoint pos="2" key="106"/>
+						<datapoint pos="0" key="15"/>
 					</sources>
 					<targets>
-						<datapoint pos="0" key="109"/>
+						<datapoint pos="0" key="16"/>
 					</targets>
-					<view ltx="346" lty="-88" rbx="427" rby="-18"/>
+					<view ltx="265" lty="58" rbx="343" rby="96"/>
 				</component>
 				<component name="db" library="db" uid="51" kind="15">
 					<properties XSLTDefaultOutput="1"/>
@@ -431,6 +273,163 @@
 						</database>
 					</data>
 				</component>
+				<component name="translate" library="core" uid="90" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="110"/>
+						<datapoint pos="1" key="108"/>
+						<datapoint pos="2" key="106"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="109"/>
+					</targets>
+					<view ltx="346" lty="-88" rbx="427" rby="-18"/>
+				</component>
+				<component name="value-map" library="core" uid="45" kind="23">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="17"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="18"/>
+					</targets>
+					<view ltx="346" lty="59" rbx="426" rby="97"/>
+					<data>
+						<valuemap enableDefaultValue="1">
+							<valuemapTable>
+								<entry from="adc" to="ADC"/>
+								<entry from="anywear" to="ANY"/>
+								<entry from="asics" to="ASI"/>
+								<entry from="boojee" to="BOO"/>
+								<entry from="careisma" to="CAR"/>
+								<entry from="celeste stien" to="CEL"/>
+								<entry from="cherokee" to="CHE"/>
+								<entry from="cherokee workwear" to="CHW"/>
+								<entry from="code happy" to="COD"/>
+								<entry from="dickies" to="DIC"/>
+								<entry from="dickies chef" to="DCH"/>
+								<entry from="elle" to="ELL"/>
+								<entry from="fila usa" to="FIL"/>
+								<entry from="heartsoul" to="HRT"/>
+								<entry from="infinity footwear" to="INF"/>
+								<entry from="k-swiss" to="KSW"/>
+								<entry from="littmann" to="LTT"/>
+								<entry from="MDF" to="MDF"/>
+								<entry from="med-man" to="MAN"/>
+								<entry from="reebok" to="RBK"/>
+								<entry from="runway" to="RUN"/>
+								<entry from="sapphire" to="SPH"/>
+								<entry from="scrub hq" to="SHQ"/>
+								<entry from="scrubstar" to="SST"/>
+								<entry from="sloggers" to="SLG"/>
+								<entry from="studio" to="STU"/>
+								<entry from="swiftkick" to="SWK"/>
+								<entry from="therafirm" to="THF"/>
+								<entry from="tooniforms" to="TOO"/>
+							</valuemapTable>
+							<input name="input" type="string"/>
+							<result name="result" type="string" defaultValue="___"/>
+						</valuemap>
+					</data>
+				</component>
+				<component name="InventorySPI" library="text" uid="2" kind="16">
+					<properties/>
+					<view ltx="4" lty="-88" rbx="212" rby="412"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace/>
+									<namespace uid="http://www.altova.com/mapforce"/>
+								</namespaces>
+							</header>
+							<entry name="FileInstance" ns="1" expanded="1">
+								<entry name="document" ns="1" expanded="1">
+									<entry name="Rows" outkey="29" expanded="1">
+										<entry name="Color" outkey="11"/>
+										<entry name="Color Description" outkey="46"/>
+										<entry name="Size" outkey="12"/>
+										<entry name="UPC" outkey="1"/>
+										<entry name="Price" outkey="96"/>
+										<entry name="Short Description" outkey="80"/>
+										<entry name="Full Description" outkey="81"/>
+										<entry name="Garment Type" outkey="91"/>
+										<entry name="Color Type" outkey="86"/>
+										<entry name="Availability" outkey="82"/>
+										<entry name="Collection" outkey="92"/>
+										<entry name="Brand" outkey="14"/>
+										<entry name="MAP Price" outkey="83"/>
+										<entry name="Product Shot" outkey="61"/>
+										<entry name="Gender" outkey="57"/>
+										<entry name="Unit Weight" outkey="93"/>
+									</entry>
+								</entry>
+							</entry>
+						</root>
+						<text type="csv" inputinstance="schema\InventorySPI.csv" encoding="1000" byteorder="1" byteordermark="0">
+							<settings separator="," quote="&quot;" firstrownames="true" removeempty="true">
+								<names root="InventorySPI" block="Rows">
+									<field0 name="Style" type="string"/>
+									<field1 name="Color" type="string"/>
+									<field2 name="Color Description" type="string"/>
+									<field3 name="Id" type="integer"/>
+									<field4 name="Size" type="string"/>
+									<field5 name="UPC" type="decimal"/>
+									<field6 name="Price" type="decimal"/>
+									<field7 name="Short Description" type="string"/>
+									<field8 name="Full Description" type="string"/>
+									<field9 name="Fabric Content" type="string"/>
+									<field10 name="First Season" type="string"/>
+									<field11 name="Garment Type" type="string"/>
+									<field12 name="Color Type" type="string"/>
+									<field13 name="Status" type="string"/>
+									<field14 name="Makable" type="string"/>
+									<field15 name="Availability" type="string"/>
+									<field16 name="Date Available" type="string"/>
+									<field17 name="Coordinating Colors" type="string"/>
+									<field18 name="Collection" type="string"/>
+									<field19 name="Brand" type="string"/>
+									<field20 name="MAP Price" type="decimal"/>
+									<field21 name="Meta Data" type="string"/>
+									<field22 name="Product Shot" type="string"/>
+									<field23 name="Product Back" type="string"/>
+									<field24 name="Color Swatch" type="string"/>
+									<field25 name="Gender" type="string"/>
+									<field26 name="Fit" type="string"/>
+									<field27 name="Promo Price" type="string"/>
+									<field28 name="Promo Dates" type="string"/>
+									<field29 name="Product Callouts" type="string"/>
+									<field30 name="Wash Instructions" type="string"/>
+									<field31 name="Unit Weight" type="decimal"/>
+								</names>
+							</settings>
+						</text>
+					</data>
+				</component>
+				<component name="sku" library="user" uid="56" kind="19" visible="0">
+					<view ltx="559" lty="-76" rbx="693" rby="-8"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="BrandPrefix" inpkey="149" componentid="14"/>
+							<entry name="styleCode" inpkey="150" componentid="15"/>
+							<entry name="colorCode" inpkey="151" componentid="16"/>
+							<entry name="sizeCode" inpkey="152" componentid="17"/>
+						</root>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="result" outkey="147" componentid="12"/>
+						</root>
+					</data>
+				</component>
 			</children>
 		</structure>
 		<connections>
@@ -438,15 +437,11 @@
 			<edge from="14" to="15"/>
 			<edge from="16" to="17"/>
 			<edge from="29" to="38"/>
-			<edge from="55" to="39"/>
+			<edge from="147" to="39"/>
 			<edge from="4" to="40"/>
 			<edge from="29" to="41"/>
 			<edge from="4" to="42"/>
 			<edge from="36" to="43"/>
-			<edge from="18" to="51"/>
-			<edge from="27" to="52"/>
-			<edge from="11" to="53"/>
-			<edge from="109" to="54"/>
 			<edge from="59" to="56"/>
 			<edge from="57" to="58"/>
 			<edge from="61" to="60"/>
@@ -473,6 +468,10 @@
 			<edge from="105" to="106"/>
 			<edge from="107" to="108"/>
 			<edge from="12" to="110"/>
+			<edge from="18" to="149"/>
+			<edge from="29" to="150"/>
+			<edge from="11" to="151"/>
+			<edge from="109" to="152"/>
 		</connections>
 	</component>
 </mapping>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="skuFieldType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:simpleType name="skuBrandPrefixType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[a-zA-Z0-9_]{3}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="skuObjectType">
+    <xs:attribute name="brandPrefix" type="skuBrandPrefixType" use="required"/>
+    <xs:attribute name="styleCode" type="skuFieldType" use="required"/>
+    <xs:attribute name="colorCode" type="skuFieldType"/>
+    <xs:attribute name="sizeCode" type="skuFieldType"/>
+  </xs:complexType>
+  <xs:element name="sku" type="skuObjectType"/>
+</xs:schema>

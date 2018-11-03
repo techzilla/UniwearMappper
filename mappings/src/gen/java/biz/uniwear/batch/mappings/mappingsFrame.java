@@ -49,14 +49,8 @@ public class mappingsFrame extends JFrame implements com.altova.TraceTarget {
 	JLabel jBatch2Label2 = new JLabel();
 	JTextField jBatch2TextField2 = new JTextField();
 
-	JLabel jstdoutLabel3 = new JLabel();
-	JTextField jstdoutTextField3 = new JTextField();
-
-	JLabel jBatch3Label4 = new JLabel();
-	JTextField jBatch3TextField4 = new JTextField();
-
-	JLabel jXcart2Label5 = new JLabel();
-	JTextField jXcart2TextField5 = new JTextField();
+	JLabel jProductsMagento22Label3 = new JLabel();
+	JTextField jProductsMagento22TextField3 = new JTextField();
 
 
 	public mappingsFrame() {
@@ -154,28 +148,19 @@ public class mappingsFrame extends JFrame implements com.altova.TraceTarget {
 		jBatch2TextField2.setEditable(false);
 		jPanelStructures.add(jBatch2TextField2, null);
 
-		jBatch3Label4.setText("Source JDBC-URL of Batch3 database:");
-		jBatch3Label4.setBounds(new Rectangle(15, 210, 438, 23));
-		jPanelStructures.add(jBatch3Label4, null);
-
-		jBatch3TextField4.setText("jdbc:odbc:MariaDB");
-		jBatch3TextField4.setBounds(new Rectangle(15, 235, 438, 23));
-		jBatch3TextField4.setEditable(false);
-		jPanelStructures.add(jBatch3TextField4, null);
-
-		jXcart2Label5.setText("Instance of Xcart file:");
-		jXcart2Label5.setBounds(new Rectangle(15, 260, 438, 23));
-		jPanelStructures.add(jXcart2Label5, null);
-		jXcart2TextField5.setText("_Product.csv");
-		jXcart2TextField5.setBounds(new Rectangle(15, 285, 438, 23));
-		jXcart2TextField5.setEditable(false);
-		jPanelStructures.add(jXcart2TextField5, null);
+		jProductsMagento22Label3.setText("Instance of ProductsMagento2 file:");
+		jProductsMagento22Label3.setBounds(new Rectangle(15, 160, 438, 23));
+		jPanelStructures.add(jProductsMagento22Label3, null);
+		jProductsMagento22TextField3.setText("ProductsMagento2.csv");
+		jProductsMagento22TextField3.setBounds(new Rectangle(15, 185, 438, 23));
+		jProductsMagento22TextField3.setEditable(false);
+		jPanelStructures.add(jProductsMagento22TextField3, null);
 
 		jPanelStructures.setLayout(null);
-		jPanelStructures.setPreferredSize(new Dimension(285, 500));
-		jPanelStructures.setSize(new Dimension(285, 500));
-		jPanelStructures.setMinimumSize(new Dimension(285, 500));
-		jPanelStructures.setMaximumSize(new Dimension(285, 500));
+		jPanelStructures.setPreferredSize(new Dimension(185, 500));
+		jPanelStructures.setSize(new Dimension(185, 500));
+		jPanelStructures.setMinimumSize(new Dimension(185, 500));
+		jPanelStructures.setMaximumSize(new Dimension(185, 500));
 	}
 
 	protected void processWindowEvent(WindowEvent e) {
@@ -255,14 +240,14 @@ public class mappingsFrame extends JFrame implements com.altova.TraceTarget {
 
 			try {
 
-			MappingMapTostdout MappingMapTostdoutObject = new MappingMapTostdout();
+			MappingMapToProductsMagento2 MappingMapToProductsMagento2Object = new MappingMapToProductsMagento2();
 
 			//java.sql.DriverManager.setLogWriter(new java.io.PrintWriter(java.lang.System.err));
 
 
 			Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
 
-			MappingMapTostdoutObject.registerTraceTarget(ttc);
+			MappingMapToProductsMagento2Object.registerTraceTarget(ttc);
 	
 
 			// run mapping
@@ -291,76 +276,17 @@ public class mappingsFrame extends JFrame implements com.altova.TraceTarget {
 			// 
 			// By default, run will close all inputs and outputs. If you do not want this,
 			// call the following function:
-			// MappingMapTostdoutObject.setCloseObjectsAfterRun(false);
+			// MappingMapToProductsMagento2Object.setCloseObjectsAfterRun(false);
 
 			{
+				com.altova.io.Output ProductsMagento22Target = new com.altova.io.FileOutput("ProductsMagento2.csv");
 
-				String result = MappingMapTostdoutObject.run(
-						com.altova.db.Dbs.newConnection(
-							"jdbc:odbc:MariaDB",
-							"batch",
-							"batch"));
-				System.out.print(result);
-
-
-			}
-
-
-
-				jTraceTextArea.append("Finished\n");
-			} catch (Exception ex) {
-				jTraceTextArea.append("ERROR: " + ex.getMessage());
-			}
-
-			try {
-
-			MappingMapToXcart MappingMapToXcartObject = new MappingMapToXcart();
-
-			//java.sql.DriverManager.setLogWriter(new java.io.PrintWriter(java.lang.System.err));
-
-
-			Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
-
-			MappingMapToXcartObject.registerTraceTarget(ttc);
-	
-
-			// run mapping
-			//
-			// you have different options to provide mapping input and output:
-			//
-			// files using file names (available for XML, text, and Excel):
-			//   com.altova.io.FileInput(String filename)
-			//   com.altova.io.FileOutput(String filename)
-			//
-			// streams (available for XML, text, and Excel):
-			//   com.altova.io.StreamInput(java.io.InputStream stream)
-			//   com.altova.io.StreamOutput(java.io.OutputStream stream)
-			//
-			// strings (available for XML and text):
-			//   com.altova.io.StringInput(String xmlcontent)
-			//   com.altova.io.StringOutput()	(call getContent() after run() to get StringBuffer with content)
-			//
-			// Java IO reader/writer (available for XML and text):
-			//   com.altova.io.ReaderInput(java.io.Reader reader)
-			//   com.altova.io.WriterOutput(java.io.Writer writer)
-			//
-			// DOM documents (for XML only):
-			//   com.altova.io.DocumentInput(org.w3c.dom.Document document)
-			//   com.altova.io.DocumentOutput(org.w3c.dom.Document document)
-			// 
-			// By default, run will close all inputs and outputs. If you do not want this,
-			// call the following function:
-			// MappingMapToXcartObject.setCloseObjectsAfterRun(false);
-
-			{
-				com.altova.io.Output Xcart2Target = new com.altova.io.FileOutput("_Product.csv");
-
-				MappingMapToXcartObject.run(
+				MappingMapToProductsMagento2Object.run(
 						com.altova.db.Dbs.newConnection(
 							"jdbc:odbc:MariaDB",
 							"batch",
 							"batch"),
-						Xcart2Target);
+						ProductsMagento22Target);
 
 
 			}

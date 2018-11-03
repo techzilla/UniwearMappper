@@ -8,84 +8,6 @@
 			<children/>
 		</structure>
 	</component>
-	<component name="gtin14" library="user" uid="5" inline="1" editable="1" blackbox="0">
-		<properties/>
-		<description>
-			<short>result = gtin14(itemNumber)</short>
-		</description>
-		<structure>
-			<children>
-				<component name="format-number" library="core" uid="8" kind="5">
-					<properties/>
-					<sources>
-						<datapoint pos="0" key="3"/>
-						<datapoint pos="1" key="4"/>
-						<datapoint/>
-						<datapoint/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="5"/>
-					</targets>
-					<view ltx="238" lty="118" rbx="405" rby="204"/>
-				</component>
-				<component name="constant" library="core" uid="10" kind="2">
-					<properties/>
-					<targets>
-						<datapoint pos="0" key="6"/>
-					</targets>
-					<view ltx="238" lty="203" rbx="376" rby="220"/>
-					<data>
-						<constant value="##############" datatype="string"/>
-					</data>
-				</component>
-				<component name="result" library="core" uid="6" kind="7">
-					<properties/>
-					<sources>
-						<datapoint pos="0" key="2"/>
-					</sources>
-					<view ltx="464" lty="118" rbx="521" rby="156"/>
-					<data>
-						<output datatype="string"/>
-						<parameter usageKind="output" name="result"/>
-					</data>
-				</component>
-				<component name="itemNumber" library="core" uid="9" kind="6">
-					<properties/>
-					<sources>
-						<datapoint/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="1"/>
-					</targets>
-					<view ltx="27" lty="118" rbx="143" rby="156"/>
-					<data>
-						<input datatype="int"/>
-						<parameter usageKind="input" name="itemNumber"/>
-					</data>
-				</component>
-			</children>
-			<graph directed="1">
-				<edges/>
-				<vertices>
-					<vertex vertexkey="5">
-						<edges>
-							<edge vertexkey="2"/>
-						</edges>
-					</vertex>
-					<vertex vertexkey="1">
-						<edges>
-							<edge vertexkey="3"/>
-						</edges>
-					</vertex>
-					<vertex vertexkey="6">
-						<edges>
-							<edge vertexkey="4"/>
-						</edges>
-					</vertex>
-				</vertices>
-			</graph>
-		</structure>
-	</component>
 	<component name="sku" library="user" uid="11" inline="1" editable="1" blackbox="0">
 		<properties/>
 		<description>
@@ -93,18 +15,85 @@
 		</description>
 		<structure>
 			<children>
-				<component name="styleCode" library="core" uid="15" kind="6">
+				<component name="constant" library="core" uid="39" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="23"/>
+					</targets>
+					<view ltx="206" lty="47" rbx="250" rby="64"/>
+					<data>
+						<constant value="-" datatype="string"/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="40" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="24"/>
+					</targets>
+					<view ltx="206" lty="251" rbx="250" rby="268"/>
+					<data>
+						<constant value="-" datatype="string"/>
+					</data>
+				</component>
+				<component name="if-else" library="core" uid="42" kind="4">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="29"/>
+						<datapoint pos="1" key="31"/>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="33"/>
+					</targets>
+					<view ltx="250" lty="214" rbx="350" rby="287"/>
+				</component>
+				<component name="result" library="core" uid="12" kind="7">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="21"/>
+					</sources>
+					<view ltx="598" lty="-27" rbx="655" rby="11"/>
+					<data>
+						<output datatype="string"/>
+						<parameter usageKind="output" name="result"/>
+					</data>
+				</component>
+				<component name="if-else" library="core" uid="38" kind="4">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="22"/>
+						<datapoint pos="1" key="25"/>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="26"/>
+					</targets>
+					<view ltx="250" lty="84" rbx="350" rby="157"/>
+				</component>
+				<component name="if-else" library="core" uid="41" kind="4">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="30"/>
+						<datapoint pos="1" key="32"/>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="34"/>
+					</targets>
+					<view ltx="250" lty="286" rbx="350" rby="359"/>
+				</component>
+				<component name="colorCode" library="core" uid="16" kind="6">
 					<properties/>
 					<sources>
 						<datapoint/>
 					</sources>
 					<targets>
-						<datapoint pos="0" key="8"/>
+						<datapoint pos="0" key="4"/>
 					</targets>
-					<view ltx="-14" lty="10" rbx="89" rby="48"/>
+					<view ltx="-14" lty="47" rbx="92" rby="85"/>
 					<data>
 						<input datatype="string"/>
-						<parameter usageKind="input" name="styleCode"/>
+						<parameter usageKind="input" name="colorCode" optional="1"/>
 					</data>
 				</component>
 				<component name="sizeCode" library="core" uid="17" kind="6">
@@ -121,31 +110,25 @@
 						<parameter usageKind="input" name="sizeCode" optional="1"/>
 					</data>
 				</component>
-				<component name="colorCode" library="core" uid="16" kind="6">
+				<component name="is-not-null" library="db" uid="37" kind="5">
 					<properties/>
 					<sources>
-						<datapoint/>
+						<datapoint pos="0" key="18"/>
 					</sources>
 					<targets>
-						<datapoint pos="0" key="4"/>
+						<datapoint pos="0" key="35"/>
 					</targets>
-					<view ltx="-14" lty="47" rbx="92" rby="85"/>
-					<data>
-						<input datatype="string"/>
-						<parameter usageKind="input" name="colorCode" optional="1"/>
-					</data>
+					<view ltx="125" lty="230" rbx="206" rby="268"/>
 				</component>
-				<component name="if-else" library="core" uid="38" kind="4">
+				<component name="is-not-null" library="db" uid="36" kind="5">
 					<properties/>
 					<sources>
-						<datapoint pos="0" key="22"/>
-						<datapoint pos="1" key="25"/>
-						<datapoint/>
+						<datapoint pos="0" key="16"/>
 					</sources>
 					<targets>
-						<datapoint pos="0" key="26"/>
+						<datapoint pos="0" key="17"/>
 					</targets>
-					<view ltx="265" lty="84" rbx="365" rby="157"/>
+					<view ltx="125" lty="26" rbx="206" rby="64"/>
 				</component>
 				<component name="if-else" library="core" uid="35" kind="4">
 					<properties/>
@@ -157,19 +140,9 @@
 					<targets>
 						<datapoint pos="0" key="27"/>
 					</targets>
-					<view ltx="265" lty="10" rbx="365" rby="83"/>
+					<view ltx="250" lty="10" rbx="350" rby="83"/>
 				</component>
-				<component name="constant" library="core" uid="39" kind="2">
-					<properties/>
-					<targets>
-						<datapoint pos="0" key="23"/>
-					</targets>
-					<view ltx="221" lty="47" rbx="265" rby="64"/>
-					<data>
-						<constant value="-" datatype="string"/>
-					</data>
-				</component>
-				<component name="brandPrefix" library="core" uid="14" kind="6">
+				<component name="BrandPrefix" library="core" uid="14" kind="6">
 					<properties/>
 					<sources>
 						<datapoint/>
@@ -180,18 +153,21 @@
 					<view ltx="-14" lty="-27" rbx="98" rby="11"/>
 					<data>
 						<input datatype="string"/>
-						<parameter usageKind="input" name="brandPrefix"/>
+						<parameter usageKind="input" name="BrandPrefix"/>
 					</data>
 				</component>
-				<component name="result" library="core" uid="12" kind="7">
+				<component name="styleCode" library="core" uid="15" kind="6">
 					<properties/>
 					<sources>
-						<datapoint pos="0" key="21"/>
+						<datapoint/>
 					</sources>
-					<view ltx="598" lty="-27" rbx="655" rby="11"/>
+					<targets>
+						<datapoint pos="0" key="8"/>
+					</targets>
+					<view ltx="-14" lty="10" rbx="89" rby="48"/>
 					<data>
-						<output datatype="string"/>
-						<parameter usageKind="output" name="result"/>
+						<input datatype="string"/>
+						<parameter usageKind="input" name="styleCode"/>
 					</data>
 				</component>
 				<component name="concat" library="core" uid="26" kind="5" growable="1" growablebasename="value">
@@ -219,60 +195,6 @@
 					<data>
 						<constant value="-" datatype="string"/>
 					</data>
-				</component>
-				<component name="if-else" library="core" uid="41" kind="4">
-					<properties/>
-					<sources>
-						<datapoint pos="0" key="30"/>
-						<datapoint pos="1" key="32"/>
-						<datapoint/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="34"/>
-					</targets>
-					<view ltx="250" lty="286" rbx="350" rby="359"/>
-				</component>
-				<component name="if-else" library="core" uid="42" kind="4">
-					<properties/>
-					<sources>
-						<datapoint pos="0" key="29"/>
-						<datapoint pos="1" key="31"/>
-						<datapoint/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="33"/>
-					</targets>
-					<view ltx="250" lty="214" rbx="350" rby="287"/>
-				</component>
-				<component name="constant" library="core" uid="40" kind="2">
-					<properties/>
-					<targets>
-						<datapoint pos="0" key="24"/>
-					</targets>
-					<view ltx="206" lty="251" rbx="250" rby="268"/>
-					<data>
-						<constant value="-" datatype="string"/>
-					</data>
-				</component>
-				<component name="is-not-null" library="db" uid="36" kind="5">
-					<properties/>
-					<sources>
-						<datapoint pos="0" key="16"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="17"/>
-					</targets>
-					<view ltx="140" lty="45" rbx="221" rby="83"/>
-				</component>
-				<component name="is-not-null" library="db" uid="37" kind="5">
-					<properties/>
-					<sources>
-						<datapoint pos="0" key="18"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="35"/>
-					</targets>
-					<view ltx="134" lty="159" rbx="215" rby="197"/>
 				</component>
 			</children>
 			<graph directed="1">
@@ -356,81 +278,6 @@
 			</graph>
 		</structure>
 	</component>
-	<component name="trim" library="user" uid="44" inline="1" editable="1" blackbox="0">
-		<properties/>
-		<description>
-			<short>trim(string)</short>
-		</description>
-		<structure>
-			<children>
-				<component name="left-trim" library="lang" uid="48" kind="5">
-					<properties/>
-					<sources>
-						<datapoint pos="0" key="1"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="2"/>
-					</targets>
-					<view ltx="219" lty="45" rbx="294" rby="83"/>
-				</component>
-				<component name="result" library="core" uid="45" kind="7">
-					<properties/>
-					<sources>
-						<datapoint pos="0" key="4"/>
-					</sources>
-					<view ltx="444" lty="45" rbx="501" rby="83"/>
-					<data>
-						<output datatype="string"/>
-						<parameter usageKind="output" name="result"/>
-					</data>
-				</component>
-				<component name="right-trim" library="lang" uid="50" kind="5">
-					<properties/>
-					<sources>
-						<datapoint pos="0" key="5"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="6"/>
-					</targets>
-					<view ltx="329" lty="45" rbx="405" rby="83"/>
-				</component>
-				<component name="string" library="core" uid="46" kind="6">
-					<properties/>
-					<sources>
-						<datapoint/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="3"/>
-					</targets>
-					<view ltx="102" lty="45" rbx="185" rby="83"/>
-					<data>
-						<input datatype="string"/>
-						<parameter usageKind="input" name="string"/>
-					</data>
-				</component>
-			</children>
-			<graph directed="1">
-				<edges/>
-				<vertices>
-					<vertex vertexkey="3">
-						<edges>
-							<edge vertexkey="1"/>
-						</edges>
-					</vertex>
-					<vertex vertexkey="6">
-						<edges>
-							<edge vertexkey="4"/>
-						</edges>
-					</vertex>
-					<vertex vertexkey="2">
-						<edges>
-							<edge vertexkey="5"/>
-						</edges>
-					</vertex>
-				</vertices>
-			</graph>
-		</structure>
-	</component>
 	<component name="gender" library="user" uid="52" inline="1" editable="1" blackbox="0">
 		<properties/>
 		<description>
@@ -464,51 +311,6 @@
 						</valuemap>
 					</data>
 				</component>
-				<component name="trim" library="user" uid="59" kind="19" visible="0" blackbox="0">
-					<view ltx="171" lty="56" rbx="274" rby="73"/>
-					<data>
-						<root>
-							<header>
-								<namespaces>
-									<namespace/>
-								</namespaces>
-							</header>
-							<entry name="string" inpkey="4" componentid="46"/>
-						</root>
-						<root>
-							<header>
-								<namespaces>
-									<namespace/>
-								</namespaces>
-							</header>
-							<entry name="result" outkey="5" componentid="45"/>
-						</root>
-					</data>
-				</component>
-				<component name="lowercase" library="lang" uid="57" kind="5">
-					<properties/>
-					<sources>
-						<datapoint pos="0" key="7"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="8"/>
-					</targets>
-					<view ltx="317" lty="56" rbx="395" rby="94"/>
-				</component>
-				<component name="string" library="core" uid="54" kind="6">
-					<properties/>
-					<sources>
-						<datapoint/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="6"/>
-					</targets>
-					<view ltx="50" lty="56" rbx="133" rby="94"/>
-					<data>
-						<input datatype="string"/>
-						<parameter usageKind="input" name="string"/>
-					</data>
-				</component>
 				<component name="result" library="core" uid="53" kind="7">
 					<properties/>
 					<sources>
@@ -519,6 +321,30 @@
 						<output datatype="string"/>
 						<parameter usageKind="output" name="result"/>
 					</data>
+				</component>
+				<component name="string" library="core" uid="54" kind="6">
+					<properties/>
+					<sources>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="6"/>
+					</targets>
+					<view ltx="174" lty="56" rbx="257" rby="94"/>
+					<data>
+						<input datatype="string"/>
+						<parameter usageKind="input" name="string"/>
+					</data>
+				</component>
+				<component name="lowercase" library="lang" uid="57" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="7"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="8"/>
+					</targets>
+					<view ltx="302" lty="56" rbx="380" rby="94"/>
 				</component>
 			</children>
 			<graph directed="1">
@@ -535,11 +361,6 @@
 						</edges>
 					</vertex>
 					<vertex vertexkey="6">
-						<edges>
-							<edge vertexkey="4"/>
-						</edges>
-					</vertex>
-					<vertex vertexkey="5">
 						<edges>
 							<edge vertexkey="7"/>
 						</edges>
@@ -609,20 +430,6 @@
 					</targets>
 					<view ltx="472" lty="77" rbx="536" rby="131"/>
 				</component>
-				<component name="decimal" library="core" uid="63" kind="6">
-					<properties/>
-					<sources>
-						<datapoint/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="1"/>
-					</targets>
-					<view ltx="211" lty="40" rbx="303" rby="78"/>
-					<data>
-						<input datatype="decimal"/>
-						<parameter usageKind="input" name="decimal"/>
-					</data>
-				</component>
 				<component name="map" library="core" uid="77" kind="6">
 					<properties/>
 					<sources>
@@ -647,6 +454,20 @@
 						<datapoint pos="0" key="5"/>
 					</targets>
 					<view ltx="361" lty="40" rbx="439" rby="96"/>
+				</component>
+				<component name="decimal" library="core" uid="63" kind="6">
+					<properties/>
+					<sources>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="1"/>
+					</targets>
+					<view ltx="211" lty="40" rbx="303" rby="78"/>
+					<data>
+						<input datatype="decimal"/>
+						<parameter usageKind="input" name="decimal"/>
+					</data>
 				</component>
 			</children>
 			<graph directed="1">
@@ -687,6 +508,84 @@
 					<vertex vertexkey="21">
 						<edges>
 							<edge vertexkey="22"/>
+						</edges>
+					</vertex>
+				</vertices>
+			</graph>
+		</structure>
+	</component>
+	<component name="gtin14" library="user" uid="5" inline="1" editable="1" blackbox="0">
+		<properties/>
+		<description>
+			<short>result = gtin14(itemNumber)</short>
+		</description>
+		<structure>
+			<children>
+				<component name="format-number" library="core" uid="8" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="3"/>
+						<datapoint pos="1" key="4"/>
+						<datapoint/>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="5"/>
+					</targets>
+					<view ltx="238" lty="118" rbx="405" rby="204"/>
+				</component>
+				<component name="constant" library="core" uid="10" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="6"/>
+					</targets>
+					<view ltx="238" lty="203" rbx="376" rby="220"/>
+					<data>
+						<constant value="##############" datatype="string"/>
+					</data>
+				</component>
+				<component name="result" library="core" uid="6" kind="7">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="2"/>
+					</sources>
+					<view ltx="464" lty="118" rbx="521" rby="156"/>
+					<data>
+						<output datatype="string"/>
+						<parameter usageKind="output" name="result"/>
+					</data>
+				</component>
+				<component name="itemNumber" library="core" uid="9" kind="6">
+					<properties/>
+					<sources>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="1"/>
+					</targets>
+					<view ltx="27" lty="118" rbx="143" rby="156"/>
+					<data>
+						<input datatype="int"/>
+						<parameter usageKind="input" name="itemNumber"/>
+					</data>
+				</component>
+			</children>
+			<graph directed="1">
+				<edges/>
+				<vertices>
+					<vertex vertexkey="5">
+						<edges>
+							<edge vertexkey="2"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="1">
+						<edges>
+							<edge vertexkey="3"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="6">
+						<edges>
+							<edge vertexkey="4"/>
 						</edges>
 					</vertex>
 				</vertices>

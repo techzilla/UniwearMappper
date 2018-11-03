@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Edited with Altova MapForce 2019 -->
+<mapping xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="22">
+	<resources/>
+	<component name="defaultmap" uid="1" editable="1" blackbox="0">
+		<properties SelectedLanguage="java"/>
+		<structure>
+			<children/>
+		</structure>
+	</component>
+	<component name="trim" library="user" uid="44" inline="1" editable="1" blackbox="0">
+		<properties/>
+		<description>
+			<short>trim(string)</short>
+		</description>
+		<structure>
+			<children>
+				<component name="left-trim" library="lang" uid="48" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="1"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="2"/>
+					</targets>
+					<view ltx="219" lty="45" rbx="294" rby="83"/>
+				</component>
+				<component name="result" library="core" uid="45" kind="7">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="4"/>
+					</sources>
+					<view ltx="444" lty="45" rbx="501" rby="83"/>
+					<data>
+						<output datatype="string"/>
+						<parameter usageKind="output" name="result"/>
+					</data>
+				</component>
+				<component name="right-trim" library="lang" uid="50" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="5"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="6"/>
+					</targets>
+					<view ltx="329" lty="45" rbx="405" rby="83"/>
+				</component>
+				<component name="string" library="core" uid="46" kind="6">
+					<properties/>
+					<sources>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="3"/>
+					</targets>
+					<view ltx="102" lty="45" rbx="185" rby="83"/>
+					<data>
+						<input datatype="string"/>
+						<parameter usageKind="input" name="string"/>
+					</data>
+				</component>
+			</children>
+			<graph directed="1">
+				<edges/>
+				<vertices>
+					<vertex vertexkey="3">
+						<edges>
+							<edge vertexkey="1"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="6">
+						<edges>
+							<edge vertexkey="4"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="2">
+						<edges>
+							<edge vertexkey="5"/>
+						</edges>
+					</vertex>
+				</vertices>
+			</graph>
+		</structure>
+	</component>
+	<component name="format-keyvalue" library="user" uid="51" inline="1" editable="1" blackbox="0">
+		<properties/>
+		<description>
+			<short>result = format-keyvalue( key, value )</short>
+		</description>
+		<structure>
+			<children>
+				<component name="key" library="core" uid="53" kind="6">
+					<properties/>
+					<sources>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="4"/>
+					</targets>
+					<view ltx="111" lty="116" rbx="181" rby="154"/>
+					<data>
+						<input datatype="string"/>
+						<parameter usageKind="input" name="key"/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="57" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="5"/>
+					</targets>
+					<view ltx="365" lty="155" rbx="413" rby="172"/>
+					<data>
+						<constant value="=" datatype="string"/>
+					</data>
+				</component>
+				<component name="value" library="core" uid="54" kind="6">
+					<properties/>
+					<sources>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="6"/>
+					</targets>
+					<view ltx="111" lty="173" rbx="191" rby="211"/>
+					<data>
+						<input datatype="string"/>
+						<parameter usageKind="input" name="value"/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="58" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="1"/>
+					</targets>
+					<view ltx="369" lty="173" rbx="413" rby="190"/>
+					<data>
+						<constant value="&quot;" datatype="string"/>
+					</data>
+				</component>
+				<component name="result" library="core" uid="52" kind="7">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="7"/>
+					</sources>
+					<view ltx="687" lty="152" rbx="744" rby="190"/>
+					<data>
+						<output datatype="string"/>
+						<parameter usageKind="output" name="result"/>
+					</data>
+				</component>
+				<component name="concat" library="core" uid="56" kind="5" growable="1" growablebasename="value">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="8"/>
+						<datapoint pos="1" key="9"/>
+						<datapoint pos="2" key="2"/>
+						<datapoint pos="3" key="10"/>
+						<datapoint pos="4" key="11"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="12"/>
+					</targets>
+					<view ltx="413" lty="116" rbx="501" rby="223"/>
+				</component>
+				<component name="constant" library="core" uid="59" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="3"/>
+					</targets>
+					<view ltx="369" lty="206" rbx="413" rby="223"/>
+					<data>
+						<constant value="&quot;" datatype="string"/>
+					</data>
+				</component>
+			</children>
+			<graph directed="1">
+				<edges/>
+				<vertices>
+					<vertex vertexkey="1">
+						<edges>
+							<edge vertexkey="2"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="12">
+						<edges>
+							<edge vertexkey="7"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="4">
+						<edges>
+							<edge vertexkey="8"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="5">
+						<edges>
+							<edge vertexkey="9"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="6">
+						<edges>
+							<edge vertexkey="10"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="3">
+						<edges>
+							<edge vertexkey="11"/>
+						</edges>
+					</vertex>
+				</vertices>
+			</graph>
+		</structure>
+	</component>
+</mapping>

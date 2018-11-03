@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlexText>
+	<Commands>
+		<Project FileName="additionalAttributes.txt" Encoding="1000" ByteOrderMark="0">
+			<Version/>
+			<RootName Value="Root"/>
+			<Connections>
+				<Connection>
+					<SplitMultiple>
+						<Version/>
+						<Separator Value=","/>
+						<RegexPattern Value=","/>
+						<SeparatorForWriting/>
+						<Name Value="Repeated%20split"/>
+						<Connections>
+							<Connection>
+								<CSV QuoteCharacter='"' UseFirstRowNames="1">
+									<Version/>
+									<RecordSeparator Value="="/>
+									<FieldSeparator Value="%09"/>
+									<RecordName Value="CSV"/>
+									<Fields>
+										<Field Type="string">
+											<Name Value="custom_attribute_code_1"/>
+											<Version/>
+										</Field>
+									</Fields>
+									<Connections>
+										<Connection/>
+									</Connections>
+									<XData>
+										<FieldWidths Item="341"/>
+										<OpenState Property="1" Connector="1"/>
+										<Dimension FullWidth="852" FullHeight="282" TextHeight="255"/>
+									</XData>
+								</CSV>
+							</Connection>
+						</Connections>
+						<XData>
+							<OpenState Connector="1"/>
+							<Dimension FullWidth="852" TextHeight="255"/>
+						</XData>
+					</SplitMultiple>
+				</Connection>
+			</Connections>
+			<XData>
+				<OpenState Property="1" Preview="1" Connector="1"/>
+				<Dimension/>
+			</XData>
+		</Project>
+		<Functions/>
+	</Commands>
+</FlexText>

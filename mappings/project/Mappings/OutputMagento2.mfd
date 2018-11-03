@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Edited with Altova MapForce 2019 -->
+<mapping xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="31">
+	<resources>
+		<datasources>
+			<datasource name="SPIToBatch">
+				<properties JDBCDriver="sun.jdbc.odbc.JdbcOdbcDriver" JDBCDatabaseURL="jdbc:odbc:MariaDB" DBUser="batch" DBPassword="batch" DBDataSource="127.0.0.1" DBCatalog="batch" OLEDBOptions="DSN=MariaDB;"/>
+				<database_connection is_global_resource="Yes" global_resource_alias="Batch" vendor="mariadb" import_kind="ODBC" name="Batch" path="Batch">
+					<LocalViewStorage/>
+					<LocalRelationsStorage/>
+					<RecordSetStructureStorage/>
+				</database_connection>
+			</datasource>
+		</datasources>
+	</resources>
+	<component name="defaultmap" uid="1" editable="1">
+		<properties SelectedLanguage="java"/>
+		<structure>
+			<children>
+				<component name="ProductsMagento2" library="text" uid="3" kind="16">
+					<properties XSLTDefaultOutput="1"/>
+					<view ltx="1027" lty="-25" rbx="1253" rby="842"/>
+					<data>
+						<root scrollposition="398">
+							<header>
+								<namespaces>
+									<namespace/>
+									<namespace uid="http://www.altova.com/mapforce"/>
+								</namespaces>
+							</header>
+							<entry name="FileInstance" ns="1" expanded="1">
+								<entry name="document" ns="1" expanded="1">
+									<entry name="Rows" inpkey="22" expanded="1">
+										<entry name="sku" inpkey="23"/>
+										<entry name="name" inpkey="32"/>
+										<entry name="description" inpkey="24"/>
+										<entry name="weight" inpkey="25"/>
+										<entry name="price" inpkey="26"/>
+										<entry name="additional_attributes" inpkey="36"/>
+									</entry>
+								</entry>
+							</entry>
+						</root>
+						<text type="csv" inputinstance="schema\ProductsMagento2.csv" encoding="1000" byteorder="1" byteordermark="0">
+							<settings separator="," quote="&quot;" firstrownames="true" removeempty="true">
+								<names root="ProductsMagento2" block="Rows">
+									<field0 name="sku" type="string"/>
+									<field1 name="store_view_code" type="string"/>
+									<field2 name="attribute_set_code" type="string"/>
+									<field3 name="product_type" type="string"/>
+									<field4 name="categories" type="string"/>
+									<field5 name="product_websites" type="string"/>
+									<field6 name="name" type="string"/>
+									<field7 name="description" type="string"/>
+									<field8 name="short_description" type="string"/>
+									<field9 name="weight" type="decimal"/>
+									<field10 name="product_online" type="string"/>
+									<field11 name="tax_class_name" type="string"/>
+									<field12 name="visibility" type="string"/>
+									<field13 name="price" type="decimal"/>
+									<field14 name="special_price" type="decimal"/>
+									<field15 name="special_price_from_date" type="decimal"/>
+									<field16 name="special_price_to_date" type="decimal"/>
+									<field17 name="url_key" type="string"/>
+									<field18 name="meta_title" type="string"/>
+									<field19 name="meta_keywords" type="string"/>
+									<field20 name="meta_description" type="string"/>
+									<field21 name="created_at" type="string"/>
+									<field22 name="updated_at" type="string"/>
+									<field23 name="new_from_date" type="string"/>
+									<field24 name="new_to_date" type="string"/>
+									<field25 name="display_product_options_in" type="string"/>
+									<field26 name="map_price" type="decimal"/>
+									<field27 name="msrp_price" type="decimal"/>
+									<field28 name="map_enabled" type="string"/>
+									<field29 name="gift_message_available" type="string"/>
+									<field30 name="custom_design" type="string"/>
+									<field31 name="custom_design_from" type="string"/>
+									<field32 name="custom_design_to" type="string"/>
+									<field33 name="custom_layout_update" type="string"/>
+									<field34 name="page_layout" type="string"/>
+									<field35 name="product_options_container" type="string"/>
+									<field36 name="msrp_display_actual_price_type" type="string"/>
+									<field37 name="country_of_manufacture" type="string"/>
+									<field38 name="additional_attributes" type="string"/>
+									<field39 name="qty" type="string"/>
+									<field40 name="out_of_stock_qty" type="string"/>
+									<field41 name="use_config_min_qty" type="string"/>
+									<field42 name="is_qty_decimal" type="string"/>
+									<field43 name="allow_backorders" type="string"/>
+									<field44 name="use_config_backorders" type="string"/>
+									<field45 name="min_cart_qty" type="string"/>
+									<field46 name="use_config_min_sale_qty" type="string"/>
+									<field47 name="max_cart_qty" type="string"/>
+									<field48 name="use_config_max_sale_qty" type="string"/>
+									<field49 name="is_in_stock" type="string"/>
+									<field50 name="notify_on_stock_below" type="string"/>
+									<field51 name="use_config_notify_stock_qty" type="string"/>
+									<field52 name="manage_stock" type="string"/>
+									<field53 name="use_config_manage_stock" type="string"/>
+									<field54 name="use_config_qty_increments" type="string"/>
+									<field55 name="qty_increments" type="string"/>
+									<field56 name="use_config_enable_qty_inc" type="string"/>
+									<field57 name="enable_qty_increments" type="string"/>
+									<field58 name="is_decimal_divided" type="string"/>
+									<field59 name="website_id" type="string"/>
+									<field60 name="deferred_stock_update" type="string"/>
+									<field61 name="use_config_deferred_stock_update" type="string"/>
+									<field62 name="related_skus" type="string"/>
+									<field63 name="crosssell_skus" type="string"/>
+									<field64 name="upsell_skus" type="string"/>
+									<field65 name="hide_from_product_page" type="string"/>
+									<field66 name="custom_options" type="string"/>
+									<field67 name="bundle_price_type" type="string"/>
+									<field68 name="bundle_sku_type" type="string"/>
+									<field69 name="bundle_price_view" type="string"/>
+									<field70 name="bundle_weight_type" type="string"/>
+									<field71 name="bundle_values" type="string"/>
+									<field72 name="associated_skus" type="string"/>
+								</names>
+							</settings>
+						</text>
+					</data>
+				</component>
+				<component name="db" library="db" uid="2" kind="15">
+					<properties/>
+					<view ltx="7" lty="-24" rbx="175" rby="442"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace/>
+									<namespace uid="http://www.altova.com/mapforce"/>
+								</namespaces>
+							</header>
+							<entry name="document" ns="1" expanded="1">
+								<entry name="products" type="table" outkey="27" expanded="1" dbbefore="sql" dbsqlbefore="CREATE TABLE IF NOT EXISTS products(
+  id int NOT NULL AUTO_INCREMENT,
+  sku varchar(64) NULL,
+  gtin varchar(14) NULL,
+  type varchar(256) NULL,
+  color varchar(64) NULL,
+  color_base varchar(64) NULL,
+  color_type varchar(64) NULL,
+  size varchar(64) NULL,
+  gender varchar(64) NULL,
+  fit varchar(64) NULL,
+  price decimal(6, 2) NULL,
+  map decimal(6, 2) NULL,
+  weight decimal(6, 2) NULL,
+  manufacturer varchar(256) NULL,
+  brand varchar(256) NULL,
+  collection varchar(256) NULL,
+  callouts varchar(256) NULL,
+  title text NULL,
+  description text NULL,
+  image text NULL,
+  PRIMARY KEY (id)
+) ENGINE=Aria;
+">
+									<tableactions>
+										<action operation="update" proceedchildren="1">
+											<field name="gtin" function="equal"/>
+										</action>
+										<action proceedchildren="1">
+											<field name="sku" function="equal"/>
+										</action>
+									</tableactions>
+									<entry name="sku" outkey="28"/>
+									<entry name="price" outkey="29"/>
+									<entry name="weight" outkey="30"/>
+									<entry name="brand" outkey="37"/>
+									<entry name="title" outkey="35"/>
+									<entry name="description" outkey="31"/>
+								</entry>
+								<entry name="supplierinventory" type="table" expanded="1" dbbefore="sql" dbsqlbefore="CREATE TABLE IF NOT EXISTS supplierinventory(
+  id int NOT NULL AUTO_INCREMENT,
+  gtin varchar(14) NULL,
+  supplier varchar(256) NULL,
+  price decimal(6, 2) NULL,
+  stock int NULL,
+  PRIMARY KEY (id)
+) ENGINE=Aria;
+">
+									<tableactions>
+										<action operation="update" proceedchildren="1">
+											<field name="gtin" function="equal"/>
+										</action>
+										<action proceedchildren="1"/>
+									</tableactions>
+								</entry>
+							</entry>
+						</root>
+						<database ref="SPIToBatch">
+							<data>
+								<selections>
+									<selection>
+										<PathElement Name="Batch" Kind="DataSource"/>
+										<PathElement Name="batch" Kind="Database"/>
+										<PathElement Name="products" Kind="Table"/>
+									</selection>
+									<selection>
+										<PathElement Name="Batch" Kind="DataSource"/>
+										<PathElement Name="batch" Kind="Database"/>
+										<PathElement Name="supplierinventory" Kind="Table"/>
+									</selection>
+								</selections>
+							</data>
+						</database>
+					</data>
+				</component>
+				<component name="static-node-name" library="core" uid="63" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="38"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="39"/>
+					</targets>
+					<view ltx="477" lty="295" rbx="600" rby="336"/>
+				</component>
+				<component name="format-keyvalue" library="user" uid="61" kind="19" visible="0">
+					<view ltx="588" lty="295" rbx="681" rby="327"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="key" inpkey="40" componentid="53"/>
+							<entry name="value" inpkey="41" componentid="54"/>
+						</root>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="result" outkey="42" componentid="52"/>
+						</root>
+					</data>
+				</component>
+			</children>
+		</structure>
+		<connections>
+			<edge from="27" to="22"/>
+			<edge from="28" to="23"/>
+			<edge from="31" to="24"/>
+			<edge from="30" to="25"/>
+			<edge from="29" to="26"/>
+			<edge from="35" to="32"/>
+			<edge from="42" to="36"/>
+			<edge from="37" to="38"/>
+			<edge from="39" to="40"/>
+			<edge from="37" to="41"/>
+		</connections>
+	</component>
+</mapping>
