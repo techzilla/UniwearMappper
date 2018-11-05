@@ -49,14 +49,14 @@ public class mappingsFrame extends JFrame implements com.altova.TraceTarget {
 	JLabel jBatch3Label2 = new JLabel();
 	JTextField jBatch3TextField2 = new JTextField();
 
-	JLabel jProductsMagento22Label3 = new JLabel();
-	JTextField jProductsMagento22TextField3 = new JTextField();
+	JLabel jMagento2Products2Label3 = new JLabel();
+	JTextField jMagento2Products2TextField3 = new JTextField();
 
-	JLabel jInventorySPI2Label4 = new JLabel();
-	JTextField jInventorySPI2TextField4 = new JTextField();
+	JLabel jSPIInventory2Label4 = new JLabel();
+	JTextField jSPIInventory2TextField4 = new JTextField();
 
-	JLabel jBatch4Label5 = new JLabel();
-	JTextField jBatch4TextField5 = new JTextField();
+	JLabel jSPIBatchLabel5 = new JLabel();
+	JTextField jSPIBatchTextField5 = new JTextField();
 
 
 	public mappingsFrame() {
@@ -155,30 +155,30 @@ public class mappingsFrame extends JFrame implements com.altova.TraceTarget {
 		jBatch3TextField2.setEditable(false);
 		jPanelStructures.add(jBatch3TextField2, null);
 
-		jProductsMagento22Label3.setText("Instance of ProductsMagento2 file:");
-		jProductsMagento22Label3.setBounds(new Rectangle(15, 160, 438, 23));
-		jPanelStructures.add(jProductsMagento22Label3, null);
-		jProductsMagento22TextField3.setText("tmp/ProductsMagento2.csv");
-		jProductsMagento22TextField3.setBounds(new Rectangle(15, 185, 438, 23));
-		jProductsMagento22TextField3.setEditable(false);
-		jPanelStructures.add(jProductsMagento22TextField3, null);
+		jMagento2Products2Label3.setText("Instance of Magento2Products file:");
+		jMagento2Products2Label3.setBounds(new Rectangle(15, 160, 438, 23));
+		jPanelStructures.add(jMagento2Products2Label3, null);
+		jMagento2Products2TextField3.setText("tmp/Magento2Products.csv");
+		jMagento2Products2TextField3.setBounds(new Rectangle(15, 185, 438, 23));
+		jMagento2Products2TextField3.setEditable(false);
+		jPanelStructures.add(jMagento2Products2TextField3, null);
 
-		jInventorySPI2Label4.setText("Source instance of InventorySPI file:");
-		jInventorySPI2Label4.setBounds(new Rectangle(15, 210, 438, 23));
-		jPanelStructures.add(jInventorySPI2Label4, null);
-		jInventorySPI2TextField4.setText("schema/InventorySPI.csv");
-		jInventorySPI2TextField4.setBounds(new Rectangle(15, 235, 438, 23));
-		jInventorySPI2TextField4.setEditable(false);
-		jPanelStructures.add(jInventorySPI2TextField4, null);
+		jSPIInventory2Label4.setText("Source instance of SPIInventory file:");
+		jSPIInventory2Label4.setBounds(new Rectangle(15, 210, 438, 23));
+		jPanelStructures.add(jSPIInventory2Label4, null);
+		jSPIInventory2TextField4.setText("schema/SPIInventory.csv");
+		jSPIInventory2TextField4.setBounds(new Rectangle(15, 235, 438, 23));
+		jSPIInventory2TextField4.setEditable(false);
+		jPanelStructures.add(jSPIInventory2TextField4, null);
 
-		jBatch4Label5.setText("JDBC-URL of Batch4 database:");
-		jBatch4Label5.setBounds(new Rectangle(15, 260, 438, 23));
-		jPanelStructures.add(jBatch4Label5, null);
+		jSPIBatchLabel5.setText("JDBC-URL of SPIBatch database:");
+		jSPIBatchLabel5.setBounds(new Rectangle(15, 260, 438, 23));
+		jPanelStructures.add(jSPIBatchLabel5, null);
 
-		jBatch4TextField5.setText("jdbc:odbc:MariaDB");
-		jBatch4TextField5.setBounds(new Rectangle(15, 285, 438, 23));
-		jBatch4TextField5.setEditable(false);
-		jPanelStructures.add(jBatch4TextField5, null);
+		jSPIBatchTextField5.setText("jdbc:odbc:MariaDB");
+		jSPIBatchTextField5.setBounds(new Rectangle(15, 285, 438, 23));
+		jSPIBatchTextField5.setEditable(false);
+		jPanelStructures.add(jSPIBatchTextField5, null);
 
 		jPanelStructures.setLayout(null);
 		jPanelStructures.setPreferredSize(new Dimension(285, 500));
@@ -267,14 +267,14 @@ public class mappingsFrame extends JFrame implements com.altova.TraceTarget {
 
 			try {
 
-			BatchMapToProductsMagento2 BatchMapToProductsMagento2Object = new BatchMapToProductsMagento2();
+			BatchMapToMagento2Products BatchMapToMagento2ProductsObject = new BatchMapToMagento2Products();
 
 			//java.sql.DriverManager.setLogWriter(new java.io.PrintWriter(java.lang.System.err));
 
 
 			Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
 
-			BatchMapToProductsMagento2Object.registerTraceTarget(ttc);
+			BatchMapToMagento2ProductsObject.registerTraceTarget(ttc);
 	
 
 			// run mapping
@@ -303,17 +303,17 @@ public class mappingsFrame extends JFrame implements com.altova.TraceTarget {
 			// 
 			// By default, run will close all inputs and outputs. If you do not want this,
 			// call the following function:
-			// BatchMapToProductsMagento2Object.setCloseObjectsAfterRun(false);
+			// BatchMapToMagento2ProductsObject.setCloseObjectsAfterRun(false);
 
 			{
-				com.altova.io.Output ProductsMagento22Target = new com.altova.io.FileOutput("tmp/ProductsMagento2.csv");
+				com.altova.io.Output Magento2Products2Target = new com.altova.io.FileOutput("tmp/Magento2Products.csv");
 
-				BatchMapToProductsMagento2Object.run(
+				BatchMapToMagento2ProductsObject.run(
 						com.altova.db.Dbs.newConnection(
 							"jdbc:odbc:MariaDB",
 							"batch",
 							"batch"),
-						ProductsMagento22Target);
+						Magento2Products2Target);
 
 
 			}
@@ -327,14 +327,14 @@ public class mappingsFrame extends JFrame implements com.altova.TraceTarget {
 
 			try {
 
-			SPIMapToBatch4 SPIMapToBatch4Object = new SPIMapToBatch4();
+			SPIMapToSPIBatch SPIMapToSPIBatchObject = new SPIMapToSPIBatch();
 
 			//java.sql.DriverManager.setLogWriter(new java.io.PrintWriter(java.lang.System.err));
 
 
 			Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
 
-			SPIMapToBatch4Object.registerTraceTarget(ttc);
+			SPIMapToSPIBatchObject.registerTraceTarget(ttc);
 	
 
 			// run mapping
@@ -363,13 +363,13 @@ public class mappingsFrame extends JFrame implements com.altova.TraceTarget {
 			// 
 			// By default, run will close all inputs and outputs. If you do not want this,
 			// call the following function:
-			// SPIMapToBatch4Object.setCloseObjectsAfterRun(false);
+			// SPIMapToSPIBatchObject.setCloseObjectsAfterRun(false);
 
 			{
-				com.altova.io.Input InventorySPI2Source = com.altova.io.StreamInput.createInput("schema/InventorySPI.csv");
+				com.altova.io.Input SPIInventory2Source = com.altova.io.StreamInput.createInput("schema/SPIInventory.csv");
 
-				SPIMapToBatch4Object.run(
-						InventorySPI2Source,
+				SPIMapToSPIBatchObject.run(
+						SPIInventory2Source,
 						com.altova.db.Dbs.newConnection(
 							"jdbc:odbc:MariaDB",
 							"batch",

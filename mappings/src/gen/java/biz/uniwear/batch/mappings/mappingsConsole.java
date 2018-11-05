@@ -121,14 +121,14 @@ public class mappingsConsole {
 			TraceTargetConsole ttc = new TraceTargetConsole();
 
 
-			BatchMapToProductsMagento2 BatchMapToProductsMagento2Object = new BatchMapToProductsMagento2();
+			BatchMapToMagento2Products BatchMapToMagento2ProductsObject = new BatchMapToMagento2Products();
 
 			//java.sql.DriverManager.setLogWriter(new java.io.PrintWriter(java.lang.System.err));
 
 
 			Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
 
-			BatchMapToProductsMagento2Object.registerTraceTarget(ttc);
+			BatchMapToMagento2ProductsObject.registerTraceTarget(ttc);
 	
 
 			// run mapping
@@ -157,17 +157,17 @@ public class mappingsConsole {
 			// 
 			// By default, run will close all inputs and outputs. If you do not want this,
 			// call the following function:
-			// BatchMapToProductsMagento2Object.setCloseObjectsAfterRun(false);
+			// BatchMapToMagento2ProductsObject.setCloseObjectsAfterRun(false);
 
 			{
-				com.altova.io.Output ProductsMagento22Target = new com.altova.io.FileOutput("tmp/ProductsMagento2.csv");
+				com.altova.io.Output Magento2Products2Target = new com.altova.io.FileOutput("tmp/Magento2Products.csv");
 
-				BatchMapToProductsMagento2Object.run(
+				BatchMapToMagento2ProductsObject.run(
 						com.altova.db.Dbs.newConnection(
 							"jdbc:odbc:MariaDB",
 							"batch",
 							"batch"),
-						ProductsMagento22Target);
+						Magento2Products2Target);
 
 
 			}
@@ -213,14 +213,14 @@ public class mappingsConsole {
 			TraceTargetConsole ttc = new TraceTargetConsole();
 
 
-			SPIMapToBatch4 SPIMapToBatch4Object = new SPIMapToBatch4();
+			SPIMapToSPIBatch SPIMapToSPIBatchObject = new SPIMapToSPIBatch();
 
 			//java.sql.DriverManager.setLogWriter(new java.io.PrintWriter(java.lang.System.err));
 
 
 			Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
 
-			SPIMapToBatch4Object.registerTraceTarget(ttc);
+			SPIMapToSPIBatchObject.registerTraceTarget(ttc);
 	
 
 			// run mapping
@@ -249,13 +249,13 @@ public class mappingsConsole {
 			// 
 			// By default, run will close all inputs and outputs. If you do not want this,
 			// call the following function:
-			// SPIMapToBatch4Object.setCloseObjectsAfterRun(false);
+			// SPIMapToSPIBatchObject.setCloseObjectsAfterRun(false);
 
 			{
-				com.altova.io.Input InventorySPI2Source = com.altova.io.StreamInput.createInput("schema/InventorySPI.csv");
+				com.altova.io.Input SPIInventory2Source = com.altova.io.StreamInput.createInput("schema/SPIInventory.csv");
 
-				SPIMapToBatch4Object.run(
-						InventorySPI2Source,
+				SPIMapToSPIBatchObject.run(
+						SPIInventory2Source,
 						com.altova.db.Dbs.newConnection(
 							"jdbc:odbc:MariaDB",
 							"batch",

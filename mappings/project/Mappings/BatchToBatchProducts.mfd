@@ -80,86 +80,6 @@
 						<constant value="/" datatype="string"/>
 					</data>
 				</component>
-				<component name="db" library="db" uid="60" kind="15">
-					<properties XSLTDefaultOutput="1"/>
-					<view ltx="924" lty="36" rbx="1106" rby="350"/>
-					<data>
-						<root>
-							<header>
-								<namespaces>
-									<namespace/>
-									<namespace uid="http://www.altova.com/mapforce"/>
-								</namespaces>
-							</header>
-							<entry name="document" ns="1" expanded="1">
-								<entry name="products" type="table" inpkey="38" expanded="1">
-									<entry name="gtin" inpkey="40"/>
-									<entry name="sku" inpkey="62"/>
-									<entry name="name" inpkey="71"/>
-									<entry name="short_description" inpkey="59"/>
-									<entry name="description" inpkey="60"/>
-									<entry name="url_key" inpkey="76"/>
-									<entry name="price" inpkey="41"/>
-									<entry name="base_image" inpkey="42"/>
-									<entry name="base_image_label" inpkey="99"/>
-									<entry name="weight" inpkey="43"/>
-									<entry name="qty" inpkey="61"/>
-								</entry>
-							</entry>
-						</root>
-						<database ref="BatchConnection">
-							<data>
-								<selections>
-									<selection>
-										<PathElement Name="Batch" Kind="DataSource"/>
-										<PathElement Name="batch" Kind="Database"/>
-										<PathElement Name="products" Kind="Table"/>
-									</selection>
-								</selections>
-							</data>
-						</database>
-					</data>
-				</component>
-				<component name="db" library="db" uid="61" kind="15">
-					<properties/>
-					<view ltx="67" lty="36" rbx="261" rby="471"/>
-					<data>
-						<root scrollposition="1">
-							<header>
-								<namespaces>
-									<namespace/>
-									<namespace uid="http://www.altova.com/mapforce"/>
-								</namespaces>
-							</header>
-							<entry name="document" ns="1" expanded="1">
-								<entry name="inventory" type="table" outkey="44" expanded="1">
-									<entry name="gtin" outkey="46"/>
-									<entry name="style_code" outkey="63"/>
-									<entry name="color_code" outkey="64"/>
-									<entry name="size_code" outkey="65"/>
-									<entry name="brand" outkey="55"/>
-									<entry name="price" outkey="47"/>
-									<entry name="description_short" outkey="56"/>
-									<entry name="description_long" outkey="57"/>
-									<entry name="image_1" outkey="48"/>
-									<entry name="stock" outkey="58"/>
-									<entry name="weight" outkey="49"/>
-								</entry>
-							</entry>
-						</root>
-						<database ref="BatchConnection">
-							<data>
-								<selections>
-									<selection>
-										<PathElement Name="Batch" Kind="DataSource"/>
-										<PathElement Name="batch" Kind="Database"/>
-										<PathElement Name="inventory" Kind="Table"/>
-									</selection>
-								</selections>
-							</data>
-						</database>
-					</data>
-				</component>
 				<component name="concat" library="core" uid="117" kind="5" growable="1" growablebasename="value">
 					<properties/>
 					<sources>
@@ -216,6 +136,48 @@
 						</root>
 					</data>
 				</component>
+				<component name="db" library="db" uid="60" kind="15">
+					<properties XSLTDefaultOutput="1"/>
+					<view ltx="924" lty="36" rbx="1110" rby="404"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace/>
+									<namespace uid="http://www.altova.com/mapforce"/>
+								</namespaces>
+							</header>
+							<entry name="document" ns="1" expanded="1">
+								<entry name="products" type="table" inpkey="38" expanded="1">
+									<entry name="gtin" inpkey="40"/>
+									<entry name="sku" inpkey="62"/>
+									<entry name="name" inpkey="71"/>
+									<entry name="short_description" inpkey="59"/>
+									<entry name="description" inpkey="60"/>
+									<entry name="url_key" inpkey="76"/>
+									<entry name="price" inpkey="41"/>
+									<entry name="image" inpkey="100"/>
+									<entry name="image_label" inpkey="101"/>
+									<entry name="weight" inpkey="43"/>
+									<entry name="qty" inpkey="61"/>
+									<entry name="source_input_name" inpkey="103"/>
+									<entry name="source_input_id" inpkey="104"/>
+								</entry>
+							</entry>
+						</root>
+						<database ref="BatchConnection">
+							<data>
+								<selections>
+									<selection>
+										<PathElement Name="Batch" Kind="DataSource"/>
+										<PathElement Name="batch" Kind="Database"/>
+										<PathElement Name="products" Kind="Table"/>
+									</selection>
+								</selections>
+							</data>
+						</database>
+					</data>
+				</component>
 				<component name="concat" library="core" uid="96" kind="5" growable="1" growablebasename="value">
 					<properties/>
 					<sources>
@@ -228,13 +190,71 @@
 					</targets>
 					<view ltx="702" lty="62" rbx="790" rby="135"/>
 				</component>
+				<component name="get-mapping" library="user" uid="119" kind="19" visible="0">
+					<view ltx="924" lty="426" rbx="991" rby="443"/>
+					<data>
+						<root>
+							<header>
+								<namespaces/>
+							</header>
+						</root>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="result" outkey="102" componentid="80"/>
+						</root>
+					</data>
+				</component>
+				<component name="db" library="db" uid="61" kind="15">
+					<properties/>
+					<view ltx="67" lty="36" rbx="261" rby="471"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace/>
+									<namespace uid="http://www.altova.com/mapforce"/>
+								</namespaces>
+							</header>
+							<entry name="document" ns="1" expanded="1">
+								<entry name="inventory" type="table" outkey="44" expanded="1">
+									<entry name="id" outkey="105"/>
+									<entry name="gtin" outkey="46"/>
+									<entry name="style_code" outkey="63"/>
+									<entry name="color_code" outkey="64"/>
+									<entry name="size_code" outkey="65"/>
+									<entry name="brand" outkey="55"/>
+									<entry name="price" outkey="47"/>
+									<entry name="description_short" outkey="56"/>
+									<entry name="description_long" outkey="57"/>
+									<entry name="image_1" outkey="48"/>
+									<entry name="stock" outkey="58"/>
+									<entry name="weight" outkey="49"/>
+								</entry>
+							</entry>
+						</root>
+						<database ref="BatchConnection">
+							<data>
+								<selections>
+									<selection>
+										<PathElement Name="Batch" Kind="DataSource"/>
+										<PathElement Name="batch" Kind="Database"/>
+										<PathElement Name="inventory" Kind="Table"/>
+									</selection>
+								</selections>
+							</data>
+						</database>
+					</data>
+				</component>
 			</children>
 		</structure>
 		<connections>
 			<edge from="44" to="38"/>
 			<edge from="46" to="40"/>
 			<edge from="47" to="41"/>
-			<edge from="48" to="42"/>
 			<edge from="49" to="43"/>
 			<edge from="56" to="59"/>
 			<edge from="57" to="60"/>
@@ -256,7 +276,10 @@
 			<edge from="69" to="95"/>
 			<edge from="55" to="97"/>
 			<edge from="91" to="98"/>
-			<edge from="75" to="99"/>
+			<edge from="48" to="100"/>
+			<edge from="75" to="101"/>
+			<edge from="102" to="103"/>
+			<edge from="105" to="104"/>
 		</connections>
 	</component>
 </mapping>

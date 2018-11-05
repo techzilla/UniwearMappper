@@ -21,7 +21,7 @@
 					<properties/>
 					<view ltx="7" lty="-24" rbx="189" rby="290"/>
 					<data>
-						<root>
+						<root scrollposition="1">
 							<header>
 								<namespaces>
 									<namespace/>
@@ -37,8 +37,8 @@
 									<entry name="categories" outkey="52"/>
 									<entry name="url_key" outkey="53"/>
 									<entry name="price" outkey="46"/>
-									<entry name="base_image" outkey="62"/>
-									<entry name="base_image_label" outkey="63"/>
+									<entry name="image" outkey="66"/>
+									<entry name="image_label" outkey="67"/>
 									<entry name="product_online" outkey="54"/>
 									<entry name="attribute_set_code" outkey="47"/>
 									<entry name="additional_attributes" outkey="55"/>
@@ -64,7 +64,7 @@
 					<properties XSLTDefaultOutput="1"/>
 					<view ltx="1027" lty="-25" rbx="1272" rby="889"/>
 					<data>
-						<root scrollposition="210">
+						<root scrollposition="395">
 							<header>
 								<namespaces>
 									<namespace/>
@@ -191,8 +191,8 @@
 			<edge from="54" to="59"/>
 			<edge from="53" to="60"/>
 			<edge from="56" to="61"/>
-			<edge from="62" to="64"/>
-			<edge from="63" to="65"/>
+			<edge from="66" to="64"/>
+			<edge from="67" to="65"/>
 		</connections>
 	</component>
 </mapping>

@@ -5,7 +5,7 @@
 		<datasources>
 			<datasource name="BatchConnection">
 				<properties JDBCDriver="sun.jdbc.odbc.JdbcOdbcDriver" JDBCDatabaseURL="jdbc:odbc:MariaDB" DBUser="batch" DBPassword="batch" DBDataSource="127.0.0.1" DBCatalog="batch" OLEDBOptions="DSN=MariaDB;"/>
-				<database_connection is_global_resource="Yes" global_resource_alias="Batch" vendor="mariadb" import_kind="ODBC" name="Batch" path="Batch">
+				<database_connection is_global_resource="Yes" global_resource_alias="Batch" vendor="mariadb" import_kind="ODBC" name="SPIBatch" path="Batch">
 					<LocalViewStorage/>
 					<LocalRelationsStorage/>
 					<RecordSetStructureStorage/>
@@ -80,24 +80,6 @@
 					</targets>
 					<view ltx="384" lty="184" rbx="465" rby="254"/>
 				</component>
-				<component name="get-mapping" library="user" uid="106" kind="19" visible="0">
-					<view ltx="856" lty="380" rbx="923" rby="397"/>
-					<data>
-						<root>
-							<header>
-								<namespaces/>
-							</header>
-						</root>
-						<root>
-							<header>
-								<namespaces>
-									<namespace/>
-								</namespaces>
-							</header>
-							<entry name="result" outkey="166" componentid="80"/>
-						</root>
-					</data>
-				</component>
 				<component name="constant" library="core" uid="92" kind="2">
 					<properties/>
 					<targets>
@@ -131,69 +113,11 @@
 					</targets>
 					<view ltx="643" lty="294" rbx="781" rby="380"/>
 				</component>
-				<component name="db" library="db" uid="51" kind="15">
-					<properties XSLTDefaultOutput="1"/>
-					<view ltx="856" lty="-88" rbx="1024" rby="357"/>
-					<data>
-						<root scrollposition="1">
-							<header>
-								<namespaces>
-									<namespace/>
-									<namespace uid="http://www.altova.com/mapforce"/>
-								</namespaces>
-							</header>
-							<entry name="document" ns="1" expanded="1">
-								<entry name="inventory" type="table" inpkey="189" expanded="1">
-									<tableactions>
-										<action operation="update" proceedchildren="1">
-											<field name="gtin" function="equal"/>
-										</action>
-										<action proceedchildren="1"/>
-									</tableactions>
-									<entry name="gtin" inpkey="155"/>
-									<entry name="product_type" inpkey="174"/>
-									<entry name="style_code" inpkey="162"/>
-									<entry name="color_code" inpkey="175"/>
-									<entry name="color_description" inpkey="176"/>
-									<entry name="color_type" inpkey="177"/>
-									<entry name="size_code" inpkey="178"/>
-									<entry name="brand" inpkey="170"/>
-									<entry name="gender" inpkey="179"/>
-									<entry name="fit" inpkey="180"/>
-									<entry name="price" inpkey="171"/>
-									<entry name="price_map" inpkey="172"/>
-									<entry name="collection" inpkey="173"/>
-									<entry name="description_short" inpkey="181"/>
-									<entry name="description_long" inpkey="182"/>
-									<entry name="callouts" inpkey="183"/>
-									<entry name="image_1" inpkey="184"/>
-									<entry name="image_2" inpkey="185"/>
-									<entry name="supplier" inpkey="156"/>
-									<entry name="supplier_input_name" inpkey="165"/>
-									<entry name="supplier_input_id" inpkey="167"/>
-									<entry name="stock" inpkey="168"/>
-									<entry name="weight" inpkey="169"/>
-								</entry>
-							</entry>
-						</root>
-						<database ref="BatchConnection">
-							<data>
-								<selections>
-									<selection>
-										<PathElement Name="Batch" Kind="DataSource"/>
-										<PathElement Name="batch" Kind="Database"/>
-										<PathElement Name="inventory" Kind="Table"/>
-									</selection>
-								</selections>
-							</data>
-						</database>
-					</data>
-				</component>
 				<component name="SPIInventory" library="text" uid="2" kind="16">
 					<properties/>
 					<view ltx="4" lty="-88" rbx="212" rby="412"/>
 					<data>
-						<root scrollposition="1">
+						<root scrollposition="96">
 							<header>
 								<namespaces>
 									<namespace uid="http://www.altova.com/mapforce"/>
@@ -270,6 +194,82 @@
 						</text>
 					</data>
 				</component>
+				<component name="db" library="db" uid="51" kind="15">
+					<properties XSLTDefaultOutput="1"/>
+					<view ltx="856" lty="-88" rbx="1024" rby="357"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace/>
+									<namespace uid="http://www.altova.com/mapforce"/>
+								</namespaces>
+							</header>
+							<entry name="document" ns="1" expanded="1">
+								<entry name="inventory" type="table" inpkey="189" expanded="1">
+									<tableactions>
+										<action operation="update" proceedchildren="1">
+											<field name="gtin" function="equal"/>
+										</action>
+										<action proceedchildren="1"/>
+									</tableactions>
+									<entry name="gtin" inpkey="155"/>
+									<entry name="product_type" inpkey="174"/>
+									<entry name="style_code" inpkey="162"/>
+									<entry name="color_code" inpkey="175"/>
+									<entry name="color_description" inpkey="176"/>
+									<entry name="color_type" inpkey="177"/>
+									<entry name="size_code" inpkey="178"/>
+									<entry name="brand" inpkey="170"/>
+									<entry name="gender" inpkey="179"/>
+									<entry name="fit" inpkey="180"/>
+									<entry name="price" inpkey="171"/>
+									<entry name="price_map" inpkey="172"/>
+									<entry name="collection" inpkey="173"/>
+									<entry name="description_short" inpkey="181"/>
+									<entry name="description_long" inpkey="182"/>
+									<entry name="callouts" inpkey="183"/>
+									<entry name="image_1" inpkey="184"/>
+									<entry name="image_2" inpkey="185"/>
+									<entry name="stock" inpkey="168"/>
+									<entry name="weight" inpkey="169"/>
+									<entry name="supplier" inpkey="156"/>
+									<entry name="source_input_name" inpkey="214"/>
+									<entry name="source_input_id" inpkey="215"/>
+								</entry>
+							</entry>
+						</root>
+						<database ref="BatchConnection">
+							<data>
+								<selections>
+									<selection>
+										<PathElement Name="Batch" Kind="DataSource"/>
+										<PathElement Name="batch" Kind="Database"/>
+										<PathElement Name="inventory" Kind="Table"/>
+									</selection>
+								</selections>
+							</data>
+						</database>
+					</data>
+				</component>
+				<component name="get-mapping" library="user" uid="106" kind="19" visible="0">
+					<view ltx="856" lty="380" rbx="923" rby="397"/>
+					<data>
+						<root>
+							<header>
+								<namespaces/>
+							</header>
+						</root>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="result" outkey="166" componentid="80"/>
+						</root>
+					</data>
+				</component>
 			</children>
 		</structure>
 		<connections>
@@ -282,8 +282,6 @@
 			<edge from="4" to="155"/>
 			<edge from="157" to="156"/>
 			<edge from="194" to="162"/>
-			<edge from="166" to="165"/>
-			<edge from="193" to="167"/>
 			<edge from="100" to="168"/>
 			<edge from="213" to="169"/>
 			<edge from="206" to="170"/>
@@ -303,6 +301,8 @@
 			<edge from="208" to="184"/>
 			<edge from="209" to="185"/>
 			<edge from="29" to="189"/>
+			<edge from="166" to="214"/>
+			<edge from="193" to="215"/>
 		</connections>
 	</component>
 </mapping>
