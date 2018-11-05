@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Edited with Altova MapForce 2019 -->
+<mapping xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="31">
+	<resources>
+		<datasources>
+			<datasource name="BatchConnection">
+				<properties JDBCDriver="sun.jdbc.odbc.JdbcOdbcDriver" JDBCDatabaseURL="jdbc:odbc:MariaDB" DBUser="batch" DBPassword="batch" DBDataSource="127.0.0.1" DBCatalog="batch" OLEDBOptions="DSN=MariaDB;"/>
+				<database_connection is_global_resource="Yes" global_resource_alias="Batch" vendor="mariadb" import_kind="ODBC" name="Batch" path="Batch">
+					<LocalViewStorage/>
+					<LocalRelationsStorage/>
+					<RecordSetStructureStorage/>
+				</database_connection>
+			</datasource>
+		</datasources>
+	</resources>
+	<component name="defaultmap" uid="1" editable="1">
+		<properties AppName="SPI" JavaBasePackage="biz.uniwear.batch.mappings" SelectedLanguage="java"/>
+		<structure>
+			<children>
+				<component name="constant" library="core" uid="87" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="98"/>
+					</targets>
+					<view ltx="384" lty="253" rbx="432" rby="270"/>
+					<data>
+						<constant value="+" datatype="string"/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="86" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="97"/>
+					</targets>
+					<view ltx="384" lty="269" rbx="424" rby="286"/>
+					<data>
+						<constant datatype="string"/>
+					</data>
+				</component>
+				<component name="gtin14" library="user" uid="8" kind="19" visible="0">
+					<view ltx="665" lty="-88" rbx="804" rby="-71"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="itemNumber" inpkey="3" componentid="9"/>
+						</root>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="result" outkey="4" componentid="6"/>
+						</root>
+					</data>
+				</component>
+				<component name="round" library="core" uid="83" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="94"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="95"/>
+					</targets>
+					<view ltx="593" lty="-88" rbx="665" rby="-50"/>
+				</component>
+				<component name="translate" library="core" uid="85" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="101"/>
+						<datapoint pos="1" key="102"/>
+						<datapoint pos="2" key="103"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="104"/>
+					</targets>
+					<view ltx="384" lty="184" rbx="465" rby="254"/>
+				</component>
+				<component name="get-mapping" library="user" uid="106" kind="19" visible="0">
+					<view ltx="856" lty="380" rbx="923" rby="397"/>
+					<data>
+						<root>
+							<header>
+								<namespaces/>
+							</header>
+						</root>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="result" outkey="166" componentid="80"/>
+						</root>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="92" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="157"/>
+					</targets>
+					<view ltx="856" lty="418" rbx="911" rby="435"/>
+					<data>
+						<constant value="SPI" datatype="string"/>
+					</data>
+				</component>
+				<component name="number" library="core" uid="88" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="99"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="100"/>
+					</targets>
+					<view ltx="465" lty="216" rbx="532" rby="254"/>
+				</component>
+				<component name="auto-number" library="core" uid="110" kind="5">
+					<properties/>
+					<sources>
+						<datapoint/>
+						<datapoint/>
+						<datapoint/>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="193"/>
+					</targets>
+					<view ltx="643" lty="294" rbx="781" rby="380"/>
+				</component>
+				<component name="db" library="db" uid="51" kind="15">
+					<properties XSLTDefaultOutput="1"/>
+					<view ltx="856" lty="-88" rbx="1024" rby="357"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace/>
+									<namespace uid="http://www.altova.com/mapforce"/>
+								</namespaces>
+							</header>
+							<entry name="document" ns="1" expanded="1">
+								<entry name="inventoryimport" type="table" inpkey="189" expanded="1">
+									<tableactions>
+										<action operation="update" proceedchildren="1">
+											<field name="gtin" function="equal"/>
+										</action>
+										<action proceedchildren="1"/>
+									</tableactions>
+									<entry name="gtin" inpkey="155"/>
+									<entry name="product_type" inpkey="174"/>
+									<entry name="style_code" inpkey="162"/>
+									<entry name="color_code" inpkey="175"/>
+									<entry name="color_description" inpkey="176"/>
+									<entry name="color_type" inpkey="177"/>
+									<entry name="size_code" inpkey="178"/>
+									<entry name="brand" inpkey="170"/>
+									<entry name="gender" inpkey="179"/>
+									<entry name="fit" inpkey="180"/>
+									<entry name="price" inpkey="171"/>
+									<entry name="price_map" inpkey="172"/>
+									<entry name="collection" inpkey="173"/>
+									<entry name="description_short" inpkey="181"/>
+									<entry name="description_long" inpkey="182"/>
+									<entry name="callouts" inpkey="183"/>
+									<entry name="image_1" inpkey="184"/>
+									<entry name="image_2" inpkey="185"/>
+									<entry name="supplier" inpkey="156"/>
+									<entry name="supplier_input_name" inpkey="165"/>
+									<entry name="supplier_input_id" inpkey="167"/>
+									<entry name="stock" inpkey="168"/>
+									<entry name="weight" inpkey="169"/>
+								</entry>
+							</entry>
+						</root>
+						<database ref="BatchConnection">
+							<data>
+								<selections>
+									<selection>
+										<PathElement Name="Batch" Kind="DataSource"/>
+										<PathElement Name="batch" Kind="Database"/>
+										<PathElement Name="inventoryimport" Kind="Table"/>
+									</selection>
+								</selections>
+							</data>
+						</database>
+					</data>
+				</component>
+				<component name="InventorySPI" library="text" uid="2" kind="16">
+					<properties/>
+					<view ltx="4" lty="-88" rbx="212" rby="412"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace uid="http://www.altova.com/mapforce"/>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="FileInstance" expanded="1">
+								<entry name="document" expanded="1">
+									<entry name="Rows" ns="1" outkey="29" expanded="1" use-generic-elements="1">
+										<entry name="element()" show-schema-children="0">
+											<typeselections/>
+										</entry>
+										<entry name="Style" ns="1" outkey="194"/>
+										<entry name="Color" ns="1" outkey="195"/>
+										<entry name="Color Description" ns="1" outkey="196"/>
+										<entry name="Size" ns="1" outkey="197"/>
+										<entry name="UPC" ns="1" outkey="198"/>
+										<entry name="Price" ns="1" outkey="199"/>
+										<entry name="Short Description" ns="1" outkey="200"/>
+										<entry name="Full Description" ns="1" outkey="201"/>
+										<entry name="Garment Type" ns="1" outkey="202"/>
+										<entry name="Color Type" ns="1" outkey="203"/>
+										<entry name="Availability" ns="1" outkey="204"/>
+										<entry name="Collection" ns="1" outkey="205"/>
+										<entry name="Brand" ns="1" outkey="206"/>
+										<entry name="MAP Price" ns="1" outkey="207"/>
+										<entry name="Product Shot" ns="1" outkey="208"/>
+										<entry name="Product Back" ns="1" outkey="209"/>
+										<entry name="Gender" ns="1" outkey="210"/>
+										<entry name="Fit" ns="1" outkey="211"/>
+										<entry name="Product Callouts" ns="1" outkey="212"/>
+										<entry name="Unit Weight" ns="1" outkey="213"/>
+									</entry>
+								</entry>
+							</entry>
+						</root>
+						<text type="csv" inputinstance="schema\InventorySPI.csv" encoding="1000" byteorder="1" byteordermark="0">
+							<settings separator="," quote="&quot;" firstrownames="true" removeempty="true">
+								<names root="InventorySPI" block="Rows">
+									<field0 name="Style" type="string"/>
+									<field1 name="Color" type="string"/>
+									<field2 name="Color Description" type="string"/>
+									<field3 name="Id" type="integer"/>
+									<field4 name="Size" type="string"/>
+									<field5 name="UPC" type="decimal"/>
+									<field6 name="Price" type="decimal"/>
+									<field7 name="Short Description" type="string"/>
+									<field8 name="Full Description" type="string"/>
+									<field9 name="Fabric Content" type="string"/>
+									<field10 name="First Season" type="string"/>
+									<field11 name="Garment Type" type="string"/>
+									<field12 name="Color Type" type="string"/>
+									<field13 name="Status" type="string"/>
+									<field14 name="Makable" type="string"/>
+									<field15 name="Availability" type="string"/>
+									<field16 name="Date Available" type="string"/>
+									<field17 name="Coordinating Colors" type="string"/>
+									<field18 name="Collection" type="string"/>
+									<field19 name="Brand" type="string"/>
+									<field20 name="MAP Price" type="decimal"/>
+									<field21 name="Meta Data" type="string"/>
+									<field22 name="Product Shot" type="string"/>
+									<field23 name="Product Back" type="string"/>
+									<field24 name="Color Swatch" type="string"/>
+									<field25 name="Gender" type="string"/>
+									<field26 name="Fit" type="string"/>
+									<field27 name="Promo Price" type="string"/>
+									<field28 name="Promo Dates" type="string"/>
+									<field29 name="Product Callouts" type="string"/>
+									<field30 name="Wash Instructions" type="string"/>
+									<field31 name="Unit Weight" type="decimal"/>
+								</names>
+							</settings>
+						</text>
+					</data>
+				</component>
+			</children>
+		</structure>
+		<connections>
+			<edge from="95" to="3"/>
+			<edge from="198" to="94"/>
+			<edge from="104" to="99"/>
+			<edge from="204" to="101"/>
+			<edge from="98" to="102"/>
+			<edge from="97" to="103"/>
+			<edge from="4" to="155"/>
+			<edge from="157" to="156"/>
+			<edge from="194" to="162"/>
+			<edge from="166" to="165"/>
+			<edge from="193" to="167"/>
+			<edge from="100" to="168"/>
+			<edge from="213" to="169"/>
+			<edge from="206" to="170"/>
+			<edge from="199" to="171"/>
+			<edge from="207" to="172"/>
+			<edge from="205" to="173"/>
+			<edge from="202" to="174"/>
+			<edge from="195" to="175"/>
+			<edge from="196" to="176"/>
+			<edge from="203" to="177"/>
+			<edge from="197" to="178"/>
+			<edge from="210" to="179"/>
+			<edge from="211" to="180"/>
+			<edge from="200" to="181"/>
+			<edge from="201" to="182"/>
+			<edge from="212" to="183"/>
+			<edge from="208" to="184"/>
+			<edge from="209" to="185"/>
+			<edge from="29" to="189"/>
+		</connections>
+	</component>
+</mapping>

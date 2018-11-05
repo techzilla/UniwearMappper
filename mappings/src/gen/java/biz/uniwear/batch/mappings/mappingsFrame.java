@@ -40,17 +40,23 @@ public class mappingsFrame extends JFrame implements com.altova.TraceTarget {
 	JTextArea	jTraceTextArea			= new JTextArea();
 
 
-	JLabel jInventorySPI2Label0 = new JLabel();
-	JTextField jInventorySPI2TextField0 = new JTextField();
+	JLabel jBatch2Label0 = new JLabel();
+	JTextField jBatch2TextField0 = new JTextField();
 
 	JLabel jBatchLabel1 = new JLabel();
 	JTextField jBatchTextField1 = new JTextField();
 
-	JLabel jBatch2Label2 = new JLabel();
-	JTextField jBatch2TextField2 = new JTextField();
+	JLabel jBatch3Label2 = new JLabel();
+	JTextField jBatch3TextField2 = new JTextField();
 
 	JLabel jProductsMagento22Label3 = new JLabel();
 	JTextField jProductsMagento22TextField3 = new JTextField();
+
+	JLabel jInventorySPI2Label4 = new JLabel();
+	JTextField jInventorySPI2TextField4 = new JTextField();
+
+	JLabel jBatch4Label5 = new JLabel();
+	JTextField jBatch4TextField5 = new JTextField();
 
 
 	public mappingsFrame() {
@@ -122,13 +128,14 @@ public class mappingsFrame extends JFrame implements com.altova.TraceTarget {
 
 	protected void fillScrollPane() {
 
-		jInventorySPI2Label0.setText("Source instance of InventorySPI file:");
-		jInventorySPI2Label0.setBounds(new Rectangle(15, 10, 438, 23));
-		jPanelStructures.add(jInventorySPI2Label0, null);
-		jInventorySPI2TextField0.setText("schema/InventorySPI.csv");
-		jInventorySPI2TextField0.setBounds(new Rectangle(15, 35, 438, 23));
-		jInventorySPI2TextField0.setEditable(false);
-		jPanelStructures.add(jInventorySPI2TextField0, null);
+		jBatch2Label0.setText("Source JDBC-URL of Batch2 database:");
+		jBatch2Label0.setBounds(new Rectangle(15, 10, 438, 23));
+		jPanelStructures.add(jBatch2Label0, null);
+
+		jBatch2TextField0.setText("jdbc:odbc:MariaDB");
+		jBatch2TextField0.setBounds(new Rectangle(15, 35, 438, 23));
+		jBatch2TextField0.setEditable(false);
+		jPanelStructures.add(jBatch2TextField0, null);
 
 		jBatchLabel1.setText("JDBC-URL of Batch database:");
 		jBatchLabel1.setBounds(new Rectangle(15, 60, 438, 23));
@@ -139,14 +146,14 @@ public class mappingsFrame extends JFrame implements com.altova.TraceTarget {
 		jBatchTextField1.setEditable(false);
 		jPanelStructures.add(jBatchTextField1, null);
 
-		jBatch2Label2.setText("Source JDBC-URL of Batch2 database:");
-		jBatch2Label2.setBounds(new Rectangle(15, 110, 438, 23));
-		jPanelStructures.add(jBatch2Label2, null);
+		jBatch3Label2.setText("Source JDBC-URL of Batch3 database:");
+		jBatch3Label2.setBounds(new Rectangle(15, 110, 438, 23));
+		jPanelStructures.add(jBatch3Label2, null);
 
-		jBatch2TextField2.setText("jdbc:odbc:MariaDB");
-		jBatch2TextField2.setBounds(new Rectangle(15, 135, 438, 23));
-		jBatch2TextField2.setEditable(false);
-		jPanelStructures.add(jBatch2TextField2, null);
+		jBatch3TextField2.setText("jdbc:odbc:MariaDB");
+		jBatch3TextField2.setBounds(new Rectangle(15, 135, 438, 23));
+		jBatch3TextField2.setEditable(false);
+		jPanelStructures.add(jBatch3TextField2, null);
 
 		jProductsMagento22Label3.setText("Instance of ProductsMagento2 file:");
 		jProductsMagento22Label3.setBounds(new Rectangle(15, 160, 438, 23));
@@ -156,11 +163,28 @@ public class mappingsFrame extends JFrame implements com.altova.TraceTarget {
 		jProductsMagento22TextField3.setEditable(false);
 		jPanelStructures.add(jProductsMagento22TextField3, null);
 
+		jInventorySPI2Label4.setText("Source instance of InventorySPI file:");
+		jInventorySPI2Label4.setBounds(new Rectangle(15, 210, 438, 23));
+		jPanelStructures.add(jInventorySPI2Label4, null);
+		jInventorySPI2TextField4.setText("schema/InventorySPI.csv");
+		jInventorySPI2TextField4.setBounds(new Rectangle(15, 235, 438, 23));
+		jInventorySPI2TextField4.setEditable(false);
+		jPanelStructures.add(jInventorySPI2TextField4, null);
+
+		jBatch4Label5.setText("JDBC-URL of Batch4 database:");
+		jBatch4Label5.setBounds(new Rectangle(15, 260, 438, 23));
+		jPanelStructures.add(jBatch4Label5, null);
+
+		jBatch4TextField5.setText("jdbc:odbc:MariaDB");
+		jBatch4TextField5.setBounds(new Rectangle(15, 285, 438, 23));
+		jBatch4TextField5.setEditable(false);
+		jPanelStructures.add(jBatch4TextField5, null);
+
 		jPanelStructures.setLayout(null);
-		jPanelStructures.setPreferredSize(new Dimension(185, 500));
-		jPanelStructures.setSize(new Dimension(185, 500));
-		jPanelStructures.setMinimumSize(new Dimension(185, 500));
-		jPanelStructures.setMaximumSize(new Dimension(185, 500));
+		jPanelStructures.setPreferredSize(new Dimension(285, 500));
+		jPanelStructures.setSize(new Dimension(285, 500));
+		jPanelStructures.setMinimumSize(new Dimension(285, 500));
+		jPanelStructures.setMaximumSize(new Dimension(285, 500));
 	}
 
 	protected void processWindowEvent(WindowEvent e) {
@@ -180,14 +204,15 @@ public class mappingsFrame extends JFrame implements com.altova.TraceTarget {
 
 			try {
 
-			SPIMapToBatch SPIMapToBatchObject = new SPIMapToBatch();
+			BatchInventoryMapToBatch BatchInventoryMapToBatchObject = new BatchInventoryMapToBatch();
 
 			//java.sql.DriverManager.setLogWriter(new java.io.PrintWriter(java.lang.System.err));
 
 
 			Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
+			Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
 
-			SPIMapToBatchObject.registerTraceTarget(ttc);
+			BatchInventoryMapToBatchObject.registerTraceTarget(ttc);
 	
 
 			// run mapping
@@ -216,13 +241,15 @@ public class mappingsFrame extends JFrame implements com.altova.TraceTarget {
 			// 
 			// By default, run will close all inputs and outputs. If you do not want this,
 			// call the following function:
-			// SPIMapToBatchObject.setCloseObjectsAfterRun(false);
+			// BatchInventoryMapToBatchObject.setCloseObjectsAfterRun(false);
 
 			{
-				com.altova.io.Input InventorySPI2Source = com.altova.io.StreamInput.createInput("schema/InventorySPI.csv");
 
-				SPIMapToBatchObject.run(
-						InventorySPI2Source,
+				BatchInventoryMapToBatchObject.run(
+						com.altova.db.Dbs.newConnection(
+							"jdbc:odbc:MariaDB",
+							"batch",
+							"batch"),
 						com.altova.db.Dbs.newConnection(
 							"jdbc:odbc:MariaDB",
 							"batch",
@@ -287,6 +314,66 @@ public class mappingsFrame extends JFrame implements com.altova.TraceTarget {
 							"batch",
 							"batch"),
 						ProductsMagento22Target);
+
+
+			}
+
+
+
+				jTraceTextArea.append("Finished\n");
+			} catch (Exception ex) {
+				jTraceTextArea.append("ERROR: " + ex.getMessage());
+			}
+
+			try {
+
+			SPIMapToBatch4 SPIMapToBatch4Object = new SPIMapToBatch4();
+
+			//java.sql.DriverManager.setLogWriter(new java.io.PrintWriter(java.lang.System.err));
+
+
+			Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
+
+			SPIMapToBatch4Object.registerTraceTarget(ttc);
+	
+
+			// run mapping
+			//
+			// you have different options to provide mapping input and output:
+			//
+			// files using file names (available for XML, text, and Excel):
+			//   com.altova.io.FileInput(String filename)
+			//   com.altova.io.FileOutput(String filename)
+			//
+			// streams (available for XML, text, and Excel):
+			//   com.altova.io.StreamInput(java.io.InputStream stream)
+			//   com.altova.io.StreamOutput(java.io.OutputStream stream)
+			//
+			// strings (available for XML and text):
+			//   com.altova.io.StringInput(String xmlcontent)
+			//   com.altova.io.StringOutput()	(call getContent() after run() to get StringBuffer with content)
+			//
+			// Java IO reader/writer (available for XML and text):
+			//   com.altova.io.ReaderInput(java.io.Reader reader)
+			//   com.altova.io.WriterOutput(java.io.Writer writer)
+			//
+			// DOM documents (for XML only):
+			//   com.altova.io.DocumentInput(org.w3c.dom.Document document)
+			//   com.altova.io.DocumentOutput(org.w3c.dom.Document document)
+			// 
+			// By default, run will close all inputs and outputs. If you do not want this,
+			// call the following function:
+			// SPIMapToBatch4Object.setCloseObjectsAfterRun(false);
+
+			{
+				com.altova.io.Input InventorySPI2Source = com.altova.io.StreamInput.createInput("schema/InventorySPI.csv");
+
+				SPIMapToBatch4Object.run(
+						InventorySPI2Source,
+						com.altova.db.Dbs.newConnection(
+							"jdbc:odbc:MariaDB",
+							"batch",
+							"batch"));
 
 
 			}

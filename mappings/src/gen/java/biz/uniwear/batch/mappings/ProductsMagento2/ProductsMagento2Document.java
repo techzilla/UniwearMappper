@@ -110,6 +110,8 @@ public class ProductsMagento2Document extends Table
 		header.add(new ColumnSpecification("bundle_weight_type"));
 		header.add(new ColumnSpecification("bundle_values"));
 		header.add(new ColumnSpecification("associated_skus"));
+		header.add(new ColumnSpecification("image"));
+		header.add(new ColumnSpecification("image_label"));
 	}
 	public ProductsMagento2Document(com.altova.typeinfo.TypeInfo tableType,int lineend) {
         super( tableType,lineend);

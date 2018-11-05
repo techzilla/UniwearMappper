@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Edited with Altova MapForce 2019 -->
+<mapping xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="31">
+	<resources>
+		<datasources>
+			<datasource name="BatchConnection">
+				<properties JDBCDriver="sun.jdbc.odbc.JdbcOdbcDriver" JDBCDatabaseURL="jdbc:odbc:MariaDB" DBUser="batch" DBPassword="batch" DBDataSource="127.0.0.1" DBCatalog="batch" OLEDBOptions="DSN=MariaDB;"/>
+				<database_connection is_global_resource="Yes" global_resource_alias="Batch" vendor="mariadb" import_kind="ODBC" name="Batch" path="Batch">
+					<LocalViewStorage/>
+					<LocalRelationsStorage/>
+					<RecordSetStructureStorage/>
+				</database_connection>
+			</datasource>
+		</datasources>
+	</resources>
+	<component name="defaultmap" uid="1" editable="1">
+		<properties AppName="BatchInventory" JavaBasePackage="biz.uniwear.batch.mappings" SelectedLanguage="java"/>
+		<structure>
+			<children>
+				<component name="get-brand-prefix" library="user" uid="101" kind="19" visible="0">
+					<view ltx="494" lty="-64" rbx="598" rby="-47"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="Brand" inpkey="83" componentid="97"/>
+						</root>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="result" outkey="84" componentid="94"/>
+						</root>
+					</data>
+				</component>
+				<component name="concat" library="core" uid="102" kind="5" growable="1" growablebasename="value">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="81"/>
+						<datapoint pos="1" key="80"/>
+						<datapoint pos="2" key="90"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="79"/>
+					</targets>
+					<view ltx="702" lty="-26" rbx="790" rby="47"/>
+				</component>
+				<component name="constant" library="core" uid="114" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="86"/>
+					</targets>
+					<view ltx="702" lty="46" rbx="746" rby="63"/>
+					<data>
+						<constant value="-" datatype="string"/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="97" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="70"/>
+					</targets>
+					<view ltx="703" lty="134" rbx="746" rby="151"/>
+					<data>
+						<constant value=" " datatype="string"/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="118" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="93"/>
+					</targets>
+					<view ltx="656" lty="234" rbx="700" rby="251"/>
+					<data>
+						<constant value="/" datatype="string"/>
+					</data>
+				</component>
+				<component name="db" library="db" uid="60" kind="15">
+					<properties XSLTDefaultOutput="1"/>
+					<view ltx="924" lty="36" rbx="1106" rby="350"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+									<namespace uid="http://www.altova.com/mapforce"/>
+								</namespaces>
+							</header>
+							<entry name="document" ns="1" expanded="1">
+								<entry name="productexport" type="table" inpkey="38" expanded="1">
+									<entry name="gtin" inpkey="40"/>
+									<entry name="sku" inpkey="62"/>
+									<entry name="name" inpkey="71"/>
+									<entry name="short_description" inpkey="59"/>
+									<entry name="description" inpkey="60"/>
+									<entry name="url_key" inpkey="76"/>
+									<entry name="price" inpkey="41"/>
+									<entry name="base_image" inpkey="42"/>
+									<entry name="base_image_label" inpkey="99"/>
+									<entry name="weight" inpkey="43"/>
+									<entry name="qty" inpkey="61"/>
+								</entry>
+							</entry>
+						</root>
+						<database ref="BatchConnection">
+							<data>
+								<selections>
+									<selection>
+										<PathElement Name="Batch" Kind="DataSource"/>
+										<PathElement Name="batch" Kind="Database"/>
+										<PathElement Name="productexport" Kind="Table"/>
+									</selection>
+								</selections>
+							</data>
+						</database>
+					</data>
+				</component>
+				<component name="db" library="db" uid="61" kind="15">
+					<properties/>
+					<view ltx="67" lty="36" rbx="261" rby="471"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace/>
+									<namespace uid="http://www.altova.com/mapforce"/>
+								</namespaces>
+							</header>
+							<entry name="document" ns="1" expanded="1">
+								<entry name="inventoryimport" type="table" outkey="44" expanded="1">
+									<entry name="gtin" outkey="46"/>
+									<entry name="style_code" outkey="63"/>
+									<entry name="color_code" outkey="64"/>
+									<entry name="size_code" outkey="65"/>
+									<entry name="brand" outkey="55"/>
+									<entry name="price" outkey="47"/>
+									<entry name="description_short" outkey="56"/>
+									<entry name="description_long" outkey="57"/>
+									<entry name="image_1" outkey="48"/>
+									<entry name="stock" outkey="58"/>
+									<entry name="weight" outkey="49"/>
+								</entry>
+							</entry>
+						</root>
+						<database ref="BatchConnection">
+							<data>
+								<selections>
+									<selection>
+										<PathElement Name="Batch" Kind="DataSource"/>
+										<PathElement Name="batch" Kind="Database"/>
+										<PathElement Name="inventoryimport" Kind="Table"/>
+									</selection>
+								</selections>
+							</data>
+						</database>
+					</data>
+				</component>
+				<component name="concat" library="core" uid="117" kind="5" growable="1" growablebasename="value">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="97"/>
+						<datapoint pos="1" key="94"/>
+						<datapoint pos="2" key="95"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="91"/>
+					</targets>
+					<view ltx="702" lty="162" rbx="790" rby="235"/>
+				</component>
+				<component name="format-handle" library="user" uid="116" kind="19" visible="0">
+					<view ltx="790" lty="162" rbx="891" rby="179"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="input" inpkey="98" componentid="69"/>
+						</root>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="result" outkey="96" componentid="52"/>
+						</root>
+					</data>
+				</component>
+				<component name="sku" library="user" uid="63" kind="19" visible="0">
+					<view ltx="494" lty="-26" rbx="620" rby="25"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="styleCode" inpkey="66" componentid="15"/>
+							<entry name="colorCode" inpkey="67" componentid="16"/>
+							<entry name="sizeCode" inpkey="68" componentid="17"/>
+						</root>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="result" outkey="69" componentid="12"/>
+						</root>
+					</data>
+				</component>
+				<component name="concat" library="core" uid="96" kind="5" growable="1" growablebasename="value">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="72"/>
+						<datapoint pos="1" key="73"/>
+						<datapoint pos="2" key="74"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="75"/>
+					</targets>
+					<view ltx="702" lty="62" rbx="790" rby="135"/>
+				</component>
+			</children>
+		</structure>
+		<connections>
+			<edge from="44" to="38"/>
+			<edge from="46" to="40"/>
+			<edge from="47" to="41"/>
+			<edge from="48" to="42"/>
+			<edge from="49" to="43"/>
+			<edge from="56" to="59"/>
+			<edge from="57" to="60"/>
+			<edge from="58" to="61"/>
+			<edge from="79" to="62"/>
+			<edge from="63" to="66"/>
+			<edge from="64" to="67"/>
+			<edge from="65" to="68"/>
+			<edge from="75" to="71"/>
+			<edge from="55" to="72"/>
+			<edge from="70" to="73"/>
+			<edge from="69" to="74"/>
+			<edge from="96" to="76"/>
+			<edge from="86" to="80"/>
+			<edge from="84" to="81"/>
+			<edge from="55" to="83"/>
+			<edge from="69" to="90"/>
+			<edge from="93" to="94"/>
+			<edge from="69" to="95"/>
+			<edge from="55" to="97"/>
+			<edge from="91" to="98"/>
+			<edge from="75" to="99"/>
+		</connections>
+	</component>
+</mapping>

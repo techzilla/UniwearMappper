@@ -3,7 +3,7 @@
 <mapping xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="31">
 	<resources>
 		<datasources>
-			<datasource name="SPIToBatch">
+			<datasource name="BatchConnection">
 				<properties JDBCDriver="sun.jdbc.odbc.JdbcOdbcDriver" JDBCDatabaseURL="jdbc:odbc:MariaDB" DBUser="batch" DBPassword="batch" DBDataSource="127.0.0.1" DBCatalog="batch" OLEDBOptions="DSN=MariaDB;"/>
 				<database_connection is_global_resource="Yes" global_resource_alias="Batch" vendor="mariadb" import_kind="ODBC" name="Batch" path="Batch">
 					<LocalViewStorage/>
@@ -19,9 +19,9 @@
 			<children>
 				<component name="db" library="db" uid="2" kind="15">
 					<properties/>
-					<view ltx="7" lty="-24" rbx="175" rby="442"/>
+					<view ltx="7" lty="-24" rbx="189" rby="290"/>
 					<data>
-						<root scrollposition="1">
+						<root>
 							<header>
 								<namespaces>
 									<namespace/>
@@ -29,118 +29,42 @@
 								</namespaces>
 							</header>
 							<entry name="document" ns="1" expanded="1">
-								<entry name="products" type="table" outkey="27" expanded="1" dbbefore="sql" dbsqlbefore="CREATE TABLE IF NOT EXISTS products(
-  id int NOT NULL AUTO_INCREMENT,
-  sku varchar(64) NULL,
-  gtin varchar(14) NULL,
-  type varchar(256) NULL,
-  color varchar(64) NULL,
-  color_base varchar(64) NULL,
-  color_type varchar(64) NULL,
-  size varchar(64) NULL,
-  gender varchar(64) NULL,
-  fit varchar(64) NULL,
-  price decimal(6, 2) NULL,
-  map decimal(6, 2) NULL,
-  weight decimal(6, 2) NULL,
-  manufacturer varchar(256) NULL,
-  brand varchar(256) NULL,
-  collection varchar(256) NULL,
-  callouts varchar(256) NULL,
-  title text NULL,
-  description text NULL,
-  image text NULL,
-  PRIMARY KEY (id)
-) ENGINE=Aria;
-">
-									<tableactions>
-										<action operation="update" proceedchildren="1">
-											<field name="gtin" function="equal"/>
-										</action>
-										<action proceedchildren="1">
-											<field name="sku" function="equal"/>
-										</action>
-									</tableactions>
-									<entry name="sku" outkey="28"/>
-									<entry name="price" outkey="29"/>
-									<entry name="weight" outkey="30"/>
-									<entry name="brand" outkey="37"/>
-									<entry name="title" outkey="35"/>
-									<entry name="description" outkey="31"/>
-								</entry>
-								<entry name="supplierinventory" type="table" expanded="1" dbbefore="sql" dbsqlbefore="CREATE TABLE IF NOT EXISTS supplierinventory(
-  id int NOT NULL AUTO_INCREMENT,
-  gtin varchar(14) NULL,
-  supplier varchar(256) NULL,
-  price decimal(6, 2) NULL,
-  stock int NULL,
-  PRIMARY KEY (id)
-) ENGINE=Aria;
-">
-									<tableactions>
-										<action operation="update" proceedchildren="1">
-											<field name="gtin" function="equal"/>
-										</action>
-										<action proceedchildren="1"/>
-									</tableactions>
+								<entry name="productexport" type="table" outkey="43" expanded="1">
+									<entry name="sku" outkey="44"/>
+									<entry name="name" outkey="50"/>
+									<entry name="short_description" outkey="51"/>
+									<entry name="description" outkey="45"/>
+									<entry name="categories" outkey="52"/>
+									<entry name="url_key" outkey="53"/>
+									<entry name="price" outkey="46"/>
+									<entry name="base_image" outkey="62"/>
+									<entry name="base_image_label" outkey="63"/>
+									<entry name="product_online" outkey="54"/>
+									<entry name="attribute_set_code" outkey="47"/>
+									<entry name="additional_attributes" outkey="55"/>
+									<entry name="weight" outkey="48"/>
+									<entry name="qty" outkey="56"/>
 								</entry>
 							</entry>
 						</root>
-						<database ref="SPIToBatch">
+						<database ref="BatchConnection">
 							<data>
 								<selections>
 									<selection>
 										<PathElement Name="Batch" Kind="DataSource"/>
 										<PathElement Name="batch" Kind="Database"/>
-										<PathElement Name="products" Kind="Table"/>
-									</selection>
-									<selection>
-										<PathElement Name="Batch" Kind="DataSource"/>
-										<PathElement Name="batch" Kind="Database"/>
-										<PathElement Name="supplierinventory" Kind="Table"/>
+										<PathElement Name="productexport" Kind="Table"/>
 									</selection>
 								</selections>
 							</data>
 						</database>
 					</data>
 				</component>
-				<component name="static-node-name" library="core" uid="63" kind="5">
-					<properties/>
-					<sources>
-						<datapoint pos="0" key="38"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="39"/>
-					</targets>
-					<view ltx="477" lty="295" rbx="594" rby="333"/>
-				</component>
-				<component name="format-keyvalue" library="user" uid="61" kind="19" visible="0">
-					<view ltx="588" lty="295" rbx="689" rby="329"/>
-					<data>
-						<root>
-							<header>
-								<namespaces>
-									<namespace/>
-								</namespaces>
-							</header>
-							<entry name="key" inpkey="40" componentid="53"/>
-							<entry name="value" inpkey="41" componentid="54"/>
-						</root>
-						<root>
-							<header>
-								<namespaces>
-									<namespace/>
-								</namespaces>
-							</header>
-							<entry name="result" outkey="42" componentid="52"/>
-						</root>
-					</data>
-				</component>
 				<component name="ProductsMagento2" library="text" uid="3" kind="16">
 					<properties XSLTDefaultOutput="1"/>
-					<view ltx="1027" lty="-25" rbx="1253" rby="842"/>
+					<view ltx="1027" lty="-25" rbx="1272" rby="889"/>
 					<data>
-						<root scrollposition="398">
+						<root scrollposition="210">
 							<header>
 								<namespaces>
 									<namespace/>
@@ -151,11 +75,19 @@
 								<entry name="document" ns="1" expanded="1">
 									<entry name="Rows" inpkey="22" expanded="1">
 										<entry name="sku" inpkey="23"/>
+										<entry name="attribute_set_code" inpkey="49"/>
+										<entry name="categories" inpkey="57"/>
 										<entry name="name" inpkey="32"/>
 										<entry name="description" inpkey="24"/>
+										<entry name="short_description" inpkey="58"/>
 										<entry name="weight" inpkey="25"/>
+										<entry name="product_online" inpkey="59"/>
 										<entry name="price" inpkey="26"/>
+										<entry name="url_key" inpkey="60"/>
 										<entry name="additional_attributes" inpkey="36"/>
+										<entry name="qty" inpkey="61"/>
+										<entry name="image" inpkey="64"/>
+										<entry name="image_label" inpkey="65"/>
 									</entry>
 								</entry>
 							</entry>
@@ -236,6 +168,8 @@
 									<field70 name="bundle_weight_type" type="string"/>
 									<field71 name="bundle_values" type="string"/>
 									<field72 name="associated_skus" type="string"/>
+									<field73 name="image" type="string"/>
+									<field74 name="image_label" type="string"/>
 								</names>
 							</settings>
 						</text>
@@ -244,16 +178,21 @@
 			</children>
 		</structure>
 		<connections>
-			<edge from="27" to="22"/>
-			<edge from="28" to="23"/>
-			<edge from="31" to="24"/>
-			<edge from="30" to="25"/>
-			<edge from="29" to="26"/>
-			<edge from="35" to="32"/>
-			<edge from="42" to="36"/>
-			<edge from="37" to="38"/>
-			<edge from="39" to="40"/>
-			<edge from="37" to="41"/>
+			<edge from="43" to="22"/>
+			<edge from="44" to="23"/>
+			<edge from="45" to="24"/>
+			<edge from="48" to="25"/>
+			<edge from="46" to="26"/>
+			<edge from="50" to="32"/>
+			<edge from="55" to="36"/>
+			<edge from="47" to="49"/>
+			<edge from="52" to="57"/>
+			<edge from="51" to="58"/>
+			<edge from="54" to="59"/>
+			<edge from="53" to="60"/>
+			<edge from="56" to="61"/>
+			<edge from="62" to="64"/>
+			<edge from="63" to="65"/>
 		</connections>
 	</component>
 </mapping>

@@ -70,7 +70,8 @@ public class BatchMapToProductsMagento2 extends com.altova.TraceProvider
 
 			private boolean moveNext_1() throws Exception {
 				state = 3;				
-				var3_NewStatement = com.altova.db.Dbs.newStatement(closure.var1_Batch__batch__Instance, 1, "SELECT `sku`, `title`, `description`, CONVERT(`weight`, CHAR(67)) AS `weight`, CONVERT(`price`, CHAR(67)) AS `price`, `brand` FROM `products`");
+				var3_NewStatement = com.altova.db.Dbs.newStatement(closure.var1_Batch__batch__Instance, 1, "SELECT `sku`, `attribute_set_code`, `categories`, `name`, `description`, `short_description`, CONVERT(`weight`, CHAR(67)) AS `weight`, `product_online`, CONVERT(`price`, CHAR(67)) AS `price`, `url_key"
+ + "`, `additional_attributes`, `qty`, `base_image`, `base_image_label` FROM `productexport`");
 				com.altova.db.Dbs.prepareStatement(var3_NewStatement);
 				var2_ReadRecordSet = (com.altova.db.Dbs.readRecordSet((com.altova.db.ResultSetWrapper)com.altova.functions.Core.first((new seq1_NewQuery(closure.var1_Batch__batch__Instance))), (new seq2_NewRecord_lambda()))).enumerator();
 				return false;
@@ -206,11 +207,19 @@ public class BatchMapToProductsMagento2 extends com.altova.TraceProvider
 				state = 0;				
 				var2_NewRecord = com.altova.db.Dbs.newRecord();
 				com.altova.db.Dbs.MySQL.read_String(var2_NewRecord, closure.var1_RecordSet, "sku", 0);
-				com.altova.db.Dbs.MySQL.read_String(var2_NewRecord, closure.var1_RecordSet, "title", 1);
-				com.altova.db.Dbs.MySQL.read_String(var2_NewRecord, closure.var1_RecordSet, "description", 2);
-				com.altova.db.Dbs.read_String_ParseDecimal(var2_NewRecord, closure.var1_RecordSet, "weight", 3);
-				com.altova.db.Dbs.read_String_ParseDecimal(var2_NewRecord, closure.var1_RecordSet, "price", 4);
-				com.altova.db.Dbs.MySQL.read_String(var2_NewRecord, closure.var1_RecordSet, "brand", 5);
+				com.altova.db.Dbs.MySQL.read_String(var2_NewRecord, closure.var1_RecordSet, "attribute_set_code", 1);
+				com.altova.db.Dbs.MySQL.read_String(var2_NewRecord, closure.var1_RecordSet, "categories", 2);
+				com.altova.db.Dbs.MySQL.read_String(var2_NewRecord, closure.var1_RecordSet, "name", 3);
+				com.altova.db.Dbs.MySQL.read_String(var2_NewRecord, closure.var1_RecordSet, "description", 4);
+				com.altova.db.Dbs.MySQL.read_String(var2_NewRecord, closure.var1_RecordSet, "short_description", 5);
+				com.altova.db.Dbs.read_String_ParseDecimal(var2_NewRecord, closure.var1_RecordSet, "weight", 6);
+				com.altova.db.Dbs.read_byte(var2_NewRecord, closure.var1_RecordSet, "product_online", 7);
+				com.altova.db.Dbs.read_String_ParseDecimal(var2_NewRecord, closure.var1_RecordSet, "price", 8);
+				com.altova.db.Dbs.MySQL.read_String(var2_NewRecord, closure.var1_RecordSet, "url_key", 9);
+				com.altova.db.Dbs.MySQL.read_String(var2_NewRecord, closure.var1_RecordSet, "additional_attributes", 10);
+				com.altova.db.Dbs.read_int(var2_NewRecord, closure.var1_RecordSet, "qty", 11);
+				com.altova.db.Dbs.MySQL.read_String(var2_NewRecord, closure.var1_RecordSet, "base_image", 12);
+				com.altova.db.Dbs.MySQL.read_String(var2_NewRecord, closure.var1_RecordSet, "base_image_label", 13);
 				current = var2_NewRecord;
 				pos++;
 				return true;
@@ -260,6 +269,14 @@ public class BatchMapToProductsMagento2 extends com.altova.TraceProvider
 			IEnumerator var5_read_field;
 			IEnumerator var6_read_field;
 			IEnumerator var7_read_field;
+			IEnumerator var8_read_field;
+			IEnumerator var9_read_field;
+			IEnumerator var10_read_field;
+			IEnumerator var11_read_field;
+			IEnumerator var12_read_field;
+			IEnumerator var13_read_field;
+			IEnumerator var14_read_field;
+			IEnumerator var15_read_field;
 			public Enumerator(seq3_join closure) 
 			{
 				this.closure = closure;
@@ -288,6 +305,22 @@ public class BatchMapToProductsMagento2 extends com.altova.TraceProvider
 					case 15:	if (moveNext_15()) return true; break;
 					case 17:	if (moveNext_17()) return true; break;
 					case 18:	if (moveNext_18()) return true; break;
+					case 20:	if (moveNext_20()) return true; break;
+					case 21:	if (moveNext_21()) return true; break;
+					case 23:	if (moveNext_23()) return true; break;
+					case 24:	if (moveNext_24()) return true; break;
+					case 26:	if (moveNext_26()) return true; break;
+					case 27:	if (moveNext_27()) return true; break;
+					case 29:	if (moveNext_29()) return true; break;
+					case 30:	if (moveNext_30()) return true; break;
+					case 32:	if (moveNext_32()) return true; break;
+					case 33:	if (moveNext_33()) return true; break;
+					case 35:	if (moveNext_35()) return true; break;
+					case 36:	if (moveNext_36()) return true; break;
+					case 38:	if (moveNext_38()) return true; break;
+					case 39:	if (moveNext_39()) return true; break;
+					case 41:	if (moveNext_41()) return true; break;
+					case 42:	if (moveNext_42()) return true; break;
  					}
 				}
 				return false;
@@ -308,71 +341,175 @@ public class BatchMapToProductsMagento2 extends com.altova.TraceProvider
 			private boolean moveNext_3() throws Exception {
 				state = 5;				
 				if( var2_read_field != null ) { var2_read_field.close(); var2_read_field = null; }
-				var3_read_field = (com.altova.db.Dbs.readField(closure.var1_cur, "title")).enumerator();
+				var3_read_field = (com.altova.db.Dbs.readField(closure.var1_cur, "attribute_set_code")).enumerator();
 				return false;
 			}
 			private boolean moveNext_5() throws Exception {
 				state = 5;				
 				if (!var3_read_field.moveNext()) {state = 6; return false; }
-				current = com.altova.functions.Core.createElement("name", com.altova.functions.Core.box(((java.lang.String)(var3_read_field.current()))));
+				current = com.altova.functions.Core.createElement("attribute_set_code", com.altova.functions.Core.box(((java.lang.String)(var3_read_field.current()))));
 				pos++;
 				return true;
 			}
 			private boolean moveNext_6() throws Exception {
 				state = 8;				
 				if( var3_read_field != null ) { var3_read_field.close(); var3_read_field = null; }
-				var4_read_field = (com.altova.db.Dbs.readField(closure.var1_cur, "description")).enumerator();
+				var4_read_field = (com.altova.db.Dbs.readField(closure.var1_cur, "categories")).enumerator();
 				return false;
 			}
 			private boolean moveNext_8() throws Exception {
 				state = 8;				
 				if (!var4_read_field.moveNext()) {state = 9; return false; }
-				current = com.altova.functions.Core.createElement("description", com.altova.functions.Core.box(((java.lang.String)(var4_read_field.current()))));
+				current = com.altova.functions.Core.createElement("categories", com.altova.functions.Core.box(((java.lang.String)(var4_read_field.current()))));
 				pos++;
 				return true;
 			}
 			private boolean moveNext_9() throws Exception {
 				state = 11;				
 				if( var4_read_field != null ) { var4_read_field.close(); var4_read_field = null; }
-				var5_read_field = (com.altova.db.Dbs.readField(closure.var1_cur, "weight")).enumerator();
+				var5_read_field = (com.altova.db.Dbs.readField(closure.var1_cur, "name")).enumerator();
 				return false;
 			}
 			private boolean moveNext_11() throws Exception {
 				state = 11;				
 				if (!var5_read_field.moveNext()) {state = 12; return false; }
-				current = com.altova.functions.Core.createElement("weight", com.altova.functions.Core.box(com.altova.CoreTypes.decimalToString(((java.math.BigDecimal)(var5_read_field.current())))));
+				current = com.altova.functions.Core.createElement("name", com.altova.functions.Core.box(((java.lang.String)(var5_read_field.current()))));
 				pos++;
 				return true;
 			}
 			private boolean moveNext_12() throws Exception {
 				state = 14;				
 				if( var5_read_field != null ) { var5_read_field.close(); var5_read_field = null; }
-				var6_read_field = (com.altova.db.Dbs.readField(closure.var1_cur, "price")).enumerator();
+				var6_read_field = (com.altova.db.Dbs.readField(closure.var1_cur, "description")).enumerator();
 				return false;
 			}
 			private boolean moveNext_14() throws Exception {
 				state = 14;				
 				if (!var6_read_field.moveNext()) {state = 15; return false; }
-				current = com.altova.functions.Core.createElement("price", com.altova.functions.Core.box(com.altova.CoreTypes.decimalToString(((java.math.BigDecimal)(var6_read_field.current())))));
+				current = com.altova.functions.Core.createElement("description", com.altova.functions.Core.box(((java.lang.String)(var6_read_field.current()))));
 				pos++;
 				return true;
 			}
 			private boolean moveNext_15() throws Exception {
 				state = 17;				
 				if( var6_read_field != null ) { var6_read_field.close(); var6_read_field = null; }
-				var7_read_field = (com.altova.db.Dbs.readField(closure.var1_cur, "brand")).enumerator();
+				var7_read_field = (com.altova.db.Dbs.readField(closure.var1_cur, "short_description")).enumerator();
 				return false;
 			}
 			private boolean moveNext_17() throws Exception {
 				state = 17;				
 				if (!var7_read_field.moveNext()) {state = 18; return false; }
-				current = com.altova.functions.Core.createElement("additional_attributes", com.altova.functions.Core.box(com.altova.functions.Core.concat(com.altova.functions.Core.concat(com.altova.functions.Core.concat(com.altova.functions.Core.concat("brand", "="), "\""), ((java.lang.String)(var7_read_field.current()))), "\"")));
+				current = com.altova.functions.Core.createElement("short_description", com.altova.functions.Core.box(((java.lang.String)(var7_read_field.current()))));
 				pos++;
 				return true;
 			}
 			private boolean moveNext_18() throws Exception {
-				state = 0;				
+				state = 20;				
 				if( var7_read_field != null ) { var7_read_field.close(); var7_read_field = null; }
+				var8_read_field = (com.altova.db.Dbs.readField(closure.var1_cur, "weight")).enumerator();
+				return false;
+			}
+			private boolean moveNext_20() throws Exception {
+				state = 20;				
+				if (!var8_read_field.moveNext()) {state = 21; return false; }
+				current = com.altova.functions.Core.createElement("weight", com.altova.functions.Core.box(com.altova.CoreTypes.decimalToString(((java.math.BigDecimal)(var8_read_field.current())))));
+				pos++;
+				return true;
+			}
+			private boolean moveNext_21() throws Exception {
+				state = 23;				
+				if( var8_read_field != null ) { var8_read_field.close(); var8_read_field = null; }
+				var9_read_field = (com.altova.db.Dbs.readField(closure.var1_cur, "product_online")).enumerator();
+				return false;
+			}
+			private boolean moveNext_23() throws Exception {
+				state = 23;				
+				if (!var9_read_field.moveNext()) {state = 24; return false; }
+				current = com.altova.functions.Core.createElement("product_online", com.altova.functions.Core.box(com.altova.CoreTypes.integerToString(com.altova.CoreTypes.longToInteger(com.altova.CoreTypes.intToLong(((Integer)(var9_read_field.current())))))));
+				pos++;
+				return true;
+			}
+			private boolean moveNext_24() throws Exception {
+				state = 26;				
+				if( var9_read_field != null ) { var9_read_field.close(); var9_read_field = null; }
+				var10_read_field = (com.altova.db.Dbs.readField(closure.var1_cur, "price")).enumerator();
+				return false;
+			}
+			private boolean moveNext_26() throws Exception {
+				state = 26;				
+				if (!var10_read_field.moveNext()) {state = 27; return false; }
+				current = com.altova.functions.Core.createElement("price", com.altova.functions.Core.box(com.altova.CoreTypes.decimalToString(((java.math.BigDecimal)(var10_read_field.current())))));
+				pos++;
+				return true;
+			}
+			private boolean moveNext_27() throws Exception {
+				state = 29;				
+				if( var10_read_field != null ) { var10_read_field.close(); var10_read_field = null; }
+				var11_read_field = (com.altova.db.Dbs.readField(closure.var1_cur, "url_key")).enumerator();
+				return false;
+			}
+			private boolean moveNext_29() throws Exception {
+				state = 29;				
+				if (!var11_read_field.moveNext()) {state = 30; return false; }
+				current = com.altova.functions.Core.createElement("url_key", com.altova.functions.Core.box(((java.lang.String)(var11_read_field.current()))));
+				pos++;
+				return true;
+			}
+			private boolean moveNext_30() throws Exception {
+				state = 32;				
+				if( var11_read_field != null ) { var11_read_field.close(); var11_read_field = null; }
+				var12_read_field = (com.altova.db.Dbs.readField(closure.var1_cur, "additional_attributes")).enumerator();
+				return false;
+			}
+			private boolean moveNext_32() throws Exception {
+				state = 32;				
+				if (!var12_read_field.moveNext()) {state = 33; return false; }
+				current = com.altova.functions.Core.createElement("additional_attributes", com.altova.functions.Core.box(((java.lang.String)(var12_read_field.current()))));
+				pos++;
+				return true;
+			}
+			private boolean moveNext_33() throws Exception {
+				state = 35;				
+				if( var12_read_field != null ) { var12_read_field.close(); var12_read_field = null; }
+				var13_read_field = (com.altova.db.Dbs.readField(closure.var1_cur, "qty")).enumerator();
+				return false;
+			}
+			private boolean moveNext_35() throws Exception {
+				state = 35;				
+				if (!var13_read_field.moveNext()) {state = 36; return false; }
+				current = com.altova.functions.Core.createElement("qty", com.altova.functions.Core.box(com.altova.CoreTypes.integerToString(com.altova.CoreTypes.longToInteger(com.altova.CoreTypes.intToLong(((Integer)(var13_read_field.current())))))));
+				pos++;
+				return true;
+			}
+			private boolean moveNext_36() throws Exception {
+				state = 38;				
+				if( var13_read_field != null ) { var13_read_field.close(); var13_read_field = null; }
+				var14_read_field = (com.altova.db.Dbs.readField(closure.var1_cur, "base_image")).enumerator();
+				return false;
+			}
+			private boolean moveNext_38() throws Exception {
+				state = 38;				
+				if (!var14_read_field.moveNext()) {state = 39; return false; }
+				current = com.altova.functions.Core.createElement("image", com.altova.functions.Core.box(((java.lang.String)(var14_read_field.current()))));
+				pos++;
+				return true;
+			}
+			private boolean moveNext_39() throws Exception {
+				state = 41;				
+				if( var14_read_field != null ) { var14_read_field.close(); var14_read_field = null; }
+				var15_read_field = (com.altova.db.Dbs.readField(closure.var1_cur, "base_image_label")).enumerator();
+				return false;
+			}
+			private boolean moveNext_41() throws Exception {
+				state = 41;				
+				if (!var15_read_field.moveNext()) {state = 42; return false; }
+				current = com.altova.functions.Core.createElement("image_label", com.altova.functions.Core.box(((java.lang.String)(var15_read_field.current()))));
+				pos++;
+				return true;
+			}
+			private boolean moveNext_42() throws Exception {
+				state = 0;				
+				if( var15_read_field != null ) { var15_read_field.close(); var15_read_field = null; }
 				return false;
 			}
 
@@ -387,6 +524,14 @@ public class BatchMapToProductsMagento2 extends com.altova.TraceProvider
 				if( var5_read_field != null ) { var5_read_field.close(); var5_read_field = null; }
 				if( var6_read_field != null ) { var6_read_field.close(); var6_read_field = null; }
 				if( var7_read_field != null ) { var7_read_field.close(); var7_read_field = null; }
+				if( var8_read_field != null ) { var8_read_field.close(); var8_read_field = null; }
+				if( var9_read_field != null ) { var9_read_field.close(); var9_read_field = null; }
+				if( var10_read_field != null ) { var10_read_field.close(); var10_read_field = null; }
+				if( var11_read_field != null ) { var11_read_field.close(); var11_read_field = null; }
+				if( var12_read_field != null ) { var12_read_field.close(); var12_read_field = null; }
+				if( var13_read_field != null ) { var13_read_field.close(); var13_read_field = null; }
+				if( var14_read_field != null ) { var14_read_field.close(); var14_read_field = null; }
+				if( var15_read_field != null ) { var15_read_field.close(); var15_read_field = null; }
 				}
 				catch (Exception e)
 				{
@@ -472,16 +617,16 @@ public class BatchMapToProductsMagento2 extends com.altova.TraceProvider
 
 
 	// instances
-	protected java.sql.Connection varBatch2Instance;
+	protected java.sql.Connection varBatch3Instance;
 
-	public void run(java.sql.Connection Batch2SourceConnection, String ProductsMagento22TargetFilename) throws Exception {
+	public void run(java.sql.Connection Batch3SourceConnection, String ProductsMagento22TargetFilename) throws Exception {
 		// open source streams
 		// open target stream
 		com.altova.io.FileOutput ProductsMagento22Target = new com.altova.io.FileOutput(ProductsMagento22TargetFilename);
 
 		// run
 	
-		run(Batch2SourceConnection, ProductsMagento22Target);
+		run(Batch3SourceConnection, ProductsMagento22Target);
 
 		// close source streams
 		// close target stream
@@ -492,11 +637,11 @@ public class BatchMapToProductsMagento2 extends com.altova.TraceProvider
 
 	// main entry point
 
-	public void run(java.sql.Connection Batch2SourceConnection, com.altova.io.Output ProductsMagento22Target) throws Exception {
+	public void run(java.sql.Connection Batch3SourceConnection, com.altova.io.Output ProductsMagento22Target) throws Exception {
 		// Open the source(s)
-		writeTrace("Connecting to Batch2 database...\n");
+		writeTrace("Connecting to Batch3 database...\n");
 			
-		varBatch2Instance = Batch2SourceConnection;
+		varBatch3Instance = Batch3SourceConnection;
 		
 
 		// Create the target
@@ -509,14 +654,14 @@ public class BatchMapToProductsMagento2 extends com.altova.TraceProvider
 
 		// Execute mapping
 
-		main mapping = new main(new com.altova.db.Catalog(varBatch2Instance, 60));
+		main mapping = new main(new com.altova.db.Catalog(varBatch3Instance, 60));
 
 		com.altova.text.MFTextWriter.write(mapping, ProductsMagento22TargetObject);
 		// Close the target
 		ProductsMagento22TargetDoc.setEncoding( "UTF-8", false, false );
 		ProductsMagento22TargetDoc.save(ProductsMagento22Target);
 		// Close the source
-		com.altova.db.Dbs.closeConnection(varBatch2Instance);
+		com.altova.db.Dbs.closeConnection(varBatch3Instance);
 
 		
 		if (runDoesCloseAll)

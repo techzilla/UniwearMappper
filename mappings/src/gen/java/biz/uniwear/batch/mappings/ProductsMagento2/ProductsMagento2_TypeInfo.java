@@ -203,21 +203,23 @@ public class ProductsMagento2_TypeInfo
 		public static final int _bundle_weight_type = 71 ;
 		public static final int _bundle_values = 72 ;
 		public static final int _associated_skus = 73 ;
-		public static final int end = 74 ;
+		public static final int _image = 74 ;
+		public static final int _image_label = 75 ;
+		public static final int end = 76 ;
 	};
 
 
 	public static class _altova_mi_altova_stringType {
 		public static final int begin = _altova_mi_altova_RowsType.end ;
 		public static final int _unnamed = _altova_mi_altova_stringType.begin ;
-		public static final int end = 75 ;
+		public static final int end = 77 ;
 	};
 
 
 	public static class _altova_mi_altova_decimalType {
 		public static final int begin = _altova_mi_altova_stringType.end ;
 		public static final int _unnamed = _altova_mi_altova_decimalType.begin ;
-		public static final int end = 76 ;
+		public static final int end = 78 ;
 	};
 
 	
@@ -355,16 +357,18 @@ public class ProductsMagento2_TypeInfo
 			members[71] = new MemberInfo (binder, "", "bundle_weight_type", _altova_ti_altova_RowsType, _altova_ti_altova_stringType, 0, 0, 1);
 			members[72] = new MemberInfo (binder, "", "bundle_values", _altova_ti_altova_RowsType, _altova_ti_altova_stringType, 0, 0, 1);
 			members[73] = new MemberInfo (binder, "", "associated_skus", _altova_ti_altova_RowsType, _altova_ti_altova_stringType, 0, 0, 1);
+			members[74] = new MemberInfo (binder, "", "image", _altova_ti_altova_RowsType, _altova_ti_altova_stringType, 0, 0, 1);
+			members[75] = new MemberInfo (binder, "", "image_label", _altova_ti_altova_RowsType, _altova_ti_altova_stringType, 0, 0, 1);
 
-			members[74] = new MemberInfo (binder, "", "", _altova_ti_altova_stringType, _altova_ti_altova_string2, 0|MemberInfo.IS_ATTRIBUTE, 1, 1);
+			members[76] = new MemberInfo (binder, "", "", _altova_ti_altova_stringType, _altova_ti_altova_string2, 0|MemberInfo.IS_ATTRIBUTE, 1, 1);
 
-			members[75] = new MemberInfo (binder, "", "", _altova_ti_altova_decimalType, _altova_ti_altova_decimal, 0|MemberInfo.IS_ATTRIBUTE, 1, 1);
+			members[77] = new MemberInfo (binder, "", "", _altova_ti_altova_decimalType, _altova_ti_altova_decimal, 0|MemberInfo.IS_ATTRIBUTE, 1, 1);
 
 		}
 
 		public MemberInfo[] createMembers(InfoBinderInterface binder) {
 
-			MemberInfo members[] = new MemberInfo[76];
+			MemberInfo members[] = new MemberInfo[78];
 
 			initMembers0(binder, members);
 			
