@@ -2,8 +2,8 @@
 <!--  MapForce Project File  -->
 <Project Expanded="Yes" Type="Root" language="java" OutputDir="src\gen\java" Title="mappings" JavaPackageName="biz.uniwear.batch.mappings" OutputName="mappings" Version="6">
 	<Folder FolderName="Mappings" Expanded="Yes" Type="VirtualFolder">
-		<File Type="Mapping" FilePath="project\Mappings\BatchToBatchProductExport.mfd"/>
-		<File Type="Mapping" FilePath="project\Mappings\BatchToProductMagento2.mfd"/>
-		<File Type="Mapping" FilePath="project\Mappings\SPIToBatchInventoryInput.mfd"/>
+		<File Type="Mapping" FilePath="project\Mappings\BatchToBatchProducts.mfd"/>
+		<File Type="Mapping" FilePath="project\Mappings\BatchToMagento2Products.mfd"/>
+		<File Type="Mapping" FilePath="project\Mappings\SPIToBatchInventory.mfd"/>
 	</Folder>
 </Project>

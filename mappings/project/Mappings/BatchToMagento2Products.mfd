@@ -29,7 +29,7 @@
 								</namespaces>
 							</header>
 							<entry name="document" ns="1" expanded="1">
-								<entry name="productexport" type="table" outkey="43" expanded="1">
+								<entry name="products" type="table" outkey="43" expanded="1">
 									<entry name="sku" outkey="44"/>
 									<entry name="name" outkey="50"/>
 									<entry name="short_description" outkey="51"/>
@@ -53,14 +53,14 @@
 									<selection>
 										<PathElement Name="Batch" Kind="DataSource"/>
 										<PathElement Name="batch" Kind="Database"/>
-										<PathElement Name="productexport" Kind="Table"/>
+										<PathElement Name="products" Kind="Table"/>
 									</selection>
 								</selections>
 							</data>
 						</database>
 					</data>
 				</component>
-				<component name="ProductsMagento2" library="text" uid="3" kind="16">
+				<component name="Magento2Products" library="text" uid="3" kind="16">
 					<properties XSLTDefaultOutput="1"/>
 					<view ltx="1027" lty="-25" rbx="1272" rby="889"/>
 					<data>
@@ -92,9 +92,9 @@
 								</entry>
 							</entry>
 						</root>
-						<text type="csv" inputinstance="schema\ProductsMagento2.csv" outputinstance="tmp\ProductsMagento2.csv" encoding="1000" byteorder="1" byteordermark="0">
+						<text type="csv" inputinstance="schema\Magento2Products.csv" outputinstance="tmp\Magento2Products.csv" encoding="1000" byteorder="1" byteordermark="0">
 							<settings separator="," quote="&quot;" firstrownames="true" removeempty="true">
-								<names root="ProductsMagento2" block="Rows">
+								<names root="Magento2Products" block="Rows">
 									<field0 name="sku" type="string"/>
 									<field1 name="store_view_code" type="string"/>
 									<field2 name="attribute_set_code" type="string"/>

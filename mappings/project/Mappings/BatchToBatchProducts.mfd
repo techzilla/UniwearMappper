@@ -92,7 +92,7 @@
 								</namespaces>
 							</header>
 							<entry name="document" ns="1" expanded="1">
-								<entry name="productexport" type="table" inpkey="38" expanded="1">
+								<entry name="products" type="table" inpkey="38" expanded="1">
 									<entry name="gtin" inpkey="40"/>
 									<entry name="sku" inpkey="62"/>
 									<entry name="name" inpkey="71"/>
@@ -113,7 +113,7 @@
 									<selection>
 										<PathElement Name="Batch" Kind="DataSource"/>
 										<PathElement Name="batch" Kind="Database"/>
-										<PathElement Name="productexport" Kind="Table"/>
+										<PathElement Name="products" Kind="Table"/>
 									</selection>
 								</selections>
 							</data>
@@ -132,7 +132,7 @@
 								</namespaces>
 							</header>
 							<entry name="document" ns="1" expanded="1">
-								<entry name="inventoryimport" type="table" outkey="44" expanded="1">
+								<entry name="inventory" type="table" outkey="44" expanded="1">
 									<entry name="gtin" outkey="46"/>
 									<entry name="style_code" outkey="63"/>
 									<entry name="color_code" outkey="64"/>
@@ -153,7 +153,7 @@
 									<selection>
 										<PathElement Name="Batch" Kind="DataSource"/>
 										<PathElement Name="batch" Kind="Database"/>
-										<PathElement Name="inventoryimport" Kind="Table"/>
+										<PathElement Name="inventory" Kind="Table"/>
 									</selection>
 								</selections>
 							</data>

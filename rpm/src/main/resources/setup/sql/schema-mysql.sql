@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS `inventoryimport` (
+CREATE TABLE IF NOT EXISTS `inventory` (
 	`id` int NOT NULL AUTO_INCREMENT,
 	`gtin` varchar(14),
 	`product_type` varchar(256),
@@ -18,15 +18,15 @@ CREATE TABLE IF NOT EXISTS `inventoryimport` (
 	`callouts` TEXT,
 	`image_1` TEXT,
 	`image_2` TEXT,
-	`supplier` varchar(64) NOT NULL,
-	`supplier_input_name` varchar(256) NOT NULL,
-	`supplier_input_id` int NOT NULL,
 	`stock` int,
 	`weight` DECIMAL(6,2),
+	`supplier` varchar(64) NOT NULL,
+	`source_input_name` varchar(256) NOT NULL,
+	`source_input_id` int NOT NULL,
 	PRIMARY KEY (`id`)
 ) ENGINE=Aria;
 
-CREATE TABLE IF NOT EXISTS `productexport` (
+CREATE TABLE IF NOT EXISTS `products` (
 	`id` int NOT NULL AUTO_INCREMENT,
 	`gtin` varchar(14) NOT NULL UNIQUE,
 	`sku` varchar(192) NOT NULL UNIQUE,
@@ -36,12 +36,14 @@ CREATE TABLE IF NOT EXISTS `productexport` (
 	`categories` TEXT,
 	`url_key` varchar(192) NOT NULL,
 	`price` DECIMAL(6,2) NOT NULL,
-	`base_image` TEXT NOT NULL,
-	`base_image_label` TEXT NOT NULL,
+	`image` TEXT NOT NULL,
+	`image_label` TEXT NOT NULL,
 	`product_online` tinyint NOT NULL DEFAULT '0',
 	`attribute_set_code` varchar(256) NOT NULL DEFAULT 'Default',
 	`additional_attributes` TEXT,
 	`weight` DECIMAL(6,2) NOT NULL,
 	`qty` int NOT NULL,
+	`source_input_name` varchar(256) NOT NULL,
+	`source_input_id` int NOT NULL,
 	PRIMARY KEY (`id`)
 ) ENGINE=Aria;

@@ -143,7 +143,7 @@
 								</namespaces>
 							</header>
 							<entry name="document" ns="1" expanded="1">
-								<entry name="inventoryimport" type="table" inpkey="189" expanded="1">
+								<entry name="inventory" type="table" inpkey="189" expanded="1">
 									<tableactions>
 										<action operation="update" proceedchildren="1">
 											<field name="gtin" function="equal"/>
@@ -182,14 +182,14 @@
 									<selection>
 										<PathElement Name="Batch" Kind="DataSource"/>
 										<PathElement Name="batch" Kind="Database"/>
-										<PathElement Name="inventoryimport" Kind="Table"/>
+										<PathElement Name="inventory" Kind="Table"/>
 									</selection>
 								</selections>
 							</data>
 						</database>
 					</data>
 				</component>
-				<component name="InventorySPI" library="text" uid="2" kind="16">
+				<component name="SPIInventory" library="text" uid="2" kind="16">
 					<properties/>
 					<view ltx="4" lty="-88" rbx="212" rby="412"/>
 					<data>
@@ -230,9 +230,9 @@
 								</entry>
 							</entry>
 						</root>
-						<text type="csv" inputinstance="schema\InventorySPI.csv" encoding="1000" byteorder="1" byteordermark="0">
+						<text type="csv" inputinstance="schema\SPIInventory.csv" encoding="1000" byteorder="1" byteordermark="0">
 							<settings separator="," quote="&quot;" firstrownames="true" removeempty="true">
-								<names root="InventorySPI" block="Rows">
+								<names root="SPIInventory" block="Rows">
 									<field0 name="Style" type="string"/>
 									<field1 name="Color" type="string"/>
 									<field2 name="Color Description" type="string"/>
