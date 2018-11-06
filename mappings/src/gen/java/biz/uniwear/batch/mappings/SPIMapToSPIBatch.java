@@ -68,7 +68,7 @@ public class SPIMapToSPIBatch extends com.altova.TraceProvider
 			private boolean moveNext_2() throws Exception {
 				state = 0;				
 				var2_RuntimeContext = com.altova.functions.RuntimeContext.construct();
-				com.altova.functions.Core.resetAutoNumber(var2_RuntimeContext, "mapforce_autonumber_1228003260880");
+				com.altova.functions.Core.resetAutoNumber(var2_RuntimeContext, "mapforce_autonumber_1228014713760");
 				current = (com.altova.db.Record)com.altova.functions.Core.first((new seq1_NewRecord(closure.var1_SPIInventory_Instance, var2_RuntimeContext)));
 				pos++;
 				return true;
@@ -1760,7 +1760,7 @@ public class SPIMapToSPIBatch extends com.altova.TraceProvider
 
 			private boolean moveNext_1() throws Exception {
 				state = 0;				
-				var2_auto_number = com.altova.functions.Core.autoNumber(closure.var1_state, "mapforce_autonumber_1228003260880", 1L, 1L, "");
+				var2_auto_number = com.altova.functions.Core.autoNumber(closure.var1_state, "mapforce_autonumber_1228014713760", 1L, 1L, "");
 				current = com.altova.CoreTypes.longToInt(var2_auto_number);
 				pos++;
 				return true;
@@ -2159,7 +2159,7 @@ public class SPIMapToSPIBatch extends com.altova.TraceProvider
 
 			private boolean moveNext_1() throws Exception {
 				state = 0;				
-				if (!((Boolean)com.altova.functions.Core.first((new seq1_NewQuery(closure.var1_catalog, closure.var2_record))))) {state = 2; return false; }
+				if (!((Boolean)com.altova.functions.Core.first((new seq1_NewQuery(closure.var2_record, closure.var1_catalog))))) {state = 2; return false; }
 				current = com.altova.CoreTypes.parseBoolean("true");
 				pos++;
 				return true;
@@ -2449,13 +2449,13 @@ public class SPIMapToSPIBatch extends com.altova.TraceProvider
 	}
 	static class seq1_NewQuery implements IEnumerable
 	{
-		com.altova.db.Catalog var1_catalog;
-		com.altova.db.Record var2_record;
+		com.altova.db.Record var1_record;
+		com.altova.db.Catalog var2_catalog;
 	
-		public seq1_NewQuery(com.altova.db.Catalog var1_catalog, com.altova.db.Record var2_record)
+		public seq1_NewQuery(com.altova.db.Record var1_record, com.altova.db.Catalog var2_catalog)
 		{
-			this.var1_catalog = var1_catalog;
-			this.var2_record = var2_record;
+			this.var1_record = var1_record;
+			this.var2_catalog = var2_catalog;
 		}
 
 		public IEnumerator enumerator() {return new Enumerator(this);}
@@ -2536,9 +2536,9 @@ public class SPIMapToSPIBatch extends com.altova.TraceProvider
 
 			private boolean moveNext_1() throws Exception {
 				state = 3;				
-				var3_NewQuery = com.altova.db.Dbs.newQuery(closure.var1_catalog, 2);
-				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "product_type")))) {state = 2; return false; }
-				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "product_type")));
+				var3_NewQuery = com.altova.db.Dbs.newQuery(closure.var2_catalog, 2);
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var1_record, "product_type")))) {state = 2; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var1_record, "product_type")));
 				return false;
 			}
 			private boolean moveNext_2() throws Exception {
@@ -2548,8 +2548,8 @@ public class SPIMapToSPIBatch extends com.altova.TraceProvider
 			}
 			private boolean moveNext_3() throws Exception {
 				state = 5;				
-				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "style_code")))) {state = 4; return false; }
-				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "style_code")));
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var1_record, "style_code")))) {state = 4; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var1_record, "style_code")));
 				return false;
 			}
 			private boolean moveNext_4() throws Exception {
@@ -2559,8 +2559,8 @@ public class SPIMapToSPIBatch extends com.altova.TraceProvider
 			}
 			private boolean moveNext_5() throws Exception {
 				state = 7;				
-				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "color_code")))) {state = 6; return false; }
-				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "color_code")));
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var1_record, "color_code")))) {state = 6; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var1_record, "color_code")));
 				return false;
 			}
 			private boolean moveNext_6() throws Exception {
@@ -2570,8 +2570,8 @@ public class SPIMapToSPIBatch extends com.altova.TraceProvider
 			}
 			private boolean moveNext_7() throws Exception {
 				state = 9;				
-				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "color_description")))) {state = 8; return false; }
-				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "color_description")));
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var1_record, "color_description")))) {state = 8; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var1_record, "color_description")));
 				return false;
 			}
 			private boolean moveNext_8() throws Exception {
@@ -2581,8 +2581,8 @@ public class SPIMapToSPIBatch extends com.altova.TraceProvider
 			}
 			private boolean moveNext_9() throws Exception {
 				state = 11;				
-				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "color_type")))) {state = 10; return false; }
-				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "color_type")));
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var1_record, "color_type")))) {state = 10; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var1_record, "color_type")));
 				return false;
 			}
 			private boolean moveNext_10() throws Exception {
@@ -2592,8 +2592,8 @@ public class SPIMapToSPIBatch extends com.altova.TraceProvider
 			}
 			private boolean moveNext_11() throws Exception {
 				state = 13;				
-				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "size_code")))) {state = 12; return false; }
-				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "size_code")));
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var1_record, "size_code")))) {state = 12; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var1_record, "size_code")));
 				return false;
 			}
 			private boolean moveNext_12() throws Exception {
@@ -2603,8 +2603,8 @@ public class SPIMapToSPIBatch extends com.altova.TraceProvider
 			}
 			private boolean moveNext_13() throws Exception {
 				state = 15;				
-				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "brand")))) {state = 14; return false; }
-				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "brand")));
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var1_record, "brand")))) {state = 14; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var1_record, "brand")));
 				return false;
 			}
 			private boolean moveNext_14() throws Exception {
@@ -2614,8 +2614,8 @@ public class SPIMapToSPIBatch extends com.altova.TraceProvider
 			}
 			private boolean moveNext_15() throws Exception {
 				state = 17;				
-				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "gender")))) {state = 16; return false; }
-				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "gender")));
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var1_record, "gender")))) {state = 16; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var1_record, "gender")));
 				return false;
 			}
 			private boolean moveNext_16() throws Exception {
@@ -2625,8 +2625,8 @@ public class SPIMapToSPIBatch extends com.altova.TraceProvider
 			}
 			private boolean moveNext_17() throws Exception {
 				state = 19;				
-				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "fit")))) {state = 18; return false; }
-				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "fit")));
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var1_record, "fit")))) {state = 18; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var1_record, "fit")));
 				return false;
 			}
 			private boolean moveNext_18() throws Exception {
@@ -2636,8 +2636,8 @@ public class SPIMapToSPIBatch extends com.altova.TraceProvider
 			}
 			private boolean moveNext_19() throws Exception {
 				state = 21;				
-				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "price")))) {state = 20; return false; }
-				com.altova.db.Dbs.bindParameter_BigDecimal(var3_NewQuery, (java.math.BigDecimal)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "price")));
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var1_record, "price")))) {state = 20; return false; }
+				com.altova.db.Dbs.bindParameter_BigDecimal(var3_NewQuery, (java.math.BigDecimal)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var1_record, "price")));
 				return false;
 			}
 			private boolean moveNext_20() throws Exception {
@@ -2647,8 +2647,8 @@ public class SPIMapToSPIBatch extends com.altova.TraceProvider
 			}
 			private boolean moveNext_21() throws Exception {
 				state = 23;				
-				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "price_map")))) {state = 22; return false; }
-				com.altova.db.Dbs.bindParameter_BigDecimal(var3_NewQuery, (java.math.BigDecimal)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "price_map")));
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var1_record, "price_map")))) {state = 22; return false; }
+				com.altova.db.Dbs.bindParameter_BigDecimal(var3_NewQuery, (java.math.BigDecimal)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var1_record, "price_map")));
 				return false;
 			}
 			private boolean moveNext_22() throws Exception {
@@ -2658,8 +2658,8 @@ public class SPIMapToSPIBatch extends com.altova.TraceProvider
 			}
 			private boolean moveNext_23() throws Exception {
 				state = 25;				
-				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "collection")))) {state = 24; return false; }
-				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "collection")));
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var1_record, "collection")))) {state = 24; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var1_record, "collection")));
 				return false;
 			}
 			private boolean moveNext_24() throws Exception {
@@ -2669,8 +2669,8 @@ public class SPIMapToSPIBatch extends com.altova.TraceProvider
 			}
 			private boolean moveNext_25() throws Exception {
 				state = 27;				
-				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "description_short")))) {state = 26; return false; }
-				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "description_short")));
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var1_record, "description_short")))) {state = 26; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var1_record, "description_short")));
 				return false;
 			}
 			private boolean moveNext_26() throws Exception {
@@ -2680,8 +2680,8 @@ public class SPIMapToSPIBatch extends com.altova.TraceProvider
 			}
 			private boolean moveNext_27() throws Exception {
 				state = 29;				
-				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "description_long")))) {state = 28; return false; }
-				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "description_long")));
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var1_record, "description_long")))) {state = 28; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var1_record, "description_long")));
 				return false;
 			}
 			private boolean moveNext_28() throws Exception {
@@ -2691,8 +2691,8 @@ public class SPIMapToSPIBatch extends com.altova.TraceProvider
 			}
 			private boolean moveNext_29() throws Exception {
 				state = 31;				
-				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "callouts")))) {state = 30; return false; }
-				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "callouts")));
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var1_record, "callouts")))) {state = 30; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var1_record, "callouts")));
 				return false;
 			}
 			private boolean moveNext_30() throws Exception {
@@ -2702,8 +2702,8 @@ public class SPIMapToSPIBatch extends com.altova.TraceProvider
 			}
 			private boolean moveNext_31() throws Exception {
 				state = 33;				
-				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "image_1")))) {state = 32; return false; }
-				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "image_1")));
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var1_record, "image_1")))) {state = 32; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var1_record, "image_1")));
 				return false;
 			}
 			private boolean moveNext_32() throws Exception {
@@ -2713,8 +2713,8 @@ public class SPIMapToSPIBatch extends com.altova.TraceProvider
 			}
 			private boolean moveNext_33() throws Exception {
 				state = 35;				
-				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "image_2")))) {state = 34; return false; }
-				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "image_2")));
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var1_record, "image_2")))) {state = 34; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var1_record, "image_2")));
 				return false;
 			}
 			private boolean moveNext_34() throws Exception {
@@ -2724,8 +2724,8 @@ public class SPIMapToSPIBatch extends com.altova.TraceProvider
 			}
 			private boolean moveNext_35() throws Exception {
 				state = 37;				
-				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "stock")))) {state = 36; return false; }
-				com.altova.db.Dbs.bindParameter_int(var3_NewQuery, (Integer)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "stock")));
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var1_record, "stock")))) {state = 36; return false; }
+				com.altova.db.Dbs.bindParameter_int(var3_NewQuery, (Integer)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var1_record, "stock")));
 				return false;
 			}
 			private boolean moveNext_36() throws Exception {
@@ -2735,8 +2735,8 @@ public class SPIMapToSPIBatch extends com.altova.TraceProvider
 			}
 			private boolean moveNext_37() throws Exception {
 				state = 39;				
-				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "weight")))) {state = 38; return false; }
-				com.altova.db.Dbs.bindParameter_BigDecimal(var3_NewQuery, (java.math.BigDecimal)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "weight")));
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var1_record, "weight")))) {state = 38; return false; }
+				com.altova.db.Dbs.bindParameter_BigDecimal(var3_NewQuery, (java.math.BigDecimal)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var1_record, "weight")));
 				return false;
 			}
 			private boolean moveNext_38() throws Exception {
@@ -2746,8 +2746,8 @@ public class SPIMapToSPIBatch extends com.altova.TraceProvider
 			}
 			private boolean moveNext_39() throws Exception {
 				state = 41;				
-				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "supplier")))) {state = 40; return false; }
-				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "supplier")));
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var1_record, "supplier")))) {state = 40; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var1_record, "supplier")));
 				return false;
 			}
 			private boolean moveNext_40() throws Exception {
@@ -2757,8 +2757,8 @@ public class SPIMapToSPIBatch extends com.altova.TraceProvider
 			}
 			private boolean moveNext_41() throws Exception {
 				state = 43;				
-				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "source_input_name")))) {state = 42; return false; }
-				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "source_input_name")));
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var1_record, "source_input_name")))) {state = 42; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var1_record, "source_input_name")));
 				return false;
 			}
 			private boolean moveNext_42() throws Exception {
@@ -2768,8 +2768,8 @@ public class SPIMapToSPIBatch extends com.altova.TraceProvider
 			}
 			private boolean moveNext_43() throws Exception {
 				state = 45;				
-				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "source_input_id")))) {state = 44; return false; }
-				com.altova.db.Dbs.bindParameter_int(var3_NewQuery, (Integer)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "source_input_id")));
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var1_record, "source_input_id")))) {state = 44; return false; }
+				com.altova.db.Dbs.bindParameter_int(var3_NewQuery, (Integer)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var1_record, "source_input_id")));
 				return false;
 			}
 			private boolean moveNext_44() throws Exception {
@@ -2779,8 +2779,8 @@ public class SPIMapToSPIBatch extends com.altova.TraceProvider
 			}
 			private boolean moveNext_45() throws Exception {
 				state = 47;				
-				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "gtin")))) {state = 46; return false; }
-				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "gtin")));
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var1_record, "gtin")))) {state = 46; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var1_record, "gtin")));
 				return false;
 			}
 			private boolean moveNext_46() throws Exception {

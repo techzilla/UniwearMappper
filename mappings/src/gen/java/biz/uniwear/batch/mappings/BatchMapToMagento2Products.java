@@ -70,8 +70,9 @@ public class BatchMapToMagento2Products extends com.altova.TraceProvider
 
 			private boolean moveNext_1() throws Exception {
 				state = 3;				
-				var3_NewStatement = com.altova.db.Dbs.newStatement(closure.var1_Batch__batch__Instance, 1, "SELECT `sku`, `attribute_set_code`, `categories`, `name`, `description`, `short_description`, CONVERT(`weight`, CHAR(67)) AS `weight`, `product_online`, CONVERT(`price`, CHAR(67)) AS `price`, `url_key"
- + "`, `additional_attributes`, `qty`, `image`, `image_label` FROM `products`");
+				var3_NewStatement = com.altova.db.Dbs.newStatement(closure.var1_Batch__batch__Instance, 1, "SELECT `sku`, `attribute_set_code`, `product_type`, `categories`, `name`, `description`, `short_description`, CONVERT(`weight`, CHAR(67)) AS `weight`, `product_online`, `visibility`, CONVERT(`price`, "
+ + "CHAR(67)) AS `price`, `url_key`, `gtin`, `additional_attribute_gender`, `additional_attribute_fit`, `additional_attribute_brand`, `additional_attribute_size`, `additional_attribute_color`, `qty`, `ima"
+ + "ge`, `image_label` FROM `products`");
 				com.altova.db.Dbs.prepareStatement(var3_NewStatement);
 				var2_ReadRecordSet = (com.altova.db.Dbs.readRecordSet((com.altova.db.ResultSetWrapper)com.altova.functions.Core.first((new seq1_NewQuery(closure.var1_Batch__batch__Instance))), (new seq2_NewRecord_lambda()))).enumerator();
 				return false;
@@ -208,18 +209,25 @@ public class BatchMapToMagento2Products extends com.altova.TraceProvider
 				var2_NewRecord = com.altova.db.Dbs.newRecord();
 				com.altova.db.Dbs.MySQL.read_String(var2_NewRecord, closure.var1_RecordSet, "sku", 0);
 				com.altova.db.Dbs.MySQL.read_String(var2_NewRecord, closure.var1_RecordSet, "attribute_set_code", 1);
-				com.altova.db.Dbs.MySQL.read_String(var2_NewRecord, closure.var1_RecordSet, "categories", 2);
-				com.altova.db.Dbs.MySQL.read_String(var2_NewRecord, closure.var1_RecordSet, "name", 3);
-				com.altova.db.Dbs.MySQL.read_String(var2_NewRecord, closure.var1_RecordSet, "description", 4);
-				com.altova.db.Dbs.MySQL.read_String(var2_NewRecord, closure.var1_RecordSet, "short_description", 5);
-				com.altova.db.Dbs.read_String_ParseDecimal(var2_NewRecord, closure.var1_RecordSet, "weight", 6);
-				com.altova.db.Dbs.read_byte(var2_NewRecord, closure.var1_RecordSet, "product_online", 7);
-				com.altova.db.Dbs.read_String_ParseDecimal(var2_NewRecord, closure.var1_RecordSet, "price", 8);
-				com.altova.db.Dbs.MySQL.read_String(var2_NewRecord, closure.var1_RecordSet, "url_key", 9);
-				com.altova.db.Dbs.MySQL.read_String(var2_NewRecord, closure.var1_RecordSet, "additional_attributes", 10);
-				com.altova.db.Dbs.read_int(var2_NewRecord, closure.var1_RecordSet, "qty", 11);
-				com.altova.db.Dbs.MySQL.read_String(var2_NewRecord, closure.var1_RecordSet, "image", 12);
-				com.altova.db.Dbs.MySQL.read_String(var2_NewRecord, closure.var1_RecordSet, "image_label", 13);
+				com.altova.db.Dbs.MySQL.read_String(var2_NewRecord, closure.var1_RecordSet, "product_type", 2);
+				com.altova.db.Dbs.MySQL.read_String(var2_NewRecord, closure.var1_RecordSet, "categories", 3);
+				com.altova.db.Dbs.MySQL.read_String(var2_NewRecord, closure.var1_RecordSet, "name", 4);
+				com.altova.db.Dbs.MySQL.read_String(var2_NewRecord, closure.var1_RecordSet, "description", 5);
+				com.altova.db.Dbs.MySQL.read_String(var2_NewRecord, closure.var1_RecordSet, "short_description", 6);
+				com.altova.db.Dbs.read_String_ParseDecimal(var2_NewRecord, closure.var1_RecordSet, "weight", 7);
+				com.altova.db.Dbs.read_byte(var2_NewRecord, closure.var1_RecordSet, "product_online", 8);
+				com.altova.db.Dbs.MySQL.read_String(var2_NewRecord, closure.var1_RecordSet, "visibility", 9);
+				com.altova.db.Dbs.read_String_ParseDecimal(var2_NewRecord, closure.var1_RecordSet, "price", 10);
+				com.altova.db.Dbs.MySQL.read_String(var2_NewRecord, closure.var1_RecordSet, "url_key", 11);
+				com.altova.db.Dbs.MySQL.read_String(var2_NewRecord, closure.var1_RecordSet, "gtin", 12);
+				com.altova.db.Dbs.MySQL.read_String(var2_NewRecord, closure.var1_RecordSet, "additional_attribute_gender", 13);
+				com.altova.db.Dbs.MySQL.read_String(var2_NewRecord, closure.var1_RecordSet, "additional_attribute_fit", 14);
+				com.altova.db.Dbs.MySQL.read_String(var2_NewRecord, closure.var1_RecordSet, "additional_attribute_brand", 15);
+				com.altova.db.Dbs.MySQL.read_String(var2_NewRecord, closure.var1_RecordSet, "additional_attribute_size", 16);
+				com.altova.db.Dbs.MySQL.read_String(var2_NewRecord, closure.var1_RecordSet, "additional_attribute_color", 17);
+				com.altova.db.Dbs.read_int(var2_NewRecord, closure.var1_RecordSet, "qty", 18);
+				com.altova.db.Dbs.MySQL.read_String(var2_NewRecord, closure.var1_RecordSet, "image", 19);
+				com.altova.db.Dbs.MySQL.read_String(var2_NewRecord, closure.var1_RecordSet, "image_label", 20);
 				current = var2_NewRecord;
 				pos++;
 				return true;
@@ -275,8 +283,20 @@ public class BatchMapToMagento2Products extends com.altova.TraceProvider
 			IEnumerator var11_read_field;
 			IEnumerator var12_read_field;
 			IEnumerator var13_read_field;
-			IEnumerator var14_read_field;
-			IEnumerator var15_read_field;
+			IEnumerator var14_filter;
+			IEnumerator var15_filter;
+			IEnumerator var25_read_field;
+			IEnumerator var16_concat;
+			IEnumerator var26_read_field;
+			IEnumerator var17_filter;
+			IEnumerator var27_read_field;
+			IEnumerator var18_concat;
+			IEnumerator var19_filter;
+			IEnumerator var20_concat;
+			IEnumerator var21_filter;
+			IEnumerator var22_concat;
+			IEnumerator var23_filter;
+			IEnumerator var24_concat;
 			public Enumerator(seq3_join closure) 
 			{
 				this.closure = closure;
@@ -319,8 +339,32 @@ public class BatchMapToMagento2Products extends com.altova.TraceProvider
 					case 36:	if (moveNext_36()) return true; break;
 					case 38:	if (moveNext_38()) return true; break;
 					case 39:	if (moveNext_39()) return true; break;
+					case 40:	if (moveNext_40()) return true; break;
 					case 41:	if (moveNext_41()) return true; break;
 					case 42:	if (moveNext_42()) return true; break;
+					case 43:	if (moveNext_43()) return true; break;
+					case 44:	if (moveNext_44()) return true; break;
+					case 45:	if (moveNext_45()) return true; break;
+					case 46:	if (moveNext_46()) return true; break;
+					case 47:	if (moveNext_47()) return true; break;
+					case 48:	if (moveNext_48()) return true; break;
+					case 49:	if (moveNext_49()) return true; break;
+					case 50:	if (moveNext_50()) return true; break;
+					case 51:	if (moveNext_51()) return true; break;
+					case 52:	if (moveNext_52()) return true; break;
+					case 53:	if (moveNext_53()) return true; break;
+					case 54:	if (moveNext_54()) return true; break;
+					case 55:	if (moveNext_55()) return true; break;
+					case 56:	if (moveNext_56()) return true; break;
+					case 57:	if (moveNext_57()) return true; break;
+					case 58:	if (moveNext_58()) return true; break;
+					case 59:	if (moveNext_59()) return true; break;
+					case 61:	if (moveNext_61()) return true; break;
+					case 62:	if (moveNext_62()) return true; break;
+					case 64:	if (moveNext_64()) return true; break;
+					case 65:	if (moveNext_65()) return true; break;
+					case 67:	if (moveNext_67()) return true; break;
+					case 68:	if (moveNext_68()) return true; break;
  					}
 				}
 				return false;
@@ -354,162 +398,304 @@ public class BatchMapToMagento2Products extends com.altova.TraceProvider
 			private boolean moveNext_6() throws Exception {
 				state = 8;				
 				if( var3_read_field != null ) { var3_read_field.close(); var3_read_field = null; }
-				var4_read_field = (com.altova.db.Dbs.readField(closure.var1_cur, "categories")).enumerator();
+				var4_read_field = (com.altova.db.Dbs.readField(closure.var1_cur, "product_type")).enumerator();
 				return false;
 			}
 			private boolean moveNext_8() throws Exception {
 				state = 8;				
 				if (!var4_read_field.moveNext()) {state = 9; return false; }
-				current = com.altova.functions.Core.createElement("categories", com.altova.functions.Core.box(((java.lang.String)(var4_read_field.current()))));
+				current = com.altova.functions.Core.createElement("product_type", com.altova.functions.Core.box(((java.lang.String)(var4_read_field.current()))));
 				pos++;
 				return true;
 			}
 			private boolean moveNext_9() throws Exception {
 				state = 11;				
 				if( var4_read_field != null ) { var4_read_field.close(); var4_read_field = null; }
-				var5_read_field = (com.altova.db.Dbs.readField(closure.var1_cur, "name")).enumerator();
+				var5_read_field = (com.altova.db.Dbs.readField(closure.var1_cur, "categories")).enumerator();
 				return false;
 			}
 			private boolean moveNext_11() throws Exception {
 				state = 11;				
 				if (!var5_read_field.moveNext()) {state = 12; return false; }
-				current = com.altova.functions.Core.createElement("name", com.altova.functions.Core.box(((java.lang.String)(var5_read_field.current()))));
+				current = com.altova.functions.Core.createElement("categories", com.altova.functions.Core.box(((java.lang.String)(var5_read_field.current()))));
 				pos++;
 				return true;
 			}
 			private boolean moveNext_12() throws Exception {
 				state = 14;				
 				if( var5_read_field != null ) { var5_read_field.close(); var5_read_field = null; }
-				var6_read_field = (com.altova.db.Dbs.readField(closure.var1_cur, "description")).enumerator();
+				var6_read_field = (com.altova.db.Dbs.readField(closure.var1_cur, "name")).enumerator();
 				return false;
 			}
 			private boolean moveNext_14() throws Exception {
 				state = 14;				
 				if (!var6_read_field.moveNext()) {state = 15; return false; }
-				current = com.altova.functions.Core.createElement("description", com.altova.functions.Core.box(((java.lang.String)(var6_read_field.current()))));
+				current = com.altova.functions.Core.createElement("name", com.altova.functions.Core.box(((java.lang.String)(var6_read_field.current()))));
 				pos++;
 				return true;
 			}
 			private boolean moveNext_15() throws Exception {
 				state = 17;				
 				if( var6_read_field != null ) { var6_read_field.close(); var6_read_field = null; }
-				var7_read_field = (com.altova.db.Dbs.readField(closure.var1_cur, "short_description")).enumerator();
+				var7_read_field = (com.altova.db.Dbs.readField(closure.var1_cur, "description")).enumerator();
 				return false;
 			}
 			private boolean moveNext_17() throws Exception {
 				state = 17;				
 				if (!var7_read_field.moveNext()) {state = 18; return false; }
-				current = com.altova.functions.Core.createElement("short_description", com.altova.functions.Core.box(((java.lang.String)(var7_read_field.current()))));
+				current = com.altova.functions.Core.createElement("description", com.altova.functions.Core.box(((java.lang.String)(var7_read_field.current()))));
 				pos++;
 				return true;
 			}
 			private boolean moveNext_18() throws Exception {
 				state = 20;				
 				if( var7_read_field != null ) { var7_read_field.close(); var7_read_field = null; }
-				var8_read_field = (com.altova.db.Dbs.readField(closure.var1_cur, "weight")).enumerator();
+				var8_read_field = (com.altova.db.Dbs.readField(closure.var1_cur, "short_description")).enumerator();
 				return false;
 			}
 			private boolean moveNext_20() throws Exception {
 				state = 20;				
 				if (!var8_read_field.moveNext()) {state = 21; return false; }
-				current = com.altova.functions.Core.createElement("weight", com.altova.functions.Core.box(com.altova.CoreTypes.decimalToString(((java.math.BigDecimal)(var8_read_field.current())))));
+				current = com.altova.functions.Core.createElement("short_description", com.altova.functions.Core.box(((java.lang.String)(var8_read_field.current()))));
 				pos++;
 				return true;
 			}
 			private boolean moveNext_21() throws Exception {
 				state = 23;				
 				if( var8_read_field != null ) { var8_read_field.close(); var8_read_field = null; }
-				var9_read_field = (com.altova.db.Dbs.readField(closure.var1_cur, "product_online")).enumerator();
+				var9_read_field = (com.altova.db.Dbs.readField(closure.var1_cur, "weight")).enumerator();
 				return false;
 			}
 			private boolean moveNext_23() throws Exception {
 				state = 23;				
 				if (!var9_read_field.moveNext()) {state = 24; return false; }
-				current = com.altova.functions.Core.createElement("product_online", com.altova.functions.Core.box(com.altova.CoreTypes.integerToString(com.altova.CoreTypes.longToInteger(com.altova.CoreTypes.intToLong(((Integer)(var9_read_field.current())))))));
+				current = com.altova.functions.Core.createElement("weight", com.altova.functions.Core.box(com.altova.CoreTypes.decimalToString(((java.math.BigDecimal)(var9_read_field.current())))));
 				pos++;
 				return true;
 			}
 			private boolean moveNext_24() throws Exception {
 				state = 26;				
 				if( var9_read_field != null ) { var9_read_field.close(); var9_read_field = null; }
-				var10_read_field = (com.altova.db.Dbs.readField(closure.var1_cur, "price")).enumerator();
+				var10_read_field = (com.altova.db.Dbs.readField(closure.var1_cur, "product_online")).enumerator();
 				return false;
 			}
 			private boolean moveNext_26() throws Exception {
 				state = 26;				
 				if (!var10_read_field.moveNext()) {state = 27; return false; }
-				current = com.altova.functions.Core.createElement("price", com.altova.functions.Core.box(com.altova.CoreTypes.decimalToString(((java.math.BigDecimal)(var10_read_field.current())))));
+				current = com.altova.functions.Core.createElement("product_online", com.altova.functions.Core.box(com.altova.CoreTypes.integerToString(com.altova.CoreTypes.longToInteger(com.altova.CoreTypes.intToLong(((Integer)(var10_read_field.current())))))));
 				pos++;
 				return true;
 			}
 			private boolean moveNext_27() throws Exception {
 				state = 29;				
 				if( var10_read_field != null ) { var10_read_field.close(); var10_read_field = null; }
-				var11_read_field = (com.altova.db.Dbs.readField(closure.var1_cur, "url_key")).enumerator();
+				var11_read_field = (com.altova.db.Dbs.readField(closure.var1_cur, "visibility")).enumerator();
 				return false;
 			}
 			private boolean moveNext_29() throws Exception {
 				state = 29;				
 				if (!var11_read_field.moveNext()) {state = 30; return false; }
-				current = com.altova.functions.Core.createElement("url_key", com.altova.functions.Core.box(((java.lang.String)(var11_read_field.current()))));
+				current = com.altova.functions.Core.createElement("visibility", com.altova.functions.Core.box(((java.lang.String)(var11_read_field.current()))));
 				pos++;
 				return true;
 			}
 			private boolean moveNext_30() throws Exception {
 				state = 32;				
 				if( var11_read_field != null ) { var11_read_field.close(); var11_read_field = null; }
-				var12_read_field = (com.altova.db.Dbs.readField(closure.var1_cur, "additional_attributes")).enumerator();
+				var12_read_field = (com.altova.db.Dbs.readField(closure.var1_cur, "price")).enumerator();
 				return false;
 			}
 			private boolean moveNext_32() throws Exception {
 				state = 32;				
 				if (!var12_read_field.moveNext()) {state = 33; return false; }
-				current = com.altova.functions.Core.createElement("additional_attributes", com.altova.functions.Core.box(((java.lang.String)(var12_read_field.current()))));
+				current = com.altova.functions.Core.createElement("price", com.altova.functions.Core.box(com.altova.CoreTypes.decimalToString(((java.math.BigDecimal)(var12_read_field.current())))));
 				pos++;
 				return true;
 			}
 			private boolean moveNext_33() throws Exception {
 				state = 35;				
 				if( var12_read_field != null ) { var12_read_field.close(); var12_read_field = null; }
-				var13_read_field = (com.altova.db.Dbs.readField(closure.var1_cur, "qty")).enumerator();
+				var13_read_field = (com.altova.db.Dbs.readField(closure.var1_cur, "url_key")).enumerator();
 				return false;
 			}
 			private boolean moveNext_35() throws Exception {
 				state = 35;				
 				if (!var13_read_field.moveNext()) {state = 36; return false; }
-				current = com.altova.functions.Core.createElement("qty", com.altova.functions.Core.box(com.altova.CoreTypes.integerToString(com.altova.CoreTypes.longToInteger(com.altova.CoreTypes.intToLong(((Integer)(var13_read_field.current())))))));
+				current = com.altova.functions.Core.createElement("url_key", com.altova.functions.Core.box(((java.lang.String)(var13_read_field.current()))));
 				pos++;
 				return true;
 			}
 			private boolean moveNext_36() throws Exception {
 				state = 38;				
 				if( var13_read_field != null ) { var13_read_field.close(); var13_read_field = null; }
-				var14_read_field = (com.altova.db.Dbs.readField(closure.var1_cur, "image")).enumerator();
+				var14_filter = (com.altova.db.Dbs.readField(closure.var1_cur, "gtin")).enumerator();
 				return false;
 			}
 			private boolean moveNext_38() throws Exception {
-				state = 38;				
-				if (!var14_read_field.moveNext()) {state = 39; return false; }
-				current = com.altova.functions.Core.createElement("image", com.altova.functions.Core.box(((java.lang.String)(var14_read_field.current()))));
-				pos++;
-				return true;
+				state = 40;				
+				if (!var14_filter.moveNext()) {state = 39; return false; }
+				if (!(com.altova.functions.Core.logicalNot(com.altova.functions.Lang.empty(((java.lang.String)(var14_filter.current())))))) {state = 38; return false; }
+				var15_filter = (com.altova.db.Dbs.readField(closure.var1_cur, "additional_attribute_gender")).enumerator();
+				return false;
 			}
 			private boolean moveNext_39() throws Exception {
-				state = 41;				
-				if( var14_read_field != null ) { var14_read_field.close(); var14_read_field = null; }
-				var15_read_field = (com.altova.db.Dbs.readField(closure.var1_cur, "image_label")).enumerator();
+				state = 61;				
+				if( var14_filter != null ) { var14_filter.close(); var14_filter = null; }
+				var25_read_field = (com.altova.db.Dbs.readField(closure.var1_cur, "qty")).enumerator();
+				return false;
+			}
+			private boolean moveNext_40() throws Exception {
+				state = 42;				
+				if (!var15_filter.moveNext()) {state = 41; return false; }
+				if (!(com.altova.functions.Core.logicalNot(com.altova.functions.Lang.empty(((java.lang.String)(var15_filter.current())))))) {state = 40; return false; }
+				var16_concat = ((new seq4_concat(((java.lang.String)(var15_filter.current()))))).enumerator();
 				return false;
 			}
 			private boolean moveNext_41() throws Exception {
-				state = 41;				
-				if (!var15_read_field.moveNext()) {state = 42; return false; }
-				current = com.altova.functions.Core.createElement("image_label", com.altova.functions.Core.box(((java.lang.String)(var15_read_field.current()))));
+				state = 38;				
+				if( var15_filter != null ) { var15_filter.close(); var15_filter = null; }
+				return false;
+			}
+			private boolean moveNext_42() throws Exception {
+				state = 44;				
+				if (!var16_concat.moveNext()) {state = 43; return false; }
+				var17_filter = (com.altova.db.Dbs.readField(closure.var1_cur, "additional_attribute_fit")).enumerator();
+				return false;
+			}
+			private boolean moveNext_43() throws Exception {
+				state = 40;				
+				if( var16_concat != null ) { var16_concat.close(); var16_concat = null; }
+				return false;
+			}
+			private boolean moveNext_44() throws Exception {
+				state = 46;				
+				if (!var17_filter.moveNext()) {state = 45; return false; }
+				if (!(com.altova.functions.Core.logicalNot(com.altova.functions.Lang.empty(((java.lang.String)(var17_filter.current())))))) {state = 44; return false; }
+				var18_concat = ((new seq5_concat(((java.lang.String)(var17_filter.current()))))).enumerator();
+				return false;
+			}
+			private boolean moveNext_45() throws Exception {
+				state = 42;				
+				if( var17_filter != null ) { var17_filter.close(); var17_filter = null; }
+				return false;
+			}
+			private boolean moveNext_46() throws Exception {
+				state = 48;				
+				if (!var18_concat.moveNext()) {state = 47; return false; }
+				var19_filter = (com.altova.db.Dbs.readField(closure.var1_cur, "additional_attribute_brand")).enumerator();
+				return false;
+			}
+			private boolean moveNext_47() throws Exception {
+				state = 44;				
+				if( var18_concat != null ) { var18_concat.close(); var18_concat = null; }
+				return false;
+			}
+			private boolean moveNext_48() throws Exception {
+				state = 50;				
+				if (!var19_filter.moveNext()) {state = 49; return false; }
+				if (!(com.altova.functions.Core.logicalNot(com.altova.functions.Lang.empty(((java.lang.String)(var19_filter.current())))))) {state = 48; return false; }
+				var20_concat = ((new seq6_concat(((java.lang.String)(var19_filter.current()))))).enumerator();
+				return false;
+			}
+			private boolean moveNext_49() throws Exception {
+				state = 46;				
+				if( var19_filter != null ) { var19_filter.close(); var19_filter = null; }
+				return false;
+			}
+			private boolean moveNext_50() throws Exception {
+				state = 52;				
+				if (!var20_concat.moveNext()) {state = 51; return false; }
+				var21_filter = (com.altova.db.Dbs.readField(closure.var1_cur, "additional_attribute_size")).enumerator();
+				return false;
+			}
+			private boolean moveNext_51() throws Exception {
+				state = 48;				
+				if( var20_concat != null ) { var20_concat.close(); var20_concat = null; }
+				return false;
+			}
+			private boolean moveNext_52() throws Exception {
+				state = 54;				
+				if (!var21_filter.moveNext()) {state = 53; return false; }
+				if (!(com.altova.functions.Core.logicalNot(com.altova.functions.Lang.empty(((java.lang.String)(var21_filter.current())))))) {state = 52; return false; }
+				var22_concat = ((new seq7_concat(((java.lang.String)(var21_filter.current()))))).enumerator();
+				return false;
+			}
+			private boolean moveNext_53() throws Exception {
+				state = 50;				
+				if( var21_filter != null ) { var21_filter.close(); var21_filter = null; }
+				return false;
+			}
+			private boolean moveNext_54() throws Exception {
+				state = 56;				
+				if (!var22_concat.moveNext()) {state = 55; return false; }
+				var23_filter = (com.altova.db.Dbs.readField(closure.var1_cur, "additional_attribute_color")).enumerator();
+				return false;
+			}
+			private boolean moveNext_55() throws Exception {
+				state = 52;				
+				if( var22_concat != null ) { var22_concat.close(); var22_concat = null; }
+				return false;
+			}
+			private boolean moveNext_56() throws Exception {
+				state = 58;				
+				if (!var23_filter.moveNext()) {state = 57; return false; }
+				if (!(com.altova.functions.Core.logicalNot(com.altova.functions.Lang.empty(((java.lang.String)(var23_filter.current())))))) {state = 56; return false; }
+				var24_concat = ((new seq8_concat(((java.lang.String)(var23_filter.current()))))).enumerator();
+				return false;
+			}
+			private boolean moveNext_57() throws Exception {
+				state = 54;				
+				if( var23_filter != null ) { var23_filter.close(); var23_filter = null; }
+				return false;
+			}
+			private boolean moveNext_58() throws Exception {
+				state = 58;				
+				if (!var24_concat.moveNext()) {state = 59; return false; }
+				current = com.altova.functions.Core.createElement("additional_attributes", com.altova.functions.Core.box(com.altova.functions.Core.concat(com.altova.functions.Core.concat(com.altova.functions.Core.concat(com.altova.functions.Core.concat(com.altova.functions.Core.concat(com.altova.functions.Core.concat(com.altova.functions.Core.concat(com.altova.functions.Core.concat(com.altova.functions.Core.concat("gtin", "="), "\""), ((java.lang.String)(var14_filter.current()))), "\""), ((java.lang.String)(var16_concat.current()))), ((java.lang.String)(var18_concat.current()))), ((java.lang.String)(var20_concat.current()))), ((java.lang.String)(var22_concat.current()))), ((java.lang.String)(var24_concat.current())))));
 				pos++;
 				return true;
 			}
-			private boolean moveNext_42() throws Exception {
+			private boolean moveNext_59() throws Exception {
+				state = 56;				
+				if( var24_concat != null ) { var24_concat.close(); var24_concat = null; }
+				return false;
+			}
+			private boolean moveNext_61() throws Exception {
+				state = 61;				
+				if (!var25_read_field.moveNext()) {state = 62; return false; }
+				current = com.altova.functions.Core.createElement("qty", com.altova.functions.Core.box(com.altova.CoreTypes.integerToString(com.altova.CoreTypes.longToInteger(com.altova.CoreTypes.intToLong(((Integer)(var25_read_field.current())))))));
+				pos++;
+				return true;
+			}
+			private boolean moveNext_62() throws Exception {
+				state = 64;				
+				if( var25_read_field != null ) { var25_read_field.close(); var25_read_field = null; }
+				var26_read_field = (com.altova.db.Dbs.readField(closure.var1_cur, "image")).enumerator();
+				return false;
+			}
+			private boolean moveNext_64() throws Exception {
+				state = 64;				
+				if (!var26_read_field.moveNext()) {state = 65; return false; }
+				current = com.altova.functions.Core.createElement("image", com.altova.functions.Core.box(((java.lang.String)(var26_read_field.current()))));
+				pos++;
+				return true;
+			}
+			private boolean moveNext_65() throws Exception {
+				state = 67;				
+				if( var26_read_field != null ) { var26_read_field.close(); var26_read_field = null; }
+				var27_read_field = (com.altova.db.Dbs.readField(closure.var1_cur, "image_label")).enumerator();
+				return false;
+			}
+			private boolean moveNext_67() throws Exception {
+				state = 67;				
+				if (!var27_read_field.moveNext()) {state = 68; return false; }
+				current = com.altova.functions.Core.createElement("image_label", com.altova.functions.Core.box(((java.lang.String)(var27_read_field.current()))));
+				pos++;
+				return true;
+			}
+			private boolean moveNext_68() throws Exception {
 				state = 0;				
-				if( var15_read_field != null ) { var15_read_field.close(); var15_read_field = null; }
+				if( var27_read_field != null ) { var27_read_field.close(); var27_read_field = null; }
 				return false;
 			}
 
@@ -530,8 +716,350 @@ public class BatchMapToMagento2Products extends com.altova.TraceProvider
 				if( var11_read_field != null ) { var11_read_field.close(); var11_read_field = null; }
 				if( var12_read_field != null ) { var12_read_field.close(); var12_read_field = null; }
 				if( var13_read_field != null ) { var13_read_field.close(); var13_read_field = null; }
-				if( var14_read_field != null ) { var14_read_field.close(); var14_read_field = null; }
-				if( var15_read_field != null ) { var15_read_field.close(); var15_read_field = null; }
+				if( var24_concat != null ) { var24_concat.close(); var24_concat = null; }
+				if( var23_filter != null ) { var23_filter.close(); var23_filter = null; }
+				if( var22_concat != null ) { var22_concat.close(); var22_concat = null; }
+				if( var21_filter != null ) { var21_filter.close(); var21_filter = null; }
+				if( var20_concat != null ) { var20_concat.close(); var20_concat = null; }
+				if( var19_filter != null ) { var19_filter.close(); var19_filter = null; }
+				if( var18_concat != null ) { var18_concat.close(); var18_concat = null; }
+				if( var17_filter != null ) { var17_filter.close(); var17_filter = null; }
+				if( var16_concat != null ) { var16_concat.close(); var16_concat = null; }
+				if( var15_filter != null ) { var15_filter.close(); var15_filter = null; }
+				if( var14_filter != null ) { var14_filter.close(); var14_filter = null; }
+				if( var25_read_field != null ) { var25_read_field.close(); var25_read_field = null; }
+				if( var26_read_field != null ) { var26_read_field.close(); var26_read_field = null; }
+				if( var27_read_field != null ) { var27_read_field.close(); var27_read_field = null; }
+				}
+				catch (Exception e)
+				{
+				}
+			}
+		}
+				
+	}
+	static class seq4_concat implements IEnumerable
+	{
+		java.lang.String var1_source;
+	
+		public seq4_concat(java.lang.String var1_source)
+		{
+			this.var1_source = var1_source;
+		}
+
+		public IEnumerator enumerator() {return new Enumerator(this);}
+		
+		public static class Enumerator implements IEnumerator
+		{
+			int pos = 0;
+			int state = 1;
+			Object current;
+			seq4_concat closure;
+			java.lang.String var2_concat;
+			public Enumerator(seq4_concat closure) 
+			{
+				this.closure = closure;
+			}
+			
+			public Object current() {return current;}
+			
+			public int position() {return pos;}
+			
+			public boolean moveNext() throws Exception
+			{
+				while (state != 0)
+				{
+					switch (state) 
+					{
+					case 1:	if (moveNext_1()) return true; break;
+					case 2:	if (moveNext_2()) return true; break;
+ 					}
+				}
+				return false;
+			}
+
+			private boolean moveNext_1() throws Exception {
+				state = 0;				
+				var2_concat = com.altova.functions.Core.concat(com.altova.functions.Core.concat(com.altova.functions.Core.concat(com.altova.functions.Core.concat("gender", "="), "\""), closure.var1_source), "\"");
+				if (!(com.altova.functions.Lang.empty(var2_concat))) {state = 2; return false; }
+				return false;
+			}
+			private boolean moveNext_2() throws Exception {
+				state = 0;				
+				current = com.altova.functions.Core.concat(".", var2_concat);
+				pos++;
+				return true;
+			}
+
+			
+			public void close()
+			{
+				try
+				{
+				}
+				catch (Exception e)
+				{
+				}
+			}
+		}
+				
+	}
+	static class seq5_concat implements IEnumerable
+	{
+		java.lang.String var1_source;
+	
+		public seq5_concat(java.lang.String var1_source)
+		{
+			this.var1_source = var1_source;
+		}
+
+		public IEnumerator enumerator() {return new Enumerator(this);}
+		
+		public static class Enumerator implements IEnumerator
+		{
+			int pos = 0;
+			int state = 1;
+			Object current;
+			seq5_concat closure;
+			java.lang.String var2_concat;
+			public Enumerator(seq5_concat closure) 
+			{
+				this.closure = closure;
+			}
+			
+			public Object current() {return current;}
+			
+			public int position() {return pos;}
+			
+			public boolean moveNext() throws Exception
+			{
+				while (state != 0)
+				{
+					switch (state) 
+					{
+					case 1:	if (moveNext_1()) return true; break;
+					case 2:	if (moveNext_2()) return true; break;
+ 					}
+				}
+				return false;
+			}
+
+			private boolean moveNext_1() throws Exception {
+				state = 0;				
+				var2_concat = com.altova.functions.Core.concat(com.altova.functions.Core.concat(com.altova.functions.Core.concat(com.altova.functions.Core.concat("fit", "="), "\""), closure.var1_source), "\"");
+				if (!(com.altova.functions.Lang.empty(var2_concat))) {state = 2; return false; }
+				return false;
+			}
+			private boolean moveNext_2() throws Exception {
+				state = 0;				
+				current = com.altova.functions.Core.concat(".", var2_concat);
+				pos++;
+				return true;
+			}
+
+			
+			public void close()
+			{
+				try
+				{
+				}
+				catch (Exception e)
+				{
+				}
+			}
+		}
+				
+	}
+	static class seq6_concat implements IEnumerable
+	{
+		java.lang.String var1_source;
+	
+		public seq6_concat(java.lang.String var1_source)
+		{
+			this.var1_source = var1_source;
+		}
+
+		public IEnumerator enumerator() {return new Enumerator(this);}
+		
+		public static class Enumerator implements IEnumerator
+		{
+			int pos = 0;
+			int state = 1;
+			Object current;
+			seq6_concat closure;
+			java.lang.String var2_concat;
+			public Enumerator(seq6_concat closure) 
+			{
+				this.closure = closure;
+			}
+			
+			public Object current() {return current;}
+			
+			public int position() {return pos;}
+			
+			public boolean moveNext() throws Exception
+			{
+				while (state != 0)
+				{
+					switch (state) 
+					{
+					case 1:	if (moveNext_1()) return true; break;
+					case 2:	if (moveNext_2()) return true; break;
+ 					}
+				}
+				return false;
+			}
+
+			private boolean moveNext_1() throws Exception {
+				state = 0;				
+				var2_concat = com.altova.functions.Core.concat(com.altova.functions.Core.concat(com.altova.functions.Core.concat(com.altova.functions.Core.concat("brand", "="), "\""), closure.var1_source), "\"");
+				if (!(com.altova.functions.Lang.empty(var2_concat))) {state = 2; return false; }
+				return false;
+			}
+			private boolean moveNext_2() throws Exception {
+				state = 0;				
+				current = com.altova.functions.Core.concat(".", var2_concat);
+				pos++;
+				return true;
+			}
+
+			
+			public void close()
+			{
+				try
+				{
+				}
+				catch (Exception e)
+				{
+				}
+			}
+		}
+				
+	}
+	static class seq7_concat implements IEnumerable
+	{
+		java.lang.String var1_source;
+	
+		public seq7_concat(java.lang.String var1_source)
+		{
+			this.var1_source = var1_source;
+		}
+
+		public IEnumerator enumerator() {return new Enumerator(this);}
+		
+		public static class Enumerator implements IEnumerator
+		{
+			int pos = 0;
+			int state = 1;
+			Object current;
+			seq7_concat closure;
+			java.lang.String var2_concat;
+			public Enumerator(seq7_concat closure) 
+			{
+				this.closure = closure;
+			}
+			
+			public Object current() {return current;}
+			
+			public int position() {return pos;}
+			
+			public boolean moveNext() throws Exception
+			{
+				while (state != 0)
+				{
+					switch (state) 
+					{
+					case 1:	if (moveNext_1()) return true; break;
+					case 2:	if (moveNext_2()) return true; break;
+ 					}
+				}
+				return false;
+			}
+
+			private boolean moveNext_1() throws Exception {
+				state = 0;				
+				var2_concat = com.altova.functions.Core.concat(com.altova.functions.Core.concat(com.altova.functions.Core.concat(com.altova.functions.Core.concat("size", "="), "\""), closure.var1_source), "\"");
+				if (!(com.altova.functions.Lang.empty(var2_concat))) {state = 2; return false; }
+				return false;
+			}
+			private boolean moveNext_2() throws Exception {
+				state = 0;				
+				current = com.altova.functions.Core.concat(".", var2_concat);
+				pos++;
+				return true;
+			}
+
+			
+			public void close()
+			{
+				try
+				{
+				}
+				catch (Exception e)
+				{
+				}
+			}
+		}
+				
+	}
+	static class seq8_concat implements IEnumerable
+	{
+		java.lang.String var1_source;
+	
+		public seq8_concat(java.lang.String var1_source)
+		{
+			this.var1_source = var1_source;
+		}
+
+		public IEnumerator enumerator() {return new Enumerator(this);}
+		
+		public static class Enumerator implements IEnumerator
+		{
+			int pos = 0;
+			int state = 1;
+			Object current;
+			seq8_concat closure;
+			java.lang.String var2_concat;
+			public Enumerator(seq8_concat closure) 
+			{
+				this.closure = closure;
+			}
+			
+			public Object current() {return current;}
+			
+			public int position() {return pos;}
+			
+			public boolean moveNext() throws Exception
+			{
+				while (state != 0)
+				{
+					switch (state) 
+					{
+					case 1:	if (moveNext_1()) return true; break;
+					case 2:	if (moveNext_2()) return true; break;
+ 					}
+				}
+				return false;
+			}
+
+			private boolean moveNext_1() throws Exception {
+				state = 0;				
+				var2_concat = com.altova.functions.Core.concat(com.altova.functions.Core.concat(com.altova.functions.Core.concat(com.altova.functions.Core.concat("color", "="), "\""), closure.var1_source), "\"");
+				if (!(com.altova.functions.Lang.empty(var2_concat))) {state = 2; return false; }
+				return false;
+			}
+			private boolean moveNext_2() throws Exception {
+				state = 0;				
+				current = com.altova.functions.Core.concat("", var2_concat);
+				pos++;
+				return true;
+			}
+
+			
+			public void close()
+			{
+				try
+				{
 				}
 				catch (Exception e)
 				{

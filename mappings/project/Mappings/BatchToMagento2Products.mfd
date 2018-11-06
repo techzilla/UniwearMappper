@@ -17,11 +17,83 @@
 		<properties AppName="Batch" JavaBasePackage="biz.uniwear.batch.mappings" SelectedLanguage="java"/>
 		<structure>
 			<children>
+				<component name="constant" library="core" uid="143" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="80"/>
+					</targets>
+					<view ltx="277" lty="467" rbx="338" rby="484"/>
+					<data>
+						<constant value="gtin" datatype="string"/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="4" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="90"/>
+					</targets>
+					<view ltx="277" lty="538" rbx="354" rby="555"/>
+					<data>
+						<constant value="gender" datatype="string"/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="148" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="72"/>
+					</targets>
+					<view ltx="277" lty="753" rbx="336" rby="770"/>
+					<data>
+						<constant value="size" datatype="string"/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="150" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="84"/>
+					</targets>
+					<view ltx="277" lty="824" rbx="343" rby="841"/>
+					<data>
+						<constant value="color" datatype="string"/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="144" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="93"/>
+					</targets>
+					<view ltx="277" lty="681" rbx="348" rby="698"/>
+					<data>
+						<constant value="brand" datatype="string"/>
+					</data>
+				</component>
+				<component name="format-keyvalue" library="user" uid="146" kind="19" visible="0">
+					<view ltx="277" lty="554" rbx="378" rby="588"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="key" inpkey="91" componentid="68"/>
+							<entry name="value" inpkey="92" componentid="63"/>
+						</root>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="result" outkey="78" componentid="54"/>
+						</root>
+					</data>
+				</component>
 				<component name="Magento2Products" library="text" uid="3" kind="16">
 					<properties XSLTDefaultOutput="1"/>
 					<view ltx="1027" lty="-25" rbx="1272" rby="889"/>
 					<data>
-						<root scrollposition="1">
+						<root scrollposition="396">
 							<header>
 								<namespaces>
 									<namespace/>
@@ -33,12 +105,14 @@
 									<entry name="Rows" inpkey="22" expanded="1">
 										<entry name="sku" inpkey="23"/>
 										<entry name="attribute_set_code" inpkey="49"/>
+										<entry name="product_type" inpkey="68"/>
 										<entry name="categories" inpkey="57"/>
 										<entry name="name" inpkey="32"/>
 										<entry name="description" inpkey="24"/>
 										<entry name="short_description" inpkey="58"/>
 										<entry name="weight" inpkey="25"/>
 										<entry name="product_online" inpkey="59"/>
+										<entry name="visibility" inpkey="69"/>
 										<entry name="price" inpkey="26"/>
 										<entry name="url_key" inpkey="60"/>
 										<entry name="additional_attributes" inpkey="36"/>
@@ -132,9 +206,19 @@
 						</text>
 					</data>
 				</component>
+				<component name="constant" library="core" uid="152" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="104"/>
+					</targets>
+					<view ltx="277" lty="609" rbx="328" rby="626"/>
+					<data>
+						<constant value="fit" datatype="string"/>
+					</data>
+				</component>
 				<component name="db" library="db" uid="2" kind="15">
 					<properties/>
-					<view ltx="7" lty="-24" rbx="192" rby="384"/>
+					<view ltx="7" lty="-24" rbx="210" rby="420"/>
 					<data>
 						<root scrollposition="1">
 							<header>
@@ -145,6 +229,7 @@
 							</header>
 							<entry name="document" ns="1" expanded="1">
 								<entry name="products" type="table" outkey="43" expanded="1">
+									<entry name="gtin" outkey="98"/>
 									<entry name="sku" outkey="44"/>
 									<entry name="name" outkey="50"/>
 									<entry name="short_description" outkey="51"/>
@@ -154,9 +239,15 @@
 									<entry name="price" outkey="46"/>
 									<entry name="image" outkey="66"/>
 									<entry name="image_label" outkey="67"/>
+									<entry name="product_type" outkey="70"/>
 									<entry name="product_online" outkey="54"/>
+									<entry name="visibility" outkey="71"/>
 									<entry name="attribute_set_code" outkey="47"/>
-									<entry name="additional_attributes" outkey="55"/>
+									<entry name="additional_attribute_color" outkey="100"/>
+									<entry name="additional_attribute_size" outkey="101"/>
+									<entry name="additional_attribute_fit" outkey="109"/>
+									<entry name="additional_attribute_gender" outkey="99"/>
+									<entry name="additional_attribute_brand" outkey="102"/>
 									<entry name="weight" outkey="48"/>
 									<entry name="qty" outkey="56"/>
 								</entry>
@@ -175,6 +266,142 @@
 						</database>
 					</data>
 				</component>
+				<component name="format-keyvalue" library="user" uid="151" kind="19" visible="0">
+					<view ltx="277" lty="840" rbx="378" rby="874"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="key" inpkey="85" componentid="68"/>
+							<entry name="value" inpkey="88" componentid="63"/>
+						</root>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="result" outkey="86" componentid="54"/>
+						</root>
+					</data>
+				</component>
+				<component name="format-keyvalue" library="user" uid="149" kind="19" visible="0">
+					<view ltx="277" lty="769" rbx="378" rby="803"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="key" inpkey="73" componentid="68"/>
+							<entry name="value" inpkey="83" componentid="63"/>
+						</root>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="result" outkey="74" componentid="54"/>
+						</root>
+					</data>
+				</component>
+				<component name="format-keyvalue" library="user" uid="147" kind="19" visible="0">
+					<view ltx="277" lty="697" rbx="378" rby="731"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="key" inpkey="94" componentid="68"/>
+							<entry name="value" inpkey="95" componentid="63"/>
+						</root>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="result" outkey="76" componentid="54"/>
+						</root>
+					</data>
+				</component>
+				<component name="format-keyvalue" library="user" uid="153" kind="19" visible="0">
+					<view ltx="277" lty="625" rbx="378" rby="659"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="key" inpkey="105" componentid="68"/>
+							<entry name="value" inpkey="106" componentid="63"/>
+						</root>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="result" outkey="103" componentid="54"/>
+						</root>
+					</data>
+				</component>
+				<component name="format-attributes" library="user" uid="5" kind="19" visible="0">
+					<view ltx="469" lty="483" rbx="593" rby="585"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="attribute1" inpkey="97" componentid="114"/>
+							<entry name="attribute2" inpkey="79" componentid="118"/>
+							<entry name="attribute3" inpkey="77" componentid="119"/>
+							<entry name="attribute4" inpkey="75" componentid="120"/>
+							<entry name="attribute5" inpkey="87" componentid="121"/>
+							<entry name="attribute6" inpkey="110" componentid="145"/>
+						</root>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="result" outkey="89" componentid="111"/>
+						</root>
+					</data>
+				</component>
+				<component name="format-keyvalue" library="user" uid="145" kind="19" visible="0">
+					<view ltx="277" lty="483" rbx="378" rby="517"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="key" inpkey="81" componentid="68"/>
+							<entry name="value" inpkey="82" componentid="63"/>
+						</root>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="result" outkey="96" componentid="54"/>
+						</root>
+					</data>
+				</component>
 			</children>
 		</structure>
 		<connections>
@@ -184,7 +411,7 @@
 			<edge from="48" to="25"/>
 			<edge from="46" to="26"/>
 			<edge from="50" to="32"/>
-			<edge from="55" to="36"/>
+			<edge from="89" to="36"/>
 			<edge from="47" to="49"/>
 			<edge from="52" to="57"/>
 			<edge from="51" to="58"/>
@@ -193,6 +420,26 @@
 			<edge from="56" to="61"/>
 			<edge from="66" to="64"/>
 			<edge from="67" to="65"/>
+			<edge from="70" to="68"/>
+			<edge from="71" to="69"/>
+			<edge from="72" to="73"/>
+			<edge from="76" to="75"/>
+			<edge from="103" to="77"/>
+			<edge from="78" to="79"/>
+			<edge from="80" to="81"/>
+			<edge from="98" to="82"/>
+			<edge from="101" to="83"/>
+			<edge from="84" to="85"/>
+			<edge from="74" to="87"/>
+			<edge from="100" to="88"/>
+			<edge from="90" to="91"/>
+			<edge from="99" to="92"/>
+			<edge from="93" to="94"/>
+			<edge from="102" to="95"/>
+			<edge from="96" to="97"/>
+			<edge from="104" to="105"/>
+			<edge from="109" to="106"/>
+			<edge from="86" to="110"/>
 		</connections>
 	</component>
 </mapping>

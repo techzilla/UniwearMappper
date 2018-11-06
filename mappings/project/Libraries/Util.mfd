@@ -197,12 +197,36 @@
 		</description>
 		<structure>
 			<children>
+				<component name="key" library="core" uid="68" kind="6">
+					<properties/>
+					<sources>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="11"/>
+					</targets>
+					<view ltx="24" lty="98" rbx="94" rby="136"/>
+					<data>
+						<input datatype="string"/>
+						<parameter usageKind="input" name="key"/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="62" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="5"/>
+					</targets>
+					<view ltx="261" lty="82" rbx="309" rby="99"/>
+					<data>
+						<constant value="=" datatype="string"/>
+					</data>
+				</component>
 				<component name="constant" library="core" uid="67" kind="2">
 					<properties/>
 					<targets>
 						<datapoint pos="0" key="3"/>
 					</targets>
-					<view ltx="371" lty="232" rbx="415" rby="249"/>
+					<view ltx="305" lty="204" rbx="349" rby="221"/>
 					<data>
 						<constant value="&quot;" datatype="string"/>
 					</data>
@@ -212,20 +236,40 @@
 					<targets>
 						<datapoint pos="0" key="7"/>
 					</targets>
-					<view ltx="371" lty="248" rbx="415" rby="265"/>
+					<view ltx="305" lty="220" rbx="349" rby="237"/>
 					<data>
 						<constant value="&quot;" datatype="string"/>
 					</data>
 				</component>
-				<component name="constant" library="core" uid="62" kind="2">
+				<component name="logical-not" library="core" uid="95" kind="5">
 					<properties/>
+					<sources>
+						<datapoint pos="0" key="18"/>
+					</sources>
 					<targets>
-						<datapoint pos="0" key="5"/>
+						<datapoint pos="0" key="19"/>
 					</targets>
-					<view ltx="327" lty="110" rbx="375" rby="127"/>
-					<data>
-						<constant value="=" datatype="string"/>
-					</data>
+					<view ltx="170" lty="407" rbx="253" rby="445"/>
+				</component>
+				<component name="empty" library="lang" uid="92" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="16"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="17"/>
+					</targets>
+					<view ltx="148" lty="370" rbx="220" rby="408"/>
+				</component>
+				<component name="string" library="core" uid="90" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="14"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="15"/>
+					</targets>
+					<view ltx="116" lty="333" rbx="178" rby="371"/>
 				</component>
 				<component name="concat" library="core" uid="66" kind="5" growable="1" growablebasename="value">
 					<properties/>
@@ -239,31 +283,29 @@
 					<targets>
 						<datapoint pos="0" key="9"/>
 					</targets>
-					<view ltx="327" lty="126" rbx="415" rby="233"/>
+					<view ltx="261" lty="98" rbx="349" rby="205"/>
+				</component>
+				<component name="if-else" library="core" uid="93" kind="4">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="20"/>
+						<datapoint pos="1" key="21"/>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="22"/>
+					</targets>
+					<view ltx="440" lty="220" rbx="540" rby="293"/>
 				</component>
 				<component name="result" library="core" uid="54" kind="7">
 					<properties/>
 					<sources>
 						<datapoint pos="0" key="13"/>
 					</sources>
-					<view ltx="577" lty="126" rbx="634" rby="164"/>
+					<view ltx="483" lty="183" rbx="540" rby="221"/>
 					<data>
 						<output datatype="string"/>
 						<parameter usageKind="output" name="result"/>
-					</data>
-				</component>
-				<component name="key" library="core" uid="68" kind="6">
-					<properties/>
-					<sources>
-						<datapoint/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="11"/>
-					</targets>
-					<view ltx="64" lty="126" rbx="134" rby="164"/>
-					<data>
-						<input datatype="string"/>
-						<parameter usageKind="input" name="key"/>
 					</data>
 				</component>
 				<component name="value" library="core" uid="63" kind="6">
@@ -274,9 +316,9 @@
 					<targets>
 						<datapoint pos="0" key="1"/>
 					</targets>
-					<view ltx="64" lty="195" rbx="144" rby="233"/>
+					<view ltx="24" lty="333" rbx="104" rby="371"/>
 					<data>
-						<input datatype="string"/>
+						<input datatype="anySimpleType"/>
 						<parameter usageKind="input" name="value"/>
 					</data>
 				</component>
@@ -284,9 +326,10 @@
 			<graph directed="1">
 				<edges/>
 				<vertices>
-					<vertex vertexkey="1">
+					<vertex vertexkey="15">
 						<edges>
 							<edge vertexkey="2"/>
+							<edge vertexkey="16"/>
 						</edges>
 					</vertex>
 					<vertex vertexkey="3">
@@ -309,9 +352,29 @@
 							<edge vertexkey="12"/>
 						</edges>
 					</vertex>
-					<vertex vertexkey="9">
+					<vertex vertexkey="22">
 						<edges>
 							<edge vertexkey="13"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="1">
+						<edges>
+							<edge vertexkey="14"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="17">
+						<edges>
+							<edge vertexkey="18"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="19">
+						<edges>
+							<edge vertexkey="20"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="9">
+						<edges>
+							<edge vertexkey="21"/>
 						</edges>
 					</vertex>
 				</vertices>
@@ -335,20 +398,6 @@
 					</targets>
 					<view ltx="200" lty="44" rbx="272" rby="82"/>
 				</component>
-				<component name="delimiter" library="core" uid="81" kind="6">
-					<properties/>
-					<sources>
-						<datapoint/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="10"/>
-					</targets>
-					<view ltx="71" lty="182" rbx="169" rby="220"/>
-					<data>
-						<input datatype="string"/>
-						<parameter usageKind="input" name="delimiter"/>
-					</data>
-				</component>
 				<component name="logical-not" library="core" uid="88" kind="5">
 					<properties/>
 					<sources>
@@ -358,6 +407,29 @@
 						<datapoint pos="0" key="19"/>
 					</targets>
 					<view ltx="272" lty="44" rbx="355" rby="82"/>
+				</component>
+				<component name="if-else" library="core" uid="89" kind="4">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="20"/>
+						<datapoint pos="1" key="21"/>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="22"/>
+					</targets>
+					<view ltx="457" lty="110" rbx="557" rby="183"/>
+				</component>
+				<component name="result" library="core" uid="76" kind="7">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="12"/>
+					</sources>
+					<view ltx="649" lty="80" rbx="706" rby="118"/>
+					<data>
+						<output datatype="string"/>
+						<parameter usageKind="output" name="result"/>
+					</data>
 				</component>
 				<component name="input" library="core" uid="82" kind="6">
 					<properties/>
@@ -384,27 +456,28 @@
 					</targets>
 					<view ltx="277" lty="110" rbx="355" rby="166"/>
 				</component>
-				<component name="if-else" library="core" uid="89" kind="4">
+				<component name="delimiter" library="core" uid="81" kind="6">
 					<properties/>
 					<sources>
-						<datapoint pos="0" key="20"/>
-						<datapoint pos="1" key="21"/>
-						<datapoint/>
+						<datapoint pos="0" key="24"/>
 					</sources>
 					<targets>
-						<datapoint pos="0" key="22"/>
+						<datapoint pos="0" key="10"/>
 					</targets>
-					<view ltx="457" lty="110" rbx="557" rby="183"/>
-				</component>
-				<component name="result" library="core" uid="76" kind="7">
-					<properties/>
-					<sources>
-						<datapoint pos="0" key="12"/>
-					</sources>
-					<view ltx="649" lty="80" rbx="706" rby="118"/>
+					<view ltx="71" lty="182" rbx="169" rby="220"/>
 					<data>
-						<output datatype="string"/>
-						<parameter usageKind="output" name="result"/>
+						<input datatype="string"/>
+						<parameter usageKind="input" name="delimiter" optional="1"/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="96" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="23"/>
+					</targets>
+					<view ltx="71" lty="219" rbx="111" rby="236"/>
+					<data>
+						<constant datatype="string"/>
 					</data>
 				</component>
 			</children>
@@ -440,6 +513,11 @@
 					<vertex vertexkey="15">
 						<edges>
 							<edge vertexkey="21"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="23">
+						<edges>
+							<edge vertexkey="24"/>
 						</edges>
 					</vertex>
 				</vertices>

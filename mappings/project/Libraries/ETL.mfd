@@ -530,209 +530,6 @@
 			</graph>
 		</structure>
 	</component>
-	<component name="get-brand-prefix" library="user" uid="93" inline="1" editable="1" blackbox="0">
-		<properties/>
-		<description>
-			<short>result = get-brand-prefix( brand)</short>
-		</description>
-		<structure>
-			<children>
-				<component name="value-map" library="core" uid="95" kind="23">
-					<properties/>
-					<sources>
-						<datapoint pos="0" key="5"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="3"/>
-					</targets>
-					<view ltx="208" lty="197" rbx="288" rby="235"/>
-					<data>
-						<valuemap enableDefaultValue="1">
-							<valuemapTable>
-								<entry from="adc" to="ADC"/>
-								<entry from="anywear" to="ANY"/>
-								<entry from="asics" to="ASI"/>
-								<entry from="boojee" to="BOO"/>
-								<entry from="careisma" to="CAR"/>
-								<entry from="celeste stien" to="CEL"/>
-								<entry from="cherokee" to="CHE"/>
-								<entry from="cherokee workwear" to="CHW"/>
-								<entry from="code happy" to="COD"/>
-								<entry from="dickies" to="DIC"/>
-								<entry from="dickies chef" to="DCH"/>
-								<entry from="elle" to="ELL"/>
-								<entry from="fila usa" to="FIL"/>
-								<entry from="heartsoul" to="HRT"/>
-								<entry from="infinity footwear" to="INF"/>
-								<entry from="k-swiss" to="KSW"/>
-								<entry from="littmann" to="LTT"/>
-								<entry from="MDF" to="MDF"/>
-								<entry from="med-man" to="MAN"/>
-								<entry from="reebok" to="RBK"/>
-								<entry from="runway" to="RUN"/>
-								<entry from="sapphire" to="SPH"/>
-								<entry from="scrub hq" to="SHQ"/>
-								<entry from="scrubstar" to="SST"/>
-								<entry from="sloggers" to="SLG"/>
-								<entry from="studio" to="STU"/>
-								<entry from="swiftkick" to="SWK"/>
-								<entry from="therafirm" to="THF"/>
-								<entry from="tooniforms" to="TOO"/>
-							</valuemapTable>
-							<input name="input" type="string"/>
-							<result name="result" type="string" defaultValue="___"/>
-						</valuemap>
-					</data>
-				</component>
-				<component name="result" library="core" uid="94" kind="7">
-					<properties/>
-					<sources>
-						<datapoint pos="0" key="6"/>
-					</sources>
-					<view ltx="371" lty="279" rbx="428" rby="317"/>
-					<data>
-						<output datatype="string"/>
-						<parameter usageKind="output" name="result"/>
-					</data>
-				</component>
-				<component name="Brand" library="core" uid="97" kind="6">
-					<properties/>
-					<sources>
-						<datapoint/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="1"/>
-					</targets>
-					<view ltx="54" lty="86" rbx="138" rby="124"/>
-					<data>
-						<input datatype="string"/>
-						<parameter usageKind="input" name="Brand"/>
-					</data>
-				</component>
-				<component name="lowercase" library="lang" uid="96" kind="5">
-					<properties/>
-					<sources>
-						<datapoint pos="0" key="2"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="4"/>
-					</targets>
-					<view ltx="208" lty="160" rbx="286" rby="198"/>
-				</component>
-			</children>
-			<graph directed="1">
-				<edges/>
-				<vertices>
-					<vertex vertexkey="1">
-						<edges>
-							<edge vertexkey="2"/>
-						</edges>
-					</vertex>
-					<vertex vertexkey="4">
-						<edges>
-							<edge vertexkey="5"/>
-						</edges>
-					</vertex>
-					<vertex vertexkey="3">
-						<edges>
-							<edge vertexkey="6"/>
-						</edges>
-					</vertex>
-				</vertices>
-			</graph>
-		</structure>
-	</component>
-	<component name="normalize-gender" library="user" uid="52" inline="1" editable="1" blackbox="0">
-		<properties/>
-		<description>
-			<short>result = normalize-gender( gender )</short>
-		</description>
-		<structure>
-			<children>
-				<component name="result" library="core" uid="53" kind="7">
-					<properties/>
-					<sources>
-						<datapoint pos="0" key="1"/>
-					</sources>
-					<view ltx="593" lty="119" rbx="650" rby="157"/>
-					<data>
-						<output datatype="string"/>
-						<parameter usageKind="output" name="result"/>
-					</data>
-				</component>
-				<component name="lowercase" library="lang" uid="57" kind="5">
-					<properties/>
-					<sources>
-						<datapoint pos="0" key="7"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="8"/>
-					</targets>
-					<view ltx="302" lty="56" rbx="380" rby="94"/>
-				</component>
-				<component name="value-map" library="core" uid="55" kind="23">
-					<properties/>
-					<sources>
-						<datapoint pos="0" key="2"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="3"/>
-					</targets>
-					<view ltx="417" lty="56" rbx="497" rby="94"/>
-					<data>
-						<valuemap enableDefaultValue="1">
-							<valuemapTable>
-								<entry from="mens" to="male"/>
-								<entry from="men&apos;s" to="male"/>
-								<entry from="men" to="male"/>
-								<entry from="womens" to="female"/>
-								<entry from="women&apos;s" to="female"/>
-								<entry from="women" to="female"/>
-								<entry from="unisex" to="unisex"/>
-								<entry from="uni-sex" to="unisex"/>
-							</valuemapTable>
-							<input name="input" type="string"/>
-							<result name="result" type="string"/>
-						</valuemap>
-					</data>
-				</component>
-				<component name="string" library="core" uid="54" kind="6">
-					<properties/>
-					<sources>
-						<datapoint/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="6"/>
-					</targets>
-					<view ltx="174" lty="56" rbx="257" rby="94"/>
-					<data>
-						<input datatype="string"/>
-						<parameter usageKind="input" name="string"/>
-					</data>
-				</component>
-			</children>
-			<graph directed="1">
-				<edges/>
-				<vertices>
-					<vertex vertexkey="3">
-						<edges>
-							<edge vertexkey="1"/>
-						</edges>
-					</vertex>
-					<vertex vertexkey="8">
-						<edges>
-							<edge vertexkey="2"/>
-						</edges>
-					</vertex>
-					<vertex vertexkey="6">
-						<edges>
-							<edge vertexkey="7"/>
-						</edges>
-					</vertex>
-				</vertices>
-			</graph>
-		</structure>
-	</component>
 	<component name="format-attributes" library="user" uid="110" inline="1" editable="1" blackbox="0">
 		<properties/>
 		<description>
@@ -749,34 +546,6 @@
 					<data>
 						<output datatype="string"/>
 						<parameter usageKind="output" name="result"/>
-					</data>
-				</component>
-				<component name="attribute2" library="core" uid="118" kind="6">
-					<properties/>
-					<sources>
-						<datapoint pos="0" key="56"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="36"/>
-					</targets>
-					<view ltx="67" lty="84" rbx="171" rby="122"/>
-					<data>
-						<input datatype="string"/>
-						<parameter usageKind="input" name="attribute2" optional="1"/>
-					</data>
-				</component>
-				<component name="attribute1" library="core" uid="114" kind="6">
-					<properties/>
-					<sources>
-						<datapoint/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="7"/>
-					</targets>
-					<view ltx="67" lty="47" rbx="171" rby="85"/>
-					<data>
-						<input datatype="string"/>
-						<parameter usageKind="input" name="attribute1"/>
 					</data>
 				</component>
 				<component name="format-delimit-prefix" library="user" uid="135" kind="19" visible="0" blackbox="0">
@@ -883,20 +652,6 @@
 						<constant value="." datatype="string"/>
 					</data>
 				</component>
-				<component name="concat" library="core" uid="123" kind="5" growable="1" growablebasename="value">
-					<properties/>
-					<sources>
-						<datapoint pos="0" key="14"/>
-						<datapoint pos="1" key="31"/>
-						<datapoint pos="2" key="53"/>
-						<datapoint pos="3" key="54"/>
-						<datapoint pos="4" key="55"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="35"/>
-					</targets>
-					<view ltx="590" lty="47" rbx="678" rby="154"/>
-				</component>
 				<component name="format-delimit-prefix" library="user" uid="139" kind="19" visible="0" blackbox="0">
 					<view ltx="363" lty="250" rbx="482" rby="284"/>
 					<data>
@@ -919,6 +674,49 @@
 						</root>
 					</data>
 				</component>
+				<component name="attribute2" library="core" uid="118" kind="6">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="56"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="36"/>
+					</targets>
+					<view ltx="67" lty="84" rbx="171" rby="122"/>
+					<data>
+						<input datatype="string"/>
+						<parameter usageKind="input" name="attribute2" optional="1"/>
+					</data>
+				</component>
+				<component name="attribute1" library="core" uid="114" kind="6">
+					<properties/>
+					<sources>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="7"/>
+					</targets>
+					<view ltx="67" lty="47" rbx="171" rby="85"/>
+					<data>
+						<input datatype="string"/>
+						<parameter usageKind="input" name="attribute1"/>
+					</data>
+				</component>
+				<component name="concat" library="core" uid="123" kind="5" growable="1" growablebasename="value">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="14"/>
+						<datapoint pos="1" key="31"/>
+						<datapoint pos="2" key="53"/>
+						<datapoint pos="3" key="54"/>
+						<datapoint pos="4" key="55"/>
+						<datapoint pos="5" key="69"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="35"/>
+					</targets>
+					<view ltx="590" lty="47" rbx="678" rby="171"/>
+				</component>
 				<component name="attribute5" library="core" uid="121" kind="6">
 					<properties/>
 					<sources>
@@ -938,9 +736,45 @@
 					<targets>
 						<datapoint pos="0" key="60"/>
 					</targets>
-					<view ltx="67" lty="232" rbx="107" rby="249"/>
+					<view ltx="67" lty="269" rbx="107" rby="286"/>
 					<data>
 						<constant datatype="string"/>
+					</data>
+				</component>
+				<component name="attribute6" library="core" uid="145" kind="6">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="68"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="67"/>
+					</targets>
+					<view ltx="67" lty="232" rbx="171" rby="270"/>
+					<data>
+						<input datatype="string"/>
+						<parameter usageKind="input" name="attribute6" optional="1"/>
+					</data>
+				</component>
+				<component name="format-delimit-prefix" library="user" uid="143" kind="19" visible="0" blackbox="0">
+					<view ltx="363" lty="305" rbx="482" rby="339"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="input" inpkey="64" componentid="82"/>
+							<entry name="delimiter" componentid="81"/>
+						</root>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="result" outkey="65" componentid="76"/>
+						</root>
 					</data>
 				</component>
 			</children>
@@ -1011,6 +845,220 @@
 							<edge vertexkey="57"/>
 							<edge vertexkey="58"/>
 							<edge vertexkey="59"/>
+							<edge vertexkey="68"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="67">
+						<edges>
+							<edge vertexkey="64"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="65">
+						<edges>
+							<edge vertexkey="69"/>
+						</edges>
+					</vertex>
+				</vertices>
+			</graph>
+		</structure>
+	</component>
+	<component name="lookup-gender" library="user" uid="52" inline="1" editable="1" blackbox="0">
+		<properties/>
+		<description>
+			<short>result = normalize-gender( gender )</short>
+		</description>
+		<structure>
+			<children>
+				<component name="result" library="core" uid="53" kind="7">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="1"/>
+					</sources>
+					<view ltx="593" lty="119" rbx="650" rby="157"/>
+					<data>
+						<output datatype="string"/>
+						<parameter usageKind="output" name="result"/>
+					</data>
+				</component>
+				<component name="lowercase" library="lang" uid="57" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="7"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="8"/>
+					</targets>
+					<view ltx="302" lty="56" rbx="380" rby="94"/>
+				</component>
+				<component name="string" library="core" uid="54" kind="6">
+					<properties/>
+					<sources>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="6"/>
+					</targets>
+					<view ltx="174" lty="56" rbx="257" rby="94"/>
+					<data>
+						<input datatype="string"/>
+						<parameter usageKind="input" name="string"/>
+					</data>
+				</component>
+				<component name="value-map" library="core" uid="55" kind="23">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="2"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="3"/>
+					</targets>
+					<view ltx="417" lty="56" rbx="497" rby="94"/>
+					<data>
+						<valuemap enableDefaultValue="1">
+							<valuemapTable>
+								<entry from="mens" to="male"/>
+								<entry from="men&apos;s" to="male"/>
+								<entry from="men" to="male"/>
+								<entry from="womens" to="female"/>
+								<entry from="women&apos;s" to="female"/>
+								<entry from="women" to="female"/>
+								<entry from="unisex" to="unisex"/>
+								<entry from="uni-sex" to="unisex"/>
+							</valuemapTable>
+							<input name="input" type="string"/>
+							<result name="result" type="string"/>
+						</valuemap>
+					</data>
+				</component>
+			</children>
+			<graph directed="1">
+				<edges/>
+				<vertices>
+					<vertex vertexkey="3">
+						<edges>
+							<edge vertexkey="1"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="8">
+						<edges>
+							<edge vertexkey="2"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="6">
+						<edges>
+							<edge vertexkey="7"/>
+						</edges>
+					</vertex>
+				</vertices>
+			</graph>
+		</structure>
+	</component>
+	<component name="lookup-brand-prefix" library="user" uid="93" inline="1" editable="1" blackbox="0">
+		<properties/>
+		<description>
+			<short>result = get-brand-prefix( brand)</short>
+		</description>
+		<structure>
+			<children>
+				<component name="value-map" library="core" uid="95" kind="23">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="5"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="3"/>
+					</targets>
+					<view ltx="208" lty="197" rbx="288" rby="235"/>
+					<data>
+						<valuemap enableDefaultValue="1">
+							<valuemapTable>
+								<entry from="adc" to="ADC"/>
+								<entry from="anywear" to="ANY"/>
+								<entry from="asics" to="ASI"/>
+								<entry from="boojee" to="BOO"/>
+								<entry from="careisma" to="CAR"/>
+								<entry from="celeste stien" to="CEL"/>
+								<entry from="cherokee" to="CHE"/>
+								<entry from="cherokee workwear" to="CHW"/>
+								<entry from="code happy" to="COD"/>
+								<entry from="dickies" to="DIC"/>
+								<entry from="dickies chef" to="DCH"/>
+								<entry from="elle" to="ELL"/>
+								<entry from="fila usa" to="FIL"/>
+								<entry from="heartsoul" to="HRT"/>
+								<entry from="infinity footwear" to="INF"/>
+								<entry from="k-swiss" to="KSW"/>
+								<entry from="littmann" to="LTT"/>
+								<entry from="MDF" to="MDF"/>
+								<entry from="med-man" to="MAN"/>
+								<entry from="reebok" to="RBK"/>
+								<entry from="runway" to="RUN"/>
+								<entry from="sapphire" to="SPH"/>
+								<entry from="scrub hq" to="SHQ"/>
+								<entry from="scrubstar" to="SST"/>
+								<entry from="sloggers" to="SLG"/>
+								<entry from="studio" to="STU"/>
+								<entry from="swiftkick" to="SWK"/>
+								<entry from="therafirm" to="THF"/>
+								<entry from="tooniforms" to="TOO"/>
+							</valuemapTable>
+							<input name="input" type="string"/>
+							<result name="result" type="string" defaultValue="___"/>
+						</valuemap>
+					</data>
+				</component>
+				<component name="result" library="core" uid="94" kind="7">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="6"/>
+					</sources>
+					<view ltx="371" lty="279" rbx="428" rby="317"/>
+					<data>
+						<output datatype="string"/>
+						<parameter usageKind="output" name="result"/>
+					</data>
+				</component>
+				<component name="lowercase" library="lang" uid="96" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="2"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="4"/>
+					</targets>
+					<view ltx="208" lty="160" rbx="286" rby="198"/>
+				</component>
+				<component name="Brand" library="core" uid="97" kind="6">
+					<properties/>
+					<sources>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="1"/>
+					</targets>
+					<view ltx="54" lty="86" rbx="138" rby="124"/>
+					<data>
+						<input datatype="string"/>
+						<parameter usageKind="input" name="Brand"/>
+					</data>
+				</component>
+			</children>
+			<graph directed="1">
+				<edges/>
+				<vertices>
+					<vertex vertexkey="1">
+						<edges>
+							<edge vertexkey="2"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="4">
+						<edges>
+							<edge vertexkey="5"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="3">
+						<edges>
+							<edge vertexkey="6"/>
 						</edges>
 					</vertex>
 				</vertices>
