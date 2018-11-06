@@ -660,20 +660,6 @@
 						<parameter usageKind="output" name="result"/>
 					</data>
 				</component>
-				<component name="string" library="core" uid="54" kind="6">
-					<properties/>
-					<sources>
-						<datapoint/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="6"/>
-					</targets>
-					<view ltx="174" lty="56" rbx="257" rby="94"/>
-					<data>
-						<input datatype="string"/>
-						<parameter usageKind="input" name="string"/>
-					</data>
-				</component>
 				<component name="lowercase" library="lang" uid="57" kind="5">
 					<properties/>
 					<sources>
@@ -710,6 +696,20 @@
 						</valuemap>
 					</data>
 				</component>
+				<component name="string" library="core" uid="54" kind="6">
+					<properties/>
+					<sources>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="6"/>
+					</targets>
+					<view ltx="174" lty="56" rbx="257" rby="94"/>
+					<data>
+						<input datatype="string"/>
+						<parameter usageKind="input" name="string"/>
+					</data>
+				</component>
 			</children>
 			<graph directed="1">
 				<edges/>
@@ -727,6 +727,290 @@
 					<vertex vertexkey="6">
 						<edges>
 							<edge vertexkey="7"/>
+						</edges>
+					</vertex>
+				</vertices>
+			</graph>
+		</structure>
+	</component>
+	<component name="format-attributes" library="user" uid="110" inline="1" editable="1" blackbox="0">
+		<properties/>
+		<description>
+			<short>result = format-attributes( string, string, string, string, string )</short>
+		</description>
+		<structure>
+			<children>
+				<component name="result" library="core" uid="111" kind="7">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="8"/>
+					</sources>
+					<view ltx="779" lty="47" rbx="836" rby="85"/>
+					<data>
+						<output datatype="string"/>
+						<parameter usageKind="output" name="result"/>
+					</data>
+				</component>
+				<component name="attribute2" library="core" uid="118" kind="6">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="56"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="36"/>
+					</targets>
+					<view ltx="67" lty="84" rbx="171" rby="122"/>
+					<data>
+						<input datatype="string"/>
+						<parameter usageKind="input" name="attribute2" optional="1"/>
+					</data>
+				</component>
+				<component name="attribute1" library="core" uid="114" kind="6">
+					<properties/>
+					<sources>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="7"/>
+					</targets>
+					<view ltx="67" lty="47" rbx="171" rby="85"/>
+					<data>
+						<input datatype="string"/>
+						<parameter usageKind="input" name="attribute1"/>
+					</data>
+				</component>
+				<component name="format-delimit-prefix" library="user" uid="135" kind="19" visible="0" blackbox="0">
+					<view ltx="363" lty="84" rbx="482" rby="118"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="input" inpkey="40" componentid="82"/>
+							<entry name="delimiter" inpkey="41" componentid="81"/>
+						</root>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="result" outkey="42" componentid="76"/>
+						</root>
+					</data>
+				</component>
+				<component name="attribute3" library="core" uid="119" kind="6">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="57"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="37"/>
+					</targets>
+					<view ltx="67" lty="121" rbx="171" rby="159"/>
+					<data>
+						<input datatype="string"/>
+						<parameter usageKind="input" name="attribute3" optional="1"/>
+					</data>
+				</component>
+				<component name="attribute4" library="core" uid="120" kind="6">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="58"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="38"/>
+					</targets>
+					<view ltx="67" lty="158" rbx="171" rby="196"/>
+					<data>
+						<input datatype="string"/>
+						<parameter usageKind="input" name="attribute4" optional="1"/>
+					</data>
+				</component>
+				<component name="format-delimit-prefix" library="user" uid="137" kind="19" visible="0" blackbox="0">
+					<view ltx="363" lty="139" rbx="482" rby="173"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="input" inpkey="44" componentid="82"/>
+							<entry name="delimiter" inpkey="46" componentid="81"/>
+						</root>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="result" outkey="43" componentid="76"/>
+						</root>
+					</data>
+				</component>
+				<component name="format-delimit-prefix" library="user" uid="138" kind="19" visible="0" blackbox="0">
+					<view ltx="363" lty="195" rbx="482" rby="229"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="input" inpkey="49" componentid="82"/>
+							<entry name="delimiter" inpkey="47" componentid="81"/>
+						</root>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="result" outkey="50" componentid="76"/>
+						</root>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="125" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="10"/>
+					</targets>
+					<view ltx="363" lty="68" rbx="406" rby="85"/>
+					<data>
+						<constant value="." datatype="string"/>
+					</data>
+				</component>
+				<component name="concat" library="core" uid="123" kind="5" growable="1" growablebasename="value">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="14"/>
+						<datapoint pos="1" key="31"/>
+						<datapoint pos="2" key="53"/>
+						<datapoint pos="3" key="54"/>
+						<datapoint pos="4" key="55"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="35"/>
+					</targets>
+					<view ltx="590" lty="47" rbx="678" rby="154"/>
+				</component>
+				<component name="format-delimit-prefix" library="user" uid="139" kind="19" visible="0" blackbox="0">
+					<view ltx="363" lty="250" rbx="482" rby="284"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="input" inpkey="51" componentid="82"/>
+							<entry name="delimiter" inpkey="48" componentid="81"/>
+						</root>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="result" outkey="52" componentid="76"/>
+						</root>
+					</data>
+				</component>
+				<component name="attribute5" library="core" uid="121" kind="6">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="59"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="39"/>
+					</targets>
+					<view ltx="67" lty="195" rbx="171" rby="233"/>
+					<data>
+						<input datatype="string"/>
+						<parameter usageKind="input" name="attribute5" optional="1"/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="142" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="60"/>
+					</targets>
+					<view ltx="67" lty="232" rbx="107" rby="249"/>
+					<data>
+						<constant datatype="string"/>
+					</data>
+				</component>
+			</children>
+			<graph directed="1">
+				<edges/>
+				<vertices>
+					<vertex vertexkey="35">
+						<edges>
+							<edge vertexkey="8"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="7">
+						<edges>
+							<edge vertexkey="14"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="42">
+						<edges>
+							<edge vertexkey="31"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="36">
+						<edges>
+							<edge vertexkey="40"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="10">
+						<edges>
+							<edge vertexkey="41"/>
+							<edge vertexkey="46"/>
+							<edge vertexkey="47"/>
+							<edge vertexkey="48"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="37">
+						<edges>
+							<edge vertexkey="44"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="38">
+						<edges>
+							<edge vertexkey="49"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="39">
+						<edges>
+							<edge vertexkey="51"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="43">
+						<edges>
+							<edge vertexkey="53"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="50">
+						<edges>
+							<edge vertexkey="54"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="52">
+						<edges>
+							<edge vertexkey="55"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="60">
+						<edges>
+							<edge vertexkey="56"/>
+							<edge vertexkey="57"/>
+							<edge vertexkey="58"/>
+							<edge vertexkey="59"/>
 						</edges>
 					</vertex>
 				</vertices>

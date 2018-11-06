@@ -325,15 +325,15 @@
 		</description>
 		<structure>
 			<children>
-				<component name="is-not-null" library="db" uid="78" kind="5">
+				<component name="empty" library="lang" uid="86" kind="5">
 					<properties/>
 					<sources>
-						<datapoint pos="0" key="1"/>
+						<datapoint pos="0" key="16"/>
 					</sources>
 					<targets>
-						<datapoint pos="0" key="4"/>
+						<datapoint pos="0" key="17"/>
 					</targets>
-					<view ltx="228" lty="80" rbx="309" rby="118"/>
+					<view ltx="200" lty="44" rbx="272" rby="82"/>
 				</component>
 				<component name="delimiter" library="core" uid="81" kind="6">
 					<properties/>
@@ -349,6 +349,16 @@
 						<parameter usageKind="input" name="delimiter"/>
 					</data>
 				</component>
+				<component name="logical-not" library="core" uid="88" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="18"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="19"/>
+					</targets>
+					<view ltx="272" lty="44" rbx="355" rby="82"/>
+				</component>
 				<component name="input" library="core" uid="82" kind="6">
 					<properties/>
 					<sources>
@@ -360,42 +370,7 @@
 					<view ltx="71" lty="80" rbx="152" rby="118"/>
 					<data>
 						<input datatype="string"/>
-						<parameter usageKind="input" name="input"/>
-					</data>
-				</component>
-				<component name="if-else" library="core" uid="79" kind="4">
-					<properties/>
-					<sources>
-						<datapoint pos="0" key="5"/>
-						<datapoint pos="1" key="9"/>
-						<datapoint/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="3"/>
-					</targets>
-					<view ltx="386" lty="110" rbx="486" rby="183"/>
-				</component>
-				<component name="if-else" library="core" uid="80" kind="4">
-					<properties/>
-					<sources>
-						<datapoint pos="0" key="6"/>
-						<datapoint pos="1" key="2"/>
-						<datapoint/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="7"/>
-					</targets>
-					<view ltx="386" lty="182" rbx="486" rby="255"/>
-				</component>
-				<component name="result" library="core" uid="76" kind="7">
-					<properties/>
-					<sources>
-						<datapoint pos="0" key="12"/>
-					</sources>
-					<view ltx="769" lty="110" rbx="826" rby="148"/>
-					<data>
-						<output datatype="string"/>
-						<parameter usageKind="output" name="result"/>
+						<parameter usageKind="input" name="input" optional="1"/>
 					</data>
 				</component>
 				<component name="concat" library="core" uid="84" kind="5" growable="1" growablebasename="value">
@@ -407,42 +382,64 @@
 					<targets>
 						<datapoint pos="0" key="15"/>
 					</targets>
-					<view ltx="612" lty="110" rbx="690" rby="166"/>
+					<view ltx="277" lty="110" rbx="355" rby="166"/>
+				</component>
+				<component name="if-else" library="core" uid="89" kind="4">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="20"/>
+						<datapoint pos="1" key="21"/>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="22"/>
+					</targets>
+					<view ltx="457" lty="110" rbx="557" rby="183"/>
+				</component>
+				<component name="result" library="core" uid="76" kind="7">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="12"/>
+					</sources>
+					<view ltx="649" lty="80" rbx="706" rby="118"/>
+					<data>
+						<output datatype="string"/>
+						<parameter usageKind="output" name="result"/>
+					</data>
 				</component>
 			</children>
 			<graph directed="1">
 				<edges/>
 				<vertices>
-					<vertex vertexkey="11">
-						<edges>
-							<edge vertexkey="1"/>
-							<edge vertexkey="2"/>
-						</edges>
-					</vertex>
-					<vertex vertexkey="4">
-						<edges>
-							<edge vertexkey="5"/>
-							<edge vertexkey="6"/>
-						</edges>
-					</vertex>
-					<vertex vertexkey="10">
-						<edges>
-							<edge vertexkey="9"/>
-						</edges>
-					</vertex>
-					<vertex vertexkey="15">
+					<vertex vertexkey="22">
 						<edges>
 							<edge vertexkey="12"/>
 						</edges>
 					</vertex>
-					<vertex vertexkey="3">
+					<vertex vertexkey="10">
 						<edges>
 							<edge vertexkey="13"/>
 						</edges>
 					</vertex>
-					<vertex vertexkey="7">
+					<vertex vertexkey="11">
 						<edges>
 							<edge vertexkey="14"/>
+							<edge vertexkey="16"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="17">
+						<edges>
+							<edge vertexkey="18"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="19">
+						<edges>
+							<edge vertexkey="20"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="15">
+						<edges>
+							<edge vertexkey="21"/>
 						</edges>
 					</vertex>
 				</vertices>

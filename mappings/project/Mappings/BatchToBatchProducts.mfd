@@ -136,48 +136,6 @@
 						</root>
 					</data>
 				</component>
-				<component name="db" library="db" uid="60" kind="15">
-					<properties XSLTDefaultOutput="1"/>
-					<view ltx="924" lty="36" rbx="1110" rby="404"/>
-					<data>
-						<root scrollposition="1">
-							<header>
-								<namespaces>
-									<namespace/>
-									<namespace uid="http://www.altova.com/mapforce"/>
-								</namespaces>
-							</header>
-							<entry name="document" ns="1" expanded="1">
-								<entry name="products" type="table" inpkey="38" expanded="1">
-									<entry name="gtin" inpkey="40"/>
-									<entry name="sku" inpkey="62"/>
-									<entry name="name" inpkey="71"/>
-									<entry name="short_description" inpkey="59"/>
-									<entry name="description" inpkey="60"/>
-									<entry name="url_key" inpkey="76"/>
-									<entry name="price" inpkey="41"/>
-									<entry name="image" inpkey="100"/>
-									<entry name="image_label" inpkey="101"/>
-									<entry name="weight" inpkey="43"/>
-									<entry name="qty" inpkey="61"/>
-									<entry name="source_input_name" inpkey="103"/>
-									<entry name="source_input_id" inpkey="104"/>
-								</entry>
-							</entry>
-						</root>
-						<database ref="BatchConnection">
-							<data>
-								<selections>
-									<selection>
-										<PathElement Name="Batch" Kind="DataSource"/>
-										<PathElement Name="batch" Kind="Database"/>
-										<PathElement Name="products" Kind="Table"/>
-									</selection>
-								</selections>
-							</data>
-						</database>
-					</data>
-				</component>
 				<component name="concat" library="core" uid="96" kind="5" growable="1" growablebasename="value">
 					<properties/>
 					<sources>
@@ -208,6 +166,106 @@
 						</root>
 					</data>
 				</component>
+				<component name="normalize-gender" library="user" uid="121" kind="19" visible="0">
+					<view ltx="350" lty="229" rbx="453" rby="246"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="string" inpkey="112" componentid="54"/>
+						</root>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="result" outkey="111" componentid="53"/>
+						</root>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="133" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="113"/>
+					</targets>
+					<view ltx="466" lty="196" rbx="543" rby="213"/>
+					<data>
+						<constant value="gender" datatype="string"/>
+					</data>
+				</component>
+				<component name="format-keyvalue" library="user" uid="143" kind="19" visible="0">
+					<view ltx="466" lty="304" rbx="567" rby="338"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="key" inpkey="124" componentid="68"/>
+							<entry name="value" inpkey="126" componentid="63"/>
+						</root>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="result" outkey="127" componentid="54"/>
+						</root>
+					</data>
+				</component>
+				<component name="format-attributes" library="user" uid="137" kind="19" visible="0">
+					<view ltx="656" lty="358" rbx="780" rby="443"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="attribute1" inpkey="122" componentid="114"/>
+							<entry name="attribute2" inpkey="128" componentid="118"/>
+							<entry name="attribute3" componentid="119"/>
+							<entry name="attribute4" componentid="120"/>
+							<entry name="attribute5" componentid="121"/>
+						</root>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="result" outkey="123" componentid="111"/>
+						</root>
+					</data>
+				</component>
+				<component name="format-keyvalue" library="user" uid="135" kind="19" visible="0">
+					<view ltx="466" lty="212" rbx="567" rby="246"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="key" inpkey="118" componentid="68"/>
+							<entry name="value" inpkey="119" componentid="63"/>
+						</root>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="result" outkey="120" componentid="54"/>
+						</root>
+					</data>
+				</component>
 				<component name="db" library="db" uid="61" kind="15">
 					<properties/>
 					<view ltx="67" lty="36" rbx="261" rby="471"/>
@@ -227,6 +285,7 @@
 									<entry name="color_code" outkey="64"/>
 									<entry name="size_code" outkey="65"/>
 									<entry name="brand" outkey="55"/>
+									<entry name="gender" outkey="110"/>
 									<entry name="price" outkey="47"/>
 									<entry name="description_short" outkey="56"/>
 									<entry name="description_long" outkey="57"/>
@@ -247,6 +306,59 @@
 								</selections>
 							</data>
 						</database>
+					</data>
+				</component>
+				<component name="db" library="db" uid="60" kind="15">
+					<properties XSLTDefaultOutput="1"/>
+					<view ltx="924" lty="36" rbx="1110" rby="404"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace/>
+									<namespace uid="http://www.altova.com/mapforce"/>
+								</namespaces>
+							</header>
+							<entry name="document" ns="1" expanded="1">
+								<entry name="products" type="table" inpkey="38" expanded="1">
+									<entry name="gtin" inpkey="40"/>
+									<entry name="sku" inpkey="62"/>
+									<entry name="name" inpkey="71"/>
+									<entry name="short_description" inpkey="59"/>
+									<entry name="description" inpkey="60"/>
+									<entry name="url_key" inpkey="76"/>
+									<entry name="price" inpkey="41"/>
+									<entry name="image" inpkey="100"/>
+									<entry name="image_label" inpkey="101"/>
+									<entry name="additional_attributes" inpkey="121"/>
+									<entry name="weight" inpkey="43"/>
+									<entry name="qty" inpkey="61"/>
+									<entry name="source_input_name" inpkey="103"/>
+									<entry name="source_input_id" inpkey="104"/>
+								</entry>
+							</entry>
+						</root>
+						<database ref="BatchConnection">
+							<data>
+								<selections>
+									<selection>
+										<PathElement Name="Batch" Kind="DataSource"/>
+										<PathElement Name="batch" Kind="Database"/>
+										<PathElement Name="products" Kind="Table"/>
+									</selection>
+								</selections>
+							</data>
+						</database>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="144" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="125"/>
+					</targets>
+					<view ltx="466" lty="288" rbx="537" rby="305"/>
+					<data>
+						<constant value="brand" datatype="string"/>
 					</data>
 				</component>
 			</children>
@@ -280,6 +392,14 @@
 			<edge from="75" to="101"/>
 			<edge from="102" to="103"/>
 			<edge from="105" to="104"/>
+			<edge from="110" to="112"/>
+			<edge from="113" to="118"/>
+			<edge from="111" to="119"/>
+			<edge from="123" to="121"/>
+			<edge from="120" to="122"/>
+			<edge from="125" to="124"/>
+			<edge from="55" to="126"/>
+			<edge from="127" to="128"/>
 		</connections>
 	</component>
 </mapping>
