@@ -17,18 +17,6 @@
 		<properties AppName="BatchInventory" JavaBasePackage="biz.uniwear.batch.mappings" SelectedLanguage="java"/>
 		<structure>
 			<children>
-				<component name="concat" library="core" uid="102" kind="5" growable="1" growablebasename="value">
-					<properties/>
-					<sources>
-						<datapoint pos="0" key="81"/>
-						<datapoint pos="1" key="80"/>
-						<datapoint pos="2" key="90"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="79"/>
-					</targets>
-					<view ltx="702" lty="-26" rbx="790" rby="47"/>
-				</component>
 				<component name="constant" library="core" uid="114" kind="2">
 					<properties/>
 					<targets>
@@ -47,6 +35,115 @@
 					<view ltx="703" lty="134" rbx="746" rby="151"/>
 					<data>
 						<constant value=" " datatype="string"/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="118" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="93"/>
+					</targets>
+					<view ltx="703" lty="234" rbx="747" rby="251"/>
+					<data>
+						<constant value="/" datatype="string"/>
+					</data>
+				</component>
+				<component name="get-mapping" library="user" uid="119" kind="19" visible="0">
+					<view ltx="924" lty="493" rbx="991" rby="510"/>
+					<data>
+						<root>
+							<header>
+								<namespaces/>
+							</header>
+						</root>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="result" outkey="102" componentid="80"/>
+						</root>
+					</data>
+				</component>
+				<component name="concat" library="core" uid="117" kind="5" growable="1" growablebasename="value">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="97"/>
+						<datapoint pos="1" key="94"/>
+						<datapoint pos="2" key="95"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="91"/>
+					</targets>
+					<view ltx="702" lty="162" rbx="790" rby="235"/>
+				</component>
+				<component name="concat" library="core" uid="102" kind="5" growable="1" growablebasename="value">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="81"/>
+						<datapoint pos="1" key="80"/>
+						<datapoint pos="2" key="90"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="79"/>
+					</targets>
+					<view ltx="702" lty="-26" rbx="790" rby="47"/>
+				</component>
+				<component name="concat" library="core" uid="96" kind="5" growable="1" growablebasename="value">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="72"/>
+						<datapoint pos="1" key="73"/>
+						<datapoint pos="2" key="74"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="75"/>
+					</targets>
+					<view ltx="702" lty="62" rbx="790" rby="135"/>
+				</component>
+				<component name="format-sku" library="user" uid="162" kind="19" visible="0">
+					<view ltx="494" lty="-26" rbx="620" rby="25"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="styleCode" inpkey="162" componentid="15"/>
+							<entry name="colorCode" inpkey="163" componentid="16"/>
+							<entry name="sizeCode" inpkey="164" componentid="17"/>
+						</root>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="result" outkey="165" componentid="12"/>
+						</root>
+					</data>
+				</component>
+				<component name="calculate-price" library="user" uid="166" kind="19" visible="0">
+					<view ltx="507" lty="207" rbx="620" rby="241"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="decimal" inpkey="167" componentid="63"/>
+							<entry name="map" inpkey="168" componentid="77"/>
+						</root>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="result" outkey="169" componentid="61"/>
+						</root>
 					</data>
 				</component>
 				<component name="format-handle" library="user" uid="116" kind="19" visible="0">
@@ -70,13 +167,26 @@
 						</root>
 					</data>
 				</component>
-				<component name="get-mapping" library="user" uid="119" kind="19" visible="0">
-					<view ltx="924" lty="426" rbx="991" rby="443"/>
+				<component name="constant" library="core" uid="171" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="174"/>
+					</targets>
+					<view ltx="813" lty="134" rbx="904" rby="151"/>
+					<data>
+						<constant value="Unknown" datatype="string"/>
+					</data>
+				</component>
+				<component name="lookup-brand-prefix" library="user" uid="159" kind="19" visible="0">
+					<view ltx="494" lty="-64" rbx="598" rby="-47"/>
 					<data>
 						<root>
 							<header>
-								<namespaces/>
+								<namespaces>
+									<namespace/>
+								</namespaces>
 							</header>
+							<entry name="Brand" inpkey="152" componentid="97"/>
 						</root>
 						<root>
 							<header>
@@ -84,18 +194,18 @@
 									<namespace/>
 								</namespaces>
 							</header>
-							<entry name="result" outkey="102" componentid="80"/>
+							<entry name="result" outkey="153" componentid="94"/>
 						</root>
 					</data>
 				</component>
-				<component name="constant" library="core" uid="118" kind="2">
+				<component name="constant" library="core" uid="172" kind="2">
 					<properties/>
 					<targets>
-						<datapoint pos="0" key="93"/>
+						<datapoint pos="0" key="175"/>
 					</targets>
-					<view ltx="703" lty="234" rbx="747" rby="251"/>
+					<view ltx="813" lty="314" rbx="902" rby="331"/>
 					<data>
-						<constant value="/" datatype="string"/>
+						<constant value="Wearable" datatype="string"/>
 					</data>
 				</component>
 				<component name="constant" library="core" uid="153" kind="2">
@@ -103,80 +213,59 @@
 					<targets>
 						<datapoint pos="0" key="148"/>
 					</targets>
-					<view ltx="866" lty="267" rbx="904" rby="284"/>
+					<view ltx="864" lty="282" rbx="902" rby="299"/>
 					<data>
 						<constant value="1" datatype="decimal"/>
 					</data>
 				</component>
-				<component name="constant" library="core" uid="154" kind="2">
+				<component name="db" library="db" uid="61" kind="15">
 					<properties/>
-					<targets>
-						<datapoint pos="0" key="149"/>
-					</targets>
-					<view ltx="757" lty="283" rbx="904" rby="300"/>
+					<view ltx="67" lty="36" rbx="260" rby="513"/>
 					<data>
-						<constant value="&quot;Not Visible Individually&quot;" datatype="string"/>
-					</data>
-				</component>
-				<component name="lookup-gender" library="user" uid="156" kind="19" visible="0">
-					<view ltx="726" lty="347" rbx="829" rby="364"/>
-					<data>
-						<root>
+						<root scrollposition="1">
 							<header>
 								<namespaces>
 									<namespace/>
+									<namespace uid="http://www.altova.com/mapforce"/>
 								</namespaces>
 							</header>
-							<entry name="string" inpkey="150" componentid="54"/>
+							<entry name="document" ns="1" expanded="1">
+								<entry name="inventory" type="table" outkey="44" expanded="1">
+									<entry name="id" outkey="105"/>
+									<entry name="gtin" outkey="46"/>
+									<entry name="style_code" outkey="63"/>
+									<entry name="color_code" outkey="64"/>
+									<entry name="color_description" outkey="145"/>
+									<entry name="size_code" outkey="65"/>
+									<entry name="brand" outkey="55"/>
+									<entry name="gender" outkey="110"/>
+									<entry name="fit" outkey="159"/>
+									<entry name="price" outkey="47"/>
+									<entry name="price_map" outkey="166"/>
+									<entry name="description_short" outkey="56"/>
+									<entry name="description_long" outkey="57"/>
+									<entry name="image_1" outkey="48"/>
+									<entry name="stock" outkey="58"/>
+									<entry name="weight" outkey="49"/>
+								</entry>
+							</entry>
 						</root>
-						<root>
-							<header>
-								<namespaces>
-									<namespace/>
-								</namespaces>
-							</header>
-							<entry name="result" outkey="151" componentid="53"/>
-						</root>
-					</data>
-				</component>
-				<component name="concat" library="core" uid="96" kind="5" growable="1" growablebasename="value">
-					<properties/>
-					<sources>
-						<datapoint pos="0" key="72"/>
-						<datapoint pos="1" key="73"/>
-						<datapoint pos="2" key="74"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="75"/>
-					</targets>
-					<view ltx="702" lty="62" rbx="790" rby="135"/>
-				</component>
-				<component name="sku" library="user" uid="63" kind="19" visible="0">
-					<view ltx="494" lty="-26" rbx="620" rby="25"/>
-					<data>
-						<root>
-							<header>
-								<namespaces>
-									<namespace/>
-								</namespaces>
-							</header>
-							<entry name="styleCode" inpkey="66" componentid="15"/>
-							<entry name="colorCode" inpkey="67" componentid="16"/>
-							<entry name="sizeCode" inpkey="68" componentid="17"/>
-						</root>
-						<root>
-							<header>
-								<namespaces>
-									<namespace/>
-								</namespaces>
-							</header>
-							<entry name="result" outkey="69" componentid="12"/>
-						</root>
+						<database ref="BatchConnection">
+							<data>
+								<selections>
+									<selection>
+										<PathElement Name="Batch" Kind="DataSource"/>
+										<PathElement Name="batch" Kind="Database"/>
+										<PathElement Name="inventory" Kind="Table"/>
+									</selection>
+								</selections>
+							</data>
+						</database>
 					</data>
 				</component>
 				<component name="db" library="db" uid="60" kind="15">
 					<properties XSLTDefaultOutput="1"/>
-					<view ltx="924" lty="36" rbx="1113" rby="502"/>
+					<view ltx="924" lty="36" rbx="1122" rby="471"/>
 					<data>
 						<root scrollposition="1">
 							<header>
@@ -187,15 +276,23 @@
 							</header>
 							<entry name="document" ns="1" expanded="1">
 								<entry name="products" type="table" inpkey="38" expanded="1">
+									<tableactions>
+										<action operation="update" proceedchildren="1">
+											<field name="gtin" function="equal"/>
+										</action>
+										<action proceedchildren="1"/>
+									</tableactions>
 									<entry name="gtin" inpkey="40"/>
 									<entry name="sku" inpkey="62"/>
 									<entry name="name" inpkey="71"/>
 									<entry name="short_description" inpkey="59"/>
 									<entry name="description" inpkey="60"/>
+									<entry name="categories" inpkey="170"/>
 									<entry name="url_key" inpkey="76"/>
 									<entry name="price" inpkey="41"/>
 									<entry name="image" inpkey="100"/>
 									<entry name="image_label" inpkey="101"/>
+									<entry name="product_type" inpkey="176"/>
 									<entry name="product_online" inpkey="146"/>
 									<entry name="visibility" inpkey="147"/>
 									<entry name="attribute_set_code" inpkey="160"/>
@@ -224,91 +321,24 @@
 						</database>
 					</data>
 				</component>
-				<component name="concat" library="core" uid="117" kind="5" growable="1" growablebasename="value">
-					<properties/>
-					<sources>
-						<datapoint pos="0" key="97"/>
-						<datapoint pos="1" key="94"/>
-						<datapoint pos="2" key="95"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="91"/>
-					</targets>
-					<view ltx="702" lty="162" rbx="790" rby="235"/>
-				</component>
-				<component name="lookup-brand-prefix" library="user" uid="159" kind="19" visible="0">
-					<view ltx="494" lty="-64" rbx="598" rby="-47"/>
-					<data>
-						<root>
-							<header>
-								<namespaces>
-									<namespace/>
-								</namespaces>
-							</header>
-							<entry name="Brand" inpkey="152" componentid="97"/>
-						</root>
-						<root>
-							<header>
-								<namespaces>
-									<namespace/>
-								</namespaces>
-							</header>
-							<entry name="result" outkey="153" componentid="94"/>
-						</root>
-					</data>
-				</component>
-				<component name="db" library="db" uid="61" kind="15">
-					<properties/>
-					<view ltx="67" lty="36" rbx="261" rby="471"/>
-					<data>
-						<root scrollposition="1">
-							<header>
-								<namespaces>
-									<namespace/>
-									<namespace uid="http://www.altova.com/mapforce"/>
-								</namespaces>
-							</header>
-							<entry name="document" ns="1" expanded="1">
-								<entry name="inventory" type="table" outkey="44" expanded="1">
-									<entry name="id" outkey="105"/>
-									<entry name="gtin" outkey="46"/>
-									<entry name="style_code" outkey="63"/>
-									<entry name="color_code" outkey="64"/>
-									<entry name="color_description" outkey="145"/>
-									<entry name="size_code" outkey="65"/>
-									<entry name="brand" outkey="55"/>
-									<entry name="gender" outkey="110"/>
-									<entry name="fit" outkey="159"/>
-									<entry name="price" outkey="47"/>
-									<entry name="description_short" outkey="56"/>
-									<entry name="description_long" outkey="57"/>
-									<entry name="image_1" outkey="48"/>
-									<entry name="stock" outkey="58"/>
-									<entry name="weight" outkey="49"/>
-								</entry>
-							</entry>
-						</root>
-						<database ref="BatchConnection">
-							<data>
-								<selections>
-									<selection>
-										<PathElement Name="Batch" Kind="DataSource"/>
-										<PathElement Name="batch" Kind="Database"/>
-										<PathElement Name="inventory" Kind="Table"/>
-									</selection>
-								</selections>
-							</data>
-						</database>
-					</data>
-				</component>
-				<component name="constant" library="core" uid="160" kind="2">
+				<component name="constant" library="core" uid="173" kind="2">
 					<properties/>
 					<targets>
-						<datapoint pos="0" key="161"/>
+						<datapoint pos="0" key="177"/>
 					</targets>
-					<view ltx="757" lty="299" rbx="835" rby="316"/>
+					<view ltx="831" lty="266" rbx="904" rby="283"/>
 					<data>
-						<constant value="Default" datatype="string"/>
+						<constant value="simple" datatype="string"/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="154" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="149"/>
+					</targets>
+					<view ltx="755" lty="298" rbx="905" rby="315"/>
+					<data>
+						<constant value="Not Visible Individually" datatype="string"/>
 					</data>
 				</component>
 			</children>
@@ -316,25 +346,22 @@
 		<connections>
 			<edge from="44" to="38"/>
 			<edge from="46" to="40"/>
-			<edge from="47" to="41"/>
+			<edge from="169" to="41"/>
 			<edge from="49" to="43"/>
 			<edge from="56" to="59"/>
 			<edge from="57" to="60"/>
 			<edge from="58" to="61"/>
 			<edge from="79" to="62"/>
-			<edge from="63" to="66"/>
-			<edge from="64" to="67"/>
-			<edge from="65" to="68"/>
 			<edge from="75" to="71"/>
 			<edge from="55" to="72"/>
 			<edge from="70" to="73"/>
-			<edge from="69" to="74"/>
+			<edge from="165" to="74"/>
 			<edge from="96" to="76"/>
 			<edge from="86" to="80"/>
 			<edge from="153" to="81"/>
-			<edge from="69" to="90"/>
+			<edge from="165" to="90"/>
 			<edge from="93" to="94"/>
-			<edge from="69" to="95"/>
+			<edge from="165" to="95"/>
 			<edge from="55" to="97"/>
 			<edge from="91" to="98"/>
 			<edge from="48" to="100"/>
@@ -343,14 +370,20 @@
 			<edge from="105" to="104"/>
 			<edge from="148" to="146"/>
 			<edge from="149" to="147"/>
-			<edge from="110" to="150"/>
 			<edge from="55" to="152"/>
-			<edge from="151" to="154"/>
+			<edge from="110" to="154"/>
 			<edge from="145" to="155"/>
 			<edge from="65" to="156"/>
 			<edge from="159" to="157"/>
 			<edge from="55" to="158"/>
-			<edge from="161" to="160"/>
+			<edge from="175" to="160"/>
+			<edge from="63" to="162"/>
+			<edge from="64" to="163"/>
+			<edge from="65" to="164"/>
+			<edge from="47" to="167"/>
+			<edge from="166" to="168"/>
+			<edge from="174" to="170"/>
+			<edge from="177" to="176"/>
 		</connections>
 	</component>
 </mapping>

@@ -8,81 +8,6 @@
 			<children/>
 		</structure>
 	</component>
-	<component name="trim" library="user" uid="44" inline="1" editable="1" blackbox="0">
-		<properties/>
-		<description>
-			<short>result = trim( string )</short>
-		</description>
-		<structure>
-			<children>
-				<component name="left-trim" library="lang" uid="48" kind="5">
-					<properties/>
-					<sources>
-						<datapoint pos="0" key="1"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="2"/>
-					</targets>
-					<view ltx="219" lty="45" rbx="294" rby="83"/>
-				</component>
-				<component name="result" library="core" uid="45" kind="7">
-					<properties/>
-					<sources>
-						<datapoint pos="0" key="4"/>
-					</sources>
-					<view ltx="444" lty="45" rbx="501" rby="83"/>
-					<data>
-						<output datatype="string"/>
-						<parameter usageKind="output" name="result"/>
-					</data>
-				</component>
-				<component name="right-trim" library="lang" uid="50" kind="5">
-					<properties/>
-					<sources>
-						<datapoint pos="0" key="5"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="6"/>
-					</targets>
-					<view ltx="329" lty="45" rbx="405" rby="83"/>
-				</component>
-				<component name="string" library="core" uid="46" kind="6">
-					<properties/>
-					<sources>
-						<datapoint/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="3"/>
-					</targets>
-					<view ltx="102" lty="45" rbx="185" rby="83"/>
-					<data>
-						<input datatype="string"/>
-						<parameter usageKind="input" name="string"/>
-					</data>
-				</component>
-			</children>
-			<graph directed="1">
-				<edges/>
-				<vertices>
-					<vertex vertexkey="3">
-						<edges>
-							<edge vertexkey="1"/>
-						</edges>
-					</vertex>
-					<vertex vertexkey="6">
-						<edges>
-							<edge vertexkey="4"/>
-						</edges>
-					</vertex>
-					<vertex vertexkey="2">
-						<edges>
-							<edge vertexkey="5"/>
-						</edges>
-					</vertex>
-				</vertices>
-			</graph>
-		</structure>
-	</component>
 	<component name="format-handle" library="user" uid="51" inline="1" editable="1" blackbox="0">
 		<properties/>
 		<description>
@@ -120,20 +45,6 @@
 					</targets>
 					<view ltx="182" lty="218" rbx="260" rby="256"/>
 				</component>
-				<component name="input" library="core" uid="69" kind="6">
-					<properties/>
-					<sources>
-						<datapoint/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="2"/>
-					</targets>
-					<view ltx="54" lty="164" rbx="135" rby="202"/>
-					<data>
-						<input datatype="string"/>
-						<parameter usageKind="input" name="input"/>
-					</data>
-				</component>
 				<component name="result" library="core" uid="52" kind="7">
 					<properties/>
 					<sources>
@@ -156,6 +67,20 @@
 						<datapoint pos="0" key="3"/>
 					</targets>
 					<view ltx="318" lty="218" rbx="399" rby="288"/>
+				</component>
+				<component name="input" library="core" uid="69" kind="6">
+					<properties/>
+					<sources>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="2"/>
+					</targets>
+					<view ltx="54" lty="164" rbx="135" rby="202"/>
+					<data>
+						<input datatype="string"/>
+						<parameter usageKind="input" name="input"/>
+					</data>
 				</component>
 			</children>
 			<graph directed="1">
@@ -518,6 +443,82 @@
 					<vertex vertexkey="23">
 						<edges>
 							<edge vertexkey="24"/>
+						</edges>
+					</vertex>
+				</vertices>
+			</graph>
+		</structure>
+	</component>
+	<component name="full-trim" library="user" uid="44" inline="1" editable="1" blackbox="0">
+		<properties/>
+		<description>
+			<short>result = full-trim( string )</short>
+			<long>Returns left-trim(right-trim(string)).</long>
+		</description>
+		<structure>
+			<children>
+				<component name="left-trim" library="lang" uid="48" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="1"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="2"/>
+					</targets>
+					<view ltx="219" lty="45" rbx="294" rby="83"/>
+				</component>
+				<component name="result" library="core" uid="45" kind="7">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="4"/>
+					</sources>
+					<view ltx="444" lty="45" rbx="501" rby="83"/>
+					<data>
+						<output datatype="string"/>
+						<parameter usageKind="output" name="result"/>
+					</data>
+				</component>
+				<component name="right-trim" library="lang" uid="50" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="5"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="6"/>
+					</targets>
+					<view ltx="329" lty="45" rbx="405" rby="83"/>
+				</component>
+				<component name="string" library="core" uid="46" kind="6">
+					<properties/>
+					<sources>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="3"/>
+					</targets>
+					<view ltx="102" lty="45" rbx="185" rby="83"/>
+					<data>
+						<input datatype="string"/>
+						<parameter usageKind="input" name="string"/>
+					</data>
+				</component>
+			</children>
+			<graph directed="1">
+				<edges/>
+				<vertices>
+					<vertex vertexkey="3">
+						<edges>
+							<edge vertexkey="1"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="6">
+						<edges>
+							<edge vertexkey="4"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="2">
+						<edges>
+							<edge vertexkey="5"/>
 						</edges>
 					</vertex>
 				</vertices>

@@ -67,8 +67,8 @@ public class BatchInventoryMapToBatch extends com.altova.TraceProvider
 
 			private boolean moveNext_1() throws Exception {
 				state = 0;				
-				var2_NewStatement = com.altova.db.Dbs.newStatement(closure.var1_Batch__batch__Instance, 1, "SELECT `gtin`, `brand`, `style_code`, `color_code`, `size_code`, `description_short`, `description_long`, CONVERT(`price`, CHAR(67)) AS `price`, `image_1`, `color_description`, `fit`, `gender`, CONVER"
- + "T(`weight`, CHAR(67)) AS `weight`, `stock`, `id` FROM `inventory`");
+				var2_NewStatement = com.altova.db.Dbs.newStatement(closure.var1_Batch__batch__Instance, 1, "SELECT `gtin`, `brand`, `style_code`, `color_code`, `size_code`, `description_short`, `description_long`, CONVERT(`price`, CHAR(67)) AS `price`, CONVERT(`price_map`, CHAR(67)) AS `price_map`, `image_1"
+ + "`, `color_description`, `fit`, `gender`, CONVERT(`weight`, CHAR(67)) AS `weight`, `stock`, `id` FROM `inventory`");
 				com.altova.db.Dbs.prepareStatement(var2_NewStatement);
 				current = (com.altova.db.Record)com.altova.functions.Core.first((new seq1_NewRecord(closure.var1_Batch__batch__Instance)));
 				pos++;
@@ -204,8 +204,8 @@ public class BatchInventoryMapToBatch extends com.altova.TraceProvider
 				state = 2;				
 				if (!var2_ReadRecordSet.moveNext()) {state = 3; return false; }
 				var3_NewRecord = com.altova.db.Dbs.newRecord();
-				var4_read_field = new com.altova.functions.Core.SequenceCache(com.altova.db.Dbs.readField(((com.altova.db.Record)(var2_ReadRecordSet.current())), "brand"));
-				var5_read_field = new com.altova.functions.Core.SequenceCache(com.altova.db.Dbs.readField(((com.altova.db.Record)(var2_ReadRecordSet.current())), "size_code"));
+				var4_read_field = new com.altova.functions.Core.SequenceCache(com.altova.db.Dbs.readField(((com.altova.db.Record)(var2_ReadRecordSet.current())), "size_code"));
+				var5_read_field = new com.altova.functions.Core.SequenceCache(com.altova.db.Dbs.readField(((com.altova.db.Record)(var2_ReadRecordSet.current())), "brand"));
 				var6_substring = com.altova.functions.Core.substring("C:\\Users\\User\\Projects\\batch\\mappings\\project\\Mappings\\BatchToBatchProducts.mfd", com.altova.CoreTypes.decimalToDouble(com.altova.functions.Core.add(biz.uniwear.batch.mappings.core.get_position_of_last_delimiter.eval("C:\\Users\\User\\Projects\\batch\\mappings\\project\\Mappings\\BatchToBatchProducts.mfd", "/", "\\"), new java.math.BigDecimal("1"))), com.altova.CoreTypes.integerToDouble(com.altova.CoreTypes.longToInteger(com.altova.CoreTypes.intToLong(com.altova.functions.Core.stringLength("C:\\Users\\User\\Projects\\batch\\mappings\\project\\Mappings\\BatchToBatchProducts.mfd")))));
 				var7_join = new com.altova.functions.Core.SequenceCache((new seq5_join(((com.altova.db.Record)(var2_ReadRecordSet.current())), var4_read_field, var5_read_field)));
 				com.altova.db.Dbs.writeField(var3_NewRecord, "gtin", com.altova.db.Dbs.readField(((com.altova.db.Record)(var2_ReadRecordSet.current())), "gtin"));
@@ -213,18 +213,20 @@ public class BatchInventoryMapToBatch extends com.altova.TraceProvider
 				com.altova.db.Dbs.writeField(var3_NewRecord, "name", var7_join);
 				com.altova.db.Dbs.writeField(var3_NewRecord, "short_description", com.altova.db.Dbs.readField(((com.altova.db.Record)(var2_ReadRecordSet.current())), "description_short"));
 				com.altova.db.Dbs.writeField(var3_NewRecord, "description", com.altova.db.Dbs.readField(((com.altova.db.Record)(var2_ReadRecordSet.current())), "description_long"));
+				com.altova.db.Dbs.writeField(var3_NewRecord, "categories", com.altova.functions.Core.box("Unknown"));
 				com.altova.db.Dbs.writeField(var3_NewRecord, "url_key", (new seq7_join(((com.altova.db.Record)(var2_ReadRecordSet.current())), var4_read_field, var5_read_field)));
-				com.altova.db.Dbs.writeField(var3_NewRecord, "price", com.altova.db.Dbs.readField(((com.altova.db.Record)(var2_ReadRecordSet.current())), "price"));
+				com.altova.db.Dbs.writeField(var3_NewRecord, "price", (new seq8_join(((com.altova.db.Record)(var2_ReadRecordSet.current())))));
 				com.altova.db.Dbs.writeField(var3_NewRecord, "image", com.altova.db.Dbs.readField(((com.altova.db.Record)(var2_ReadRecordSet.current())), "image_1"));
 				com.altova.db.Dbs.writeField(var3_NewRecord, "image_label", var7_join);
+				com.altova.db.Dbs.writeField(var3_NewRecord, "product_type", com.altova.functions.Core.box("simple"));
 				com.altova.db.Dbs.writeField(var3_NewRecord, "product_online", com.altova.functions.Core.box(com.altova.CoreTypes.longToInt(com.altova.CoreTypes.integerToLong(com.altova.CoreTypes.decimalToInteger(new java.math.BigDecimal("1"))))));
-				com.altova.db.Dbs.writeField(var3_NewRecord, "visibility", com.altova.functions.Core.box("\"Not Visible Individually\""));
-				com.altova.db.Dbs.writeField(var3_NewRecord, "attribute_set_code", com.altova.functions.Core.box("Default"));
+				com.altova.db.Dbs.writeField(var3_NewRecord, "visibility", com.altova.functions.Core.box("Not Visible Individually"));
+				com.altova.db.Dbs.writeField(var3_NewRecord, "attribute_set_code", com.altova.functions.Core.box("Wearable"));
 				com.altova.db.Dbs.writeField(var3_NewRecord, "additional_attribute_color", com.altova.db.Dbs.readField(((com.altova.db.Record)(var2_ReadRecordSet.current())), "color_description"));
-				com.altova.db.Dbs.writeField(var3_NewRecord, "additional_attribute_size", var5_read_field);
+				com.altova.db.Dbs.writeField(var3_NewRecord, "additional_attribute_size", var4_read_field);
 				com.altova.db.Dbs.writeField(var3_NewRecord, "additional_attribute_fit", com.altova.db.Dbs.readField(((com.altova.db.Record)(var2_ReadRecordSet.current())), "fit"));
-				com.altova.db.Dbs.writeField(var3_NewRecord, "additional_attribute_gender", (new seq8_map(((com.altova.db.Record)(var2_ReadRecordSet.current())))));
-				com.altova.db.Dbs.writeField(var3_NewRecord, "additional_attribute_brand", var4_read_field);
+				com.altova.db.Dbs.writeField(var3_NewRecord, "additional_attribute_gender", com.altova.db.Dbs.readField(((com.altova.db.Record)(var2_ReadRecordSet.current())), "gender"));
+				com.altova.db.Dbs.writeField(var3_NewRecord, "additional_attribute_brand", var5_read_field);
 				com.altova.db.Dbs.writeField(var3_NewRecord, "weight", com.altova.db.Dbs.readField(((com.altova.db.Record)(var2_ReadRecordSet.current())), "weight"));
 				com.altova.db.Dbs.writeField(var3_NewRecord, "qty", com.altova.db.Dbs.readField(((com.altova.db.Record)(var2_ReadRecordSet.current())), "stock"));
 				com.altova.db.Dbs.writeField(var3_NewRecord, "source_input_name", com.altova.functions.Core.box(com.altova.functions.Core.substring(var6_substring, com.altova.CoreTypes.parseDouble("1"), com.altova.CoreTypes.decimalToDouble(com.altova.functions.Core.subtract(com.altova.CoreTypes.integerToDecimal(com.altova.CoreTypes.longToInteger(com.altova.CoreTypes.intToLong(com.altova.functions.Core.stringLength(var6_substring)))), com.altova.CoreTypes.integerToDecimal(com.altova.CoreTypes.longToInteger(com.altova.CoreTypes.intToLong(com.altova.functions.Core.stringLength(biz.uniwear.batch.mappings.core.get_fileext.eval(var6_substring))))))))));
@@ -364,13 +366,14 @@ public class BatchInventoryMapToBatch extends com.altova.TraceProvider
 				com.altova.db.Dbs.MySQL.read_String(var2_NewRecord, closure.var1_RecordSet, "description_short", 5);
 				com.altova.db.Dbs.MySQL.read_String(var2_NewRecord, closure.var1_RecordSet, "description_long", 6);
 				com.altova.db.Dbs.read_String_ParseDecimal(var2_NewRecord, closure.var1_RecordSet, "price", 7);
-				com.altova.db.Dbs.MySQL.read_String(var2_NewRecord, closure.var1_RecordSet, "image_1", 8);
-				com.altova.db.Dbs.MySQL.read_String(var2_NewRecord, closure.var1_RecordSet, "color_description", 9);
-				com.altova.db.Dbs.MySQL.read_String(var2_NewRecord, closure.var1_RecordSet, "fit", 10);
-				com.altova.db.Dbs.MySQL.read_String(var2_NewRecord, closure.var1_RecordSet, "gender", 11);
-				com.altova.db.Dbs.read_String_ParseDecimal(var2_NewRecord, closure.var1_RecordSet, "weight", 12);
-				com.altova.db.Dbs.read_int(var2_NewRecord, closure.var1_RecordSet, "stock", 13);
-				com.altova.db.Dbs.read_int(var2_NewRecord, closure.var1_RecordSet, "id", 14);
+				com.altova.db.Dbs.read_String_ParseDecimal(var2_NewRecord, closure.var1_RecordSet, "price_map", 8);
+				com.altova.db.Dbs.MySQL.read_String(var2_NewRecord, closure.var1_RecordSet, "image_1", 9);
+				com.altova.db.Dbs.MySQL.read_String(var2_NewRecord, closure.var1_RecordSet, "color_description", 10);
+				com.altova.db.Dbs.MySQL.read_String(var2_NewRecord, closure.var1_RecordSet, "fit", 11);
+				com.altova.db.Dbs.MySQL.read_String(var2_NewRecord, closure.var1_RecordSet, "gender", 12);
+				com.altova.db.Dbs.read_String_ParseDecimal(var2_NewRecord, closure.var1_RecordSet, "weight", 13);
+				com.altova.db.Dbs.read_int(var2_NewRecord, closure.var1_RecordSet, "stock", 14);
+				com.altova.db.Dbs.read_int(var2_NewRecord, closure.var1_RecordSet, "id", 15);
 				current = var2_NewRecord;
 				pos++;
 				return true;
@@ -453,7 +456,7 @@ public class BatchInventoryMapToBatch extends com.altova.TraceProvider
 
 			private boolean moveNext_1() throws Exception {
 				state = 2;				
-				var4_read_field = (closure.var2_read_field).enumerator();
+				var4_read_field = (closure.var3_read_field).enumerator();
 				return false;
 			}
 			private boolean moveNext_2() throws Exception {
@@ -482,7 +485,7 @@ public class BatchInventoryMapToBatch extends com.altova.TraceProvider
 				state = 8;				
 				if (!var6_filter.moveNext()) {state = 7; return false; }
 				if (!(com.altova.functions.Core.logicalNot(com.altova.functions.Lang.empty(((java.lang.String)(var6_filter.current())))))) {state = 6; return false; }
-				var7_filter = (closure.var3_read_field).enumerator();
+				var7_filter = (closure.var2_read_field).enumerator();
 				return false;
 			}
 			private boolean moveNext_7() throws Exception {
@@ -577,7 +580,7 @@ public class BatchInventoryMapToBatch extends com.altova.TraceProvider
 
 			private boolean moveNext_1() throws Exception {
 				state = 2;				
-				var4_read_field = (closure.var2_read_field).enumerator();
+				var4_read_field = (closure.var3_read_field).enumerator();
 				return false;
 			}
 			private boolean moveNext_2() throws Exception {
@@ -606,7 +609,7 @@ public class BatchInventoryMapToBatch extends com.altova.TraceProvider
 				state = 8;				
 				if (!var6_filter.moveNext()) {state = 7; return false; }
 				if (!(com.altova.functions.Core.logicalNot(com.altova.functions.Lang.empty(((java.lang.String)(var6_filter.current())))))) {state = 6; return false; }
-				var7_filter = (closure.var3_read_field).enumerator();
+				var7_filter = (closure.var2_read_field).enumerator();
 				return false;
 			}
 			private boolean moveNext_7() throws Exception {
@@ -701,7 +704,7 @@ public class BatchInventoryMapToBatch extends com.altova.TraceProvider
 
 			private boolean moveNext_1() throws Exception {
 				state = 2;				
-				var4_read_field = (closure.var2_read_field).enumerator();
+				var4_read_field = (closure.var3_read_field).enumerator();
 				return false;
 			}
 			private boolean moveNext_2() throws Exception {
@@ -730,7 +733,7 @@ public class BatchInventoryMapToBatch extends com.altova.TraceProvider
 				state = 8;				
 				if (!var6_filter.moveNext()) {state = 7; return false; }
 				if (!(com.altova.functions.Core.logicalNot(com.altova.functions.Lang.empty(((java.lang.String)(var6_filter.current())))))) {state = 6; return false; }
-				var7_filter = (closure.var3_read_field).enumerator();
+				var7_filter = (closure.var2_read_field).enumerator();
 				return false;
 			}
 			private boolean moveNext_7() throws Exception {
@@ -769,11 +772,11 @@ public class BatchInventoryMapToBatch extends com.altova.TraceProvider
 		}
 				
 	}
-	static class seq8_map implements IEnumerable
+	static class seq8_join implements IEnumerable
 	{
 		com.altova.db.Record var1_cur;
 	
-		public seq8_map(com.altova.db.Record var1_cur)
+		public seq8_join(com.altova.db.Record var1_cur)
 		{
 			this.var1_cur = var1_cur;
 		}
@@ -785,9 +788,11 @@ public class BatchInventoryMapToBatch extends com.altova.TraceProvider
 			int pos = 0;
 			int state = 1;
 			Object current;
-			seq8_map closure;
+			seq8_join closure;
 			IEnumerator var2_read_field;
-			public Enumerator(seq8_map closure) 
+			IEnumerator var3_read_field;
+			java.math.BigDecimal var4_multiply;
+			public Enumerator(seq8_join closure) 
 			{
 				this.closure = closure;
 			}
@@ -805,6 +810,9 @@ public class BatchInventoryMapToBatch extends com.altova.TraceProvider
 					case 1:	if (moveNext_1()) return true; break;
 					case 2:	if (moveNext_2()) return true; break;
 					case 3:	if (moveNext_3()) return true; break;
+					case 4:	if (moveNext_4()) return true; break;
+					case 5:	if (moveNext_5()) return true; break;
+					case 6:	if (moveNext_6()) return true; break;
  					}
 				}
 				return false;
@@ -812,20 +820,39 @@ public class BatchInventoryMapToBatch extends com.altova.TraceProvider
 
 			private boolean moveNext_1() throws Exception {
 				state = 2;				
-				var2_read_field = (com.altova.db.Dbs.readField(closure.var1_cur, "gender")).enumerator();
+				var2_read_field = (com.altova.db.Dbs.readField(closure.var1_cur, "price")).enumerator();
 				return false;
 			}
 			private boolean moveNext_2() throws Exception {
-				state = 2;				
+				state = 4;				
 				if (!var2_read_field.moveNext()) {state = 3; return false; }
-				current = biz.uniwear.batch.mappings.vmf.vmf2_inputtoresult.eval(com.altova.functions.Lang.lowercase(((java.lang.String)(var2_read_field.current()))));
-				pos++;
-				return true;
+				var3_read_field = (com.altova.db.Dbs.readField(closure.var1_cur, "price_map")).enumerator();
+				return false;
 			}
 			private boolean moveNext_3() throws Exception {
 				state = 0;				
 				if( var2_read_field != null ) { var2_read_field.close(); var2_read_field = null; }
 				return false;
+			}
+			private boolean moveNext_4() throws Exception {
+				state = 4;				
+				if (!var3_read_field.moveNext()) {state = 5; return false; }
+				var4_multiply = com.altova.functions.Core.multiply(((java.math.BigDecimal)(var2_read_field.current())), new java.math.BigDecimal("0.50"));
+				if (!(com.altova.functions.Core.greater(var4_multiply, ((java.math.BigDecimal)(var3_read_field.current()))))) {state = 6; return false; }
+				current = var4_multiply;
+				pos++;
+				return true;
+			}
+			private boolean moveNext_5() throws Exception {
+				state = 2;				
+				if( var3_read_field != null ) { var3_read_field.close(); var3_read_field = null; }
+				return false;
+			}
+			private boolean moveNext_6() throws Exception {
+				state = 4;				
+				current = var3_read_field.current();
+				pos++;
+				return true;
 			}
 
 			
@@ -833,6 +860,7 @@ public class BatchInventoryMapToBatch extends com.altova.TraceProvider
 			{
 				try
 				{
+				if( var3_read_field != null ) { var3_read_field.close(); var3_read_field = null; }
 				if( var2_read_field != null ) { var2_read_field.close(); var2_read_field = null; }
 				}
 				catch (Exception e)
@@ -977,6 +1005,7 @@ public class BatchInventoryMapToBatch extends com.altova.TraceProvider
 			Object current;
 			main closure;
 			com.altova.db.Statement var2_NewStatement;
+			com.altova.db.Statement var3_NewStatement;
 			public Enumerator(main closure) 
 			{
 				this.closure = closure;
@@ -1000,9 +1029,10 @@ public class BatchInventoryMapToBatch extends com.altova.TraceProvider
 
 			private boolean moveNext_1() throws Exception {
 				state = 0;				
-				var2_NewStatement = com.altova.db.Dbs.newStatement(closure.var1_catalog, 1, "INSERT INTO `products` (`gtin`, `sku`, `name`, `short_description`, `description`, `url_key`, `price`, `image`, `image_label`, `product_online`, `visibility`, `attribute_set_code`, `additional_attribu"
- + "te_color`, `additional_attribute_size`, `additional_attribute_fit`, `additional_attribute_gender`, `additional_attribute_brand`, `weight`, `qty`, `source_input_name`, `source_input_id`) VALUES (?, ?, "
- + "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+				var2_NewStatement = com.altova.db.Dbs.newStatement(closure.var1_catalog, 1, "INSERT INTO `products` (`gtin`, `sku`, `name`, `short_description`, `description`, `categories`, `url_key`, `price`, `image`, `image_label`, `product_type`, `product_online`, `visibility`, `attribute_"
+ + "set_code`, `additional_attribute_color`, `additional_attribute_size`, `additional_attribute_fit`, `additional_attribute_gender`, `additional_attribute_brand`, `weight`, `qty`, `source_input_name`, `so"
+ + "urce_input_id`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+				com.altova.db.Dbs.addParameter(var2_NewStatement, java.sql.Types.CHAR,-1);
 				com.altova.db.Dbs.addParameter(var2_NewStatement, java.sql.Types.CHAR,-1);
 				com.altova.db.Dbs.addParameter(var2_NewStatement, java.sql.Types.CHAR,-1);
 				com.altova.db.Dbs.addParameter(var2_NewStatement, java.sql.Types.CHAR,-1);
@@ -1010,6 +1040,7 @@ public class BatchInventoryMapToBatch extends com.altova.TraceProvider
 				com.altova.db.Dbs.addParameter(var2_NewStatement, java.sql.Types.CHAR,-1);
 				com.altova.db.Dbs.addParameter(var2_NewStatement, java.sql.Types.CHAR,-1);
 				com.altova.db.Dbs.addParameter(var2_NewStatement, java.sql.Types.DECIMAL,-1);
+				com.altova.db.Dbs.addParameter(var2_NewStatement, java.sql.Types.CHAR,-1);
 				com.altova.db.Dbs.addParameter(var2_NewStatement, java.sql.Types.CHAR,-1);
 				com.altova.db.Dbs.addParameter(var2_NewStatement, java.sql.Types.CHAR,-1);
 				com.altova.db.Dbs.addParameter(var2_NewStatement, java.sql.Types.TINYINT,-1);
@@ -1025,6 +1056,33 @@ public class BatchInventoryMapToBatch extends com.altova.TraceProvider
 				com.altova.db.Dbs.addParameter(var2_NewStatement, java.sql.Types.CHAR,-1);
 				com.altova.db.Dbs.addParameter(var2_NewStatement, java.sql.Types.INTEGER,-1);
 				com.altova.db.Dbs.prepareStatement(var2_NewStatement);
+				var3_NewStatement = com.altova.db.Dbs.newStatement(closure.var1_catalog, 2, "UPDATE `products` SET `sku` = ?, `name` = ?, `short_description` = ?, `description` = ?, `categories` = ?, `url_key` = ?, `price` = ?, `image` = ?, `image_label` = ?, `product_type` = ?, `product_onli"
+ + "ne` = ?, `visibility` = ?, `attribute_set_code` = ?, `additional_attribute_color` = ?, `additional_attribute_size` = ?, `additional_attribute_fit` = ?, `additional_attribute_gender` = ?, `additional_a"
+ + "ttribute_brand` = ?, `weight` = ?, `qty` = ?, `source_input_name` = ?, `source_input_id` = ? WHERE (`products`.`gtin` = ?)");
+				com.altova.db.Dbs.addParameter(var3_NewStatement, java.sql.Types.CHAR,-1);
+				com.altova.db.Dbs.addParameter(var3_NewStatement, java.sql.Types.CHAR,-1);
+				com.altova.db.Dbs.addParameter(var3_NewStatement, java.sql.Types.CHAR,-1);
+				com.altova.db.Dbs.addParameter(var3_NewStatement, java.sql.Types.CHAR,-1);
+				com.altova.db.Dbs.addParameter(var3_NewStatement, java.sql.Types.CHAR,-1);
+				com.altova.db.Dbs.addParameter(var3_NewStatement, java.sql.Types.CHAR,-1);
+				com.altova.db.Dbs.addParameter(var3_NewStatement, java.sql.Types.DECIMAL,-1);
+				com.altova.db.Dbs.addParameter(var3_NewStatement, java.sql.Types.CHAR,-1);
+				com.altova.db.Dbs.addParameter(var3_NewStatement, java.sql.Types.CHAR,-1);
+				com.altova.db.Dbs.addParameter(var3_NewStatement, java.sql.Types.CHAR,-1);
+				com.altova.db.Dbs.addParameter(var3_NewStatement, java.sql.Types.TINYINT,-1);
+				com.altova.db.Dbs.addParameter(var3_NewStatement, java.sql.Types.CHAR,-1);
+				com.altova.db.Dbs.addParameter(var3_NewStatement, java.sql.Types.CHAR,-1);
+				com.altova.db.Dbs.addParameter(var3_NewStatement, java.sql.Types.CHAR,-1);
+				com.altova.db.Dbs.addParameter(var3_NewStatement, java.sql.Types.CHAR,-1);
+				com.altova.db.Dbs.addParameter(var3_NewStatement, java.sql.Types.CHAR,-1);
+				com.altova.db.Dbs.addParameter(var3_NewStatement, java.sql.Types.CHAR,-1);
+				com.altova.db.Dbs.addParameter(var3_NewStatement, java.sql.Types.CHAR,-1);
+				com.altova.db.Dbs.addParameter(var3_NewStatement, java.sql.Types.DECIMAL,-1);
+				com.altova.db.Dbs.addParameter(var3_NewStatement, java.sql.Types.INTEGER,-1);
+				com.altova.db.Dbs.addParameter(var3_NewStatement, java.sql.Types.CHAR,-1);
+				com.altova.db.Dbs.addParameter(var3_NewStatement, java.sql.Types.INTEGER,-1);
+				com.altova.db.Dbs.addParameter(var3_NewStatement, java.sql.Types.CHAR,-1);
+				com.altova.db.Dbs.prepareStatement(var3_NewStatement);
 				current = com.altova.CoreTypes.parseBoolean("true");
 				pos++;
 				return true;
@@ -1119,6 +1177,384 @@ public class BatchInventoryMapToBatch extends com.altova.TraceProvider
 					{
 					case 1:	if (moveNext_1()) return true; break;
 					case 2:	if (moveNext_2()) return true; break;
+					case 5:	if (moveNext_5()) return true; break;
+					case 6:	if (moveNext_6()) return true; break;
+					case 7:	if (moveNext_7()) return true; break;
+					case 8:	if (moveNext_8()) return true; break;
+					case 9:	if (moveNext_9()) return true; break;
+					case 10:	if (moveNext_10()) return true; break;
+					case 11:	if (moveNext_11()) return true; break;
+					case 12:	if (moveNext_12()) return true; break;
+					case 13:	if (moveNext_13()) return true; break;
+					case 14:	if (moveNext_14()) return true; break;
+					case 15:	if (moveNext_15()) return true; break;
+					case 16:	if (moveNext_16()) return true; break;
+					case 17:	if (moveNext_17()) return true; break;
+					case 18:	if (moveNext_18()) return true; break;
+					case 19:	if (moveNext_19()) return true; break;
+					case 20:	if (moveNext_20()) return true; break;
+					case 21:	if (moveNext_21()) return true; break;
+					case 22:	if (moveNext_22()) return true; break;
+					case 23:	if (moveNext_23()) return true; break;
+					case 24:	if (moveNext_24()) return true; break;
+					case 25:	if (moveNext_25()) return true; break;
+					case 26:	if (moveNext_26()) return true; break;
+					case 27:	if (moveNext_27()) return true; break;
+					case 28:	if (moveNext_28()) return true; break;
+					case 29:	if (moveNext_29()) return true; break;
+					case 30:	if (moveNext_30()) return true; break;
+					case 31:	if (moveNext_31()) return true; break;
+					case 32:	if (moveNext_32()) return true; break;
+					case 33:	if (moveNext_33()) return true; break;
+					case 34:	if (moveNext_34()) return true; break;
+					case 35:	if (moveNext_35()) return true; break;
+					case 36:	if (moveNext_36()) return true; break;
+					case 37:	if (moveNext_37()) return true; break;
+					case 38:	if (moveNext_38()) return true; break;
+					case 39:	if (moveNext_39()) return true; break;
+					case 40:	if (moveNext_40()) return true; break;
+					case 41:	if (moveNext_41()) return true; break;
+					case 42:	if (moveNext_42()) return true; break;
+					case 43:	if (moveNext_43()) return true; break;
+					case 44:	if (moveNext_44()) return true; break;
+					case 45:	if (moveNext_45()) return true; break;
+					case 46:	if (moveNext_46()) return true; break;
+					case 47:	if (moveNext_47()) return true; break;
+					case 48:	if (moveNext_48()) return true; break;
+					case 49:	if (moveNext_49()) return true; break;
+					case 50:	if (moveNext_50()) return true; break;
+ 					}
+				}
+				return false;
+			}
+
+			private boolean moveNext_1() throws Exception {
+				state = 0;				
+				if (!((Boolean)com.altova.functions.Core.first((new seq1_NewQuery(closure.var2_record, closure.var1_catalog))))) {state = 2; return false; }
+				current = com.altova.CoreTypes.parseBoolean("true");
+				pos++;
+				return true;
+			}
+			private boolean moveNext_2() throws Exception {
+				state = 6;				
+				var3_NewQuery = com.altova.db.Dbs.newQuery(closure.var1_catalog, 1);
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "gtin")))) {state = 5; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "gtin")));
+				return false;
+			}
+			private boolean moveNext_5() throws Exception {
+				state = 6;				
+				com.altova.db.Dbs.bindParameter_empty(var3_NewQuery);
+				return false;
+			}
+			private boolean moveNext_6() throws Exception {
+				state = 8;				
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "sku")))) {state = 7; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "sku")));
+				return false;
+			}
+			private boolean moveNext_7() throws Exception {
+				state = 8;				
+				com.altova.db.Dbs.bindParameter_empty(var3_NewQuery);
+				return false;
+			}
+			private boolean moveNext_8() throws Exception {
+				state = 10;				
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "name")))) {state = 9; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "name")));
+				return false;
+			}
+			private boolean moveNext_9() throws Exception {
+				state = 10;				
+				com.altova.db.Dbs.bindParameter_empty(var3_NewQuery);
+				return false;
+			}
+			private boolean moveNext_10() throws Exception {
+				state = 12;				
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "short_description")))) {state = 11; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "short_description")));
+				return false;
+			}
+			private boolean moveNext_11() throws Exception {
+				state = 12;				
+				com.altova.db.Dbs.bindParameter_empty(var3_NewQuery);
+				return false;
+			}
+			private boolean moveNext_12() throws Exception {
+				state = 14;				
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "description")))) {state = 13; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "description")));
+				return false;
+			}
+			private boolean moveNext_13() throws Exception {
+				state = 14;				
+				com.altova.db.Dbs.bindParameter_empty(var3_NewQuery);
+				return false;
+			}
+			private boolean moveNext_14() throws Exception {
+				state = 16;				
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "categories")))) {state = 15; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "categories")));
+				return false;
+			}
+			private boolean moveNext_15() throws Exception {
+				state = 16;				
+				com.altova.db.Dbs.bindParameter_empty(var3_NewQuery);
+				return false;
+			}
+			private boolean moveNext_16() throws Exception {
+				state = 18;				
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "url_key")))) {state = 17; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "url_key")));
+				return false;
+			}
+			private boolean moveNext_17() throws Exception {
+				state = 18;				
+				com.altova.db.Dbs.bindParameter_empty(var3_NewQuery);
+				return false;
+			}
+			private boolean moveNext_18() throws Exception {
+				state = 20;				
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "price")))) {state = 19; return false; }
+				com.altova.db.Dbs.bindParameter_BigDecimal(var3_NewQuery, (java.math.BigDecimal)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "price")));
+				return false;
+			}
+			private boolean moveNext_19() throws Exception {
+				state = 20;				
+				com.altova.db.Dbs.bindParameter_empty(var3_NewQuery);
+				return false;
+			}
+			private boolean moveNext_20() throws Exception {
+				state = 22;				
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "image")))) {state = 21; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "image")));
+				return false;
+			}
+			private boolean moveNext_21() throws Exception {
+				state = 22;				
+				com.altova.db.Dbs.bindParameter_empty(var3_NewQuery);
+				return false;
+			}
+			private boolean moveNext_22() throws Exception {
+				state = 24;				
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "image_label")))) {state = 23; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "image_label")));
+				return false;
+			}
+			private boolean moveNext_23() throws Exception {
+				state = 24;				
+				com.altova.db.Dbs.bindParameter_empty(var3_NewQuery);
+				return false;
+			}
+			private boolean moveNext_24() throws Exception {
+				state = 26;				
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "product_type")))) {state = 25; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "product_type")));
+				return false;
+			}
+			private boolean moveNext_25() throws Exception {
+				state = 26;				
+				com.altova.db.Dbs.bindParameter_empty(var3_NewQuery);
+				return false;
+			}
+			private boolean moveNext_26() throws Exception {
+				state = 28;				
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "product_online")))) {state = 27; return false; }
+				com.altova.db.Dbs.bindParameter_int(var3_NewQuery, (Integer)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "product_online")));
+				return false;
+			}
+			private boolean moveNext_27() throws Exception {
+				state = 28;				
+				com.altova.db.Dbs.bindParameter_empty(var3_NewQuery);
+				return false;
+			}
+			private boolean moveNext_28() throws Exception {
+				state = 30;				
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "visibility")))) {state = 29; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "visibility")));
+				return false;
+			}
+			private boolean moveNext_29() throws Exception {
+				state = 30;				
+				com.altova.db.Dbs.bindParameter_empty(var3_NewQuery);
+				return false;
+			}
+			private boolean moveNext_30() throws Exception {
+				state = 32;				
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "attribute_set_code")))) {state = 31; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "attribute_set_code")));
+				return false;
+			}
+			private boolean moveNext_31() throws Exception {
+				state = 32;				
+				com.altova.db.Dbs.bindParameter_empty(var3_NewQuery);
+				return false;
+			}
+			private boolean moveNext_32() throws Exception {
+				state = 34;				
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "additional_attribute_color")))) {state = 33; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "additional_attribute_color")));
+				return false;
+			}
+			private boolean moveNext_33() throws Exception {
+				state = 34;				
+				com.altova.db.Dbs.bindParameter_empty(var3_NewQuery);
+				return false;
+			}
+			private boolean moveNext_34() throws Exception {
+				state = 36;				
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "additional_attribute_size")))) {state = 35; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "additional_attribute_size")));
+				return false;
+			}
+			private boolean moveNext_35() throws Exception {
+				state = 36;				
+				com.altova.db.Dbs.bindParameter_empty(var3_NewQuery);
+				return false;
+			}
+			private boolean moveNext_36() throws Exception {
+				state = 38;				
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "additional_attribute_fit")))) {state = 37; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "additional_attribute_fit")));
+				return false;
+			}
+			private boolean moveNext_37() throws Exception {
+				state = 38;				
+				com.altova.db.Dbs.bindParameter_empty(var3_NewQuery);
+				return false;
+			}
+			private boolean moveNext_38() throws Exception {
+				state = 40;				
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "additional_attribute_gender")))) {state = 39; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "additional_attribute_gender")));
+				return false;
+			}
+			private boolean moveNext_39() throws Exception {
+				state = 40;				
+				com.altova.db.Dbs.bindParameter_empty(var3_NewQuery);
+				return false;
+			}
+			private boolean moveNext_40() throws Exception {
+				state = 42;				
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "additional_attribute_brand")))) {state = 41; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "additional_attribute_brand")));
+				return false;
+			}
+			private boolean moveNext_41() throws Exception {
+				state = 42;				
+				com.altova.db.Dbs.bindParameter_empty(var3_NewQuery);
+				return false;
+			}
+			private boolean moveNext_42() throws Exception {
+				state = 44;				
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "weight")))) {state = 43; return false; }
+				com.altova.db.Dbs.bindParameter_BigDecimal(var3_NewQuery, (java.math.BigDecimal)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "weight")));
+				return false;
+			}
+			private boolean moveNext_43() throws Exception {
+				state = 44;				
+				com.altova.db.Dbs.bindParameter_empty(var3_NewQuery);
+				return false;
+			}
+			private boolean moveNext_44() throws Exception {
+				state = 46;				
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "qty")))) {state = 45; return false; }
+				com.altova.db.Dbs.bindParameter_int(var3_NewQuery, (Integer)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "qty")));
+				return false;
+			}
+			private boolean moveNext_45() throws Exception {
+				state = 46;				
+				com.altova.db.Dbs.bindParameter_empty(var3_NewQuery);
+				return false;
+			}
+			private boolean moveNext_46() throws Exception {
+				state = 48;				
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "source_input_name")))) {state = 47; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "source_input_name")));
+				return false;
+			}
+			private boolean moveNext_47() throws Exception {
+				state = 48;				
+				com.altova.db.Dbs.bindParameter_empty(var3_NewQuery);
+				return false;
+			}
+			private boolean moveNext_48() throws Exception {
+				state = 50;				
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "source_input_id")))) {state = 49; return false; }
+				com.altova.db.Dbs.bindParameter_int(var3_NewQuery, (Integer)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "source_input_id")));
+				return false;
+			}
+			private boolean moveNext_49() throws Exception {
+				state = 50;				
+				com.altova.db.Dbs.bindParameter_empty(var3_NewQuery);
+				return false;
+			}
+			private boolean moveNext_50() throws Exception {
+				state = 0;				
+				current = com.altova.functions.Core.notEqual(com.altova.CoreTypes.integerToDecimal(com.altova.CoreTypes.longToInteger(com.altova.CoreTypes.intToLong(com.altova.db.Dbs.executeNonReader(var3_NewQuery)))), com.altova.CoreTypes.integerToDecimal(com.altova.CoreTypes.longToInteger(com.altova.CoreTypes.intToLong(0))));
+				pos++;
+				return true;
+			}
+
+			
+			public void close()
+			{
+				try
+				{
+				}
+				catch (Exception e)
+				{
+				}
+			}
+		}
+				
+	}
+		
+	static class main_lambda implements com.altova.mapforce.SequenceFactory
+	{
+		com.altova.db.Catalog p1;
+
+		public main_lambda(com.altova.db.Catalog _p1){ p1=_p1; }
+		
+		public Object invoke(Object o) { return new main((com.altova.db.Catalog)p1, (com.altova.db.Record) o); }	
+	}
+	static class seq1_NewQuery implements IEnumerable
+	{
+		com.altova.db.Record var1_record;
+		com.altova.db.Catalog var2_catalog;
+	
+		public seq1_NewQuery(com.altova.db.Record var1_record, com.altova.db.Catalog var2_catalog)
+		{
+			this.var1_record = var1_record;
+			this.var2_catalog = var2_catalog;
+		}
+
+		public IEnumerator enumerator() {return new Enumerator(this);}
+		
+		public static class Enumerator implements IEnumerator
+		{
+			int pos = 0;
+			int state = 1;
+			Object current;
+			seq1_NewQuery closure;
+			com.altova.db.Statement var3_NewQuery;
+			public Enumerator(seq1_NewQuery closure) 
+			{
+				this.closure = closure;
+			}
+			
+			public Object current() {return current;}
+			
+			public int position() {return pos;}
+			
+			public boolean moveNext() throws Exception
+			{
+				while (state != 0)
+				{
+					switch (state) 
+					{
+					case 1:	if (moveNext_1()) return true; break;
+					case 2:	if (moveNext_2()) return true; break;
 					case 3:	if (moveNext_3()) return true; break;
 					case 4:	if (moveNext_4()) return true; break;
 					case 5:	if (moveNext_5()) return true; break;
@@ -1160,6 +1596,10 @@ public class BatchInventoryMapToBatch extends com.altova.TraceProvider
 					case 41:	if (moveNext_41()) return true; break;
 					case 42:	if (moveNext_42()) return true; break;
 					case 43:	if (moveNext_43()) return true; break;
+					case 44:	if (moveNext_44()) return true; break;
+					case 45:	if (moveNext_45()) return true; break;
+					case 46:	if (moveNext_46()) return true; break;
+					case 47:	if (moveNext_47()) return true; break;
  					}
 				}
 				return false;
@@ -1167,9 +1607,9 @@ public class BatchInventoryMapToBatch extends com.altova.TraceProvider
 
 			private boolean moveNext_1() throws Exception {
 				state = 3;				
-				var3_NewQuery = com.altova.db.Dbs.newQuery(closure.var1_catalog, 1);
-				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "gtin")))) {state = 2; return false; }
-				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "gtin")));
+				var3_NewQuery = com.altova.db.Dbs.newQuery(closure.var2_catalog, 2);
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var1_record, "sku")))) {state = 2; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var1_record, "sku")));
 				return false;
 			}
 			private boolean moveNext_2() throws Exception {
@@ -1179,8 +1619,8 @@ public class BatchInventoryMapToBatch extends com.altova.TraceProvider
 			}
 			private boolean moveNext_3() throws Exception {
 				state = 5;				
-				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "sku")))) {state = 4; return false; }
-				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "sku")));
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var1_record, "name")))) {state = 4; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var1_record, "name")));
 				return false;
 			}
 			private boolean moveNext_4() throws Exception {
@@ -1190,8 +1630,8 @@ public class BatchInventoryMapToBatch extends com.altova.TraceProvider
 			}
 			private boolean moveNext_5() throws Exception {
 				state = 7;				
-				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "name")))) {state = 6; return false; }
-				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "name")));
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var1_record, "short_description")))) {state = 6; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var1_record, "short_description")));
 				return false;
 			}
 			private boolean moveNext_6() throws Exception {
@@ -1201,8 +1641,8 @@ public class BatchInventoryMapToBatch extends com.altova.TraceProvider
 			}
 			private boolean moveNext_7() throws Exception {
 				state = 9;				
-				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "short_description")))) {state = 8; return false; }
-				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "short_description")));
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var1_record, "description")))) {state = 8; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var1_record, "description")));
 				return false;
 			}
 			private boolean moveNext_8() throws Exception {
@@ -1212,8 +1652,8 @@ public class BatchInventoryMapToBatch extends com.altova.TraceProvider
 			}
 			private boolean moveNext_9() throws Exception {
 				state = 11;				
-				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "description")))) {state = 10; return false; }
-				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "description")));
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var1_record, "categories")))) {state = 10; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var1_record, "categories")));
 				return false;
 			}
 			private boolean moveNext_10() throws Exception {
@@ -1223,8 +1663,8 @@ public class BatchInventoryMapToBatch extends com.altova.TraceProvider
 			}
 			private boolean moveNext_11() throws Exception {
 				state = 13;				
-				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "url_key")))) {state = 12; return false; }
-				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "url_key")));
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var1_record, "url_key")))) {state = 12; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var1_record, "url_key")));
 				return false;
 			}
 			private boolean moveNext_12() throws Exception {
@@ -1234,8 +1674,8 @@ public class BatchInventoryMapToBatch extends com.altova.TraceProvider
 			}
 			private boolean moveNext_13() throws Exception {
 				state = 15;				
-				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "price")))) {state = 14; return false; }
-				com.altova.db.Dbs.bindParameter_BigDecimal(var3_NewQuery, (java.math.BigDecimal)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "price")));
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var1_record, "price")))) {state = 14; return false; }
+				com.altova.db.Dbs.bindParameter_BigDecimal(var3_NewQuery, (java.math.BigDecimal)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var1_record, "price")));
 				return false;
 			}
 			private boolean moveNext_14() throws Exception {
@@ -1245,8 +1685,8 @@ public class BatchInventoryMapToBatch extends com.altova.TraceProvider
 			}
 			private boolean moveNext_15() throws Exception {
 				state = 17;				
-				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "image")))) {state = 16; return false; }
-				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "image")));
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var1_record, "image")))) {state = 16; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var1_record, "image")));
 				return false;
 			}
 			private boolean moveNext_16() throws Exception {
@@ -1256,8 +1696,8 @@ public class BatchInventoryMapToBatch extends com.altova.TraceProvider
 			}
 			private boolean moveNext_17() throws Exception {
 				state = 19;				
-				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "image_label")))) {state = 18; return false; }
-				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "image_label")));
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var1_record, "image_label")))) {state = 18; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var1_record, "image_label")));
 				return false;
 			}
 			private boolean moveNext_18() throws Exception {
@@ -1267,8 +1707,8 @@ public class BatchInventoryMapToBatch extends com.altova.TraceProvider
 			}
 			private boolean moveNext_19() throws Exception {
 				state = 21;				
-				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "product_online")))) {state = 20; return false; }
-				com.altova.db.Dbs.bindParameter_int(var3_NewQuery, (Integer)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "product_online")));
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var1_record, "product_type")))) {state = 20; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var1_record, "product_type")));
 				return false;
 			}
 			private boolean moveNext_20() throws Exception {
@@ -1278,8 +1718,8 @@ public class BatchInventoryMapToBatch extends com.altova.TraceProvider
 			}
 			private boolean moveNext_21() throws Exception {
 				state = 23;				
-				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "visibility")))) {state = 22; return false; }
-				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "visibility")));
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var1_record, "product_online")))) {state = 22; return false; }
+				com.altova.db.Dbs.bindParameter_int(var3_NewQuery, (Integer)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var1_record, "product_online")));
 				return false;
 			}
 			private boolean moveNext_22() throws Exception {
@@ -1289,8 +1729,8 @@ public class BatchInventoryMapToBatch extends com.altova.TraceProvider
 			}
 			private boolean moveNext_23() throws Exception {
 				state = 25;				
-				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "attribute_set_code")))) {state = 24; return false; }
-				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "attribute_set_code")));
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var1_record, "visibility")))) {state = 24; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var1_record, "visibility")));
 				return false;
 			}
 			private boolean moveNext_24() throws Exception {
@@ -1300,8 +1740,8 @@ public class BatchInventoryMapToBatch extends com.altova.TraceProvider
 			}
 			private boolean moveNext_25() throws Exception {
 				state = 27;				
-				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "additional_attribute_color")))) {state = 26; return false; }
-				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "additional_attribute_color")));
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var1_record, "attribute_set_code")))) {state = 26; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var1_record, "attribute_set_code")));
 				return false;
 			}
 			private boolean moveNext_26() throws Exception {
@@ -1311,8 +1751,8 @@ public class BatchInventoryMapToBatch extends com.altova.TraceProvider
 			}
 			private boolean moveNext_27() throws Exception {
 				state = 29;				
-				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "additional_attribute_size")))) {state = 28; return false; }
-				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "additional_attribute_size")));
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var1_record, "additional_attribute_color")))) {state = 28; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var1_record, "additional_attribute_color")));
 				return false;
 			}
 			private boolean moveNext_28() throws Exception {
@@ -1322,8 +1762,8 @@ public class BatchInventoryMapToBatch extends com.altova.TraceProvider
 			}
 			private boolean moveNext_29() throws Exception {
 				state = 31;				
-				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "additional_attribute_fit")))) {state = 30; return false; }
-				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "additional_attribute_fit")));
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var1_record, "additional_attribute_size")))) {state = 30; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var1_record, "additional_attribute_size")));
 				return false;
 			}
 			private boolean moveNext_30() throws Exception {
@@ -1333,8 +1773,8 @@ public class BatchInventoryMapToBatch extends com.altova.TraceProvider
 			}
 			private boolean moveNext_31() throws Exception {
 				state = 33;				
-				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "additional_attribute_gender")))) {state = 32; return false; }
-				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "additional_attribute_gender")));
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var1_record, "additional_attribute_fit")))) {state = 32; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var1_record, "additional_attribute_fit")));
 				return false;
 			}
 			private boolean moveNext_32() throws Exception {
@@ -1344,8 +1784,8 @@ public class BatchInventoryMapToBatch extends com.altova.TraceProvider
 			}
 			private boolean moveNext_33() throws Exception {
 				state = 35;				
-				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "additional_attribute_brand")))) {state = 34; return false; }
-				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "additional_attribute_brand")));
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var1_record, "additional_attribute_gender")))) {state = 34; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var1_record, "additional_attribute_gender")));
 				return false;
 			}
 			private boolean moveNext_34() throws Exception {
@@ -1355,8 +1795,8 @@ public class BatchInventoryMapToBatch extends com.altova.TraceProvider
 			}
 			private boolean moveNext_35() throws Exception {
 				state = 37;				
-				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "weight")))) {state = 36; return false; }
-				com.altova.db.Dbs.bindParameter_BigDecimal(var3_NewQuery, (java.math.BigDecimal)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "weight")));
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var1_record, "additional_attribute_brand")))) {state = 36; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var1_record, "additional_attribute_brand")));
 				return false;
 			}
 			private boolean moveNext_36() throws Exception {
@@ -1366,8 +1806,8 @@ public class BatchInventoryMapToBatch extends com.altova.TraceProvider
 			}
 			private boolean moveNext_37() throws Exception {
 				state = 39;				
-				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "qty")))) {state = 38; return false; }
-				com.altova.db.Dbs.bindParameter_int(var3_NewQuery, (Integer)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "qty")));
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var1_record, "weight")))) {state = 38; return false; }
+				com.altova.db.Dbs.bindParameter_BigDecimal(var3_NewQuery, (java.math.BigDecimal)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var1_record, "weight")));
 				return false;
 			}
 			private boolean moveNext_38() throws Exception {
@@ -1377,8 +1817,8 @@ public class BatchInventoryMapToBatch extends com.altova.TraceProvider
 			}
 			private boolean moveNext_39() throws Exception {
 				state = 41;				
-				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "source_input_name")))) {state = 40; return false; }
-				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "source_input_name")));
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var1_record, "qty")))) {state = 40; return false; }
+				com.altova.db.Dbs.bindParameter_int(var3_NewQuery, (Integer)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var1_record, "qty")));
 				return false;
 			}
 			private boolean moveNext_40() throws Exception {
@@ -1388,8 +1828,8 @@ public class BatchInventoryMapToBatch extends com.altova.TraceProvider
 			}
 			private boolean moveNext_41() throws Exception {
 				state = 43;				
-				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var2_record, "source_input_id")))) {state = 42; return false; }
-				com.altova.db.Dbs.bindParameter_int(var3_NewQuery, (Integer)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var2_record, "source_input_id")));
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var1_record, "source_input_name")))) {state = 42; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var1_record, "source_input_name")));
 				return false;
 			}
 			private boolean moveNext_42() throws Exception {
@@ -1398,6 +1838,28 @@ public class BatchInventoryMapToBatch extends com.altova.TraceProvider
 				return false;
 			}
 			private boolean moveNext_43() throws Exception {
+				state = 45;				
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var1_record, "source_input_id")))) {state = 44; return false; }
+				com.altova.db.Dbs.bindParameter_int(var3_NewQuery, (Integer)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var1_record, "source_input_id")));
+				return false;
+			}
+			private boolean moveNext_44() throws Exception {
+				state = 45;				
+				com.altova.db.Dbs.bindParameter_empty(var3_NewQuery);
+				return false;
+			}
+			private boolean moveNext_45() throws Exception {
+				state = 47;				
+				if (!(com.altova.functions.Core.exists(com.altova.db.Dbs.readField(closure.var1_record, "gtin")))) {state = 46; return false; }
+				com.altova.db.Dbs.bindParameter_String(var3_NewQuery, (java.lang.String)com.altova.functions.Core.first(com.altova.db.Dbs.readField(closure.var1_record, "gtin")));
+				return false;
+			}
+			private boolean moveNext_46() throws Exception {
+				state = 47;				
+				com.altova.db.Dbs.bindParameter_empty(var3_NewQuery);
+				return false;
+			}
+			private boolean moveNext_47() throws Exception {
 				state = 0;				
 				current = com.altova.functions.Core.notEqual(com.altova.CoreTypes.integerToDecimal(com.altova.CoreTypes.longToInteger(com.altova.CoreTypes.intToLong(com.altova.db.Dbs.executeNonReader(var3_NewQuery)))), com.altova.CoreTypes.integerToDecimal(com.altova.CoreTypes.longToInteger(com.altova.CoreTypes.intToLong(0))));
 				pos++;
@@ -1416,15 +1878,6 @@ public class BatchInventoryMapToBatch extends com.altova.TraceProvider
 			}
 		}
 				
-	}
-		
-	static class main_lambda implements com.altova.mapforce.SequenceFactory
-	{
-		com.altova.db.Catalog p1;
-
-		public main_lambda(com.altova.db.Catalog _p1){ p1=_p1; }
-		
-		public Object invoke(Object o) { return new main((com.altova.db.Catalog)p1, (com.altova.db.Record) o); }	
 	}
 				
 			}

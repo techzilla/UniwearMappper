@@ -5,7 +5,7 @@
 		<datasources>
 			<datasource name="BatchConnection">
 				<properties JDBCDriver="sun.jdbc.odbc.JdbcOdbcDriver" JDBCDatabaseURL="jdbc:odbc:MariaDB" DBUser="batch" DBPassword="batch" DBDataSource="127.0.0.1" DBCatalog="batch" OLEDBOptions="DSN=MariaDB;"/>
-				<database_connection is_global_resource="Yes" global_resource_alias="Batch" vendor="mariadb" import_kind="ODBC" name="SPIBatch" path="Batch">
+				<database_connection is_global_resource="Yes" global_resource_alias="Batch" vendor="mariadb" import_kind="ODBC" name="SPIBatch" path="SPIBatch">
 					<LocalViewStorage/>
 					<LocalRelationsStorage/>
 					<RecordSetStructureStorage/>
@@ -37,55 +37,12 @@
 						<constant datatype="string"/>
 					</data>
 				</component>
-				<component name="gtin14" library="user" uid="8" kind="19" visible="0">
-					<view ltx="665" lty="-88" rbx="804" rby="-71"/>
-					<data>
-						<root scrollposition="1">
-							<header>
-								<namespaces>
-									<namespace/>
-								</namespaces>
-							</header>
-							<entry name="itemNumber" inpkey="3" componentid="9"/>
-						</root>
-						<root scrollposition="1">
-							<header>
-								<namespaces>
-									<namespace/>
-								</namespaces>
-							</header>
-							<entry name="result" outkey="4" componentid="6"/>
-						</root>
-					</data>
-				</component>
-				<component name="round" library="core" uid="83" kind="5">
-					<properties/>
-					<sources>
-						<datapoint pos="0" key="94"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="95"/>
-					</targets>
-					<view ltx="593" lty="-88" rbx="665" rby="-50"/>
-				</component>
-				<component name="translate" library="core" uid="85" kind="5">
-					<properties/>
-					<sources>
-						<datapoint pos="0" key="101"/>
-						<datapoint pos="1" key="102"/>
-						<datapoint pos="2" key="103"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="104"/>
-					</targets>
-					<view ltx="384" lty="184" rbx="465" rby="254"/>
-				</component>
 				<component name="constant" library="core" uid="92" kind="2">
 					<properties/>
 					<targets>
 						<datapoint pos="0" key="157"/>
 					</targets>
-					<view ltx="856" lty="418" rbx="911" rby="435"/>
+					<view ltx="856" lty="440" rbx="911" rby="457"/>
 					<data>
 						<constant value="SPI" datatype="string"/>
 					</data>
@@ -113,11 +70,148 @@
 					</targets>
 					<view ltx="643" lty="294" rbx="781" rby="380"/>
 				</component>
+				<component name="get-mapping" library="user" uid="106" kind="19" visible="0">
+					<view ltx="856" lty="402" rbx="923" rby="419"/>
+					<data>
+						<root>
+							<header>
+								<namespaces/>
+							</header>
+						</root>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="result" outkey="166" componentid="80"/>
+						</root>
+					</data>
+				</component>
+				<component name="translate" library="core" uid="85" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="101"/>
+						<datapoint pos="1" key="102"/>
+						<datapoint pos="2" key="103"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="104"/>
+					</targets>
+					<view ltx="384" lty="184" rbx="465" rby="254"/>
+				</component>
+				<component name="round" library="core" uid="83" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="94"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="95"/>
+					</targets>
+					<view ltx="593" lty="-88" rbx="665" rby="-50"/>
+				</component>
+				<component name="fomat-gtin14" library="user" uid="112" kind="19" visible="0">
+					<view ltx="665" lty="-89" rbx="804" rby="-72"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="itemNumber" inpkey="219" componentid="9"/>
+						</root>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="result" outkey="220" componentid="6"/>
+						</root>
+					</data>
+				</component>
+				<component name="value-map" library="core" uid="113" kind="23">
+					<properties/>
+					<sources>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint/>
+					</targets>
+					<view ltx="303" lty="-75" rbx="383" rby="-37"/>
+					<data>
+						<valuemap>
+							<valuemapTable/>
+							<input name="input" type="string"/>
+							<result name="result" type="string"/>
+						</valuemap>
+					</data>
+				</component>
+				<component name="db" library="db" uid="51" kind="15">
+					<properties XSLTDefaultOutput="1"/>
+					<view ltx="856" lty="-88" rbx="1026" rby="380"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace/>
+									<namespace uid="http://www.altova.com/mapforce"/>
+								</namespaces>
+							</header>
+							<entry name="document" ns="1" expanded="1">
+								<entry name="inventory" type="table" inpkey="189" expanded="1">
+									<tableactions>
+										<action operation="update" proceedchildren="1">
+											<field name="gtin" function="equal"/>
+										</action>
+										<action proceedchildren="1"/>
+									</tableactions>
+									<entry name="gtin" inpkey="155"/>
+									<entry name="product_type" inpkey="174"/>
+									<entry name="style_code" inpkey="162"/>
+									<entry name="color_code" inpkey="175"/>
+									<entry name="color_description" inpkey="176"/>
+									<entry name="color_type" inpkey="177"/>
+									<entry name="size_code" inpkey="178"/>
+									<entry name="brand" inpkey="170"/>
+									<entry name="gender" inpkey="179"/>
+									<entry name="fit" inpkey="180"/>
+									<entry name="price" inpkey="171"/>
+									<entry name="price_map" inpkey="172"/>
+									<entry name="collection" inpkey="173"/>
+									<entry name="description_short" inpkey="181"/>
+									<entry name="description_long" inpkey="182"/>
+									<entry name="status" inpkey="218"/>
+									<entry name="callouts" inpkey="183"/>
+									<entry name="image_1" inpkey="184"/>
+									<entry name="image_2" inpkey="185"/>
+									<entry name="stock" inpkey="168"/>
+									<entry name="weight" inpkey="169"/>
+									<entry name="supplier" inpkey="156"/>
+									<entry name="source_input_name" inpkey="214"/>
+									<entry name="source_input_id" inpkey="215"/>
+								</entry>
+							</entry>
+						</root>
+						<database ref="BatchConnection">
+							<data>
+								<selections>
+									<selection>
+										<PathElement Name="SPIBatch" Kind="DataSource"/>
+										<PathElement Name="batch" Kind="Database"/>
+										<PathElement Name="inventory" Kind="Table"/>
+									</selection>
+								</selections>
+							</data>
+						</database>
+					</data>
+				</component>
 				<component name="SPIInventory" library="text" uid="2" kind="16">
 					<properties/>
-					<view ltx="4" lty="-88" rbx="212" rby="412"/>
+					<view ltx="4" lty="-88" rbx="189" rby="525"/>
 					<data>
-						<root scrollposition="96">
+						<root scrollposition="1">
 							<header>
 								<namespaces>
 									<namespace uid="http://www.altova.com/mapforce"/>
@@ -140,6 +234,7 @@
 										<entry name="Full Description" ns="1" outkey="201"/>
 										<entry name="Garment Type" ns="1" outkey="202"/>
 										<entry name="Color Type" ns="1" outkey="203"/>
+										<entry name="Makable" ns="1" outkey="217"/>
 										<entry name="Availability" ns="1" outkey="204"/>
 										<entry name="Collection" ns="1" outkey="205"/>
 										<entry name="Brand" ns="1" outkey="206"/>
@@ -194,92 +289,15 @@
 						</text>
 					</data>
 				</component>
-				<component name="db" library="db" uid="51" kind="15">
-					<properties XSLTDefaultOutput="1"/>
-					<view ltx="856" lty="-88" rbx="1024" rby="357"/>
-					<data>
-						<root scrollposition="1">
-							<header>
-								<namespaces>
-									<namespace/>
-									<namespace uid="http://www.altova.com/mapforce"/>
-								</namespaces>
-							</header>
-							<entry name="document" ns="1" expanded="1">
-								<entry name="inventory" type="table" inpkey="189" expanded="1">
-									<tableactions>
-										<action operation="update" proceedchildren="1">
-											<field name="gtin" function="equal"/>
-										</action>
-										<action proceedchildren="1"/>
-									</tableactions>
-									<entry name="gtin" inpkey="155"/>
-									<entry name="product_type" inpkey="174"/>
-									<entry name="style_code" inpkey="162"/>
-									<entry name="color_code" inpkey="175"/>
-									<entry name="color_description" inpkey="176"/>
-									<entry name="color_type" inpkey="177"/>
-									<entry name="size_code" inpkey="178"/>
-									<entry name="brand" inpkey="170"/>
-									<entry name="gender" inpkey="179"/>
-									<entry name="fit" inpkey="180"/>
-									<entry name="price" inpkey="171"/>
-									<entry name="price_map" inpkey="172"/>
-									<entry name="collection" inpkey="173"/>
-									<entry name="description_short" inpkey="181"/>
-									<entry name="description_long" inpkey="182"/>
-									<entry name="callouts" inpkey="183"/>
-									<entry name="image_1" inpkey="184"/>
-									<entry name="image_2" inpkey="185"/>
-									<entry name="stock" inpkey="168"/>
-									<entry name="weight" inpkey="169"/>
-									<entry name="supplier" inpkey="156"/>
-									<entry name="source_input_name" inpkey="214"/>
-									<entry name="source_input_id" inpkey="215"/>
-								</entry>
-							</entry>
-						</root>
-						<database ref="BatchConnection">
-							<data>
-								<selections>
-									<selection>
-										<PathElement Name="Batch" Kind="DataSource"/>
-										<PathElement Name="batch" Kind="Database"/>
-										<PathElement Name="inventory" Kind="Table"/>
-									</selection>
-								</selections>
-							</data>
-						</database>
-					</data>
-				</component>
-				<component name="get-mapping" library="user" uid="106" kind="19" visible="0">
-					<view ltx="856" lty="380" rbx="923" rby="397"/>
-					<data>
-						<root>
-							<header>
-								<namespaces/>
-							</header>
-						</root>
-						<root>
-							<header>
-								<namespaces>
-									<namespace/>
-								</namespaces>
-							</header>
-							<entry name="result" outkey="166" componentid="80"/>
-						</root>
-					</data>
-				</component>
 			</children>
 		</structure>
 		<connections>
-			<edge from="95" to="3"/>
 			<edge from="198" to="94"/>
 			<edge from="104" to="99"/>
 			<edge from="204" to="101"/>
 			<edge from="98" to="102"/>
 			<edge from="97" to="103"/>
-			<edge from="4" to="155"/>
+			<edge from="220" to="155"/>
 			<edge from="157" to="156"/>
 			<edge from="194" to="162"/>
 			<edge from="100" to="168"/>
@@ -303,6 +321,8 @@
 			<edge from="29" to="189"/>
 			<edge from="166" to="214"/>
 			<edge from="193" to="215"/>
+			<edge from="217" to="218"/>
+			<edge from="95" to="219"/>
 		</connections>
 	</component>
 </mapping>

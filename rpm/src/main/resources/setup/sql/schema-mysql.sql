@@ -15,6 +15,7 @@ CREATE TABLE IF NOT EXISTS `inventory` (
 	`collection` varchar(256),
 	`description_short` TEXT,
 	`description_long` TEXT,
+    `status` tinyint NOT NULL DEFAULT '1',
 	`callouts` TEXT,
 	`image_1` TEXT,
 	`image_2` TEXT,
