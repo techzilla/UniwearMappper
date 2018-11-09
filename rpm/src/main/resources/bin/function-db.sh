@@ -45,9 +45,9 @@ mysqlExecFile() {
 	conf="$(mkTemp)"
 	chmod 644 "${conf}"
 
-	printf "%s\n" \
+	printf "%s\\n" \
 		"[client]" \
-		"default-character-set"="utf8mb4" \
+		"default-character-set=utf8mb4" \
 		"user=${db_user}" \
 		"password=${db_pass}" \
 		"host=${db_host}" \

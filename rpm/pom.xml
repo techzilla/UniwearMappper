@@ -67,7 +67,7 @@
                             <resources>
                                 <resource>
                                     <directory>${rpmResourceDirectory}</directory>
-                                    <filtering>true</filtering>
+                                    <filtering>false</filtering>
                                 </resource>
                             </resources>
                         </configuration>
