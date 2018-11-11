@@ -68,7 +68,7 @@ public class SPIMapToSPIBatch extends com.altova.TraceProvider
 			private boolean moveNext_2() throws Exception {
 				state = 0;				
 				var2_RuntimeContext = com.altova.functions.RuntimeContext.construct();
-				com.altova.functions.Core.resetAutoNumber(var2_RuntimeContext, "mapforce_autonumber_2382823462112");
+				com.altova.functions.Core.resetAutoNumber(var2_RuntimeContext, "mapforce_autonumber_1804612949648");
 				current = (com.altova.db.Record)com.altova.functions.Core.first((new seq1_NewRecord(closure.var1_SPIInventory_Instance, var2_RuntimeContext)));
 				pos++;
 				return true;
@@ -225,7 +225,7 @@ public class SPIMapToSPIBatch extends com.altova.TraceProvider
 				com.altova.db.Dbs.writeField(var4_NewRecord, "collection", (new seq15_map(((com.altova.mapforce.IMFNode)(var3_filter_elements_nodename.current())))));
 				com.altova.db.Dbs.writeField(var4_NewRecord, "description_short", (new seq16_map(((com.altova.mapforce.IMFNode)(var3_filter_elements_nodename.current())))));
 				com.altova.db.Dbs.writeField(var4_NewRecord, "description_long", (new seq17_map(((com.altova.mapforce.IMFNode)(var3_filter_elements_nodename.current())))));
-				com.altova.db.Dbs.writeField(var4_NewRecord, "status", (new seq18_map(((com.altova.mapforce.IMFNode)(var3_filter_elements_nodename.current())))));
+				com.altova.db.Dbs.writeField(var4_NewRecord, "status", (new seq18_join(((com.altova.mapforce.IMFNode)(var3_filter_elements_nodename.current())))));
 				com.altova.db.Dbs.writeField(var4_NewRecord, "callouts", (new seq19_map(((com.altova.mapforce.IMFNode)(var3_filter_elements_nodename.current())))));
 				com.altova.db.Dbs.writeField(var4_NewRecord, "image_1", (new seq20_map(((com.altova.mapforce.IMFNode)(var3_filter_elements_nodename.current())))));
 				com.altova.db.Dbs.writeField(var4_NewRecord, "image_2", (new seq21_map(((com.altova.mapforce.IMFNode)(var3_filter_elements_nodename.current())))));
@@ -1355,11 +1355,11 @@ public class SPIMapToSPIBatch extends com.altova.TraceProvider
 		}
 				
 	}
-	static class seq18_map implements IEnumerable
+	static class seq18_join implements IEnumerable
 	{
 		com.altova.mapforce.IMFNode var1_cur;
 	
-		public seq18_map(com.altova.mapforce.IMFNode var1_cur)
+		public seq18_join(com.altova.mapforce.IMFNode var1_cur)
 		{
 			this.var1_cur = var1_cur;
 		}
@@ -1371,9 +1371,10 @@ public class SPIMapToSPIBatch extends com.altova.TraceProvider
 			int pos = 0;
 			int state = 1;
 			Object current;
-			seq18_map closure;
+			seq18_join closure;
 			IEnumerator var2_filter_elements_nodename;
-			public Enumerator(seq18_map closure) 
+			IEnumerator var3_vmf2_inputtoresult;
+			public Enumerator(seq18_join closure) 
 			{
 				this.closure = closure;
 			}
@@ -1391,6 +1392,8 @@ public class SPIMapToSPIBatch extends com.altova.TraceProvider
 					case 1:	if (moveNext_1()) return true; break;
 					case 2:	if (moveNext_2()) return true; break;
 					case 3:	if (moveNext_3()) return true; break;
+					case 4:	if (moveNext_4()) return true; break;
+					case 5:	if (moveNext_5()) return true; break;
  					}
 				}
 				return false;
@@ -1402,15 +1405,26 @@ public class SPIMapToSPIBatch extends com.altova.TraceProvider
 				return false;
 			}
 			private boolean moveNext_2() throws Exception {
-				state = 2;				
+				state = 4;				
 				if (!var2_filter_elements_nodename.moveNext()) {state = 3; return false; }
-				current = com.altova.CoreTypes.longToInt(com.altova.CoreTypes.integerToLong(com.altova.CoreTypes.parseInteger(com.altova.CoreTypes.nodeToString(((com.altova.mapforce.IMFNode)(var2_filter_elements_nodename.current()))))));
-				pos++;
-				return true;
+				var3_vmf2_inputtoresult = (biz.uniwear.batch.mappings.vmf.vmf2_inputtoresult.eval(com.altova.functions.Lang.lowercase(com.altova.CoreTypes.nodeToString(((com.altova.mapforce.IMFNode)(var2_filter_elements_nodename.current())))))).enumerator();
+				return false;
 			}
 			private boolean moveNext_3() throws Exception {
 				state = 0;				
 				if( var2_filter_elements_nodename != null ) { var2_filter_elements_nodename.close(); var2_filter_elements_nodename = null; }
+				return false;
+			}
+			private boolean moveNext_4() throws Exception {
+				state = 4;				
+				if (!var3_vmf2_inputtoresult.moveNext()) {state = 5; return false; }
+				current = var3_vmf2_inputtoresult.current();
+				pos++;
+				return true;
+			}
+			private boolean moveNext_5() throws Exception {
+				state = 2;				
+				if( var3_vmf2_inputtoresult != null ) { var3_vmf2_inputtoresult.close(); var3_vmf2_inputtoresult = null; }
 				return false;
 			}
 
@@ -1419,6 +1433,7 @@ public class SPIMapToSPIBatch extends com.altova.TraceProvider
 			{
 				try
 				{
+				if( var3_vmf2_inputtoresult != null ) { var3_vmf2_inputtoresult.close(); var3_vmf2_inputtoresult = null; }
 				if( var2_filter_elements_nodename != null ) { var2_filter_elements_nodename.close(); var2_filter_elements_nodename = null; }
 				}
 				catch (Exception e)
@@ -1834,7 +1849,7 @@ public class SPIMapToSPIBatch extends com.altova.TraceProvider
 
 			private boolean moveNext_1() throws Exception {
 				state = 0;				
-				var2_auto_number = com.altova.functions.Core.autoNumber(closure.var1_state, "mapforce_autonumber_2382823462112", 1L, 1L, "");
+				var2_auto_number = com.altova.functions.Core.autoNumber(closure.var1_state, "mapforce_autonumber_1804612949648", 1L, 1L, "");
 				current = com.altova.CoreTypes.longToInt(var2_auto_number);
 				pos++;
 				return true;
@@ -2050,7 +2065,7 @@ public class SPIMapToSPIBatch extends com.altova.TraceProvider
 				com.altova.db.Dbs.addParameter(var2_NewStatement, java.sql.Types.CHAR,-1);
 				com.altova.db.Dbs.addParameter(var2_NewStatement, java.sql.Types.CHAR,-1);
 				com.altova.db.Dbs.addParameter(var2_NewStatement, java.sql.Types.CHAR,-1);
-				com.altova.db.Dbs.addParameter(var2_NewStatement, java.sql.Types.TINYINT,-1);
+				com.altova.db.Dbs.addParameter(var2_NewStatement, java.sql.Types.INTEGER,-1);
 				com.altova.db.Dbs.addParameter(var2_NewStatement, java.sql.Types.CHAR,-1);
 				com.altova.db.Dbs.addParameter(var2_NewStatement, java.sql.Types.CHAR,-1);
 				com.altova.db.Dbs.addParameter(var2_NewStatement, java.sql.Types.CHAR,-1);
@@ -2077,7 +2092,7 @@ public class SPIMapToSPIBatch extends com.altova.TraceProvider
 				com.altova.db.Dbs.addParameter(var3_NewStatement, java.sql.Types.CHAR,-1);
 				com.altova.db.Dbs.addParameter(var3_NewStatement, java.sql.Types.CHAR,-1);
 				com.altova.db.Dbs.addParameter(var3_NewStatement, java.sql.Types.CHAR,-1);
-				com.altova.db.Dbs.addParameter(var3_NewStatement, java.sql.Types.TINYINT,-1);
+				com.altova.db.Dbs.addParameter(var3_NewStatement, java.sql.Types.INTEGER,-1);
 				com.altova.db.Dbs.addParameter(var3_NewStatement, java.sql.Types.CHAR,-1);
 				com.altova.db.Dbs.addParameter(var3_NewStatement, java.sql.Types.CHAR,-1);
 				com.altova.db.Dbs.addParameter(var3_NewStatement, java.sql.Types.CHAR,-1);

@@ -170,8 +170,10 @@ public class BatchInventoryMapToBatch extends com.altova.TraceProvider
 			com.altova.db.Record var3_NewRecord;
 			com.altova.mapforce.IEnumerable var4_read_field;
 			com.altova.mapforce.IEnumerable var5_read_field;
-			java.lang.String var6_substring;
-			com.altova.mapforce.IEnumerable var7_join;
+			com.altova.mapforce.IEnumerable var6_read_field;
+			com.altova.mapforce.IEnumerable var7_read_field;
+			java.lang.String var8_substring;
+			com.altova.mapforce.IEnumerable var9_join;
 			public Enumerator(seq2_map closure) 
 			{
 				this.closure = closure;
@@ -204,32 +206,34 @@ public class BatchInventoryMapToBatch extends com.altova.TraceProvider
 				state = 2;				
 				if (!var2_ReadRecordSet.moveNext()) {state = 3; return false; }
 				var3_NewRecord = com.altova.db.Dbs.newRecord();
-				var4_read_field = new com.altova.functions.Core.SequenceCache(com.altova.db.Dbs.readField(((com.altova.db.Record)(var2_ReadRecordSet.current())), "size_code"));
-				var5_read_field = new com.altova.functions.Core.SequenceCache(com.altova.db.Dbs.readField(((com.altova.db.Record)(var2_ReadRecordSet.current())), "brand"));
-				var6_substring = com.altova.functions.Core.substring("C:\\Users\\User\\Projects\\batch\\mappings\\project\\Mappings\\BatchToBatchProducts.mfd", com.altova.CoreTypes.decimalToDouble(com.altova.functions.Core.add(biz.uniwear.batch.mappings.core.get_position_of_last_delimiter.eval("C:\\Users\\User\\Projects\\batch\\mappings\\project\\Mappings\\BatchToBatchProducts.mfd", "/", "\\"), new java.math.BigDecimal("1"))), com.altova.CoreTypes.integerToDouble(com.altova.CoreTypes.longToInteger(com.altova.CoreTypes.intToLong(com.altova.functions.Core.stringLength("C:\\Users\\User\\Projects\\batch\\mappings\\project\\Mappings\\BatchToBatchProducts.mfd")))));
-				var7_join = new com.altova.functions.Core.SequenceCache((new seq5_join(((com.altova.db.Record)(var2_ReadRecordSet.current())), var4_read_field, var5_read_field)));
+				var4_read_field = new com.altova.functions.Core.SequenceCache(com.altova.db.Dbs.readField(((com.altova.db.Record)(var2_ReadRecordSet.current())), "stock"));
+				var5_read_field = new com.altova.functions.Core.SequenceCache(com.altova.db.Dbs.readField(((com.altova.db.Record)(var2_ReadRecordSet.current())), "price"));
+				var6_read_field = new com.altova.functions.Core.SequenceCache(com.altova.db.Dbs.readField(((com.altova.db.Record)(var2_ReadRecordSet.current())), "size_code"));
+				var7_read_field = new com.altova.functions.Core.SequenceCache(com.altova.db.Dbs.readField(((com.altova.db.Record)(var2_ReadRecordSet.current())), "brand"));
+				var8_substring = com.altova.functions.Core.substring("C:\\Users\\User\\Projects\\batch\\mappings\\project\\Mappings\\BatchToBatchProducts.mfd", com.altova.CoreTypes.decimalToDouble(com.altova.functions.Core.add(biz.uniwear.batch.mappings.core.get_position_of_last_delimiter.eval("C:\\Users\\User\\Projects\\batch\\mappings\\project\\Mappings\\BatchToBatchProducts.mfd", "/", "\\"), new java.math.BigDecimal("1"))), com.altova.CoreTypes.integerToDouble(com.altova.CoreTypes.longToInteger(com.altova.CoreTypes.intToLong(com.altova.functions.Core.stringLength("C:\\Users\\User\\Projects\\batch\\mappings\\project\\Mappings\\BatchToBatchProducts.mfd")))));
+				var9_join = new com.altova.functions.Core.SequenceCache((new seq5_join(var7_read_field, var6_read_field, ((com.altova.db.Record)(var2_ReadRecordSet.current())))));
 				com.altova.db.Dbs.writeField(var3_NewRecord, "gtin", com.altova.db.Dbs.readField(((com.altova.db.Record)(var2_ReadRecordSet.current())), "gtin"));
-				com.altova.db.Dbs.writeField(var3_NewRecord, "sku", (new seq6_join(((com.altova.db.Record)(var2_ReadRecordSet.current())), var4_read_field, var5_read_field)));
-				com.altova.db.Dbs.writeField(var3_NewRecord, "name", var7_join);
+				com.altova.db.Dbs.writeField(var3_NewRecord, "sku", (new seq6_join(var7_read_field, var6_read_field, ((com.altova.db.Record)(var2_ReadRecordSet.current())))));
+				com.altova.db.Dbs.writeField(var3_NewRecord, "name", var9_join);
 				com.altova.db.Dbs.writeField(var3_NewRecord, "short_description", com.altova.db.Dbs.readField(((com.altova.db.Record)(var2_ReadRecordSet.current())), "description_short"));
 				com.altova.db.Dbs.writeField(var3_NewRecord, "description", com.altova.db.Dbs.readField(((com.altova.db.Record)(var2_ReadRecordSet.current())), "description_long"));
 				com.altova.db.Dbs.writeField(var3_NewRecord, "categories", com.altova.functions.Core.box("Unknown"));
-				com.altova.db.Dbs.writeField(var3_NewRecord, "url_key", (new seq7_join(((com.altova.db.Record)(var2_ReadRecordSet.current())), var4_read_field, var5_read_field)));
-				com.altova.db.Dbs.writeField(var3_NewRecord, "price", (new seq8_join(((com.altova.db.Record)(var2_ReadRecordSet.current())))));
+				com.altova.db.Dbs.writeField(var3_NewRecord, "url_key", (new seq7_join(var7_read_field, var6_read_field, ((com.altova.db.Record)(var2_ReadRecordSet.current())))));
+				com.altova.db.Dbs.writeField(var3_NewRecord, "price", (new seq8_join(var5_read_field, ((com.altova.db.Record)(var2_ReadRecordSet.current())))));
 				com.altova.db.Dbs.writeField(var3_NewRecord, "image", com.altova.db.Dbs.readField(((com.altova.db.Record)(var2_ReadRecordSet.current())), "image_1"));
-				com.altova.db.Dbs.writeField(var3_NewRecord, "image_label", var7_join);
+				com.altova.db.Dbs.writeField(var3_NewRecord, "image_label", var9_join);
 				com.altova.db.Dbs.writeField(var3_NewRecord, "product_type", com.altova.functions.Core.box("simple"));
 				com.altova.db.Dbs.writeField(var3_NewRecord, "product_online", com.altova.functions.Core.box(com.altova.CoreTypes.longToInt(com.altova.CoreTypes.integerToLong(com.altova.CoreTypes.decimalToInteger(new java.math.BigDecimal("1"))))));
 				com.altova.db.Dbs.writeField(var3_NewRecord, "visibility", com.altova.functions.Core.box("Not Visible Individually"));
 				com.altova.db.Dbs.writeField(var3_NewRecord, "attribute_set_code", com.altova.functions.Core.box("Wearable"));
 				com.altova.db.Dbs.writeField(var3_NewRecord, "additional_attribute_color", com.altova.db.Dbs.readField(((com.altova.db.Record)(var2_ReadRecordSet.current())), "color_description"));
-				com.altova.db.Dbs.writeField(var3_NewRecord, "additional_attribute_size", var4_read_field);
+				com.altova.db.Dbs.writeField(var3_NewRecord, "additional_attribute_size", var6_read_field);
 				com.altova.db.Dbs.writeField(var3_NewRecord, "additional_attribute_fit", com.altova.db.Dbs.readField(((com.altova.db.Record)(var2_ReadRecordSet.current())), "fit"));
 				com.altova.db.Dbs.writeField(var3_NewRecord, "additional_attribute_gender", com.altova.db.Dbs.readField(((com.altova.db.Record)(var2_ReadRecordSet.current())), "gender"));
-				com.altova.db.Dbs.writeField(var3_NewRecord, "additional_attribute_brand", var5_read_field);
+				com.altova.db.Dbs.writeField(var3_NewRecord, "additional_attribute_brand", var7_read_field);
 				com.altova.db.Dbs.writeField(var3_NewRecord, "weight", com.altova.db.Dbs.readField(((com.altova.db.Record)(var2_ReadRecordSet.current())), "weight"));
-				com.altova.db.Dbs.writeField(var3_NewRecord, "qty", com.altova.db.Dbs.readField(((com.altova.db.Record)(var2_ReadRecordSet.current())), "stock"));
-				com.altova.db.Dbs.writeField(var3_NewRecord, "source_input_name", com.altova.functions.Core.box(com.altova.functions.Core.substring(var6_substring, com.altova.CoreTypes.parseDouble("1"), com.altova.CoreTypes.decimalToDouble(com.altova.functions.Core.subtract(com.altova.CoreTypes.integerToDecimal(com.altova.CoreTypes.longToInteger(com.altova.CoreTypes.intToLong(com.altova.functions.Core.stringLength(var6_substring)))), com.altova.CoreTypes.integerToDecimal(com.altova.CoreTypes.longToInteger(com.altova.CoreTypes.intToLong(com.altova.functions.Core.stringLength(biz.uniwear.batch.mappings.core.get_fileext.eval(var6_substring))))))))));
+				com.altova.db.Dbs.writeField(var3_NewRecord, "qty", com.altova.functions.Core.box(com.altova.CoreTypes.longToInt(com.altova.CoreTypes.integerToLong(com.altova.CoreTypes.decimalToInteger((java.math.BigDecimal)com.altova.functions.Core.first((new seq11_if_exists(var4_read_field))))))));
+				com.altova.db.Dbs.writeField(var3_NewRecord, "source_input_name", com.altova.functions.Core.box(com.altova.functions.Core.substring(var8_substring, com.altova.CoreTypes.parseDouble("1"), com.altova.CoreTypes.decimalToDouble(com.altova.functions.Core.subtract(com.altova.CoreTypes.integerToDecimal(com.altova.CoreTypes.longToInteger(com.altova.CoreTypes.intToLong(com.altova.functions.Core.stringLength(var8_substring)))), com.altova.CoreTypes.integerToDecimal(com.altova.CoreTypes.longToInteger(com.altova.CoreTypes.intToLong(com.altova.functions.Core.stringLength(biz.uniwear.batch.mappings.core.get_fileext.eval(var8_substring))))))))));
 				com.altova.db.Dbs.writeField(var3_NewRecord, "source_input_id", com.altova.db.Dbs.readField(((com.altova.db.Record)(var2_ReadRecordSet.current())), "id"));
 				current = var3_NewRecord;
 				pos++;
@@ -402,15 +406,15 @@ public class BatchInventoryMapToBatch extends com.altova.TraceProvider
 	}
 	static class seq5_join implements IEnumerable
 	{
-		com.altova.db.Record var1_cur;
+		com.altova.mapforce.IEnumerable var1_read_field;
 		com.altova.mapforce.IEnumerable var2_read_field;
-		com.altova.mapforce.IEnumerable var3_read_field;
+		com.altova.db.Record var3_cur;
 	
-		public seq5_join(com.altova.db.Record var1_cur, com.altova.mapforce.IEnumerable var2_read_field, com.altova.mapforce.IEnumerable var3_read_field)
+		public seq5_join(com.altova.mapforce.IEnumerable var1_read_field, com.altova.mapforce.IEnumerable var2_read_field, com.altova.db.Record var3_cur)
 		{
-			this.var1_cur = var1_cur;
+			this.var1_read_field = var1_read_field;
 			this.var2_read_field = var2_read_field;
-			this.var3_read_field = var3_read_field;
+			this.var3_cur = var3_cur;
 		}
 
 		public IEnumerator enumerator() {return new Enumerator(this);}
@@ -456,13 +460,13 @@ public class BatchInventoryMapToBatch extends com.altova.TraceProvider
 
 			private boolean moveNext_1() throws Exception {
 				state = 2;				
-				var4_read_field = (closure.var3_read_field).enumerator();
+				var4_read_field = (closure.var1_read_field).enumerator();
 				return false;
 			}
 			private boolean moveNext_2() throws Exception {
 				state = 4;				
 				if (!var4_read_field.moveNext()) {state = 3; return false; }
-				var5_read_field = (com.altova.db.Dbs.readField(closure.var1_cur, "style_code")).enumerator();
+				var5_read_field = (com.altova.db.Dbs.readField(closure.var3_cur, "style_code")).enumerator();
 				return false;
 			}
 			private boolean moveNext_3() throws Exception {
@@ -473,7 +477,7 @@ public class BatchInventoryMapToBatch extends com.altova.TraceProvider
 			private boolean moveNext_4() throws Exception {
 				state = 6;				
 				if (!var5_read_field.moveNext()) {state = 5; return false; }
-				var6_filter = (com.altova.db.Dbs.readField(closure.var1_cur, "color_code")).enumerator();
+				var6_filter = (com.altova.db.Dbs.readField(closure.var3_cur, "color_code")).enumerator();
 				return false;
 			}
 			private boolean moveNext_5() throws Exception {
@@ -526,15 +530,15 @@ public class BatchInventoryMapToBatch extends com.altova.TraceProvider
 	}
 	static class seq6_join implements IEnumerable
 	{
-		com.altova.db.Record var1_cur;
+		com.altova.mapforce.IEnumerable var1_read_field;
 		com.altova.mapforce.IEnumerable var2_read_field;
-		com.altova.mapforce.IEnumerable var3_read_field;
+		com.altova.db.Record var3_cur;
 	
-		public seq6_join(com.altova.db.Record var1_cur, com.altova.mapforce.IEnumerable var2_read_field, com.altova.mapforce.IEnumerable var3_read_field)
+		public seq6_join(com.altova.mapforce.IEnumerable var1_read_field, com.altova.mapforce.IEnumerable var2_read_field, com.altova.db.Record var3_cur)
 		{
-			this.var1_cur = var1_cur;
+			this.var1_read_field = var1_read_field;
 			this.var2_read_field = var2_read_field;
-			this.var3_read_field = var3_read_field;
+			this.var3_cur = var3_cur;
 		}
 
 		public IEnumerator enumerator() {return new Enumerator(this);}
@@ -580,13 +584,13 @@ public class BatchInventoryMapToBatch extends com.altova.TraceProvider
 
 			private boolean moveNext_1() throws Exception {
 				state = 2;				
-				var4_read_field = (closure.var3_read_field).enumerator();
+				var4_read_field = (closure.var1_read_field).enumerator();
 				return false;
 			}
 			private boolean moveNext_2() throws Exception {
 				state = 4;				
 				if (!var4_read_field.moveNext()) {state = 3; return false; }
-				var5_read_field = (com.altova.db.Dbs.readField(closure.var1_cur, "style_code")).enumerator();
+				var5_read_field = (com.altova.db.Dbs.readField(closure.var3_cur, "style_code")).enumerator();
 				return false;
 			}
 			private boolean moveNext_3() throws Exception {
@@ -597,7 +601,7 @@ public class BatchInventoryMapToBatch extends com.altova.TraceProvider
 			private boolean moveNext_4() throws Exception {
 				state = 6;				
 				if (!var5_read_field.moveNext()) {state = 5; return false; }
-				var6_filter = (com.altova.db.Dbs.readField(closure.var1_cur, "color_code")).enumerator();
+				var6_filter = (com.altova.db.Dbs.readField(closure.var3_cur, "color_code")).enumerator();
 				return false;
 			}
 			private boolean moveNext_5() throws Exception {
@@ -650,15 +654,15 @@ public class BatchInventoryMapToBatch extends com.altova.TraceProvider
 	}
 	static class seq7_join implements IEnumerable
 	{
-		com.altova.db.Record var1_cur;
+		com.altova.mapforce.IEnumerable var1_read_field;
 		com.altova.mapforce.IEnumerable var2_read_field;
-		com.altova.mapforce.IEnumerable var3_read_field;
+		com.altova.db.Record var3_cur;
 	
-		public seq7_join(com.altova.db.Record var1_cur, com.altova.mapforce.IEnumerable var2_read_field, com.altova.mapforce.IEnumerable var3_read_field)
+		public seq7_join(com.altova.mapforce.IEnumerable var1_read_field, com.altova.mapforce.IEnumerable var2_read_field, com.altova.db.Record var3_cur)
 		{
-			this.var1_cur = var1_cur;
+			this.var1_read_field = var1_read_field;
 			this.var2_read_field = var2_read_field;
-			this.var3_read_field = var3_read_field;
+			this.var3_cur = var3_cur;
 		}
 
 		public IEnumerator enumerator() {return new Enumerator(this);}
@@ -704,13 +708,13 @@ public class BatchInventoryMapToBatch extends com.altova.TraceProvider
 
 			private boolean moveNext_1() throws Exception {
 				state = 2;				
-				var4_read_field = (closure.var3_read_field).enumerator();
+				var4_read_field = (closure.var1_read_field).enumerator();
 				return false;
 			}
 			private boolean moveNext_2() throws Exception {
 				state = 4;				
 				if (!var4_read_field.moveNext()) {state = 3; return false; }
-				var5_read_field = (com.altova.db.Dbs.readField(closure.var1_cur, "style_code")).enumerator();
+				var5_read_field = (com.altova.db.Dbs.readField(closure.var3_cur, "style_code")).enumerator();
 				return false;
 			}
 			private boolean moveNext_3() throws Exception {
@@ -721,7 +725,7 @@ public class BatchInventoryMapToBatch extends com.altova.TraceProvider
 			private boolean moveNext_4() throws Exception {
 				state = 6;				
 				if (!var5_read_field.moveNext()) {state = 5; return false; }
-				var6_filter = (com.altova.db.Dbs.readField(closure.var1_cur, "color_code")).enumerator();
+				var6_filter = (com.altova.db.Dbs.readField(closure.var3_cur, "color_code")).enumerator();
 				return false;
 			}
 			private boolean moveNext_5() throws Exception {
@@ -774,11 +778,13 @@ public class BatchInventoryMapToBatch extends com.altova.TraceProvider
 	}
 	static class seq8_join implements IEnumerable
 	{
-		com.altova.db.Record var1_cur;
+		com.altova.mapforce.IEnumerable var1_read_field;
+		com.altova.db.Record var2_cur;
 	
-		public seq8_join(com.altova.db.Record var1_cur)
+		public seq8_join(com.altova.mapforce.IEnumerable var1_read_field, com.altova.db.Record var2_cur)
 		{
-			this.var1_cur = var1_cur;
+			this.var1_read_field = var1_read_field;
+			this.var2_cur = var2_cur;
 		}
 
 		public IEnumerator enumerator() {return new Enumerator(this);}
@@ -789,9 +795,9 @@ public class BatchInventoryMapToBatch extends com.altova.TraceProvider
 			int state = 1;
 			Object current;
 			seq8_join closure;
-			IEnumerator var2_read_field;
-			IEnumerator var3_read_field;
-			java.math.BigDecimal var4_multiply;
+			java.math.BigDecimal var3_if_exists;
+			IEnumerator var4_read_field;
+			java.math.BigDecimal var5_multiply;
 			public Enumerator(seq8_join closure) 
 			{
 				this.closure = closure;
@@ -810,9 +816,6 @@ public class BatchInventoryMapToBatch extends com.altova.TraceProvider
 					case 1:	if (moveNext_1()) return true; break;
 					case 2:	if (moveNext_2()) return true; break;
 					case 3:	if (moveNext_3()) return true; break;
-					case 4:	if (moveNext_4()) return true; break;
-					case 5:	if (moveNext_5()) return true; break;
-					case 6:	if (moveNext_6()) return true; break;
  					}
 				}
 				return false;
@@ -820,37 +823,87 @@ public class BatchInventoryMapToBatch extends com.altova.TraceProvider
 
 			private boolean moveNext_1() throws Exception {
 				state = 2;				
-				var2_read_field = (com.altova.db.Dbs.readField(closure.var1_cur, "price")).enumerator();
+				var3_if_exists = (java.math.BigDecimal)com.altova.functions.Core.first((new seq9_if_exists(closure.var1_read_field)));
+				var4_read_field = (com.altova.db.Dbs.readField(closure.var2_cur, "price_map")).enumerator();
 				return false;
 			}
 			private boolean moveNext_2() throws Exception {
-				state = 4;				
-				if (!var2_read_field.moveNext()) {state = 3; return false; }
-				var3_read_field = (com.altova.db.Dbs.readField(closure.var1_cur, "price_map")).enumerator();
-				return false;
-			}
-			private boolean moveNext_3() throws Exception {
-				state = 0;				
-				if( var2_read_field != null ) { var2_read_field.close(); var2_read_field = null; }
-				return false;
-			}
-			private boolean moveNext_4() throws Exception {
-				state = 4;				
-				if (!var3_read_field.moveNext()) {state = 5; return false; }
-				var4_multiply = com.altova.functions.Core.multiply(((java.math.BigDecimal)(var2_read_field.current())), new java.math.BigDecimal("0.50"));
-				if (!(com.altova.functions.Core.greater(var4_multiply, ((java.math.BigDecimal)(var3_read_field.current()))))) {state = 6; return false; }
-				current = var4_multiply;
+				state = 2;				
+				if (!var4_read_field.moveNext()) {state = 3; return false; }
+				var5_multiply = com.altova.functions.Core.multiply(var3_if_exists, new java.math.BigDecimal("0.50"));
+				current = (java.math.BigDecimal)com.altova.functions.Core.first((new seq10_if_greater(var5_multiply, ((java.math.BigDecimal)(var4_read_field.current())))));
 				pos++;
 				return true;
 			}
-			private boolean moveNext_5() throws Exception {
-				state = 2;				
-				if( var3_read_field != null ) { var3_read_field.close(); var3_read_field = null; }
+			private boolean moveNext_3() throws Exception {
+				state = 0;				
+				if( var4_read_field != null ) { var4_read_field.close(); var4_read_field = null; }
 				return false;
 			}
-			private boolean moveNext_6() throws Exception {
-				state = 4;				
-				current = var3_read_field.current();
+
+			
+			public void close()
+			{
+				try
+				{
+				if( var4_read_field != null ) { var4_read_field.close(); var4_read_field = null; }
+				}
+				catch (Exception e)
+				{
+				}
+			}
+		}
+				
+	}
+	static class seq9_if_exists implements IEnumerable
+	{
+		com.altova.mapforce.IEnumerable var1_read_field;
+	
+		public seq9_if_exists(com.altova.mapforce.IEnumerable var1_read_field)
+		{
+			this.var1_read_field = var1_read_field;
+		}
+
+		public IEnumerator enumerator() {return new Enumerator(this);}
+		
+		public static class Enumerator implements IEnumerator
+		{
+			int pos = 0;
+			int state = 1;
+			Object current;
+			seq9_if_exists closure;
+			public Enumerator(seq9_if_exists closure) 
+			{
+				this.closure = closure;
+			}
+			
+			public Object current() {return current;}
+			
+			public int position() {return pos;}
+			
+			public boolean moveNext() throws Exception
+			{
+				while (state != 0)
+				{
+					switch (state) 
+					{
+					case 1:	if (moveNext_1()) return true; break;
+					case 2:	if (moveNext_2()) return true; break;
+ 					}
+				}
+				return false;
+			}
+
+			private boolean moveNext_1() throws Exception {
+				state = 0;				
+				if (!(com.altova.functions.Core.exists(closure.var1_read_field))) {state = 2; return false; }
+				current = (java.math.BigDecimal)com.altova.functions.Core.first(closure.var1_read_field);
+				pos++;
+				return true;
+			}
+			private boolean moveNext_2() throws Exception {
+				state = 0;				
+				current = new java.math.BigDecimal("0");
 				pos++;
 				return true;
 			}
@@ -860,8 +913,140 @@ public class BatchInventoryMapToBatch extends com.altova.TraceProvider
 			{
 				try
 				{
-				if( var3_read_field != null ) { var3_read_field.close(); var3_read_field = null; }
-				if( var2_read_field != null ) { var2_read_field.close(); var2_read_field = null; }
+				}
+				catch (Exception e)
+				{
+				}
+			}
+		}
+				
+	}
+	static class seq10_if_greater implements IEnumerable
+	{
+		java.math.BigDecimal var1_multiply;
+		java.math.BigDecimal var2_current;
+	
+		public seq10_if_greater(java.math.BigDecimal var1_multiply, java.math.BigDecimal var2_current)
+		{
+			this.var1_multiply = var1_multiply;
+			this.var2_current = var2_current;
+		}
+
+		public IEnumerator enumerator() {return new Enumerator(this);}
+		
+		public static class Enumerator implements IEnumerator
+		{
+			int pos = 0;
+			int state = 1;
+			Object current;
+			seq10_if_greater closure;
+			public Enumerator(seq10_if_greater closure) 
+			{
+				this.closure = closure;
+			}
+			
+			public Object current() {return current;}
+			
+			public int position() {return pos;}
+			
+			public boolean moveNext() throws Exception
+			{
+				while (state != 0)
+				{
+					switch (state) 
+					{
+					case 1:	if (moveNext_1()) return true; break;
+					case 2:	if (moveNext_2()) return true; break;
+ 					}
+				}
+				return false;
+			}
+
+			private boolean moveNext_1() throws Exception {
+				state = 0;				
+				if (!(com.altova.functions.Core.greater(closure.var1_multiply, closure.var2_current))) {state = 2; return false; }
+				current = closure.var1_multiply;
+				pos++;
+				return true;
+			}
+			private boolean moveNext_2() throws Exception {
+				state = 0;				
+				current = closure.var2_current;
+				pos++;
+				return true;
+			}
+
+			
+			public void close()
+			{
+				try
+				{
+				}
+				catch (Exception e)
+				{
+				}
+			}
+		}
+				
+	}
+	static class seq11_if_exists implements IEnumerable
+	{
+		com.altova.mapforce.IEnumerable var1_read_field;
+	
+		public seq11_if_exists(com.altova.mapforce.IEnumerable var1_read_field)
+		{
+			this.var1_read_field = var1_read_field;
+		}
+
+		public IEnumerator enumerator() {return new Enumerator(this);}
+		
+		public static class Enumerator implements IEnumerator
+		{
+			int pos = 0;
+			int state = 1;
+			Object current;
+			seq11_if_exists closure;
+			public Enumerator(seq11_if_exists closure) 
+			{
+				this.closure = closure;
+			}
+			
+			public Object current() {return current;}
+			
+			public int position() {return pos;}
+			
+			public boolean moveNext() throws Exception
+			{
+				while (state != 0)
+				{
+					switch (state) 
+					{
+					case 1:	if (moveNext_1()) return true; break;
+					case 2:	if (moveNext_2()) return true; break;
+ 					}
+				}
+				return false;
+			}
+
+			private boolean moveNext_1() throws Exception {
+				state = 0;				
+				if (!(com.altova.functions.Core.exists(closure.var1_read_field))) {state = 2; return false; }
+				current = com.altova.CoreTypes.integerToDecimal(com.altova.CoreTypes.longToInteger(com.altova.CoreTypes.intToLong((Integer)com.altova.functions.Core.first(closure.var1_read_field))));
+				pos++;
+				return true;
+			}
+			private boolean moveNext_2() throws Exception {
+				state = 0;				
+				current = new java.math.BigDecimal("0");
+				pos++;
+				return true;
+			}
+
+			
+			public void close()
+			{
+				try
+				{
 				}
 				catch (Exception e)
 				{
@@ -1043,7 +1228,7 @@ public class BatchInventoryMapToBatch extends com.altova.TraceProvider
 				com.altova.db.Dbs.addParameter(var2_NewStatement, java.sql.Types.CHAR,-1);
 				com.altova.db.Dbs.addParameter(var2_NewStatement, java.sql.Types.CHAR,-1);
 				com.altova.db.Dbs.addParameter(var2_NewStatement, java.sql.Types.CHAR,-1);
-				com.altova.db.Dbs.addParameter(var2_NewStatement, java.sql.Types.TINYINT,-1);
+				com.altova.db.Dbs.addParameter(var2_NewStatement, java.sql.Types.INTEGER,-1);
 				com.altova.db.Dbs.addParameter(var2_NewStatement, java.sql.Types.CHAR,-1);
 				com.altova.db.Dbs.addParameter(var2_NewStatement, java.sql.Types.CHAR,-1);
 				com.altova.db.Dbs.addParameter(var2_NewStatement, java.sql.Types.CHAR,-1);
@@ -1069,7 +1254,7 @@ public class BatchInventoryMapToBatch extends com.altova.TraceProvider
 				com.altova.db.Dbs.addParameter(var3_NewStatement, java.sql.Types.CHAR,-1);
 				com.altova.db.Dbs.addParameter(var3_NewStatement, java.sql.Types.CHAR,-1);
 				com.altova.db.Dbs.addParameter(var3_NewStatement, java.sql.Types.CHAR,-1);
-				com.altova.db.Dbs.addParameter(var3_NewStatement, java.sql.Types.TINYINT,-1);
+				com.altova.db.Dbs.addParameter(var3_NewStatement, java.sql.Types.INTEGER,-1);
 				com.altova.db.Dbs.addParameter(var3_NewStatement, java.sql.Types.CHAR,-1);
 				com.altova.db.Dbs.addParameter(var3_NewStatement, java.sql.Types.CHAR,-1);
 				com.altova.db.Dbs.addParameter(var3_NewStatement, java.sql.Types.CHAR,-1);

@@ -89,18 +89,6 @@
 					</targets>
 					<view ltx="702" lty="-26" rbx="790" rby="47"/>
 				</component>
-				<component name="concat" library="core" uid="96" kind="5" growable="1" growablebasename="value">
-					<properties/>
-					<sources>
-						<datapoint pos="0" key="72"/>
-						<datapoint pos="1" key="73"/>
-						<datapoint pos="2" key="74"/>
-					</sources>
-					<targets>
-						<datapoint pos="0" key="75"/>
-					</targets>
-					<view ltx="702" lty="62" rbx="790" rby="135"/>
-				</component>
 				<component name="format-sku" library="user" uid="162" kind="19" visible="0">
 					<view ltx="494" lty="-26" rbx="620" rby="25"/>
 					<data>
@@ -121,28 +109,6 @@
 								</namespaces>
 							</header>
 							<entry name="result" outkey="165" componentid="12"/>
-						</root>
-					</data>
-				</component>
-				<component name="calculate-price" library="user" uid="166" kind="19" visible="0">
-					<view ltx="507" lty="207" rbx="620" rby="241"/>
-					<data>
-						<root>
-							<header>
-								<namespaces>
-									<namespace/>
-								</namespaces>
-							</header>
-							<entry name="decimal" inpkey="167" componentid="63"/>
-							<entry name="map" inpkey="168" componentid="77"/>
-						</root>
-						<root>
-							<header>
-								<namespaces>
-									<namespace/>
-								</namespaces>
-							</header>
-							<entry name="result" outkey="169" componentid="61"/>
 						</root>
 					</data>
 				</component>
@@ -216,6 +182,91 @@
 					<view ltx="864" lty="282" rbx="902" rby="299"/>
 					<data>
 						<constant value="1" datatype="decimal"/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="173" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="177"/>
+					</targets>
+					<view ltx="831" lty="266" rbx="904" rby="283"/>
+					<data>
+						<constant value="simple" datatype="string"/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="154" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="149"/>
+					</targets>
+					<view ltx="755" lty="298" rbx="905" rby="315"/>
+					<data>
+						<constant value="Not Visible Individually" datatype="string"/>
+					</data>
+				</component>
+				<component name="concat" library="core" uid="96" kind="5" growable="1" growablebasename="value">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="72"/>
+						<datapoint pos="1" key="73"/>
+						<datapoint pos="2" key="74"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="75"/>
+					</targets>
+					<view ltx="702" lty="62" rbx="790" rby="135"/>
+				</component>
+				<component name="calculate-price" library="user" uid="166" kind="19" visible="0">
+					<view ltx="383" lty="162" rbx="496" rby="196"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="decimal" inpkey="167" componentid="63"/>
+							<entry name="map" inpkey="168" componentid="77"/>
+						</root>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="result" outkey="169" componentid="61"/>
+						</root>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="176" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="178"/>
+					</targets>
+					<view ltx="383" lty="269" rbx="421" rby="286"/>
+					<data>
+						<constant value="0" datatype="decimal"/>
+					</data>
+				</component>
+				<component name="substitute-null" library="db" uid="175" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="179"/>
+						<datapoint pos="1" key="180"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="181"/>
+					</targets>
+					<view ltx="383" lty="216" rbx="492" rby="270"/>
+				</component>
+				<component name="constant" library="core" uid="177" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="183"/>
+					</targets>
+					<view ltx="312" lty="401" rbx="350" rby="418"/>
+					<data>
+						<constant value="0" datatype="decimal"/>
 					</data>
 				</component>
 				<component name="db" library="db" uid="61" kind="15">
@@ -321,25 +372,16 @@
 						</database>
 					</data>
 				</component>
-				<component name="constant" library="core" uid="173" kind="2">
+				<component name="substitute-null" library="db" uid="178" kind="5">
 					<properties/>
+					<sources>
+						<datapoint pos="0" key="182"/>
+						<datapoint pos="1" key="184"/>
+					</sources>
 					<targets>
-						<datapoint pos="0" key="177"/>
+						<datapoint pos="0" key="185"/>
 					</targets>
-					<view ltx="831" lty="266" rbx="904" rby="283"/>
-					<data>
-						<constant value="simple" datatype="string"/>
-					</data>
-				</component>
-				<component name="constant" library="core" uid="154" kind="2">
-					<properties/>
-					<targets>
-						<datapoint pos="0" key="149"/>
-					</targets>
-					<view ltx="755" lty="298" rbx="905" rby="315"/>
-					<data>
-						<constant value="Not Visible Individually" datatype="string"/>
-					</data>
+					<view ltx="312" lty="348" rbx="421" rby="402"/>
 				</component>
 			</children>
 		</structure>
@@ -350,7 +392,7 @@
 			<edge from="49" to="43"/>
 			<edge from="56" to="59"/>
 			<edge from="57" to="60"/>
-			<edge from="58" to="61"/>
+			<edge from="185" to="61"/>
 			<edge from="79" to="62"/>
 			<edge from="75" to="71"/>
 			<edge from="55" to="72"/>
@@ -380,10 +422,14 @@
 			<edge from="63" to="162"/>
 			<edge from="64" to="163"/>
 			<edge from="65" to="164"/>
-			<edge from="47" to="167"/>
+			<edge from="181" to="167"/>
 			<edge from="166" to="168"/>
 			<edge from="174" to="170"/>
 			<edge from="177" to="176"/>
+			<edge from="47" to="179"/>
+			<edge from="178" to="180"/>
+			<edge from="58" to="182"/>
+			<edge from="183" to="184"/>
 		</connections>
 	</component>
 </mapping>

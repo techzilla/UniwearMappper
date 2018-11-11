@@ -215,7 +215,7 @@ public class BatchMapToMagento2Products extends com.altova.TraceProvider
 				com.altova.db.Dbs.MySQL.read_String(var2_NewRecord, closure.var1_RecordSet, "description", 5);
 				com.altova.db.Dbs.MySQL.read_String(var2_NewRecord, closure.var1_RecordSet, "short_description", 6);
 				com.altova.db.Dbs.read_String_ParseDecimal(var2_NewRecord, closure.var1_RecordSet, "weight", 7);
-				com.altova.db.Dbs.read_byte(var2_NewRecord, closure.var1_RecordSet, "product_online", 8);
+				com.altova.db.Dbs.read_int(var2_NewRecord, closure.var1_RecordSet, "product_online", 8);
 				com.altova.db.Dbs.MySQL.read_String(var2_NewRecord, closure.var1_RecordSet, "visibility", 9);
 				com.altova.db.Dbs.read_String_ParseDecimal(var2_NewRecord, closure.var1_RecordSet, "price", 10);
 				com.altova.db.Dbs.MySQL.read_String(var2_NewRecord, closure.var1_RecordSet, "url_key", 11);

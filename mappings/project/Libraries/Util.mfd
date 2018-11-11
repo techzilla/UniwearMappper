@@ -525,4 +525,89 @@
 			</graph>
 		</structure>
 	</component>
+	<component name="convert-boolstring-int" library="user" uid="97" inline="1" editable="1" blackbox="0">
+		<properties/>
+		<description>
+			<short>result = convert-boolstring-int( string )</short>
+		</description>
+		<structure>
+			<children>
+				<component name="input" library="core" uid="99" kind="6">
+					<properties/>
+					<sources>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="1"/>
+					</targets>
+					<view ltx="81" lty="37" rbx="162" rby="75"/>
+					<data>
+						<input datatype="string"/>
+						<parameter usageKind="input" name="input"/>
+					</data>
+				</component>
+				<component name="lowercase" library="lang" uid="102" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="2"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="3"/>
+					</targets>
+					<view ltx="205" lty="37" rbx="283" rby="75"/>
+				</component>
+				<component name="result" library="core" uid="98" kind="7">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="4"/>
+					</sources>
+					<view ltx="469" lty="37" rbx="526" rby="75"/>
+					<data>
+						<output datatype="int"/>
+						<parameter usageKind="output" name="result"/>
+					</data>
+				</component>
+				<component name="value-map" library="core" uid="100" kind="23">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="5"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="6"/>
+					</targets>
+					<view ltx="322" lty="37" rbx="402" rby="75"/>
+					<data>
+						<valuemap>
+							<valuemapTable>
+								<entry from="true" to="1"/>
+								<entry from="false" to="0"/>
+							</valuemapTable>
+							<input name="input" type="string"/>
+							<result name="result" type="int"/>
+						</valuemap>
+					</data>
+				</component>
+			</children>
+			<graph directed="1">
+				<edges/>
+				<vertices>
+					<vertex vertexkey="1">
+						<edges>
+							<edge vertexkey="2"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="6">
+						<edges>
+							<edge vertexkey="4"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="3">
+						<edges>
+							<edge vertexkey="5"/>
+						</edges>
+					</vertex>
+				</vertices>
+			</graph>
+		</structure>
+	</component>
 </mapping>

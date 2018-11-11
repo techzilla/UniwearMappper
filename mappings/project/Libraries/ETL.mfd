@@ -1046,16 +1046,6 @@
 					</targets>
 					<view ltx="580" lty="95" rbx="680" rby="168"/>
 				</component>
-				<component name="constant" library="core" uid="78" kind="2">
-					<properties/>
-					<targets>
-						<datapoint pos="0" key="21"/>
-					</targets>
-					<view ltx="228" lty="167" rbx="266" rby="184"/>
-					<data>
-						<constant value="0" datatype="decimal"/>
-					</data>
-				</component>
 				<component name="greater" library="core" uid="70" kind="5">
 					<properties/>
 					<sources>
@@ -1066,6 +1056,17 @@
 						<datapoint pos="0" key="9"/>
 					</targets>
 					<view ltx="472" lty="77" rbx="536" rby="131"/>
+				</component>
+				<component name="multiply" library="core" uid="65" kind="5" growable="1" growablebasename="value">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="3"/>
+						<datapoint pos="1" key="4"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="5"/>
+					</targets>
+					<view ltx="361" lty="40" rbx="439" rby="96"/>
 				</component>
 				<component name="map" library="core" uid="77" kind="6">
 					<properties/>
@@ -1081,16 +1082,15 @@
 						<parameter usageKind="input" name="map" optional="1"/>
 					</data>
 				</component>
-				<component name="multiply" library="core" uid="65" kind="5" growable="1" growablebasename="value">
+				<component name="constant" library="core" uid="78" kind="2">
 					<properties/>
-					<sources>
-						<datapoint pos="0" key="3"/>
-						<datapoint pos="1" key="4"/>
-					</sources>
 					<targets>
-						<datapoint pos="0" key="5"/>
+						<datapoint pos="0" key="21"/>
 					</targets>
-					<view ltx="361" lty="40" rbx="439" rby="96"/>
+					<view ltx="228" lty="167" rbx="266" rby="184"/>
+					<data>
+						<constant value="0" datatype="decimal"/>
+					</data>
 				</component>
 				<component name="decimal" library="core" uid="63" kind="6">
 					<properties/>
